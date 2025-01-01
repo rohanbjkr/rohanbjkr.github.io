@@ -13,5 +13,6 @@ Besides professional career, he also actively participates in research. His rese
 
 In addition to his academic and professional achievements, Rohan is an active educator. He runs a blog where he shares tutorials on statistical software such as SPSS, STATA, and R, and provides insights into various economic concepts ([https://www.rohanbyanjankar.com.np](https://www.rohanbyanjankar.com.np)). He also has a YouTube channel where he offers video tutorials on data analysis.
 
-[mailto:rohanbjkr@gmail.com](Email)|[www.rohanbyanjankar.com.np](Blog)|[https://www.youtube.com/@RohanB](Vlog)|[https://scholar.google.com/citations?user=HLkbYnMAAAAJ&hl](Google Scholar)
+📧 [Email](mailto:rohanbjkr@gmail.com) | 🌐 [Blog](http://www.rohanbyanjankar.com.np) | 🎥 [Vlog](https://www.youtube.com/@RohanB) | 🔍 [Google Scholar](https://scholar.google.com/citations?user=HLkbYnMAAAAJ&hl)
+
 

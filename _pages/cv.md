@@ -9,4 +9,4 @@ redirect_from:
 
 {% include base_path %}
 
-Will be updated soon!!!
+[https://drive.google.com/file/d/1i7V-ZGr6mh4cjiJ87MKcPRFrFWSsLkSA/view?usp=sharing](CV here)

@@ -7,13 +7,48 @@ redirect_from:
   - /wordpress/blog-posts/
 ---
 
-{% include base_path %}
-{% capture written_year %}'None'{% endcapture %}
-{% for post in site.posts %}
-  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-  {% if year != written_year %}
-    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
-    {% capture written_year %}{{ year }}{% endcapture %}
-  {% endif %}
-  {% include archive-single.html %}
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogger RSS Feed</title>
+</head>
+<body>
+  <h1>Latest Blog Posts</h1>
+  <ul id="rss-feed"></ul>
+
+  <script>
+    const feedUrl = 'https://www.rohanbyanjankar.com.np/feeds/posts/default?alt=rss';
+
+    async function fetchRSS() {
+      try {
+        const response = await fetch(feedUrl);
+        const text = await response.text();
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(text, "application/xml");
+        const items = xml.querySelectorAll("item");
+
+        const feedContainer = document.getElementById("rss-feed");
+        items.forEach(item => {
+          const title = item.querySelector("title").textContent;
+          const link = item.querySelector("link").textContent;
+
+          const listItem = document.createElement("li");
+          const anchor = document.createElement("a");
+          anchor.href = link;
+          anchor.textContent = title;
+          anchor.target = "_blank";
+
+          listItem.appendChild(anchor);
+          feedContainer.appendChild(listItem);
+        });
+      } catch (error) {
+        console.error("Error fetching the RSS feed:", error);
+      }
+    }
+
+    fetchRSS();
+  </script>
+</body>
+</html>

@@ -39,11 +39,7 @@ redirect_from:
 
         if (data.status === 'ok') {
           const feedContainer = document.getElementById("rss-feed");
-          const maxPosts = 30; // Limit to 30 posts
-          const itemsToShow = Math.min(data.items.length, maxPosts);
-
-          for (let i = 0; i < itemsToShow; i++) {
-            const item = data.items[i];
+          data.items.forEach(item => {
             const listItem = document.createElement("li");
             const anchor = document.createElement("a");
             anchor.href = item.link;
@@ -52,7 +48,7 @@ redirect_from:
 
             listItem.appendChild(anchor);
             feedContainer.appendChild(listItem);
-          }
+          });
         } else {
           console.error("Failed to load feed:", data.message);
         }
@@ -63,7 +59,10 @@ redirect_from:
 
     fetchRSS();
   </script>
+  <hr>
+  For More: <a href = "https://www.rohanbyanjankar.com.np/">Read More</a>
 </body>
 </html>
+
 
 

@@ -13,36 +13,46 @@ redirect_from:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blogger RSS Feed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+  </style>
 </head>
 <body>
   <h1>Latest Blog Posts</h1>
   <ul id="rss-feed"></ul>
 
   <script>
-    const feedUrl = 'https://www.rohanbyanjankar.com.np/feeds/posts/default?alt=rss';
+    const feedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.rohanbyanjankar.com.np/feeds/posts/default?alt=rss';
 
     async function fetchRSS() {
       try {
         const response = await fetch(feedUrl);
-        const text = await response.text();
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(text, "application/xml");
-        const items = xml.querySelectorAll("item");
+        const data = await response.json();
 
-        const feedContainer = document.getElementById("rss-feed");
-        items.forEach(item => {
-          const title = item.querySelector("title").textContent;
-          const link = item.querySelector("link").textContent;
+        if (data.status === 'ok') {
+          const feedContainer = document.getElementById("rss-feed");
+          data.items.forEach(item => {
+            const listItem = document.createElement("li");
+            const anchor = document.createElement("a");
+            anchor.href = item.link;
+            anchor.textContent = item.title;
+            anchor.target = "_blank";
 
-          const listItem = document.createElement("li");
-          const anchor = document.createElement("a");
-          anchor.href = link;
-          anchor.textContent = title;
-          anchor.target = "_blank";
-
-          listItem.appendChild(anchor);
-          feedContainer.appendChild(listItem);
-        });
+            listItem.appendChild(anchor);
+            feedContainer.appendChild(listItem);
+          });
+        } else {
+          console.error("Failed to load feed:", data.message);
+        }
       } catch (error) {
         console.error("Error fetching the RSS feed:", error);
       }
@@ -52,3 +62,4 @@ redirect_from:
   </script>
 </body>
 </html>
+

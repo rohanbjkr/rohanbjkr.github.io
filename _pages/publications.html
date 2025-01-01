@@ -13,6 +13,13 @@ author_profile: true
 <h2>Journal Articles</h2>
 <hr>
 <ul>
+     <li>
+        <strong>Byanjankar, R.</strong>, Adhikari, S.R., &amp; Khan, M.M. (2024). Financial inclusion and sustainable shift in living standard: Evidence from Nepal. <i>Oxford Development Studies</i>, Revise and Resubmit.
+    </li>
+     <li>
+        Adhikari, P., <strong>Byanjankar, R.</strong>, Subba, S., Bhatta, S.R., &amp; Shrestha, P.M. (2024). What drives the foreign investment in Nepal? Investor’s perception analysis. <i>Asian-Pacific Economic Literature</i>, <i>38</i>(2), 102-122. 
+        <a href="https://doi.org/10.1111/apel.12421" target="_blank">doi.org/10.1111/apel.12421</a>
+    </li>
     <li>
         Bhoosal, Y. L., &amp; <strong>Byanjankar, R.</strong> (2022). An empirical study on the determinants of government revenue in Nepal. <i>NRB Economic Review</i>, <i>34</i>(2), 30–49. 
         <a href="https://doi.org/10.3126/nrber.v34i2.49437" target="_blank">doi:10.3126/nrber.v34i2.49437</a>
@@ -25,37 +32,6 @@ author_profile: true
         Bhatta, S. R., Adhikari, P., &amp; <strong>Byanjankar, R.</strong> (2020). Choice of regression models in time series data. <i>Economic Journal of Development Issues</i>, 29-30, 101–129. 
         <a href="https://doi.org/10.3126/ejdi.v30i1-2.46058" target="_blank">doi:10.3126/ejdi.v30i1-2.46058</a>
     </li>
-    <li>
-        Adhikari, P., <strong>Byanjankar, R.</strong>, Subba, S., Bhatta, S.R., &amp; Shrestha, P.M. (2024). What drives the foreign investment in Nepal? Investor’s perception analysis. <i>Asian-Pacific Economic Literature</i>, 38(2), 102-122. 
-        <a href="https://doi.org/10.1111/apel.12421" target="_blank">doi.org/10.1111/apel.12421</a>
-    </li>
-    </li>
-    <li>
-        <strong>Byanjankar, R.</strong>, Adhikari, S.R., &amp; Khan, M.M. (2024). Financial inclusion and sustainable shift in living standard: Evidence from Instrument Variable Approach.
-    </li>
 </ul>
-
-
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
-
 
 

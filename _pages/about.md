@@ -7,43 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-# Rohan Byanjankar
+Rohan Byanjankar serves as Assistant Director at Nepal Rastra Bank, the central bank of Nepal. He is currently working at the Economic Research Department of the institution. He handles large datasets, as demonstrated by his recent study, "Microfinance Financial Institutions: Problems and Their Resolutions," which involved analyzing data from approximately 4 million borrowers.
 
-**Assistant Director at Nepal Rastra Bank | Economist | Researcher**
+Besides professional career, he also actively participates in research. His reserach primarily focuses on migration, remittances, and financial inclusion. He has published several research papers and has presented his work at various international conferences, including the South Asian Economics Students’ Meet in Sri Lanka.
 
-📧 [Email](mailto:rohanbjkr@gmail.com) • 🌐 [Blog](http://www.rohanbyanjankar.com.np) • 🎥 [Vlog](https://www.youtube.com/@RohanB) • 🔍 [Google Scholar](https://scholar.google.com/citations?user=HLkbYnMAAAAJ&hl)
+In addition to his academic and professional achievements, Rohan is an active educator. He runs a blog where he shares tutorials on statistical software such as SPSS, STATA, and R, and provides insights into various economic concepts ([https://www.rohanbyanjankar.com.np](https://www.rohanbyanjankar.com.np)). He also has a YouTube channel where he offers video tutorials on data analysis.
 
----
-
-## 🎯 Quick Overview
-
-Rohan Byanjankar serves as Assistant Director at Nepal Rastra Bank, with expertise in macroeconomic research, forecasting, financial inclusion, and evidence-based policy analysis.
-
-**➡️ [View Full Interactive Timeline Portfolio](about.html)**
-
----
-
-### Core Expertise
-- Macroeconomic Research & Forecasting
-- Financial Inclusion & Remittances
-- Policy Analysis & Big Data Analytics
-- Statistical Programming (R, Python, Stata)
-
-### Current Position
-**Assistant Director** at Nepal Rastra Bank (Economic Research Department)  
-*Feb 2023 — Present*
-
-### Education
-- **MA in Policy Economics** - Williams College (2024-2025) (4.00 out of 4.00 GPA)
-  - *Courses:* Advanced microeconometrics, Advanced econometrics, Time-series econometrics, Macroeconomics, Program evaluation
-  - *Thesis:* "Effect of bank branch expansion on use of financial services: Evidence from Nepal"
-- **MA in Economics** - Tribhuvan University (Gold Medalist)
-- **BBA** - Tribhuvan University
-
-### Blog
-([https://www.rohanbyanjankar.com.np](https://www.rohanbyanjankar.com.np))
-
----
+He holds a master’s degree in Economics from Tribhuvan University. He has been awarded Gold Medal in 2021 for securing the highest marks in MA Economics. He has secured research grant awarded by Rector’s Office, Tribhuvan University for carrying out Master’s Thesis on “Determinants of financial access and its impact on household welfare in Nepal”.
 
 *For detailed timeline, publications, and complete portfolio, visit the [interactive version](about.html).*
 

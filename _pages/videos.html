@@ -24,43 +24,52 @@ author_profile: true
 </div>
 
 <script type="text/javascript">
-  function showRecentEconometrics(json) {
-    var maxEntries = 5;
+  document.addEventListener("DOMContentLoaded", function() {
+    var feedUrl = "https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=json&max-results=5";
     var div = document.getElementById('recent-econometrics-posts');
-    
-    if (!json.feed || !json.feed.entry || json.feed.entry.length === 0) {
-      div.innerHTML = '<span style="color: #777; font-style: italic;">No recent articles found.</span>';
-      return;
-    }
-    
-    var html = '<ul style="list-style-type: none; padding-left: 0; margin: 0;">';
-    var entriesCount = Math.min(json.feed.entry.length, maxEntries);
-    
-    for (var i = 0; i < entriesCount; i++) {
-      var entry = json.feed.entry[i];
-      var title = entry.title.$t;
-      var url = '';
-      
-      for (var k = 0; k < entry.link.length; k++) {
-        if (entry.link[k].rel === 'alternate') {
-          url = entry.link[k].href;
-          break;
-        }
-      }
-      
-      html += '<li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #f0f0f0; display: flex; align-items: baseline;">';
-      html += '<span style="color: #888; margin-right: 12px; font-size: 0.85em;">&#9656;</span>';
-      html += '<a href="' + url + '" class="recent-post-link" style="text-decoration: none; color: #111; font-weight: 400; transition: color 0.2s ease;">' + title + '</a>';
-      html += '</li>';
-    }
-    
-    html += '</ul>';
-    div.innerHTML = html;
 
-    // Add CSS transition rules programmatically
-    var style = document.createElement('style');
-    style.innerHTML = '.recent-post-link:hover { color: #0056b3 !important; text-decoration: underline !important; }';
-    document.head.appendChild(style);
-  }
+    fetch(feedUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response error');
+        return response.json();
+      })
+      .then(json => {
+        if (!json.feed || !json.feed.entry || json.feed.entry.length === 0) {
+          div.innerHTML = '<span style="color: #777; font-style: italic;">No recent articles found.</span>';
+          return;
+        }
+
+        var html = '<ul style="list-style-type: none; padding-left: 0; margin: 0;">';
+        var entriesCount = Math.min(json.feed.entry.length, 5);
+
+        for (var i = 0; i < entriesCount; i++) {
+          var entry = json.feed.entry[i];
+          var title = entry.title.$t;
+          var url = '';
+
+          for (var k = 0; k < entry.link.length; k++) {
+            if (entry.link[k].rel === 'alternate') {
+              url = entry.link[k].href;
+              break;
+            }
+          }
+
+          html += '<li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #f0f0f0; display: flex; align-items: baseline;">';
+          html += '<span style="color: #888; margin-right: 12px; font-size: 0.85em;">&#9656;</span>';
+          html += '<a href="' + url + '" class="recent-post-link" style="text-decoration: none; color: #111; font-weight: 400; transition: color 0.2s ease;">' + title + '</a>';
+          html += '</li>';
+        }
+
+        html += '</ul>';
+        div.innerHTML = html;
+
+        var style = document.createElement('style');
+        style.innerHTML = '.recent-post-link:hover { color: #0056b3 !important; text-decoration: underline !important; }';
+        document.head.appendChild(style);
+      })
+      .catch(error => {
+        console.error('Error fetching Blogger feed:', error);
+        div.innerHTML = '<span style="color: #c0392b; font-style: italic;">Unable to load recent articles.</span>';
+      });
+  });
 </script>
-<script src="https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=json-in-script&callback=showRecentEconometrics&max-results=5"></script>

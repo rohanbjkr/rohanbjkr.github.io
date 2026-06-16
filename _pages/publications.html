@@ -6,30 +6,18 @@ author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-  <div class="wordwrap" style="margin-bottom: 30px; font-size: 1.1em;">
-    You can also find my articles on <a href="https://scholar.google.com/citations?user=HLkbYnMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" style="font-weight: bold; text-decoration: underline; color: #2a7ae2;">my Google Scholar profile</a>.
+  <div class="wordwrap" style="margin-bottom: 25px; font-size: 1.05em;">
+    You can also find my articles on <a href="https://scholar.google.com/citations?user=HLkbYnMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" style="font-weight: bold; text-decoration: underline;">my Google Scholar profile</a>.
   </div>
 {% endif %}
 
 {% include base_path %}
 
-<!-- Styling for the collapsible abstract section and badges -->
+<!-- Styling for the collapsible abstract section -->
 <style>
-  .pub-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    font-size: 0.8em;
-    font-weight: 600;
-    border-radius: 4px;
-    margin-left: 5px;
-  }
-  .badge-forthcoming { background-color: #e1f5fe; color: #0288d1; border: 1px solid #b3e5fc; }
-  .badge-review { background-color: #fff3e0; color: #f57c00; border: 1px solid #ffe0b2; }
-  .badge-working { background-color: #efebe9; color: #5d4037; border: 1px solid #d7ccc8; }
-  
   .abstract-toggle {
     display: inline-block;
-    margin-top: 0.5em;
+    margin-top: 0.4em;
     color: #2a7ae2;
     cursor: pointer;
     font-size: 0.9em;
@@ -43,8 +31,8 @@ author_profile: true
   .abstract-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-    background-color: #fcfcfc;
+    transition: max-height 0.3s ease-out;
+    background-color: #f9f9f9;
     border-left: 3px solid #2a7ae2;
     padding: 0 15px;
     margin-top: 5px;
@@ -53,16 +41,16 @@ author_profile: true
     margin: 10px 0;
     color: #444;
     font-size: 0.95em;
-    line-height: 1.6;
+    line-height: 1.5;
   }
   .abstract-checkbox {
     display: none;
   }
   /* Dynamic toggle mechanism without requiring external JavaScript */
   .abstract-checkbox:checked ~ .abstract-content {
-    max-height: 500px;
-    padding: 8px 15px;
-    margin-bottom: 12px;
+    max-height: 400px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
     border-top: 1px solid #eee;
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
@@ -74,22 +62,14 @@ author_profile: true
   .abstract-checkbox:not(:checked) ~ .abstract-toggle::before {
     content: "▶ View ";
   }
-  .award-box {
-    background-color: #f9f9f9;
-    border: 1px dashed #cfd8dc;
-    padding: 12px 15px;
-    margin-top: 10px;
-    border-radius: 4px;
-    font-size: 0.9em;
-  }
 </style>
 
 <h2>Journal Articles</h2>
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
   
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong> (2026). Agriculture and natural disasters: Evidence from the 2015 Nepal earthquake. <i>Australian Journal of Agricultural and Resource Economics</i>.<span class="pub-badge badge-forthcoming">Forthcoming</span>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong> (2026). Agriculture and natural disasters: Evidence from the 2015 Nepal earthquake. <i>Australian Journal of Agricultural and Resource Economics</i>. <i>(Forthcoming)</i>.
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-disaster" class="abstract-checkbox">
       <label for="abs-disaster" class="abstract-toggle">Abstract</label>
@@ -99,9 +79,9 @@ author_profile: true
     </div>
   </li>
 
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
     <strong>Byanjankar, R.</strong>, Adhikari, S. R., & Khan, M. M. (2025). Financial inclusion and sustainable shift in living standard: Evidence from Nepal. <i>Oxford Development Studies</i>. 
-    <a href="https://doi.org/10.1080/13600818.2025.2507252" target="_blank" rel="noopener noreferrer" style="font-weight: 500;">[DOI]</a>
+    <a href="https://doi.org/10.1080/13600818.2025.2507252" target="_blank" rel="noopener noreferrer">[DOI]</a>
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-financial" class="abstract-checkbox">
       <label for="abs-financial" class="abstract-toggle">Abstract</label>
@@ -111,9 +91,9 @@ author_profile: true
     </div>
   </li>
 
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
     <strong>Byanjankar, R.</strong>, Bhatta, G. R., Singh, B., & Devpura, N. (2025). Remittances and household welfare: Evidence from Nepal's survey data. <i>Emerging Markets Finance and Trade</i>.
-    <a href="https://doi.org/10.1080/1540496X.2025.2451181" target="_blank" rel="noopener noreferrer" style="font-weight: 500;">[DOI]</a>
+    <a href="https://doi.org/10.1080/1540496X.2025.2451181" target="_blank" rel="noopener noreferrer">[DOI]</a>
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-remittance-welfare" class="abstract-checkbox">
       <label for="abs-remittance-welfare" class="abstract-toggle">Abstract</label>
@@ -123,9 +103,9 @@ author_profile: true
     </div>
   </li>
 
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
     Dahal, A., <strong>Byanjankar, R.</strong>, Jangam, B. P., & Rath, B. N. (2025). Reassessing the role of exchange rates in export dynamics: Evidence from a disaggregated industry-level analysis in the case of Nepal. <i>Economic Analysis and Policy</i>.
-    <a href="https://doi.org/10.1016/j.eap.2025.01.027" target="_blank" rel="noopener noreferrer" style="font-weight: 500;">[DOI]</a>
+    <a href="https://doi.org/10.1016/j.eap.2025.01.027" target="_blank" rel="noopener noreferrer">[DOI]</a>
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-exchange" class="abstract-checkbox">
       <label for="abs-exchange" class="abstract-toggle">Abstract</label>
@@ -139,8 +119,8 @@ author_profile: true
 <h2>Papers Under Review</h2>
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://drive.google.com/file/d/1lPsexS_4GCe-l78px4aFdAl8NbFgbamH/view" target="_blank" rel="noopener noreferrer">Does remittances alleviate energy poverty? Evidence from Nepal</a>. <span class="pub-badge badge-review">Under Review</span>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://drive.google.com/file/d/1lPsexS_4GCe-l78px4aFdAl8NbFgbamH/view" target="_blank" rel="noopener noreferrer">Does remittances alleviate energy poverty? Evidence from Nepal</a>. <i>Under Review</i>.
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-energy-poverty" class="abstract-checkbox">
       <label for="abs-energy-poverty" class="abstract-toggle">Abstract</label>
@@ -155,8 +135,8 @@ author_profile: true
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
   
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://drive.google.com/file/d/1h23RzdLQaVP6uH3oJ63MS7EphOUJg4YN/view" target="_blank" rel="noopener noreferrer">Remittances and use of financial services</a>. <span class="pub-badge badge-working">Working Paper</span>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://drive.google.com/file/d/1h23RzdLQaVP6uH3oJ63MS7EphOUJg4YN/view" target="_blank" rel="noopener noreferrer">Remittances and use of financial services</a>.
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-financial-services" class="abstract-checkbox">
       <label for="abs-financial-services" class="abstract-toggle">Abstract</label>
@@ -166,12 +146,12 @@ author_profile: true
     </div>
   </li>
 
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong>, Budha, B. B., & Nepal, S. Macroeconomic effects of uncertainty: Evidence from Nepal. <span class="pub-badge badge-working">Working Paper</span>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong>, Budha, B. B., & Nepal, S. Macroeconomic effects of uncertainty: Evidence from Nepal.
   </li>
 
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong>. <a href="https://www.nrb.org.np/contents/uploads/2025/08/nrb-wp-61-2025-08.pdf" target="_blank" rel="noopener noreferrer">Do bank lending rates respond to monetary policy shocks in developing countries? Evidence from Nepal</a>. <span class="pub-badge badge-working">NRB Working Paper No. 61</span>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong>. <a href="https://www.nrb.org.np/contents/uploads/2025/08/nrb-wp-61-2025-08.pdf" target="_blank" rel="noopener noreferrer">Do bank lending rates respond to monetary policy shocks in developing countries? Evidence from Nepal</a>. <i>Nepal Rastra Bank Working Paper No. 61/2025</i>.
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-bank-lending" class="abstract-checkbox">
       <label for="abs-bank-lending" class="abstract-toggle">Abstract</label>
@@ -181,8 +161,8 @@ author_profile: true
     </div>
   </li>
 
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://www.nrb.org.np/contents/uploads/2024/08/nrb-wp-59-2024-06.pdf" target="_blank" rel="noopener noreferrer">Nowcasting Nepal's GDP</a>. <span class="pub-badge badge-working">NRB Working Paper No. 59</span>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://www.nrb.org.np/contents/uploads/2024/08/nrb-wp-59-2024-06.pdf" target="_blank" rel="noopener noreferrer">Nowcasting Nepal's GDP</a>. <i>Nepal Rastra Bank Working Paper No. 59/2024</i>.
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-nowcasting" class="abstract-checkbox">
       <label for="abs-nowcasting" class="abstract-toggle">Abstract</label>
@@ -193,22 +173,17 @@ author_profile: true
   </li>
 </ul>
 
-<h2>Selected Research & Institutional Honors</h2>
+<h2>Selected Research & Honors</h2>
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 2em; padding-left: 1em; text-indent: -1em;">
-    <strong>Byanjankar, R.</strong>. Bank branch expansion and use of banking services: Evidence from Nepal. <i>Independent Study, Williams College</i>. <br>
-    <small style="color: #666;">Supervisors: Professor Owen Ozier & Professor Pamela Jakiela</small>
+  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+    <strong>Byanjankar, R.</strong>. Bank branch expansion and use of banking services: Evidence from Nepal. <i>Independent Study, Williams College</i>. (Supervisors: Professor Owen Ozier and Professor Pamela Jakiela).
     <div style="text-indent: 0; margin-left: 1em;">
       <input type="checkbox" id="abs-williams" class="abstract-checkbox">
       <label for="abs-williams" class="abstract-toggle">Abstract</label>
       <div class="abstract-content">
         <p><strong>Abstract:</strong> This paper examines the effect of bank branch expansion on the use of financial services in Nepal using two-way fixed effects. The expansion led to reduction in distance to the nearest bank by 24 percent on average, with households in treated municipalities being 25 percent more likely to reside within 16 kilometers of a bank. Although reduced-form estimates indicate no significant effect on likelihood of having a bank deposit or loan, distance-based treatment definitions reveal a modest increase in likelihood of having a bank loan. The null effects in the reduced form estimates are likely attributable to the widespread availability of door-to-door financial services provided by microfinance institutions, which may have substituted for banking services that remain prohibitively distant for many households.</p>
-      </div>
-      
-      <div class="award-box">
-        🏆 <strong>Awarded the Jack Larned, 1942, International Management Prize</strong> <br>
-        <span style="color: #555; font-size: 0.95em;">Established in memory of Jack Larned, two annual prizes are awarded for student papers of superior quality dealing with the management of development in governments and private or public enterprises in African, Asian, or Latin American countries. One award is designated for undergraduate students at Williams College, and the other for graduate students at the Center for Development Economics (CDE). Winners are selected by faculty members specializing in economic development.</span>
+        <p style="margin-top: 10px; font-style: italic;">🏅 Awarded the Jack Larned, 1942, International Management Prize for graduate papers of superior quality dealing with the management of development at the Center for Development Economics (CDE), Williams College.</p>
       </div>
     </div>
   </li>

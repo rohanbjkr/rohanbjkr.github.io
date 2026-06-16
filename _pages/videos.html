@@ -5,15 +5,62 @@ permalink: /videos/
 author_profile: true
 ---
 
-<h2> Teachings </h2>
-<hr>
-I have shared the materials that I prepared for NRB training.
+<h2 style="font-size: 1.6em; margin-top: 30px; margin-bottom: 5px; color: #333; font-weight: 600;">Teachings</h2>
+<hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 20px;">
 
+<ul style="list-style-type: none; padding-left: 0; margin-bottom: 30px; font-size: 1.05em; line-height: 1.6;">
+  <li style="margin-bottom: 8px; color: #444;">Time Series and Panel Analysis</li>
+  <li style="margin-bottom: 8px; color: #444;">Causal Inference</li>
+</ul>
 
-<h2>STATA Tutorials</h2>
-<hr>
-<iframe width="460" height="215" src="https://www.youtube.com/embed/videoseries?si=kiS0rUZRZHqC6XxX&amp;list=PL2AumMHrxZ-AgtCOFu__4H7CAQEw-UmWK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h3 style="font-size: 1.25em; margin-bottom: 15px; color: #444; font-weight: 500;">Recent Econometrics Insights</h3>
+<div id="recent-econometrics-posts" style="font-size: 0.95em; line-height: 1.6; margin-bottom: 40px; color: #666;">Loading latest articles...</div>
 
-<h2>Econometrics</h2>
-<hr>
-<iframe width="460" height="215" src="https://www.youtube.com/embed/videoseries?si=rzKslRTVJfmiTjaD&amp;list=PL2AumMHrxZ-B3AVjqfciIXmAG3dXK_tI3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2 style="font-size: 1.6em; margin-top: 40px; margin-bottom: 5px; color: #333; font-weight: 600;">STATA Tutorials</h2>
+<hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 20px;">
+
+<div style="position: relative; padding-bottom: 25%; height: 0; overflow: hidden; max-width: 460px; min-height: 215px; margin-bottom: 30px;">
+  <iframe src="https://www.youtube.com/embed/videoseries?si=kiS0rUZRZHqC6XxX&amp;list=PL2AumMHrxZ-AgtCOFu__4H7CAQEw-UmWK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 4px;"></iframe>
+</div>
+
+<script type="text/javascript">
+  function showRecentEconometrics(json) {
+    var maxEntries = 5;
+    var div = document.getElementById('recent-econometrics-posts');
+    
+    if (!json.feed || !json.feed.entry || json.feed.entry.length === 0) {
+      div.innerHTML = '<span style="color: #777; font-style: italic;">No recent articles found.</span>';
+      return;
+    }
+    
+    var html = '<ul style="list-style-type: none; padding-left: 0; margin: 0;">';
+    var entriesCount = Math.min(json.feed.entry.length, maxEntries);
+    
+    for (var i = 0; i < entriesCount; i++) {
+      var entry = json.feed.entry[i];
+      var title = entry.title.$t;
+      var url = '';
+      
+      for (var k = 0; k < entry.link.length; k++) {
+        if (entry.link[k].rel === 'alternate') {
+          url = entry.link[k].href;
+          break;
+        }
+      }
+      
+      html += '<li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #f0f0f0; display: flex; align-items: baseline;">';
+      html += '<span style="color: #888; margin-right: 12px; font-size: 0.85em;">&#9656;</span>';
+      html += '<a href="' + url + '" class="recent-post-link" style="text-decoration: none; color: #111; font-weight: 400; transition: color 0.2s ease;">' + title + '</a>';
+      html += '</li>';
+    }
+    
+    html += '</ul>';
+    div.innerHTML = html;
+
+    // Add CSS transition rules programmatically
+    var style = document.createElement('style');
+    style.innerHTML = '.recent-post-link:hover { color: #0056b3 !important; text-decoration: underline !important; }';
+    document.head.appendChild(style);
+  }
+</script>
+<script src="https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=json-in-script&callback=showRecentEconometrics&max-results=5"></script>

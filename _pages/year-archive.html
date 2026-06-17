@@ -57,7 +57,9 @@ redirect_from:
   <ul id="rss-feed"></ul>
 
   <script>
-    const feedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.rohanbyanjankar.com.np/feeds/posts/econometrics?alt=rss';
+    const feedUrl =
+'https://api.rss2json.com/v1/api.json?rss_url=' +
+encodeURIComponent('https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=rss');
 
     async function fetchRSS() {
       try {

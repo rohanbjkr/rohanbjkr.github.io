@@ -40,65 +40,34 @@ STATA Tutorials
 </div>
 
 <script>
-async function loadEconometrics() {
-  const container = document.getElementById("recent-econometrics-posts");
+    const feedUrl =
+'https://api.rss2json.com/v1/api.json?rss_url=' +
+encodeURIComponent('https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=rss');
 
-  try {
-    // ✅ ALWAYS reliable feed (NO label filtering)
-    const url = "https://www.rohanbyanjankar.com.np/feeds/posts/default?alt=rss&max-results=500";
+    async function fetchRSS() {
+      try {
+        const response = await fetch(feedUrl);
+        const data = await response.json();
 
-    const res = await fetch(url);
-    const xmlText = await res.text();
+        if (data.status === 'ok') {
+          const feedContainer = document.getElementById("rss-feed");
+          data.items.forEach(item => {
+            const listItem = document.createElement("li");
+            const anchor = document.createElement("a");
+            anchor.href = item.link;
+            anchor.textContent = item.title;
+            anchor.target = "_blank";
 
-    const xml = new DOMParser().parseFromString(xmlText, "text/xml");
-
-    const items = xml.querySelectorAll("item");
-
-    if (!items.length) {
-      container.innerHTML =
-        '<span style="color:#777;font-style:italic;">No posts found.</span>';
-      return;
+            listItem.appendChild(anchor);
+            feedContainer.appendChild(listItem);
+          });
+        } else {
+          console.error("Failed to load feed:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching the RSS feed:", error);
+      }
     }
 
-    let html = '<ul style="list-style:none;padding-left:0;margin:0;">';
-
-    let count = 0;
-
-    items.forEach(item => {
-      if (count >= 5) return;
-
-      const title = item.querySelector("title")?.textContent || "";
-      const link = item.querySelector("link")?.textContent || "#";
-
-      // 🔥 IMPORTANT: label filtering done manually from category tags
-      const categories = Array.from(item.querySelectorAll("category"))
-        .map(c => c.textContent);
-
-      if (!categories.includes("Econometrics")) return;
-
-      count++;
-
-      html += `
-        <li style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed #eee;">
-          <span style="color:#888;margin-right:10px;">▶</span>
-          <a href="${link}" style="text-decoration:none;color:#111;">
-            ${title}
-          </a>
-        </li>
-      `;
-    });
-
-    html += "</ul>";
-
-    container.innerHTML =
-      count ? html : '<span style="color:#777;font-style:italic;">No Econometrics posts found.</span>';
-
-  } catch (err) {
-    console.error(err);
-    container.innerHTML =
-      '<span style="color:#c0392b;font-style:italic;">Failed to load feed.</span>';
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadEconometrics);
-</script>
+    fetchRSS();
+  </script>

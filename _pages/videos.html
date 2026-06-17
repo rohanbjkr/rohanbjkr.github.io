@@ -9,7 +9,7 @@ author_profile: true
 Teachings
 </h3>
 
-<hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 20px;">
+<hr style="border:0;border-top:1px solid #ddd;margin-bottom:20px;">
 
 <ul style="list-style-type:none;padding-left:0;margin-bottom:30px;font-size:1.05em;line-height:1.6;">
   <li style="margin-bottom:8px;color:#444;">Time Series and Panel Analysis</li>
@@ -20,10 +20,9 @@ Teachings
 Recent Econometrics Insights
 </h3>
 
-<div id="recent-econometrics-posts"
-     style="font-size:0.95em;line-height:1.6;margin-bottom:40px;color:#666;">
-Loading latest articles...
-</div>
+<ul id="recent-econometrics-posts"
+    style="list-style-type:none;padding-left:0;margin-bottom:40px;font-size:0.95em;line-height:1.8;">
+</ul>
 
 <h2 style="font-size:1.6em;margin-top:40px;margin-bottom:5px;color:#333;font-weight:600;">
 STATA Tutorials
@@ -40,34 +39,43 @@ STATA Tutorials
 </div>
 
 <script>
-    const feedUrl =
+const feedUrl =
 'https://api.rss2json.com/v1/api.json?rss_url=' +
-encodeURIComponent('https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=rss');
+encodeURIComponent(
+'https://www.rohanbyanjankar.com.np/feeds/posts/default/-/Econometrics?alt=rss'
+);
 
-    async function fetchRSS() {
-      try {
-        const response = await fetch(feedUrl);
-        const data = await response.json();
+async function fetchRSS() {
+  try {
+    const response = await fetch(feedUrl);
+    const data = await response.json();
 
-        if (data.status === 'ok') {
-          const feedContainer = document.getElementById("rss-feed");
-          data.items.forEach(item => {
-            const listItem = document.createElement("li");
-            const anchor = document.createElement("a");
-            anchor.href = item.link;
-            anchor.textContent = item.title;
-            anchor.target = "_blank";
+    const container = document.getElementById('recent-econometrics-posts');
 
-            listItem.appendChild(anchor);
-            feedContainer.appendChild(listItem);
-          });
-        } else {
-          console.error("Failed to load feed:", data.message);
-        }
-      } catch (error) {
-        console.error("Error fetching the RSS feed:", error);
-      }
+    if (data.status !== 'ok') {
+      container.innerHTML = '<li>Unable to load articles.</li>';
+      return;
     }
 
-    fetchRSS();
-  </script>
+    data.items.slice(0,5).forEach(item => {
+      const li = document.createElement('li');
+      li.style.marginBottom = '8px';
+
+      li.innerHTML =
+        '<a href="' + item.link + '" target="_blank">' +
+        item.title +
+        '</a>';
+
+      container.appendChild(li);
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    document.getElementById('recent-econometrics-posts').innerHTML =
+      '<li>Unable to load articles.</li>';
+  }
+}
+
+fetchRSS();
+</script>

@@ -20,23 +20,32 @@ Teachings
 Recent Econometrics Insights
 </h3>
 
+<hr style="border:0;border-top:1px solid #ddd;margin-bottom:20px;">
+
 <ul id="recent-econometrics-posts"
     style="list-style-type:none;padding-left:0;margin-bottom:40px;font-size:0.95em;line-height:1.8;">
 </ul>
 
-<h2 style="font-size:1.6em;margin-top:40px;margin-bottom:5px;color:#333;font-weight:600;">
-STATA Tutorials
-</h2>
+<h3 style="font-size:1.25em;margin-bottom:15px;color:#444;font-weight:500;">
+Data Analysis Insights
+</h3>
 
 <hr style="border:0;border-top:1px solid #ddd;margin-bottom:20px;">
 
-<div style="position:relative;padding-bottom:25%;height:0;overflow:hidden;max-width:460px;min-height:215px;margin-bottom:30px;">
-  <iframe src="https://www.youtube.com/embed/videoseries?list=PL2AumMHrxZ-AgtCOFu__4H7CAQEw-UmWK"
-          frameborder="0"
-          allowfullscreen
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;">
-  </iframe>
-</div>
+<ul id="data-analysis-posts"
+    style="list-style-type:none;padding-left:0;margin-bottom:40px;font-size:0.95em;line-height:1.8;">
+</ul>
+
+<h3 style="font-size:1.6em;margin-top:40px;margin-bottom:5px;color:#333;font-weight:600;">
+Video Tutorials
+</h3>
+
+<hr style="border:0;border-top:1px solid #ddd;margin-bottom:20px;">
+
+<ul style="list-style-type:none;padding-left:0;margin-bottom:30px;font-size:1.05em;line-height:1.6;">
+  <li style="margin-bottom:8px;color:#444;"><a href = "https://www.youtube.com/watch?v=ctWGIjfAtzg&t=1s" target="_blank">Data analysis with SPSS (7-hours session)</a></li>
+  <li style="margin-bottom:8px;color:#444;"><a href = "https://www.youtube.com/watch?v=SaRHZff6waU&t=3630s" target="_blank">Data analysis with STATA</a></li>
+</ul>
 
 <script>
 const feedUrl =
@@ -51,6 +60,49 @@ async function fetchRSS() {
     const data = await response.json();
 
     const container = document.getElementById('recent-econometrics-posts');
+
+    if (data.status !== 'ok') {
+      container.innerHTML = '<li>Unable to load articles.</li>';
+      return;
+    }
+
+    data.items.slice(0,5).forEach(item => {
+      const li = document.createElement('li');
+      li.style.marginBottom = '8px';
+
+      li.innerHTML =
+        '<a href="' + item.link + '" target="_blank">' +
+        item.title +
+        '</a>';
+
+      container.appendChild(li);
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    document.getElementById('recent-econometrics-posts').innerHTML =
+      '<li>Unable to load articles.</li>';
+  }
+}
+
+fetchRSS();
+</script>
+
+
+<script>
+const feedUrl =
+'https://api.rss2json.com/v1/api.json?rss_url=' +
+encodeURIComponent(
+'https://www.rohanbyanjankar.com.np/feeds/posts/default/-/dataanalysis?alt=rss'
+);
+
+async function fetchRSS() {
+  try {
+    const response = await fetch(feedUrl);
+    const data = await response.json();
+
+    const container = document.getElementById('data-analysis-posts');
 
     if (data.status !== 'ok') {
       container.innerHTML = '<li>Unable to load articles.</li>';

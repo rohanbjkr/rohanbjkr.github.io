@@ -13,105 +13,61 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- Styling for the collapsible abstract section -->
-<style>
-  .abstract-toggle {
-    display: inline-block;
-    margin-top: 0.4em;
-    color: #2a7ae2;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 600;
-    text-decoration: none;
-    user-select: none;
-  }
-  .abstract-toggle:hover {
-    text-decoration: underline;
-  }
-  .abstract-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background-color: #f9f9f9;
-    border-left: 3px solid #2a7ae2;
-    padding: 0 15px;
-    margin-top: 5px;
-  }
-  .abstract-content p {
-    margin: 10px 0;
-    color: #444;
-    font-size: 0.95em;
-    line-height: 1.5;
-  }
-  .abstract-checkbox {
-    display: none;
-  }
-  /* Dynamic toggle mechanism without requiring external JavaScript */
-  .abstract-checkbox:checked ~ .abstract-content {
-    max-height: 400px;
-    padding: 5px 15px;
-    margin-bottom: 10px;
-    border-top: 1px solid #eee;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    border-radius: 0 4px 4px 0;
-  }
-  .abstract-checkbox:checked ~ .abstract-toggle::before {
-    content: "▼ Hide ";
-  }
-  .abstract-checkbox:not(:checked) ~ .abstract-toggle::before {
-    content: "▶ View ";
-  }
-</style>
 
+<style>
+.pub-item{
+margin-bottom:1.8em;
+padding:18px 22px;
+background:#fff;
+border:1px solid #e5e5e5;
+border-radius:8px;
+transition:all .25s ease;
+}
+.pub-item:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(0,0,0,.10);
+border-color:#2a7ae2;
+}
+.abstract{
+margin-top:12px;
+padding-top:10px;
+border-top:1px solid #eee;
+color:#444;
+line-height:1.6;
+}
+</style>
 <h2>Journal Articles</h2>
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
   
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong> (2026). Agriculture and natural disasters: Evidence from the 2015 Nepal earthquake. <i>Australian Journal of Agricultural and Resource Economics</i>. <i>(Forthcoming)</i>.
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-disaster" class="abstract-checkbox">
-      <label for="abs-disaster" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> This paper examines the short- and long-term effects of the 2015 Nepal Earthquake on paddy production. Using a difference-in-differences framework and district-level panel data spanning 2010–2019, we document a 10.95 percent decline in paddy production in earthquake-affected areas in the short run, with effects dissipating over the longer term. Mechanism analysis documents labor supply constraints and the reallocation of resources toward reconstruction as the primary channels driving this decline. We observe a decline in agriculture workdays and an increase in dwelling expenditure among the earthquake-affected households.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> This paper examines the short- and long-term effects of the 2015 Nepal Earthquake on paddy production. Using a difference-in-differences framework and district-level panel data spanning 2010–2019, we document a 10.95 percent decline in paddy production in earthquake-affected areas in the short run, with effects dissipating over the longer term. Mechanism analysis documents labor supply constraints and the reallocation of resources toward reconstruction as the primary channels driving this decline. We observe a decline in agriculture workdays and an increase in dwelling expenditure among the earthquake-affected households.</p></div>
     </div>
   </li>
 
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>, Adhikari, S. R., & Khan, M. M. (2025). Financial inclusion and sustainable shift in living standard: Evidence from Nepal. <i>Oxford Development Studies</i>. 
     <a href="https://doi.org/10.1080/13600818.2025.2507252" target="_blank" rel="noopener noreferrer">[DOI]</a>
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-financial" class="abstract-checkbox">
-      <label for="abs-financial" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> We investigate the impact of financial inclusion on twelve different sets of expenditure domains. We use the Nepal Household Risk and Vulnerability Survey (NHRVS) collected by the World Bank to investigate the impact of household living standards in Nepal. To circumvent the endogeneity problem, we introduce an instrument, the ‘VDC-level borrowing ratio’, motivated by network theory popular in migration studies. Financial inclusion enhances living standards by facilitating investment in human capital, long-term assets, and agriculture.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> We investigate the impact of financial inclusion on twelve different sets of expenditure domains. We use the Nepal Household Risk and Vulnerability Survey (NHRVS) collected by the World Bank to investigate the impact of household living standards in Nepal. To circumvent the endogeneity problem, we introduce an instrument, the ‘VDC-level borrowing ratio’, motivated by network theory popular in migration studies. Financial inclusion enhances living standards by facilitating investment in human capital, long-term assets, and agriculture.</p></div>
     </div>
   </li>
 
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>, Bhatta, G. R., Singh, B., & Devpura, N. (2025). Remittances and household welfare: Evidence from Nepal's survey data. <i>Emerging Markets Finance and Trade</i>.
     <a href="https://doi.org/10.1080/1540496X.2025.2451181" target="_blank" rel="noopener noreferrer">[DOI]</a>
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-remittance-welfare" class="abstract-checkbox">
-      <label for="abs-remittance-welfare" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> The paper investigates the effect of cash remittances on household welfare using the Nepal Household Risk and Vulnerability Survey 2018. We employ a village-level migration ratio as an instrumental variable to resolve potential endogeneity. We observe that cash remittances play a pivotal role in expanding household expenditures pertaining to food, energy, clothes, durable goods, education, and agricultural investment. However, the effect is not pronounced for health expenditure, home improvement, and ceremonial expenses. Our findings suggest differential effects of cash remittances by gender and location.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> The paper investigates the effect of cash remittances on household welfare using the Nepal Household Risk and Vulnerability Survey 2018. We employ a village-level migration ratio as an instrumental variable to resolve potential endogeneity. We observe that cash remittances play a pivotal role in expanding household expenditures pertaining to food, energy, clothes, durable goods, education, and agricultural investment. However, the effect is not pronounced for health expenditure, home improvement, and ceremonial expenses. Our findings suggest differential effects of cash remittances by gender and location.</p></div>
     </div>
   </li>
 
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     Dahal, A., <strong>Byanjankar, R.</strong>, Jangam, B. P., & Rath, B. N. (2025). Reassessing the role of exchange rates in export dynamics: Evidence from a disaggregated industry-level analysis in the case of Nepal. <i>Economic Analysis and Policy</i>.
     <a href="https://doi.org/10.1016/j.eap.2025.01.027" target="_blank" rel="noopener noreferrer">[DOI]</a>
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-exchange" class="abstract-checkbox">
-      <label for="abs-exchange" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> We analyze the impact of traditional and value-added exchange rates on exports across 33 industries in Nepal from 2007 to 2021. Using a panel system Generalized Method of Moments (GMM) estimator, the study finds that traditional exchange rate appreciation reduces exports, while value-added exchange rate appreciation increases exports. These findings are consistent across manufacturing and services sectors. The study also identifies growing integration into global value chains (GVCs) as a key driver of export dynamics and the disconnect between exports and exchange rates. This research contributes to the literature by highlighting the distinct effects of exchange rates and the importance of GVCs.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> We analyze the impact of traditional and value-added exchange rates on exports across 33 industries in Nepal from 2007 to 2021. Using a panel system Generalized Method of Moments (GMM) estimator, the study finds that traditional exchange rate appreciation reduces exports, while value-added exchange rate appreciation increases exports. These findings are consistent across manufacturing and services sectors. The study also identifies growing integration into global value chains (GVCs) as a key driver of export dynamics and the disconnect between exports and exchange rates. This research contributes to the literature by highlighting the distinct effects of exchange rates and the importance of GVCs.</p></div>
     </div>
   </li>
 </ul>
@@ -119,14 +75,10 @@ author_profile: true
 <h2>Papers Under Review</h2>
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://drive.google.com/file/d/1lPsexS_4GCe-l78px4aFdAl8NbFgbamH/view" target="_blank" rel="noopener noreferrer">Does remittances alleviate energy poverty? Evidence from Nepal</a>. <i>Under Review</i>.
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-energy-poverty" class="abstract-checkbox">
-      <label for="abs-energy-poverty" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> This paper examines the effect of international remittances on household energy poverty in Nepal. We use a nationally representative household-level panel dataset for 2016–2018 covering 6,000 households, and an instrumental variables approach to address the issue of endogeneity by instrumenting remittances with a historical community-level migration network. We find that remittances significantly reduce multidimensional energy poverty. We identify remittance-induced reductions in consumption poverty, increased household expenditure on education, and enhanced financial inclusion as potential channels through which international remittances affect household energy poverty.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> This paper examines the effect of international remittances on household energy poverty in Nepal. We use a nationally representative household-level panel dataset for 2016–2018 covering 6,000 households, and an instrumental variables approach to address the issue of endogeneity by instrumenting remittances with a historical community-level migration network. We find that remittances significantly reduce multidimensional energy poverty. We identify remittance-induced reductions in consumption poverty, increased household expenditure on education, and enhanced financial inclusion as potential channels through which international remittances affect household energy poverty.</p></div>
     </div>
   </li>
 </ul>
@@ -135,40 +87,28 @@ author_profile: true
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
   
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://drive.google.com/file/d/1h23RzdLQaVP6uH3oJ63MS7EphOUJg4YN/view" target="_blank" rel="noopener noreferrer">Remittances and use of financial services</a>.
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-financial-services" class="abstract-checkbox">
-      <label for="abs-financial-services" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> This paper investigates the effect of remittances on the use of financial services by households in Nepal. We use a nationally representative household-level panel dataset for the period 2016–2018. Using an instrumental variables strategy, we find that international remittances increase households’ use of deposit accounts and reduce the demand and use of credit from formal financial institutions. We then evaluate the potential channels. The effect on deposit accounts operates through a remittance-induced increase in household spending on education, resulting in increased financial literacy. We provide evidence that households use remittances as a substitute for loans, which acts as a key mechanism for the reduced demand for credit.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> This paper investigates the effect of remittances on the use of financial services by households in Nepal. We use a nationally representative household-level panel dataset for the period 2016–2018. Using an instrumental variables strategy, we find that international remittances increase households’ use of deposit accounts and reduce the demand and use of credit from formal financial institutions. We then evaluate the potential channels. The effect on deposit accounts operates through a remittance-induced increase in household spending on education, resulting in increased financial literacy. We provide evidence that households use remittances as a substitute for loans, which acts as a key mechanism for the reduced demand for credit.</p></div>
     </div>
   </li>
 
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>, Budha, B. B., & Nepal, S. Macroeconomic effects of uncertainty: Evidence from Nepal.
   </li>
 
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>. <a href="https://www.nrb.org.np/contents/uploads/2025/08/nrb-wp-61-2025-08.pdf" target="_blank" rel="noopener noreferrer">Do bank lending rates respond to monetary policy shocks in developing countries? Evidence from Nepal</a>. <i>Nepal Rastra Bank Working Paper No. 61/2025</i>.
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-bank-lending" class="abstract-checkbox">
-      <label for="abs-bank-lending" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> This paper investigates the dynamic response of the base rate to monetary policy shocks leveraging Local Projection and Structural VAR. We observe that interest rate pass-through from the policy rate to the base rate is immediate but incomplete. Moreover, we observe differential effects in the response depending on the prevailing state of the base rate. Our results suggest that the moderate pass-through is primarily driven by financial frictions arising from the dominance of term deposits in the deposit base. Additionally, we do not find evidence that bank concentration or monopoly power explains the limited pass-through.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> This paper investigates the dynamic response of the base rate to monetary policy shocks leveraging Local Projection and Structural VAR. We observe that interest rate pass-through from the policy rate to the base rate is immediate but incomplete. Moreover, we observe differential effects in the response depending on the prevailing state of the base rate. Our results suggest that the moderate pass-through is primarily driven by financial frictions arising from the dominance of term deposits in the deposit base. Additionally, we do not find evidence that bank concentration or monopoly power explains the limited pass-through.</p></div>
     </div>
   </li>
 
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>, & Budha, B. B. <a href="https://www.nrb.org.np/contents/uploads/2024/08/nrb-wp-59-2024-06.pdf" target="_blank" rel="noopener noreferrer">Nowcasting Nepal's GDP</a>. <i>Nepal Rastra Bank Working Paper No. 59/2024</i>.
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-nowcasting" class="abstract-checkbox">
-      <label for="abs-nowcasting" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> This paper proposes a statistical framework to nowcast Nepal’s annual GDP. We identify 11 headline indicators available at monthly frequency which are regularly followed and monitored by media, economists, and market participants. Using these variables, we estimate the bridge equation and dynamic factor model to nowcast GDP. Our results show that GDP nowcasts tracks GDP realization, and are comparable to the benchmark forecast by other organizations. These simple models based on medium-size datasets can be used to nowcast Nepal’s GDP and thus monitor economic activity in real-time.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> This paper proposes a statistical framework to nowcast Nepal’s annual GDP. We identify 11 headline indicators available at monthly frequency which are regularly followed and monitored by media, economists, and market participants. Using these variables, we estimate the bridge equation and dynamic factor model to nowcast GDP. Our results show that GDP nowcasts tracks GDP realization, and are comparable to the benchmark forecast by other organizations. These simple models based on medium-size datasets can be used to nowcast Nepal’s GDP and thus monitor economic activity in real-time.</p></div>
     </div>
   </li>
 </ul>
@@ -176,15 +116,11 @@ author_profile: true
 <h2>Selected Research & Honors</h2>
 <hr>
 <ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 1.8em; padding-left: 1em; text-indent: -1em;">
+  <li class="pub-item">
     <strong>Byanjankar, R.</strong>. Bank branch expansion and use of banking services: Evidence from Nepal. <i>Independent Study, Williams College</i>. (Supervisors: Professor Owen Ozier and Professor Pamela Jakiela).
     <div style="text-indent: 0; margin-left: 1em;">
-      <input type="checkbox" id="abs-williams" class="abstract-checkbox">
-      <label for="abs-williams" class="abstract-toggle">Abstract</label>
-      <div class="abstract-content">
-        <p><strong>Abstract:</strong> This paper examines the effect of bank branch expansion on the use of financial services in Nepal using two-way fixed effects. The expansion led to reduction in distance to the nearest bank by 24 percent on average, with households in treated municipalities being 25 percent more likely to reside within 16 kilometers of a bank. Although reduced-form estimates indicate no significant effect on likelihood of having a bank deposit or loan, distance-based treatment definitions reveal a modest increase in likelihood of having a bank loan. The null effects in the reduced form estimates are likely attributable to the widespread availability of door-to-door financial services provided by microfinance institutions, which may have substituted for banking services that remain prohibitively distant for many households.</p>
-        <p style="margin-top: 10px; font-style: italic;">🏅 Awarded the Jack Larned, 1942, International Management Prize for graduate papers of superior quality dealing with the management of development at the Center for Development Economics (CDE), Williams College.</p>
-      </div>
+      <div class="abstract"><p><strong>Abstract:</strong> This paper examines the effect of bank branch expansion on the use of financial services in Nepal using two-way fixed effects. The expansion led to reduction in distance to the nearest bank by 24 percent on average, with households in treated municipalities being 25 percent more likely to reside within 16 kilometers of a bank. Although reduced-form estimates indicate no significant effect on likelihood of having a bank deposit or loan, distance-based treatment definitions reveal a modest increase in likelihood of having a bank loan. The null effects in the reduced form estimates are likely attributable to the widespread availability of door-to-door financial services provided by microfinance institutions, which may have substituted for banking services that remain prohibitively distant for many households.</p>
+        <p style="margin-top: 10px; font-style: italic;">🏅 Awarded the Jack Larned, 1942, International Management Prize for graduate papers of superior quality dealing with the management of development at the Center for Development Economics (CDE), Williams College.</p></div>
     </div>
   </li>
 </ul>

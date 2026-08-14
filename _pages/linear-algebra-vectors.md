@@ -24,14 +24,14 @@ You could describe that movement with words.
 
 But mathematics gives us a much more compact way:
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}
-\]
+$$
 
 This object is called a **vector**.
 

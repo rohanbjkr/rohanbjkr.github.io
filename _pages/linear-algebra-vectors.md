@@ -43,18 +43,18 @@ The second component tells us the vertical movement.
 
 So
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}
-\]
+$$
 
 means:
 
-- move \(3\) units horizontally;
+- move $3$ units horizontally;
 - move \(2\) units vertically.
 
 That simple idea is the beginning of linear algebra.

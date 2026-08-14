@@ -1,0 +1,1151 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title }} | Linear Algebra</title>
+
+  <meta name="description"
+        content="Linear Algebra from Zero — a visual and intuitive introduction to linear algebra.">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+  <style>
+
+    /* -----------------------------------------
+       BASIC RESET
+    ----------------------------------------- */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background: #f7f8fa;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* -----------------------------------------
+       COURSE NAVIGATION
+    ----------------------------------------- */
+
+    .la-nav {
+      background: #111827;
+      color: white;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      border-bottom: 1px solid #374151;
+    }
+
+    .la-nav-inner {
+      max-width: 1180px;
+      margin: auto;
+
+      padding: 16px 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .la-brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .la-brand span {
+      color: #9ca3af;
+      font-weight: 400;
+    }
+
+    .la-back {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+
+    .la-back:hover {
+      color: white;
+    }
+
+
+    /* -----------------------------------------
+       HERO
+    ----------------------------------------- */
+
+    .la-hero {
+      background:
+        linear-gradient(
+          135deg,
+          #111827 0%,
+          #1f2937 100%
+        );
+
+      color: white;
+
+      padding: 80px 24px 90px;
+    }
+
+    .la-hero-inner {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .la-label {
+      display: inline-block;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+
+      color: #9ca3af;
+
+      margin-bottom: 18px;
+    }
+
+    .la-hero h1 {
+      font-size: clamp(42px, 7vw, 72px);
+
+      line-height: 1.05;
+
+      letter-spacing: -2.5px;
+
+      max-width: 800px;
+
+      margin: 0 0 24px;
+    }
+
+    .la-hero p {
+      font-size: 20px;
+
+      max-width: 680px;
+
+      color: #d1d5db;
+
+      margin: 0 0 35px;
+    }
+
+    .la-button {
+      display: inline-block;
+
+      background: white;
+      color: #111827;
+
+      padding: 13px 22px;
+
+      border-radius: 8px;
+
+      font-weight: 700;
+
+      transition: transform 0.2s ease;
+    }
+
+    .la-button:hover {
+      transform: translateY(-2px);
+    }
+
+
+    /* -----------------------------------------
+       MAIN CONTENT
+    ----------------------------------------- */
+
+    .la-container {
+      max-width: 1180px;
+
+      margin: auto;
+
+      padding: 60px 24px 100px;
+    }
+
+    .la-section {
+      margin-bottom: 65px;
+    }
+
+    .la-section-title {
+      font-size: 30px;
+
+      letter-spacing: -0.8px;
+
+      margin: 0 0 10px;
+    }
+
+    .la-section-description {
+      color: #6b7280;
+
+      max-width: 700px;
+
+      margin-bottom: 30px;
+    }
+
+
+    /* -----------------------------------------
+       MODULES
+    ----------------------------------------- */
+
+    .la-module {
+      background: white;
+
+      border: 1px solid #e5e7eb;
+
+      border-radius: 14px;
+
+      margin-bottom: 20px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 2px 5px rgba(0,0,0,0.03);
+    }
+
+    .la-module-header {
+      padding: 22px 26px;
+
+      background: #fafafa;
+
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .la-module-number {
+      font-size: 12px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      color: #6b7280;
+    }
+
+    .la-module-title {
+      font-size: 22px;
+
+      font-weight: 700;
+
+      margin-top: 3px;
+    }
+
+
+    /* -----------------------------------------
+       LESSONS
+    ----------------------------------------- */
+
+    .la-lesson {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 18px 26px;
+
+      border-bottom: 1px solid #f0f0f0;
+
+      transition:
+        background 0.15s ease,
+        padding 0.15s ease;
+    }
+
+    .la-lesson:last-child {
+      border-bottom: none;
+    }
+
+    .la-lesson:hover {
+      background: #f9fafb;
+
+      padding-left: 30px;
+    }
+
+    .la-lesson-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .la-lesson-number {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #f3f4f6;
+
+      color: #4b5563;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      flex-shrink: 0;
+    }
+
+    .la-lesson-title {
+      font-weight: 600;
+    }
+
+    .la-lesson-description {
+      font-size: 14px;
+
+      color: #6b7280;
+
+      margin-top: 2px;
+    }
+
+    .la-arrow {
+      color: #9ca3af;
+
+      font-size: 20px;
+    }
+
+
+    /* -----------------------------------------
+       KEY IDEA
+    ----------------------------------------- */
+
+    .la-callout {
+      background: #f3f4f6;
+
+      border-left: 4px solid #374151;
+
+      padding: 22px 26px;
+
+      border-radius: 8px;
+
+      margin: 30px 0;
+    }
+
+    .la-callout-title {
+      font-weight: 700;
+
+      margin-bottom: 5px;
+    }
+
+
+    /* -----------------------------------------
+       COURSE PHILOSOPHY
+    ----------------------------------------- */
+
+    .la-method-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, 1fr);
+
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+    .la-method {
+      background: white;
+
+      border: 1px solid #e5e7eb;
+
+      border-radius: 10px;
+
+      padding: 18px 12px;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      font-weight: 600;
+    }
+
+
+    /* -----------------------------------------
+       FOOTER
+    ----------------------------------------- */
+
+    .la-footer {
+      border-top: 1px solid #e5e7eb;
+
+      padding: 30px 24px;
+
+      color: #6b7280;
+
+      font-size: 14px;
+
+      text-align: center;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE
+    ----------------------------------------- */
+
+    @media (max-width: 700px) {
+
+      .la-hero {
+        padding: 60px 20px 70px;
+      }
+
+      .la-hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .la-hero p {
+        font-size: 17px;
+      }
+
+      .la-container {
+        padding: 45px 18px 70px;
+      }
+
+      .la-module-header {
+        padding: 20px;
+      }
+
+      .la-lesson {
+        padding: 16px 20px;
+      }
+
+      .la-lesson-description {
+        display: none;
+      }
+
+      .la-method-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- COURSE NAVIGATION -->
+
+  <nav class="la-nav">
+
+    <div class="la-nav-inner">
+
+      <a href="{{ '/' | relative_url }}"
+         class="la-brand">
+
+        Rohan Byanjankar
+        <span>/ Linear Algebra</span>
+
+      </a>
+
+      <a href="{{ '/' | relative_url }}"
+         class="la-back">
+
+        ← Main Website
+
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="la-hero">
+
+    <div class="la-hero-inner">
+
+      <div class="la-label">
+        Mathematics · Course
+      </div>
+
+      <h1>
+        Linear Algebra<br>
+        from Zero
+      </h1>
+
+      <p>
+        A visual and intuitive journey through
+        vectors, matrices, transformations,
+        and the mathematics behind them.
+      </p>
+
+      <a href="#course"
+         class="la-button">
+
+        Start Learning →
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main class="la-container">
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="la-section">
+
+      <h2 class="la-section-title">
+        Learn linear algebra differently.
+      </h2>
+
+      <p class="la-section-description">
+
+        Linear algebra can look intimidating at first.
+        Rows of numbers, matrices, vectors,
+        determinants, eigenvalues...
+
+        But the underlying ideas are surprisingly
+        simple.
+
+        This course starts from the beginning and
+        builds everything step by step.
+
+      </p>
+
+
+      <div class="la-callout">
+
+        <div class="la-callout-title">
+          💡 The philosophy
+        </div>
+
+        Start with intuition.
+        Visualize the idea.
+        Then introduce the mathematics.
+
+      </div>
+
+    </section>
+
+
+    <!-- COURSE -->
+
+    <section class="la-section"
+             id="course">
+
+      <h2 class="la-section-title">
+        Course Contents
+      </h2>
+
+      <p class="la-section-description">
+        Work through the modules in order,
+        or jump directly to a topic you're
+        interested in.
+      </p>
+
+
+      <!-- MODULE 1 -->
+
+      <div class="la-module">
+
+        <div class="la-module-header">
+
+          <div class="la-module-number">
+            Module 1
+          </div>
+
+          <div class="la-module-title">
+            Vectors
+          </div>
+
+        </div>
+
+
+        <a class="la-lesson"
+           href="{{ '/linear-algebra/vectors/' | relative_url }}">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              01
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                What Is a Vector?
+              </div>
+
+              <div class="la-lesson-description">
+                How can we describe movement mathematically?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson"
+           href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              02
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Adding Vectors
+              </div>
+
+              <div class="la-lesson-description">
+                How do vectors combine?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson"
+           href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              03
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Scalar Multiplication
+              </div>
+
+              <div class="la-lesson-description">
+                Stretching, shrinking, and reversing vectors.
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <!-- MODULE 2 -->
+
+      <div class="la-module">
+
+        <div class="la-module-header">
+
+          <div class="la-module-number">
+            Module 2
+          </div>
+
+          <div class="la-module-title">
+            Combining Vectors
+          </div>
+
+        </div>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              04
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Linear Combinations
+              </div>
+
+              <div class="la-lesson-description">
+                What can we create by combining vectors?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              05
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Span
+              </div>
+
+              <div class="la-lesson-description">
+                What is the complete set of vectors we can create?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              06
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Linear Independence
+              </div>
+
+              <div class="la-lesson-description">
+                When is one vector redundant?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <!-- MODULE 3 -->
+
+      <div class="la-module">
+
+        <div class="la-module-header">
+
+          <div class="la-module-number">
+            Module 3
+          </div>
+
+          <div class="la-module-title">
+            Building Spaces
+          </div>
+
+        </div>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              07
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Basis
+              </div>
+
+              <div class="la-lesson-description">
+                The building blocks of a vector space.
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              08
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Dimension
+              </div>
+
+              <div class="la-lesson-description">
+                How many independent directions does a space have?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <!-- MODULE 4 -->
+
+      <div class="la-module">
+
+        <div class="la-module-header">
+
+          <div class="la-module-number">
+            Module 4
+          </div>
+
+          <div class="la-module-title">
+            Matrices & Transformations
+          </div>
+
+        </div>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              09
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                What Is a Matrix?
+              </div>
+
+              <div class="la-lesson-description">
+                A matrix is more than a rectangular table of numbers.
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              10
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Matrix Multiplication
+              </div>
+
+              <div class="la-lesson-description">
+                Why does matrix multiplication work this way?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              11
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Linear Transformations
+              </div>
+
+              <div class="la-lesson-description">
+                What does a matrix actually do?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <!-- MODULE 5 -->
+
+      <div class="la-module">
+
+        <div class="la-module-header">
+
+          <div class="la-module-number">
+            Module 5
+          </div>
+
+          <div class="la-module-title">
+            The Deeper Structure
+          </div>
+
+        </div>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              12
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Rank & Null Space
+              </div>
+
+              <div class="la-lesson-description">
+                How much independent information does a matrix contain?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              13
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Determinants
+              </div>
+
+              <div class="la-lesson-description">
+                What does the determinant tell us?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a class="la-lesson" href="#">
+
+          <div class="la-lesson-left">
+
+            <div class="la-lesson-number">
+              14
+            </div>
+
+            <div>
+
+              <div class="la-lesson-title">
+                Eigenvalues & Eigenvectors
+              </div>
+
+              <div class="la-lesson-description">
+                Are there directions that a transformation leaves unchanged?
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="la-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- METHOD -->
+
+    <section class="la-section">
+
+      <h2 class="la-section-title">
+        How You'll Learn
+      </h2>
+
+      <p class="la-section-description">
+        Every lesson follows the same learning cycle.
+      </p>
+
+      <div class="la-method-grid">
+
+        <div class="la-method">
+          Question
+        </div>
+
+        <div class="la-method">
+          Intuition
+        </div>
+
+        <div class="la-method">
+          Visualization
+        </div>
+
+        <div class="la-method">
+          Mathematics
+        </div>
+
+        <div class="la-method">
+          Example
+        </div>
+
+        <div class="la-method">
+          Practice
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <footer class="la-footer">
+
+    Linear Algebra from Zero ·
+    Rohan Byanjankar
+
+  </footer>
+
+
+</body>
+
+</html>

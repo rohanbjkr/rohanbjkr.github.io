@@ -1,0 +1,1491 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title }} | Linear Algebra from Zero</title>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [
+          ['\\[', '\\]'],
+          ['$$', '$$']
+        ]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+
+  <style>
+
+    /* =========================================
+       RESET
+    ========================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background: #f8fafc;
+
+      color: #1e293b;
+
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+
+    /* =========================================
+       TOP BAR
+    ========================================= */
+
+    .lms-topbar {
+
+      height: 64px;
+
+      background: #111827;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 2000;
+
+      border-bottom:
+        1px solid #374151;
+    }
+
+    .topbar-inner {
+
+      width: 100%;
+
+      max-width: 1600px;
+
+      margin: auto;
+
+      padding: 0 22px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+    .course-name {
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+    .course-name span {
+
+      color: #9ca3af;
+
+      font-weight: 400;
+    }
+
+    .course-home {
+
+      color: #d1d5db;
+
+      font-size: 14px;
+
+      transition:
+        color .15s ease;
+    }
+
+    .course-home:hover {
+
+      color: white;
+    }
+
+
+    /* =========================================
+       MOBILE MENU BUTTON
+    ========================================= */
+
+    .menu-button {
+
+      display: none;
+
+      border: none;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 24px;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================================
+       APPLICATION
+    ========================================= */
+
+    .lms-layout {
+
+      display: flex;
+
+      min-height:
+        calc(100vh - 64px);
+    }
+
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+
+    .lms-sidebar {
+
+      width: 310px;
+
+      flex-shrink: 0;
+
+      background: white;
+
+      border-right:
+        1px solid #e5e7eb;
+
+      height:
+        calc(100vh - 64px);
+
+      position: sticky;
+
+      top: 64px;
+
+      overflow-y: auto;
+    }
+
+    .sidebar-inner {
+
+      padding:
+        28px 18px 40px;
+    }
+
+    .sidebar-course {
+
+      padding:
+        0 10px 22px;
+
+      border-bottom:
+        1px solid #e5e7eb;
+
+      margin-bottom: 20px;
+    }
+
+    .sidebar-label {
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      color: #94a3b8;
+
+      margin-bottom: 7px;
+    }
+
+    .sidebar-title {
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      color: #111827;
+    }
+
+
+    /* =========================================
+       PROGRESS
+    ========================================= */
+
+    .progress-section {
+
+      padding:
+        0 10px 25px;
+    }
+
+    .progress-top {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      color: #64748b;
+
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+
+      width: 100%;
+
+      height: 6px;
+
+      background: #e5e7eb;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+    }
+
+    .progress-fill {
+
+      height: 100%;
+
+      width: 7%;
+
+      background: #111827;
+
+      border-radius: 20px;
+
+      transition:
+        width .3s ease;
+    }
+
+
+    /* =========================================
+       MODULE
+    ========================================= */
+
+    .module {
+
+      margin-bottom: 25px;
+    }
+
+    .module-title {
+
+      padding:
+        8px 10px;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      color: #94a3b8;
+    }
+
+
+    /* =========================================
+       LESSON LINK
+    ========================================= */
+
+    .lesson-link {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      padding:
+        9px 10px;
+
+      border-radius: 7px;
+
+      font-size: 14px;
+
+      color: #475569;
+
+      margin-bottom: 2px;
+
+      transition:
+        background .15s ease,
+        color .15s ease;
+    }
+
+    .lesson-link:hover {
+
+      background: #f1f5f9;
+
+      color: #111827;
+    }
+
+    .lesson-link.active {
+
+      background: #eef2f7;
+
+      color: #111827;
+
+      font-weight: 700;
+    }
+
+    .lesson-status {
+
+      width: 20px;
+
+      height: 20px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid #cbd5e1;
+
+      border-radius: 50%;
+
+      font-size: 11px;
+
+      color: #94a3b8;
+    }
+
+    .lesson-link.completed
+    .lesson-status {
+
+      background: #111827;
+
+      border-color: #111827;
+
+      color: white;
+    }
+
+
+    /* =========================================
+       MAIN CONTENT
+    ========================================= */
+
+    .lms-main {
+
+      flex: 1;
+
+      min-width: 0;
+    }
+
+    .lesson-wrapper {
+
+      max-width: 900px;
+
+      margin: auto;
+
+      padding:
+        55px 45px 90px;
+    }
+
+
+    /* =========================================
+       LESSON HEADER
+    ========================================= */
+
+    .lesson-meta {
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      color: #64748b;
+
+      margin-bottom: 12px;
+    }
+
+    .lesson-title {
+
+      font-size:
+        clamp(38px, 5vw, 58px);
+
+      line-height: 1.08;
+
+      letter-spacing: -2px;
+
+      color: #0f172a;
+
+      margin:
+        0 0 15px;
+    }
+
+    .lesson-description {
+
+      font-size: 19px;
+
+      color: #64748b;
+
+      max-width: 700px;
+
+      margin-bottom: 40px;
+    }
+
+
+    /* =========================================
+       CONTENT
+    ========================================= */
+
+    .lesson-content {
+
+      font-size: 18px;
+
+      color: #334155;
+    }
+
+    .lesson-content h2 {
+
+      font-size: 31px;
+
+      line-height: 1.25;
+
+      letter-spacing: -.7px;
+
+      color: #0f172a;
+
+      margin:
+        58px 0 20px;
+    }
+
+    .lesson-content h3 {
+
+      font-size: 23px;
+
+      color: #0f172a;
+
+      margin:
+        40px 0 15px;
+    }
+
+    .lesson-content p {
+
+      margin:
+        0 0 22px;
+    }
+
+    .lesson-content li {
+
+      margin-bottom: 8px;
+    }
+
+
+    /* =========================================
+       MATH
+    ========================================= */
+
+    .lesson-content mjx-container[display="true"] {
+
+      margin:
+        32px 0 !important;
+    }
+
+
+    /* =========================================
+       CALLOUT
+    ========================================= */
+
+    .key-idea {
+
+      background: white;
+
+      border-left:
+        4px solid #111827;
+
+      border-radius: 8px;
+
+      padding:
+        22px 26px;
+
+      margin:
+        35px 0;
+
+      box-shadow:
+        0 1px 3px
+        rgba(0,0,0,.04);
+    }
+
+    .key-idea-title {
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: .8px;
+
+      color: #111827;
+
+      margin-bottom: 8px;
+    }
+
+
+    /* =========================================
+       EXAMPLE
+    ========================================= */
+
+    .example {
+
+      background: white;
+
+      border:
+        1px solid #e2e8f0;
+
+      border-radius: 10px;
+
+      padding:
+        25px 28px;
+
+      margin:
+        32px 0;
+
+      box-shadow:
+        0 2px 5px
+        rgba(0,0,0,.03);
+    }
+
+    .example-title {
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: .9px;
+
+      color: #64748b;
+
+      margin-bottom: 10px;
+    }
+
+
+    /* =========================================
+       EXERCISE
+    ========================================= */
+
+    .exercise {
+
+      background: #f1f5f9;
+
+      border-radius: 10px;
+
+      padding:
+        26px 28px;
+
+      margin:
+        35px 0;
+    }
+
+    .exercise-title {
+
+      font-weight: 800;
+
+      color: #0f172a;
+
+      margin-bottom: 12px;
+    }
+
+
+    /* =========================================
+       COMPLETE
+    ========================================= */
+
+    .completion {
+
+      margin-top: 70px;
+
+      padding:
+        32px;
+
+      background: white;
+
+      border:
+        1px solid #e2e8f0;
+
+      border-radius: 12px;
+
+      text-align: center;
+    }
+
+    .completion-title {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      margin-bottom: 18px;
+
+      color: #0f172a;
+    }
+
+    .complete-button {
+
+      border: none;
+
+      background: #111827;
+
+      color: white;
+
+      padding:
+        13px 22px;
+
+      border-radius: 7px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .complete-button.completed {
+
+      background: #475569;
+    }
+
+
+    /* =========================================
+       BOTTOM NAVIGATION
+    ========================================= */
+
+    .lesson-navigation {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-top: 35px;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid #e2e8f0;
+    }
+
+    .nav-lesson {
+
+      background: white;
+
+      border:
+        1px solid #e2e8f0;
+
+      border-radius: 8px;
+
+      padding:
+        13px 18px;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      transition:
+        transform .15s ease;
+    }
+
+    .nav-lesson:hover {
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 850px) {
+
+      .menu-button {
+
+        display: block;
+      }
+
+      .course-home {
+
+        display: none;
+      }
+
+      .lms-sidebar {
+
+        position: fixed;
+
+        left: -310px;
+
+        top: 64px;
+
+        bottom: 0;
+
+        z-index: 1500;
+
+        transition:
+          left .25s ease;
+
+        box-shadow:
+          5px 0 20px
+          rgba(0,0,0,.1);
+      }
+
+      .lms-sidebar.open {
+
+        left: 0;
+      }
+
+      .lesson-wrapper {
+
+        padding:
+          45px 25px 70px;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .lesson-wrapper {
+
+        padding:
+          35px 18px 60px;
+      }
+
+      .lesson-content {
+
+        font-size: 17px;
+      }
+
+      .lesson-title {
+
+        letter-spacing:
+          -1px;
+      }
+
+      .lesson-navigation {
+
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ======================================
+       TOP BAR
+  ======================================= -->
+
+  <header class="lms-topbar">
+
+    <div class="topbar-inner">
+
+      <button
+        class="menu-button"
+        onclick="toggleSidebar()"
+        aria-label="Open course menu">
+
+        ☰
+
+      </button>
+
+      <div class="course-name">
+
+        Linear Algebra
+        <span> / from Zero</span>
+
+      </div>
+
+      <a
+        href="{{ '/linear-algebra/' | relative_url }}"
+        class="course-home">
+
+        Course Home
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ======================================
+       LMS LAYOUT
+  ======================================= -->
+
+  <div class="lms-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside
+      class="lms-sidebar"
+      id="courseSidebar">
+
+      <div class="sidebar-inner">
+
+
+        <div class="sidebar-course">
+
+          <div class="sidebar-label">
+            Course
+          </div>
+
+          <div class="sidebar-title">
+            Linear Algebra from Zero
+          </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-section">
+
+          <div class="progress-top">
+
+            <span>
+              Course Progress
+            </span>
+
+            <span id="progressText">
+              0 / 14
+            </span>
+
+          </div>
+
+          <div class="progress-bar">
+
+            <div
+              class="progress-fill"
+              id="progressFill">
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- MODULE 1 -->
+
+        <div class="module">
+
+          <div class="module-title">
+            Module 1 · Vectors
+          </div>
+
+          <a
+            href="{{ '/linear-algebra/vectors/' | relative_url }}"
+            class="lesson-link active"
+            data-lesson="1">
+
+            <span class="lesson-status">
+              01
+            </span>
+
+            <span>
+              What Is a Vector?
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="2">
+
+            <span class="lesson-status">
+              02
+            </span>
+
+            <span>
+              Adding Vectors
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="3">
+
+            <span class="lesson-status">
+              03
+            </span>
+
+            <span>
+              Scalar Multiplication
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- MODULE 2 -->
+
+        <div class="module">
+
+          <div class="module-title">
+            Module 2 · Combining Vectors
+          </div>
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="4">
+
+            <span class="lesson-status">
+              04
+            </span>
+
+            <span>
+              Linear Combinations
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="5">
+
+            <span class="lesson-status">
+              05
+            </span>
+
+            <span>
+              Span
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="6">
+
+            <span class="lesson-status">
+              06
+            </span>
+
+            <span>
+              Linear Independence
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- MODULE 3 -->
+
+        <div class="module">
+
+          <div class="module-title">
+            Module 3 · Building Spaces
+          </div>
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="7">
+
+            <span class="lesson-status">
+              07
+            </span>
+
+            <span>
+              Basis
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="8">
+
+            <span class="lesson-status">
+              08
+            </span>
+
+            <span>
+              Dimension
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- MODULE 4 -->
+
+        <div class="module">
+
+          <div class="module-title">
+            Module 4 · Matrices
+          </div>
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="9">
+
+            <span class="lesson-status">
+              09
+            </span>
+
+            <span>
+              What Is a Matrix?
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="10">
+
+            <span class="lesson-status">
+              10
+            </span>
+
+            <span>
+              Matrix Multiplication
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="11">
+
+            <span class="lesson-status">
+              11
+            </span>
+
+            <span>
+              Linear Transformations
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- MODULE 5 -->
+
+        <div class="module">
+
+          <div class="module-title">
+            Module 5 · Deeper Structure
+          </div>
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="12">
+
+            <span class="lesson-status">
+              12
+            </span>
+
+            <span>
+              Rank & Null Space
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="13">
+
+            <span class="lesson-status">
+              13
+            </span>
+
+            <span>
+              Determinants
+            </span>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="lesson-link"
+            data-lesson="14">
+
+            <span class="lesson-status">
+              14
+            </span>
+
+            <span>
+              Eigenvalues & Eigenvectors
+            </span>
+
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="lms-main">
+
+      <div class="lesson-wrapper">
+
+
+        <!-- HEADER -->
+
+        <div class="lesson-meta">
+
+          {{ page.module | default: "Module 1 · Vectors" }}
+
+        </div>
+
+
+        <h1 class="lesson-title">
+
+          {{ page.title }}
+
+        </h1>
+
+
+        {% if page.description %}
+
+        <p class="lesson-description">
+
+          {{ page.description }}
+
+        </p>
+
+        {% endif %}
+
+
+        <!-- CONTENT -->
+
+        <article class="lesson-content">
+
+          {{ content }}
+
+        </article>
+
+
+        <!-- COMPLETE -->
+
+        <section class="completion">
+
+          <div class="completion-title">
+
+            Finished this lesson?
+
+          </div>
+
+          <button
+            class="complete-button"
+            id="completeButton"
+            onclick="markComplete()">
+
+            ✓ Mark Lesson Complete
+
+          </button>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="lesson-navigation">
+
+          {% if page.previous_url %}
+
+          <a
+            href="{{ page.previous_url | relative_url }}"
+            class="nav-lesson">
+
+            ← {{ page.previous_title }}
+
+          </a>
+
+          {% else %}
+
+          <a
+            href="{{ '/linear-algebra/' | relative_url }}"
+            class="nav-lesson">
+
+            ← Course Home
+
+          </a>
+
+          {% endif %}
+
+
+          {% if page.next_url %}
+
+          <a
+            href="{{ page.next_url | relative_url }}"
+            class="nav-lesson">
+
+            {{ page.next_title }} →
+
+          </a>
+
+          {% endif %}
+
+        </nav>
+
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- ======================================
+       JAVASCRIPT
+  ======================================= -->
+
+  <script>
+
+    const currentLesson =
+      "{{ page.lesson_number | default: 1 }}";
+
+
+    /* --------------------------------------
+       SIDEBAR
+    -------------------------------------- */
+
+    function toggleSidebar() {
+
+      const sidebar =
+        document.getElementById("courseSidebar");
+
+      sidebar.classList.toggle("open");
+
+    }
+
+
+    /* --------------------------------------
+       COMPLETION
+    -------------------------------------- */
+
+    function markComplete() {
+
+      localStorage.setItem(
+        "linear-algebra-lesson-" + currentLesson,
+        "completed"
+      );
+
+      updateCompletion();
+
+      updateProgress();
+
+    }
+
+
+    function updateCompletion() {
+
+      const button =
+        document.getElementById("completeButton");
+
+      const completed =
+        localStorage.getItem(
+          "linear-algebra-lesson-" + currentLesson
+        );
+
+      if (completed === "completed") {
+
+        button.innerHTML =
+          "✓ Lesson Completed";
+
+        button.classList.add("completed");
+
+      }
+
+    }
+
+
+    /* --------------------------------------
+       PROGRESS
+    -------------------------------------- */
+
+    function updateProgress() {
+
+      let completed = 0;
+
+      for (
+        let i = 1;
+        i <= 14;
+        i++
+      ) {
+
+        if (
+          localStorage.getItem(
+            "linear-algebra-lesson-" + i
+          ) === "completed"
+        ) {
+
+          completed++;
+
+        }
+
+      }
+
+
+      const percentage =
+        (completed / 14) * 100;
+
+
+      document.getElementById(
+        "progressFill"
+      ).style.width =
+        percentage + "%";
+
+
+      document.getElementById(
+        "progressText"
+      ).innerHTML =
+        completed + " / 14";
+
+
+      /* Sidebar */
+
+      document
+        .querySelectorAll(".lesson-link")
+        .forEach(function(link) {
+
+          const lesson =
+            link.dataset.lesson;
+
+          if (
+            localStorage.getItem(
+              "linear-algebra-lesson-" + lesson
+            ) === "completed"
+          ) {
+
+            link.classList.add("completed");
+
+            const status =
+              link.querySelector(
+                ".lesson-status"
+              );
+
+            status.innerHTML = "✓";
+
+          }
+
+        });
+
+    }
+
+
+    /* --------------------------------------
+       INITIALIZE
+    -------------------------------------- */
+
+    updateCompletion();
+
+    updateProgress();
+
+
+    /* --------------------------------------
+       CLOSE MOBILE SIDEBAR
+       AFTER CLICKING A LESSON
+    -------------------------------------- */
+
+    document
+      .querySelectorAll(".lesson-link")
+      .forEach(function(link) {
+
+        link.addEventListener(
+          "click",
+          function() {
+
+            document
+              .getElementById("courseSidebar")
+              .classList.remove("open");
+
+          }
+        );
+
+      });
+
+  </script>
+
+
+</body>
+
+</html>

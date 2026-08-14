@@ -1,7 +1,7 @@
 ---
 title: "Linear Algebra from Zero"
 permalink: /linear-algebra/
-layout: single
+layout: linear-algebra
 author_profile: false
 ---
 

@@ -12,7 +12,7 @@ next_url: /linear-algebra/adding-vectors/
 next_title: "Adding Vectors"
 ---
 
-# How do we describe movement mathematically?
+## How do we describe movement mathematically?
 
 Imagine that you are standing at the point \((0,0)\).
 

@@ -7,13 +7,11 @@ redirect_from:
   - /about.html
 ---
 
-Rohan Byanjankar serves as Assistant Director at Nepal Rastra Bank, the central bank of Nepal. He is currently working at the Economic Research Department of the institution. He handles large datasets, as demonstrated by his recent study, "Microfinance Financial Institutions: Problems and Their Resolutions," which involved analyzing data from approximately 4 million borrowers.
+Rohan Byanjankar is a central banker at Nepal Rastra Bank (Nepal’s central bank), where he serves as an Assistant Director. His work lies at the intersection of applied economics, monetary policy, financial economics, and development economics, with a particular emphasis on using empirical methods and large datasets to address policy-relevant questions. He is a research enthusiast whose work spans both macroeconomic and microeconomic issues, with published research examining financial inclusion, natural disasters, migration, and remittances.
 
-Besides professional career, he also actively participates in research. His reserach primarily focuses on migration, remittances, and financial inclusion. He has published several research papers and has presented his work at various international conferences, including the South Asian Economics Students’ Meet in Sri Lanka.
+Beyond his academic research, Byanjankar has maintained a strong interest in economics education and knowledge dissemination. Through his economics blog, [https://www.rohanbyanjankar.com.np](https://www.rohanbyanjankar.com.np), he has published teaching-oriented materials on econometrics, mathematical economics, microeconomics, macroeconomics, research methods, and statistical software. The blog reflects his long-standing commitment to making economics and quantitative methods accessible to students and researchers, dating back to his graduate-student years.
 
-In addition to his academic and professional achievements, Rohan is an active educator. He runs a blog where he shares tutorials on statistical software such as SPSS, STATA, and R, and provides insights into various economic concepts ([https://www.rohanbyanjankar.com.np](https://www.rohanbyanjankar.com.np)). He also has a YouTube channel where he offers video tutorials on data analysis.
-
-He holds a master’s degree in Economics from Tribhuvan University. He has been awarded Gold Medal in 2021 for securing the highest marks in MA Economics. He has secured research grant awarded by Rector’s Office, Tribhuvan University for carrying out Master’s Thesis on “Determinants of financial access and its impact on household welfare in Nepal”.
+Byanjankar holds an MA in Policy Economics from Williams College and an MA in Economics from Tribhuvan University. He is a Gold Medalist in Economics from Tribhuvan University and ranked among the top 15% of students at Williams College. His research has also received academic recognition: he was awarded a research grant from the Rector’s Office of Tribhuvan University for his master’s thesis on “Determinants of Financial Access and Its Impact on Household Welfare in Nepal,” while his independent study at Williams College earned the Jack Larned Prize 1942.
 
 *For detailed timeline, publications, and complete portfolio, visit the [interactive version](about.html).*
 

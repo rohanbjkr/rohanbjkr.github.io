@@ -81,7 +81,7 @@
 
 
     /* =====================================================
-       TOP BAR
+       TOP NAVIGATION
        ===================================================== */
 
     .lms-topbar {
@@ -145,8 +145,7 @@
 
       font-size: 13px;
 
-      transition:
-        color .15s ease;
+      transition: color .15s ease;
     }
 
     .course-home:hover {
@@ -155,7 +154,7 @@
 
 
     /* =====================================================
-       MOBILE MENU
+       MOBILE MENU BUTTON
        ===================================================== */
 
     .menu-button {
@@ -175,6 +174,41 @@
       padding: 0;
 
       margin-right: 12px;
+    }
+
+
+    /* =====================================================
+       READING PROGRESS RIBBON
+       ===================================================== */
+
+    .reading-ribbon {
+
+      position: fixed;
+
+      top: 60px;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 3px;
+
+      background: transparent;
+
+      z-index: 2500;
+
+      pointer-events: none;
+    }
+
+    #readingRibbonProgress {
+
+      width: 0%;
+
+      height: 100%;
+
+      background: #64748b;
+
+      transition: width .05s linear;
     }
 
 
@@ -259,7 +293,7 @@
 
 
     /* =====================================================
-       PROGRESS
+       COURSE PROGRESS
        ===================================================== */
 
     .progress-section {
@@ -306,8 +340,7 @@
 
       border-radius: 20px;
 
-      transition:
-        width .3s ease;
+      transition: width .3s ease;
     }
 
 
@@ -677,7 +710,7 @@
 
 
     /* =====================================================
-       DETAILS / ANSWERS
+       ANSWERS
        ===================================================== */
 
     .lesson-content details {
@@ -770,7 +803,7 @@
 
 
     /* =====================================================
-       LESSON NAVIGATION
+       PREVIOUS / NEXT
        ===================================================== */
 
     .lesson-navigation {
@@ -917,12 +950,13 @@
 
 
   <!-- ===================================================
-       TOP BAR
+       TOP NAVIGATION
        =================================================== -->
 
   <header class="lms-topbar">
 
     <div class="topbar-inner">
+
 
       <button
         class="menu-button"
@@ -933,12 +967,14 @@
 
       </button>
 
+
       <div class="course-name">
 
         Linear Algebra
         <span> / from Zero</span>
 
       </div>
+
 
       <a
         href="{{ '/linear-algebra/' | relative_url }}"
@@ -948,13 +984,25 @@
 
       </a>
 
+
     </div>
 
   </header>
 
 
   <!-- ===================================================
-       LMS
+       SCROLL PROGRESS RIBBON
+       =================================================== -->
+
+  <div class="reading-ribbon">
+
+    <div id="readingRibbonProgress"></div>
+
+  </div>
+
+
+  <!-- ===================================================
+       LMS LAYOUT
        =================================================== -->
 
   <div class="lms-layout">
@@ -967,6 +1015,7 @@
     <aside
       class="lms-sidebar"
       id="courseSidebar">
+
 
       <div class="sidebar-inner">
 
@@ -986,7 +1035,7 @@
         </div>
 
 
-        <!-- PROGRESS -->
+        <!-- COURSE PROGRESS -->
 
         <div class="progress-section">
 
@@ -1002,6 +1051,7 @@
 
           </div>
 
+
           <div class="progress-bar">
 
             <div
@@ -1014,13 +1064,16 @@
         </div>
 
 
-        <!-- MODULE 1 -->
+        <!-- =================================================
+             MODULE 1
+             ================================================= -->
 
         <div class="module">
 
           <div class="module-title">
             Module 1 · Vectors
           </div>
+
 
           <a
             href="{{ '/linear-algebra/vectors/' | relative_url }}"
@@ -1037,6 +1090,7 @@
 
           </a>
 
+
           <a
             href="{{ '/linear-algebra/adding-vectors/' | relative_url }}"
             class="lesson-link"
@@ -1051,6 +1105,7 @@
             </span>
 
           </a>
+
 
           <a
             href="{{ '/linear-algebra/scalar-multiplication/' | relative_url }}"
@@ -1070,13 +1125,16 @@
         </div>
 
 
-        <!-- MODULE 2 -->
+        <!-- =================================================
+             MODULE 2
+             ================================================= -->
 
         <div class="module">
 
           <div class="module-title">
             Module 2 · Combining Vectors
           </div>
+
 
           <a
             href="{{ '/linear-algebra/linear-combinations/' | relative_url }}"
@@ -1093,6 +1151,7 @@
 
           </a>
 
+
           <a
             href="{{ '/linear-algebra/span/' | relative_url }}"
             class="lesson-link"
@@ -1107,6 +1166,7 @@
             </span>
 
           </a>
+
 
           <a
             href="{{ '/linear-algebra/linear-independence/' | relative_url }}"
@@ -1126,13 +1186,16 @@
         </div>
 
 
-        <!-- MODULE 3 -->
+        <!-- =================================================
+             MODULE 3
+             ================================================= -->
 
         <div class="module">
 
           <div class="module-title">
             Module 3 · Building Spaces
           </div>
+
 
           <a
             href="{{ '/linear-algebra/basis/' | relative_url }}"
@@ -1148,6 +1211,7 @@
             </span>
 
           </a>
+
 
           <a
             href="{{ '/linear-algebra/dimension/' | relative_url }}"
@@ -1167,13 +1231,16 @@
         </div>
 
 
-        <!-- MODULE 4 -->
+        <!-- =================================================
+             MODULE 4
+             ================================================= -->
 
         <div class="module">
 
           <div class="module-title">
             Module 4 · Matrices
           </div>
+
 
           <a
             href="{{ '/linear-algebra/matrices/' | relative_url }}"
@@ -1190,6 +1257,7 @@
 
           </a>
 
+
           <a
             href="{{ '/linear-algebra/matrix-multiplication/' | relative_url }}"
             class="lesson-link"
@@ -1204,6 +1272,7 @@
             </span>
 
           </a>
+
 
           <a
             href="{{ '/linear-algebra/linear-transformations/' | relative_url }}"
@@ -1223,13 +1292,16 @@
         </div>
 
 
-        <!-- MODULE 5 -->
+        <!-- =================================================
+             MODULE 5
+             ================================================= -->
 
         <div class="module">
 
           <div class="module-title">
             Module 5 · Deeper Structure
           </div>
+
 
           <a
             href="{{ '/linear-algebra/rank-null-space/' | relative_url }}"
@@ -1246,6 +1318,7 @@
 
           </a>
 
+
           <a
             href="{{ '/linear-algebra/determinants/' | relative_url }}"
             class="lesson-link"
@@ -1260,6 +1333,7 @@
             </span>
 
           </a>
+
 
           <a
             href="{{ '/linear-algebra/eigenvalues/' | relative_url }}"
@@ -1285,10 +1359,11 @@
 
 
     <!-- =================================================
-         MAIN CONTENT
+         MAIN LESSON AREA
          ================================================= -->
 
     <main class="lms-main">
+
 
       <div class="lesson-wrapper">
 
@@ -1329,7 +1404,9 @@
         </article>
 
 
-        <!-- COMPLETION -->
+        <!-- =================================================
+             COMPLETION
+             ================================================= -->
 
         <section class="completion">
 
@@ -1338,6 +1415,7 @@
             Finished this lesson?
 
           </div>
+
 
           <button
             class="complete-button"
@@ -1351,9 +1429,12 @@
         </section>
 
 
-        <!-- PREVIOUS / NEXT -->
+        <!-- =================================================
+             PREVIOUS / NEXT
+             ================================================= -->
 
         <nav class="lesson-navigation">
+
 
           {% if page.previous_url %}
 
@@ -1390,6 +1471,7 @@
 
           {% endif %}
 
+
         </nav>
 
 
@@ -1406,38 +1488,48 @@
 
   <script>
 
-    /* ================================================
+
+    /* =================================================
        CURRENT LESSON
-       ================================================ */
+       ================================================= */
 
     const currentLesson =
       "{{ page.lesson_number | default: 1 }}";
 
 
-    /* ================================================
-       SIDEBAR
-       ================================================ */
+    /* =================================================
+       MOBILE SIDEBAR
+       ================================================= */
 
     function toggleSidebar() {
 
       const sidebar =
-        document.getElementById("courseSidebar");
+        document.getElementById(
+          "courseSidebar"
+        );
 
-      sidebar.classList.toggle("open");
+      sidebar.classList.toggle(
+        "open"
+      );
 
     }
 
 
-    /* ================================================
-       MARK COMPLETE
-       ================================================ */
+    /* =================================================
+       MARK LESSON COMPLETE
+       ================================================= */
 
     function markComplete() {
 
       localStorage.setItem(
-        "linear-algebra-lesson-" + currentLesson,
+
+        "linear-algebra-lesson-" +
+        currentLesson,
+
         "completed"
+
       );
+
 
       updateCompletion();
 
@@ -1446,22 +1538,30 @@
     }
 
 
-    /* ================================================
-       UPDATE CURRENT LESSON
-       ================================================ */
+    /* =================================================
+       UPDATE COMPLETION BUTTON
+       ================================================= */
 
     function updateCompletion() {
 
       const button =
-        document.getElementById("completeButton");
-
-      const completed =
-        localStorage.getItem(
-          "linear-algebra-lesson-" + currentLesson
+        document.getElementById(
+          "completeButton"
         );
 
 
-      if (completed === "completed") {
+      const completed =
+        localStorage.getItem(
+
+          "linear-algebra-lesson-" +
+          currentLesson
+
+        );
+
+
+      if (
+        completed === "completed"
+      ) {
 
         button.innerHTML =
           "✓ Lesson Completed";
@@ -1475,9 +1575,9 @@
     }
 
 
-    /* ================================================
+    /* =================================================
        UPDATE COURSE PROGRESS
-       ================================================ */
+       ================================================= */
 
     function updateProgress() {
 
@@ -1491,9 +1591,14 @@
       ) {
 
         if (
+
           localStorage.getItem(
-            "linear-algebra-lesson-" + i
+
+            "linear-algebra-lesson-" +
+            i
+
           ) === "completed"
+
         ) {
 
           completed++;
@@ -1522,72 +1627,148 @@
       /* Update sidebar */
 
       document
-        .querySelectorAll(".lesson-link")
-        .forEach(function(link) {
+        .querySelectorAll(
+          ".lesson-link"
+        )
+        .forEach(
+          function(link) {
 
-          const lesson =
-            link.dataset.lesson;
-
-
-          if (
-            localStorage.getItem(
-              "linear-algebra-lesson-" + lesson
-            ) === "completed"
-          ) {
-
-            link.classList.add(
-              "completed"
-            );
+            const lesson =
+              link.dataset.lesson;
 
 
-            const status =
-              link.querySelector(
-                ".lesson-status"
+            if (
+
+              localStorage.getItem(
+
+                "linear-algebra-lesson-" +
+                lesson
+
+              ) === "completed"
+
+            ) {
+
+              link.classList.add(
+                "completed"
               );
 
 
-            status.innerHTML = "✓";
+              const status =
+                link.querySelector(
+                  ".lesson-status"
+                );
+
+
+              status.innerHTML =
+                "✓";
+
+            }
 
           }
-
-        });
+        );
 
     }
 
 
-    /* ================================================
+    /* =================================================
+       READING PROGRESS RIBBON
+       ================================================= */
+
+    function updateReadingRibbon() {
+
+      const scrollTop =
+        window.scrollY;
+
+
+      const scrollable =
+        document.documentElement
+          .scrollHeight -
+        window.innerHeight;
+
+
+      let progress = 0;
+
+
+      if (scrollable > 0) {
+
+        progress =
+          (scrollTop / scrollable) * 100;
+
+      }
+
+
+      progress =
+        Math.min(
+          Math.max(progress, 0),
+          100
+        );
+
+
+      const ribbon =
+        document.getElementById(
+          "readingRibbonProgress"
+        );
+
+
+      ribbon.style.width =
+        progress + "%";
+
+    }
+
+
+    window.addEventListener(
+
+      "scroll",
+
+      updateReadingRibbon,
+
+      {
+        passive: true
+      }
+
+    );
+
+
+    /* =================================================
        INITIALIZE
-       ================================================ */
+       ================================================= */
 
     updateCompletion();
 
     updateProgress();
 
+    updateReadingRibbon();
 
-    /* ================================================
-       MOBILE SIDEBAR
-       ================================================ */
+
+    /* =================================================
+       CLOSE MOBILE SIDEBAR
+       ================================================= */
 
     document
-      .querySelectorAll(".lesson-link")
-      .forEach(function(link) {
+      .querySelectorAll(
+        ".lesson-link"
+      )
+      .forEach(
+        function(link) {
 
-        link.addEventListener(
-          "click",
-          function() {
+          link.addEventListener(
+            "click",
+            function() {
 
-            document
-              .getElementById(
-                "courseSidebar"
-              )
-              .classList.remove(
-                "open"
-              );
+              document
+                .getElementById(
+                  "courseSidebar"
+                )
+                .classList.remove(
+                  "open"
+                );
 
-          }
-        );
+            }
+          );
 
-      });
+        }
+      );
+
 
   </script>
 

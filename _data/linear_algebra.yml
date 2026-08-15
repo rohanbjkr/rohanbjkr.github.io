@@ -1,0 +1,268 @@
+title: "Linear Algebra from Zero"
+
+description: "An intuitive and visual journey through linear algebra."
+
+modules:
+
+  - number: 1
+    title: "Linear Equations"
+    description: "The fundamental problem Ax = b and three ways to see it."
+    lessons:
+
+      - number: 1
+        title: "The Geometry of Linear Equations"
+        url: "/linear-algebra/geometry-of-linear-equations/"
+        description: "The row picture, column picture, and matrix picture."
+
+      - number: 2
+        title: "Elimination"
+        url: "/linear-algebra/elimination/"
+        description: "How systematic elimination solves a system of equations."
+
+      - number: 3
+        title: "Elimination Matrices"
+        url: "/linear-algebra/elimination-matrices/"
+        description: "Seeing elimination as multiplication by matrices."
+
+      - number: 4
+        title: "Solving Ax = b"
+        url: "/linear-algebra/solving-axb/"
+        description: "When a system has zero, one, or infinitely many solutions."
+
+
+  - number: 2
+    title: "Matrix Algebra"
+    description: "The algebra of matrices and the structure behind linear systems."
+    lessons:
+
+      - number: 5
+        title: "Matrix Multiplication"
+        url: "/linear-algebra/matrix-multiplication/"
+        description: "Why matrix multiplication works the way it does."
+
+      - number: 6
+        title: "Inverse Matrices"
+        url: "/linear-algebra/inverse-matrices/"
+        description: "Understanding the inverse of a matrix."
+
+      - number: 7
+        title: "A⁻¹ and Ax = b"
+        url: "/linear-algebra/axb-and-inverse/"
+        description: "Connecting inverse matrices to solutions."
+
+      - number: 8
+        title: "LU Factorization"
+        url: "/linear-algebra/lu-factorization/"
+        description: "Factoring a matrix into lower and upper triangular matrices."
+
+
+  - number: 3
+    title: "Vector Spaces"
+    description: "Moving from individual vectors to the spaces they generate."
+    lessons:
+
+      - number: 9
+        title: "Vectors in Rⁿ"
+        url: "/linear-algebra/vectors/"
+        description: "Vectors, components, magnitude, and direction."
+
+      - number: 10
+        title: "Linear Combinations"
+        url: "/linear-algebra/linear-combinations/"
+        description: "Building new vectors from existing vectors."
+
+      - number: 11
+        title: "Vector Spaces"
+        url: "/linear-algebra/vector-spaces/"
+        description: "The structure that unifies many different examples."
+
+      - number: 12
+        title: "Column Space"
+        url: "/linear-algebra/column-space/"
+        description: "The set of vectors a matrix can produce."
+
+      - number: 13
+        title: "Nullspace"
+        url: "/linear-algebra/nullspace/"
+        description: "Understanding all solutions to Ax = 0."
+
+
+  - number: 4
+    title: "Independence, Basis & Dimension"
+    description: "The fundamental ideas that describe the structure of vector spaces."
+    lessons:
+
+      - number: 14
+        title: "Special Solutions"
+        url: "/linear-algebra/special-solutions/"
+        description: "Finding the building blocks of the solution space."
+
+      - number: 15
+        title: "Linear Independence"
+        url: "/linear-algebra/linear-independence/"
+        description: "When vectors contain genuinely new information."
+
+      - number: 16
+        title: "Basis"
+        url: "/linear-algebra/basis/"
+        description: "A minimal set of vectors that builds a space."
+
+      - number: 17
+        title: "Dimension"
+        url: "/linear-algebra/dimension/"
+        description: "Counting the independent directions in a vector space."
+
+      - number: 18
+        title: "The Four Fundamental Subspaces"
+        url: "/linear-algebra/four-fundamental-subspaces/"
+        description: "Column space, nullspace, row space, and left nullspace."
+
+
+  - number: 5
+    title: "Orthogonality & Least Squares"
+    description: "Geometry, projections, approximation, and orthogonal bases."
+    lessons:
+
+      - number: 19
+        title: "Orthogonal Vectors"
+        url: "/linear-algebra/orthogonal-vectors/"
+        description: "Perpendicularity through the dot product."
+
+      - number: 20
+        title: "Projections"
+        url: "/linear-algebra/projections/"
+        description: "Finding the closest point on a line or subspace."
+
+      - number: 21
+        title: "Least Squares"
+        url: "/linear-algebra/least-squares/"
+        description: "Solving systems that have no exact solution."
+
+      - number: 22
+        title: "Gram–Schmidt"
+        url: "/linear-algebra/gram-schmidt/"
+        description: "Turning independent vectors into an orthogonal basis."
+
+      - number: 23
+        title: "QR Factorization"
+        url: "/linear-algebra/qr-factorization/"
+        description: "Matrix factorization built from orthogonal vectors."
+
+
+  - number: 6
+    title: "Determinants"
+    description: "A number that captures scaling, orientation, and invertibility."
+    lessons:
+
+      - number: 24
+        title: "What Is a Determinant?"
+        url: "/linear-algebra/determinants/"
+        description: "Area, volume, and the geometry of a matrix."
+
+      - number: 25
+        title: "Properties of Determinants"
+        url: "/linear-algebra/determinant-properties/"
+        description: "How row operations change determinants."
+
+      - number: 26
+        title: "Cofactors"
+        url: "/linear-algebra/cofactors/"
+        description: "Expanding determinants and understanding their structure."
+
+      - number: 27
+        title: "Determinants and Volume"
+        url: "/linear-algebra/determinants-volume/"
+        description: "Determinants as geometric scaling factors."
+
+
+  - number: 7
+    title: "Eigenvalues & Eigenvectors"
+    description: "The special directions that reveal the internal structure of a matrix."
+    lessons:
+
+      - number: 28
+        title: "Eigenvalues and Eigenvectors"
+        url: "/linear-algebra/eigenvalues/"
+        description: "Directions that a matrix does not rotate."
+
+      - number: 29
+        title: "Diagonalization"
+        url: "/linear-algebra/diagonalization/"
+        description: "Simplifying matrices using eigenvectors."
+
+      - number: 30
+        title: "Powers of a Matrix"
+        url: "/linear-algebra/powers-of-matrices/"
+        description: "Using eigenvalues to understand repeated matrix operations."
+
+      - number: 31
+        title: "Symmetric Matrices"
+        url: "/linear-algebra/symmetric-matrices/"
+        description: "Orthogonal eigenvectors and symmetric structure."
+
+      - number: 32
+        title: "Positive Definite Matrices"
+        url: "/linear-algebra/positive-definite-matrices/"
+        description: "Quadratic forms, energy, and stability."
+
+
+  - number: 8
+    title: "Linear Transformations"
+    description: "Matrices as transformations and changes of coordinates."
+    lessons:
+
+      - number: 33
+        title: "Linear Transformations"
+        url: "/linear-algebra/linear-transformations/"
+        description: "Thinking of matrices as functions between vector spaces."
+
+      - number: 34
+        title: "Matrices of Linear Transformations"
+        url: "/linear-algebra/matrices-of-transformations/"
+        description: "Representing transformations using matrices."
+
+      - number: 35
+        title: "Change of Basis"
+        url: "/linear-algebra/change-of-basis/"
+        description: "Describing the same vector in different coordinate systems."
+
+      - number: 36
+        title: "Similar Matrices"
+        url: "/linear-algebra/similar-matrices/"
+        description: "Different matrix representations of the same transformation."
+
+      - number: 37
+        title: "Singular Value Decomposition"
+        url: "/linear-algebra/svd/"
+        description: "A powerful decomposition of any matrix."
+
+
+  - number: 9
+    title: "Applications"
+    description: "Seeing linear algebra at work in real mathematical problems."
+    lessons:
+
+      - number: 38
+        title: "Graphs and Networks"
+        url: "/linear-algebra/graphs-and-networks/"
+        description: "Using matrices to represent networks."
+
+      - number: 39
+        title: "Markov Matrices"
+        url: "/linear-algebra/markov-matrices/"
+        description: "Linear algebra and long-run probabilities."
+
+      - number: 40
+        title: "Differential Equations and Eigenvalues"
+        url: "/linear-algebra/differential-equations/"
+        description: "Using eigenvalues to understand dynamic systems."
+
+      - number: 41
+        title: "Fourier Ideas"
+        url: "/linear-algebra/fourier/"
+        description: "Decomposing complicated signals into simpler components."
+
+      - number: 42
+        title: "Putting It All Together"
+        url: "/linear-algebra/course-review/"
+        description: "Connecting the major ideas of linear algebra."

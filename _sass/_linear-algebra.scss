@@ -1,0 +1,1258 @@
+/* =========================================================
+   LINEAR ALGEBRA LMS
+   ========================================================= */
+
+
+/* =========================================================
+   LMS TOP BAR
+   ========================================================= */
+
+.lms-topbar {
+  height: 60px;
+  background: #111827;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+
+  border-bottom: 1px solid #374151;
+}
+
+.topbar-inner {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-name {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.course-name span {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.course-home {
+  color: #d1d5db;
+  font-size: 13px;
+}
+
+.course-home:hover {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.menu-button {
+  display: none;
+
+  border: none;
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  padding: 0;
+  margin-right: 12px;
+}
+
+
+/* =========================================================
+   READING PROGRESS RIBBON
+   ========================================================= */
+
+.reading-ribbon {
+  position: fixed;
+
+  top: 60px;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: transparent;
+
+  z-index: 2500;
+
+  pointer-events: none;
+}
+
+#readingRibbonProgress {
+  width: 0%;
+  height: 100%;
+
+  background: #64748b;
+
+  transition: width 0.05s linear;
+}
+
+
+/* =========================================================
+   MAIN LMS LAYOUT
+   ========================================================= */
+
+.lms-layout {
+  display: flex;
+
+  min-height: calc(100vh - 60px);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.lms-sidebar {
+  width: 285px;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+
+  border-right: 1px solid #e5e7eb;
+
+  height: calc(100vh - 60px);
+
+  position: sticky;
+  top: 60px;
+
+  overflow-y: auto;
+}
+
+
+/* scrollbar */
+
+.lms-sidebar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.lms-sidebar::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.lms-sidebar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+
+/* =========================================================
+   SIDEBAR INNER
+   ========================================================= */
+
+.sidebar-inner {
+  padding: 24px 16px 35px;
+}
+
+
+/* =========================================================
+   COURSE INFORMATION
+   ========================================================= */
+
+.sidebar-course {
+  padding: 0 9px 18px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  margin-bottom: 17px;
+}
+
+.sidebar-label {
+  font-size: 10px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  color: #94a3b8;
+
+  margin-bottom: 5px;
+}
+
+.sidebar-title {
+  font-size: 16px;
+
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  color: #111827;
+}
+
+
+/* =========================================================
+   COURSE PROGRESS
+   ========================================================= */
+
+.progress-section {
+  padding: 0 9px 21px;
+}
+
+.progress-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  color: #64748b;
+
+  margin-bottom: 7px;
+}
+
+.progress-bar {
+  width: 100%;
+
+  height: 5px;
+
+  background: #e5e7eb;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+
+  background: #111827;
+
+  border-radius: 20px;
+
+  transition: width 0.3s ease;
+}
+
+
+/* =========================================================
+   MODULE
+   ========================================================= */
+
+.module {
+  margin-bottom: 20px;
+}
+
+.module-title {
+  padding: 7px 9px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.9px;
+
+  line-height: 1.4;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   LESSON LINKS
+   ========================================================= */
+
+.lesson-link {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 8px 9px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+
+  line-height: 1.35;
+
+  color: #475569;
+
+  margin-bottom: 2px;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.lesson-link:hover {
+  background: #f1f5f9;
+
+  color: #111827;
+}
+
+.lesson-link.active {
+  background: #eef2f7;
+
+  color: #111827;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LESSON NUMBER CIRCLE
+   ========================================================= */
+
+.lesson-status {
+  width: 19px;
+  height: 19px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 50%;
+
+  font-size: 9px;
+
+  color: #94a3b8;
+
+  background: #ffffff;
+}
+
+.lesson-link.active .lesson-status {
+  border-color: #cbd5e1;
+
+  background: #ffffff;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   COMPLETED LESSON
+   ========================================================= */
+
+.lesson-link.completed .lesson-status {
+  background: #111827;
+
+  border-color: #111827;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.lms-main {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   LESSON WRAPPER
+   ========================================================= */
+
+.lesson-wrapper {
+  max-width: 880px;
+
+  margin: 0 auto;
+
+  padding: 40px 45px 70px;
+}
+
+
+/* =========================================================
+   LESSON HEADER
+   ========================================================= */
+
+.lesson-meta {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  color: #64748b;
+
+  margin-bottom: 9px;
+}
+
+.lesson-title {
+  font-size: clamp(36px, 4vw, 46px);
+
+  line-height: 1.12;
+
+  letter-spacing: -1.2px;
+
+  color: #0f172a;
+
+  margin: 0 0 12px;
+}
+
+.lesson-description {
+  font-size: 17px;
+
+  line-height: 1.55;
+
+  color: #64748b;
+
+  max-width: 700px;
+
+  margin: 0 0 32px;
+}
+
+
+/* =========================================================
+   LESSON CONTENT
+   ========================================================= */
+
+.lesson-content {
+  font-size: 17px;
+
+  line-height: 1.6;
+
+  color: #334155;
+}
+
+
+/* Hide duplicate Markdown H1 */
+
+.lesson-content h1 {
+  display: none;
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+.lesson-content h2 {
+  font-size: 26px;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.4px;
+
+  color: #0f172a;
+
+  margin: 42px 0 16px;
+}
+
+.lesson-content h3 {
+  font-size: 20px;
+
+  line-height: 1.35;
+
+  color: #0f172a;
+
+  margin: 32px 0 12px;
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+   ========================================================= */
+
+.lesson-content p {
+  margin: 0 0 17px;
+}
+
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+.lesson-content ul,
+.lesson-content ol {
+  margin-top: 0;
+
+  margin-bottom: 20px;
+
+  padding-left: 25px;
+}
+
+.lesson-content li {
+  margin-bottom: 6px;
+}
+
+.lesson-content strong {
+  color: #1e293b;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.lesson-content a {
+  color: #475569;
+
+  text-decoration: underline;
+
+  text-decoration-color: #cbd5e1;
+
+  text-underline-offset: 3px;
+}
+
+.lesson-content a:hover {
+  color: #111827;
+
+  text-decoration-color: #64748b;
+}
+
+
+/* =========================================================
+   BLOCKQUOTES
+   ========================================================= */
+
+.lesson-content blockquote {
+  margin: 25px 0;
+
+  padding: 14px 20px;
+
+  border-left: 3px solid #cbd5e1;
+
+  background: #f8fafc;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   CODE
+   ========================================================= */
+
+.lesson-content code {
+  background: #f1f5f9;
+
+  padding: 2px 5px;
+
+  border-radius: 4px;
+
+  font-size: 0.9em;
+}
+
+.lesson-content pre {
+  overflow-x: auto;
+
+  padding: 18px 20px;
+
+  background: #0f172a;
+
+  color: #e2e8f0;
+
+  border-radius: 8px;
+
+  margin: 25px 0;
+}
+
+.lesson-content pre code {
+  background: transparent;
+
+  padding: 0;
+
+  color: inherit;
+}
+
+
+/* =========================================================
+   MATHJAX
+   ========================================================= */
+
+.lesson-content mjx-container[display="true"] {
+  margin: 25px 0 !important;
+}
+
+.lesson-content mjx-container {
+  color: #0f172a;
+}
+
+
+/* =========================================================
+   KEY IDEA BOX
+   ========================================================= */
+
+.key-idea {
+  background: #ffffff;
+
+  border-left: 4px solid #111827;
+
+  border-radius: 7px;
+
+  padding: 19px 23px;
+
+  margin: 28px 0;
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.key-idea-title {
+  font-size: 12px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+
+  color: #111827;
+
+  margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   EXAMPLE BOX
+   ========================================================= */
+
+.example {
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 9px;
+
+  padding: 21px 24px;
+
+  margin: 27px 0;
+}
+
+.example-title {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+
+  color: #64748b;
+
+  margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   EXERCISE BOX
+   ========================================================= */
+
+.exercise {
+  background: #f1f5f9;
+
+  border-radius: 9px;
+
+  padding: 21px 24px;
+
+  margin: 28px 0;
+}
+
+.exercise-title {
+  font-weight: 800;
+
+  color: #0f172a;
+
+  margin-bottom: 9px;
+}
+
+
+/* =========================================================
+   COLLAPSIBLE ANSWERS
+   ========================================================= */
+
+.lesson-content details {
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 8px;
+
+  padding: 13px 17px;
+
+  margin: 22px 0;
+}
+
+.lesson-content summary {
+  cursor: pointer;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.lesson-content table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin: 28px 0;
+
+  font-size: 15px;
+}
+
+.lesson-content th,
+.lesson-content td {
+  padding: 10px 12px;
+
+  border: 1px solid #e2e8f0;
+
+  text-align: left;
+}
+
+.lesson-content th {
+  background: #f8fafc;
+
+  color: #0f172a;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   COMPLETION BOX
+   ========================================================= */
+
+.completion {
+  margin-top: 55px;
+
+  padding: 26px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.completion-title {
+  font-size: 16px;
+
+  font-weight: 700;
+
+  margin-bottom: 14px;
+
+  color: #0f172a;
+}
+
+.complete-button {
+  border: none;
+
+  background: #111827;
+
+  color: #ffffff;
+
+  padding: 11px 19px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.complete-button:hover {
+  background: #1f2937;
+}
+
+.complete-button.completed {
+  background: #475569;
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT NAVIGATION
+   ========================================================= */
+
+.lesson-navigation {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 25px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+.nav-lesson {
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 7px;
+
+  padding: 11px 16px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #475569;
+}
+
+.nav-lesson:hover {
+  background: #f8fafc;
+
+  color: #111827;
+}
+
+
+/* =========================================================
+   COURSE LANDING PAGE
+   ========================================================= */
+
+.linear-algebra-page {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 55px 32px 80px;
+}
+
+.course-eyebrow {
+  font-size: 12px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.2px;
+
+  color: #64748b;
+
+  margin-bottom: 10px;
+}
+
+.course-title {
+  font-size: clamp(40px, 5vw, 58px);
+
+  line-height: 1.08;
+
+  letter-spacing: -1.8px;
+
+  color: #0f172a;
+
+  margin: 0 0 18px;
+}
+
+.course-description {
+  max-width: 760px;
+
+  font-size: 19px;
+
+  line-height: 1.6;
+
+  color: #64748b;
+
+  margin: 0 0 25px;
+}
+
+.course-stats {
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin: 25px 0 50px;
+}
+
+.course-stat {
+  background: #f1f5f9;
+
+  border-radius: 7px;
+
+  padding: 8px 13px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #475569;
+}
+
+
+/* =========================================================
+   COURSE CONTENTS
+   ========================================================= */
+
+.contents-title {
+  font-size: 30px;
+
+  line-height: 1.25;
+
+  color: #0f172a;
+
+  margin: 0 0 8px;
+}
+
+.contents-description {
+  color: #64748b;
+
+  font-size: 16px;
+
+  margin: 0 0 28px;
+}
+
+
+/* =========================================================
+   COURSE MODULE CARDS
+   ========================================================= */
+
+.course-module {
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  margin-bottom: 22px;
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.module-header {
+  padding: 24px 30px 21px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.module-number {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  color: #64748b;
+}
+
+.module-description {
+  font-size: 14px;
+
+  line-height: 1.55;
+
+  color: #64748b;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   COURSE LESSON ROW
+   ========================================================= */
+
+.course-lesson {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 20px 30px;
+
+  border-bottom: 1px solid #edf0f3;
+
+  text-decoration: none;
+
+  transition:
+    background 0.15s ease,
+    padding-left 0.15s ease;
+}
+
+.course-lesson:last-child {
+  border-bottom: none;
+}
+
+.course-lesson:hover {
+  background: #f8fafc;
+
+  padding-left: 34px;
+}
+
+.lesson-number {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f1f5f9;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  color: #475569;
+}
+
+.lesson-information {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.lesson-title {
+  display: block;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+
+  margin-bottom: 3px;
+}
+
+.lesson-description {
+  display: block;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: #64748b;
+}
+
+.lesson-arrow {
+  font-size: 20px;
+
+  color: #94a3b8;
+
+  margin-left: 15px;
+}
+
+
+/* =========================================================
+   START COURSE
+   ========================================================= */
+
+.start-course {
+  margin-top: 42px;
+
+  padding: 25px 30px;
+
+  background: #0f172a;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.start-course strong {
+  display: block;
+
+  font-size: 17px;
+
+  margin-bottom: 3px;
+}
+
+.start-course span {
+  font-size: 13px;
+
+  color: #cbd5e1;
+}
+
+.start-button {
+  background: #ffffff;
+
+  color: #0f172a;
+
+  padding: 10px 17px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+}
+
+.start-button:hover {
+  background: #f1f5f9;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .menu-button {
+    display: block;
+  }
+
+  .course-home {
+    display: none;
+  }
+
+  .lms-sidebar {
+    position: fixed;
+
+    left: -285px;
+
+    top: 60px;
+
+    bottom: 0;
+
+    z-index: 1500;
+
+    transition: left 0.25s ease;
+
+    box-shadow:
+      5px 0 20px rgba(0, 0, 0, 0.10);
+  }
+
+  .lms-sidebar.open {
+    left: 0;
+  }
+
+  .lesson-wrapper {
+    padding: 35px 25px 60px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .linear-algebra-page {
+    padding: 35px 18px 60px;
+  }
+
+  .course-title {
+    font-size: 40px;
+  }
+
+  .course-description {
+    font-size: 17px;
+  }
+
+  .module-header {
+    padding: 20px;
+  }
+
+  .module-title {
+    font-size: 21px;
+  }
+
+  .course-lesson {
+    padding: 17px 20px;
+
+    gap: 13px;
+  }
+
+  .course-lesson:hover {
+    padding-left: 20px;
+  }
+
+  .lesson-number {
+    width: 38px;
+    height: 38px;
+  }
+
+  .lesson-title {
+    font-size: 15px;
+  }
+
+  .lesson-description {
+    font-size: 13px;
+  }
+
+  .lesson-arrow {
+    display: none;
+  }
+
+  .start-course {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .lesson-wrapper {
+    padding: 30px 18px 55px;
+  }
+
+  .lesson-content {
+    font-size: 16px;
+  }
+
+  .lesson-title {
+    font-size: 36px;
+  }
+
+  .lesson-content h2 {
+    font-size: 24px;
+  }
+
+  .lesson-navigation {
+    flex-direction: column;
+  }
+
+}

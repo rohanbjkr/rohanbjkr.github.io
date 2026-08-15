@@ -1,6 +1,6 @@
 /* =========================================================
    LINEAR ALGEBRA LMS
-   Complete responsive stylesheet
+   Complete Responsive Stylesheet
    ========================================================= */
 
 
@@ -504,6 +504,7 @@
 .lesson-content ul,
 .lesson-content ol {
   margin-top: 0;
+
   margin-bottom: 20px;
 
   padding-left: 25px;
@@ -536,16 +537,13 @@
 
 
 /* =========================================================
-   =========================================================
    MATHJAX
-   =========================================================
    ========================================================= */
 
-
 /*
-   Normal displayed mathematics.
+   Normal equations.
 
-   Short equations remain centered and normal.
+   These remain centered and do not scroll.
 */
 
 .lesson-content mjx-container[display="true"] {
@@ -559,24 +557,25 @@
 }
 
 
+/* =========================================================
+   LONG MATH WRAPPER
+   ========================================================= */
+
 /*
-   =======================================================
-   AUTOMATIC LONG-MATH SCROLLING
-   =======================================================
+   Use this only when an equation is too wide.
 
-   JavaScript automatically adds the class
-   .auto-math-scroll to equations that are wider
-   than the available screen.
-
-   Therefore you do NOT need to manually write:
+   Example:
 
    <div class="math-scroll">
 
-   in your lessons.
+   $$
+   \text{long equation}
+   $$
+
+   </div>
 */
 
-
-.auto-math-scroll {
+.math-scroll {
   display: block;
 
   width: 100%;
@@ -591,7 +590,7 @@
 
   margin: 25px 0;
 
-  padding: 4px 0 9px;
+  padding: 5px 0 10px;
 
   scrollbar-width: thin;
 
@@ -602,13 +601,11 @@
 
 
 /*
-   Math inside the scrolling container must keep
-   its natural mathematical width.
-
-   This prevents large matrices from shrinking.
+   MathJax inside .math-scroll keeps its
+   natural width.
 */
 
-.auto-math-scroll mjx-container[display="true"] {
+.math-scroll mjx-container[display="true"] {
   display: block !important;
 
   width: max-content !important;
@@ -624,18 +621,17 @@
 
 
 /*
-   MathJax SVG must not be forced to fit
-   inside the phone screen.
+   Do not allow the equation SVG to shrink.
 */
 
-.auto-math-scroll mjx-container[display="true"] > svg {
+.math-scroll mjx-container[display="true"] > svg {
   display: block;
 
   width: auto !important;
 
   max-width: none !important;
 
-  height: auto;
+  height: auto !important;
 }
 
 
@@ -643,17 +639,17 @@
    MATH SCROLLBAR
    ========================================================= */
 
-.auto-math-scroll::-webkit-scrollbar {
+.math-scroll::-webkit-scrollbar {
   height: 5px;
 }
 
-.auto-math-scroll::-webkit-scrollbar-track {
+.math-scroll::-webkit-scrollbar-track {
   background: #f8fafc;
 
   border-radius: 10px;
 }
 
-.auto-math-scroll::-webkit-scrollbar-thumb {
+.math-scroll::-webkit-scrollbar-thumb {
   background: #cbd5e1;
 
   border-radius: 10px;
@@ -661,8 +657,7 @@
 
 
 /*
-   Inline mathematics should never become a
-   horizontal scrolling container.
+   Inline mathematics remains normal.
 */
 
 .lesson-content mjx-container:not([display="true"]) {
@@ -908,6 +903,7 @@
   display: block;
 
   margin-left: auto;
+
   margin-right: auto;
 }
 
@@ -1211,6 +1207,7 @@
 
 .lesson-information {
   flex: 1;
+
   min-width: 0;
 }
 
@@ -1469,26 +1466,25 @@
 
 
   /* =====================================================
-     MOBILE LONG MATHEMATICS
+     MOBILE LONG MATH
      ===================================================== */
 
-  .auto-math-scroll {
+  .math-scroll {
     width: 100%;
 
     max-width: 100%;
 
     overflow-x: auto;
-
     overflow-y: hidden;
 
     -webkit-overflow-scrolling: touch;
 
-    padding-bottom: 8px;
-
     margin: 20px 0;
+
+    padding: 5px 0 9px;
   }
 
-  .auto-math-scroll mjx-container[display="true"] {
+  .math-scroll mjx-container[display="true"] {
     width: max-content !important;
 
     max-width: none !important;
@@ -1498,13 +1494,15 @@
     padding: 0 !important;
   }
 
-  .auto-math-scroll mjx-container[display="true"] > svg {
+  .math-scroll mjx-container[display="true"] > svg {
     width: auto !important;
 
     max-width: none !important;
+
+    height: auto !important;
   }
 
-  .auto-math-scroll::-webkit-scrollbar {
+  .math-scroll::-webkit-scrollbar {
     height: 4px;
   }
 
@@ -1546,7 +1544,7 @@
 
 
   /* =====================================================
-     PREVIOUS / NEXT
+     NAVIGATION
      ===================================================== */
 
   .lesson-navigation {
@@ -1680,6 +1678,7 @@
 
   .lesson-wrapper {
     padding-left: 14px;
+
     padding-right: 14px;
   }
 
@@ -1703,6 +1702,7 @@
 
   .course-lesson {
     padding-left: 14px;
+
     padding-right: 14px;
   }
 

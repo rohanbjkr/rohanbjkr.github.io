@@ -38,7 +38,7 @@ $$
 
 We have two equations and two unknowns.
 
-Our goal is to find the values of \(x\) and \(y\) that satisfy **both equations simultaneously**.
+Our goal is to find the values of $x$ and $y$ that satisfy **both equations simultaneously**.
 
 
 ### The geometric picture
@@ -63,7 +63,7 @@ x-y &= 1.
 \end{aligned}
 $$
 
-Look at the coefficients of \(y\):
+Look at the coefficients of $y$:
 
 $$
 +1
@@ -73,7 +73,7 @@ $$
 
 They are opposites.
 
-That is useful because if we **add the two equations**, the \(y\)'s disappear.
+That is useful because if we **add the two equations**, the $y$'s disappear.
 
 $$
 (2x+y)+(x-y)=5+1.
@@ -91,7 +91,7 @@ $$
 x=2.
 $$
 
-Now substitute \(x=2\) into either original equation.
+Now substitute $x=2$ into either original equation.
 
 Using
 
@@ -120,7 +120,7 @@ $$
 
 ## 3. What did elimination actually do?
 
-The important idea is not just that we found \(x=2\) and \(y=1\).
+The important idea is not just that we found $x=2$ and $y=1$.
 
 The important idea is **how we transformed the equations**.
 
@@ -253,7 +253,7 @@ $$
 x+2y=5
 $$
 
-can be multiplied by \(3\):
+can be multiplied by $3$:
 
 $$
 3x+6y=15.
@@ -291,7 +291,7 @@ $$
 -5y=-8.
 $$
 
-The \(x\) has been eliminated.
+The $x$ has been eliminated.
 
 
 ## 6. A larger example
@@ -306,7 +306,7 @@ x+2y+z &= 8,\\
 \end{aligned}
 $$
 
-Our first goal is to eliminate \(x\) from the second and third equations.
+Our first goal is to eliminate $x$ from the second and third equations.
 
 Start with the augmented matrix:
 
@@ -321,7 +321,7 @@ $$
 $$
 
 
-### Step 1: Eliminate \(x\) from Row 2
+### Step 1: Eliminate $x$ from Row 2
 
 Perform
 
@@ -342,7 +342,7 @@ $$
 $$
 
 
-### Step 2: Eliminate \(x\) from Row 3
+### Step 2: Eliminate $x$ from Row 3
 
 Perform
 
@@ -363,7 +363,7 @@ $$
 $$
 
 
-### Step 3: Eliminate \(y\) from Row 3
+### Step 3: Eliminate $y$ from Row 3
 
 Perform
 
@@ -414,7 +414,7 @@ $$
 x+2y+z=8.
 $$
 
-Substitute \(y=3\) and \(z=\frac32\):
+Substitute $y=3$ and $z=\frac32$:
 
 $$
 x+6+\frac32=8.
@@ -459,13 +459,13 @@ $$
 E_2=0,
 $$
 
-then replacing \(E_2\) by
+then replacing $E_2$ by
 
 $$
 E_2-3E_1=0
 $$
 
-does not change the solutions, provided \(E_1=0\) is still part of the system.
+does not change the solutions, provided $E_1=0$ is still part of the system.
 
 This allows us to transform a complicated system into a much simpler one.
 
@@ -484,9 +484,9 @@ a_{11}x_1+a_{12}x_2+a_{13}x_3 &= b_1,\\
 \end{aligned}
 $$
 
-The last equation contains only \(x_3\).
+The last equation contains only $x_3$.
 
-The second equation contains \(x_2\) and \(x_3\).
+The second equation contains $x_2$ and $x_3$.
 
 The first equation contains all three variables.
 
@@ -548,7 +548,7 @@ A\mathbf{x}=\mathbf{b}
 U\mathbf{x}=\mathbf{c}.
 $$
 
-Here \(U\) is an upper-triangular matrix.
+Here $U$ is an upper-triangular matrix.
 
 This simple idea is one of the foundations of computational linear algebra.
 

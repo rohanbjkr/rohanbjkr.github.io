@@ -1156,16 +1156,36 @@ $$
 
 ## What's next?
 
-We have learned how to solve \(A\mathbf{x}=\mathbf{b}\).
+We have learned how to solve
 
-But there is a deeper question hiding underneath:
+$$
+A\mathbf{x}=\mathbf{b}.
+$$
 
-> **When does a system have a solution in the first place?**
+So far, we have focused on using elimination to solve a single system.
 
-And if a solution exists, when is it unique?
+But matrices can do much more than represent a system of equations.
 
-To answer these questions, we need to understand the **columns of \(A\)** more carefully.
+We can **multiply matrices together**.
 
-This leads naturally to our next ideas:
+This raises an important question:
 
-**linear combinations, span, and linear independence.**
+> **What does matrix multiplication actually mean?**
+
+In the next lesson, we will develop matrix multiplication from the ground up.
+
+We will start with the familiar multiplication of a matrix and a vector, and then extend the idea to multiplication of two matrices.
+
+Most importantly, we will see that matrix multiplication is not just a rule for calculating numbers—it represents **combining linear transformations**.
+
+### Next lesson
+
+**Matrix Multiplication**
+
+We will learn how to calculate
+
+$$
+AB
+$$
+
+and understand why the dimensions of the matrices matter.

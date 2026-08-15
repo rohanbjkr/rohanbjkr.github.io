@@ -12,7 +12,7 @@ module: "Module 1 · Linear Equations"
 description: "How elimination solves the central problem of linear algebra: A x = b."
 ---
 
-# Solving \(A\mathbf{x}=\mathbf{b}\)
+# Solving $A\mathbf{x}=\mathbf{b}$
 
 We have now reached one of the central problems of linear algebra:
 
@@ -32,10 +32,10 @@ Now we put these ideas together.
 
 The basic question is:
 
-> Given \(A\) and \(\mathbf{b}\), how do we find \(\mathbf{x}\)?
+> Given $A$ and $\mathbf{b}$, how do we find $\mathbf{x}$?
 
 
-## 1. What does \(A\mathbf{x}=\mathbf{b}\) mean?
+## 1. What does $A\mathbf{x}=\mathbf{b}$ mean?
 
 Let's begin with a simple example.
 

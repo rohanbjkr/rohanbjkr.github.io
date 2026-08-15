@@ -10,10 +10,6 @@ lesson_number: 1
 module: "Module 1 · Linear Equations"
 
 description: "The central problem of linear algebra: understanding Ax = b through equations, geometry, and vectors."
-
-next_url: /linear-algebra/elimination/
-
-next_title: "Elimination"
 ---
 
 # The Geometry of Linear Equations

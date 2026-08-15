@@ -1,14 +1,18 @@
-<img width="128" height="128" alt="icon-128" src="https://github.com/user-attachments/assets/35bc7a01-e8dd-4dc2-b39e-665cbd5025f4" />---
+---
 title: "What Is a Vector?"
+
 permalink: /linear-algebra/vectors/
+
 layout: linear-algebra-lesson
 
 lesson_number: 1
+
 module: "Module 1 · Vectors"
 
 description: "A visual introduction to vectors, their components, magnitude, direction, and basic operations."
 
 next_url: /linear-algebra/adding-vectors/
+
 next_title: "Adding Vectors"
 ---
 

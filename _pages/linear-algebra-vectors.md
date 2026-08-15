@@ -590,7 +590,7 @@ But a vector also has a **magnitude** - its length.
 <div style="text-align:center; margin:35px 0;">
 
 <img
-  src="{{ '/assets/images/vector-magnitude.png' | relative_url }}"
+  src="{{ '/assets/images/vector_magnitude.png' | relative_url }}"
   alt="Vector from the origin to (3,4), showing its horizontal and vertical components and its length using the Pythagorean theorem)"
   style="width:100%; max-width:1100px; height:auto; border-radius:12px;">
 

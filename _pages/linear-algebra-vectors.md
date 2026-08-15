@@ -1,19 +1,15 @@
 ---
-title: "What Is a Vector?"
+title: "Vectors in Rⁿ"
 
 permalink: /linear-algebra/vectors/
 
 layout: linear-algebra-lesson
 
-lesson_number: 1
+lesson_number: 9
 
-module: "Module 4 · Vectors"
+module: "Module 3 · Vector Spaces"
 
-description: "A visual introduction to vectors, their components, magnitude, direction, and basic operations."
-
-next_url: /linear-algebra/adding-vectors/
-
-next_title: "Adding Vectors"
+description: "Vectors, components, magnitude, direction, and the geometry of Rⁿ."
 ---
 
 ## How do we describe movement mathematically?

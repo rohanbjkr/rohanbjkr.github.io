@@ -527,7 +527,9 @@ It tells us about the **structure of the solution set**.
 ## 11. The big picture
 
 We can summarize the process as:
-<div class="math-scroll">
+
+<div style="width:100%; overflow-x:auto;">
+<div style="width:900px;">
 $$
 \text{Original system}
 \longrightarrow
@@ -537,6 +539,7 @@ $$
 \longrightarrow
 \text{Back substitution}
 $$
+</div>
 </div>
 
 And in matrix notation:

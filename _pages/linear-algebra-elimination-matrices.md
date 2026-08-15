@@ -1,39 +1,38 @@
 ---
 title: "Elimination Matrices"
-
 permalink: /linear-algebra/elimination-matrices/
-
 layout: linear-algebra-lesson
-
 lesson_number: 3
-
 module: "Module 1 · Linear Equations"
-
-description: "Seeing elimination as multiplication by matrices."
+description: "Understanding how row operations can be represented by matrix multiplication."
 ---
 
 # Elimination Matrices
 
-In the previous lesson, we learned how to solve systems of linear equations using **elimination**.
+In the previous lesson, we learned how to solve systems of equations using **elimination**.
 
-We repeatedly performed operations such as
+For example, we used row operations such as
 
 $$
-R_2 \leftarrow R_2-2R_1.
+R_2 \leftarrow R_2-2R_1
 $$
 
-This works very well.
+to eliminate variables.
 
-But linear algebra asks a deeper question:
+That was useful computationally.
 
-> **Can we describe an elimination step using a matrix?**
+But now we ask a deeper question:
 
-The answer is **yes**.
+> **Can a matrix itself perform this row operation?**
 
-And this idea gives us a beautiful connection between equations, row operations, and matrix multiplication.
+The answer is yes.
+
+Such a matrix is called an **elimination matrix**.
+
+The important part is understanding where that matrix comes from. We will not simply write it down—we will build it from something we already know.
 
 
-## 1. Start with a simple system
+## 1. Start with a system
 
 Consider
 
@@ -74,7 +73,7 @@ x_2
 \end{bmatrix}.
 $$
 
-So
+Therefore,
 
 $$
 \begin{bmatrix}
@@ -93,44 +92,708 @@ x_2
 $$
 
 
-## 2. Perform elimination
+## 2. Perform ordinary elimination first
 
 We want to eliminate \(x_1\) from the second equation.
 
-The first row is
+The equations are
 
 $$
-R_1=[1\quad1].
+\begin{aligned}
+x_1+x_2 &= 3,\\
+2x_1+3x_2 &= 8.
+\end{aligned}
 $$
 
-The second row is
+The first coefficient in Row 1 is \(1\).
 
-$$
-R_2=[2\quad3].
-$$
+The first coefficient in Row 2 is \(2\).
 
-So we perform
+Therefore, subtract twice Row 1 from Row 2:
 
 $$
 R_2\leftarrow R_2-2R_1.
 $$
 
-The coefficient matrix becomes
+Let's do it explicitly:
 
 $$
+(2x_1+3x_2)-2(x_1+x_2)=8-2(3).
+$$
+
+This gives
+
+$$
+x_2=2.
+$$
+
+At the matrix level,
+
+$$
+\begin{bmatrix}
+1&1\\
+2&3
+\end{bmatrix}
+\longrightarrow
 \begin{bmatrix}
 1&1\\
 0&1
 \end{bmatrix}.
 $$
 
-The right-hand side must undergo the same operation:
+The \(2\) below the first pivot has disappeared.
+
+This is exactly what we wanted.
+
+
+## 3. A new question
+
+Until now, we have written the elimination step as
 
 $$
-3\rightarrow 8-2(3)=2.
+R_2\leftarrow R_2-2R_1.
 $$
 
-Therefore the transformed system is
+But suppose we want a matrix \(E\) that performs this operation automatically.
+
+We want
+
+$$
+EA
+=
+\begin{bmatrix}
+1&1\\
+0&1
+\end{bmatrix}.
+$$
+
+What should \(E\) be?
+
+It might seem that we need to guess.
+
+We do not.
+
+There is a systematic way to construct it.
+
+
+## 4. Start with the identity matrix
+
+Consider the identity matrix
+
+$$
+I=
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}.
+$$
+
+We already know that the identity matrix does nothing:
+
+$$
+IA=A.
+$$
+
+For our matrix,
+
+$$
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}
+\begin{bmatrix}
+1&1\\
+2&3
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&1\\
+2&3
+\end{bmatrix}.
+$$
+
+But why does this happen?
+
+Understanding that will tell us how to construct an elimination matrix.
+
+
+## 5. What does the first row of the identity matrix do?
+
+The first row of \(I\) is
+
+$$
+[1\quad0].
+$$
+
+When it multiplies \(A\),
+
+$$
+[1\quad0]
+\begin{bmatrix}
+1&1\\
+2&3
+\end{bmatrix},
+$$
+
+we get
+
+$$
+[1\quad1].
+$$
+
+That is exactly Row 1 of \(A\).
+
+In other words,
+
+$$
+[1\quad0]A=R_1.
+$$
+
+The numbers \(1\) and \(0\) are telling us
+
+$$
+1R_1+0R_2.
+$$
+
+So the first row of the identity matrix says:
+
+> Take one copy of Row 1 and zero copies of Row 2.
+
+
+## 6. What does the second row do?
+
+The second row of \(I\) is
+
+$$
+[0\quad1].
+$$
+
+Therefore,
+
+$$
+[0\quad1]A=R_2.
+$$
+
+The coefficients \(0\) and \(1\) mean
+
+$$
+0R_1+1R_2.
+$$
+
+So the identity matrix can be interpreted as
+
+$$
+IA
+=
+\begin{bmatrix}
+R_1\\
+R_2
+\end{bmatrix}.
+$$
+
+This is why \(IA=A\).
+
+The identity matrix simply asks for the original rows back.
+
+
+## 7. Now construct the elimination matrix
+
+Our elimination operation is
+
+$$
+R_2\leftarrow R_2-2R_1.
+$$
+
+We want:
+
+- Row 1 to remain \(R_1\)
+- Row 2 to become \(R_2-2R_1\)
+
+The first row is easy.
+
+We want
+
+$$
+R_1,
+$$
+
+so we keep
+
+$$
+[1\quad0].
+$$
+
+Now consider the second row.
+
+We want
+
+$$
+R_2-2R_1.
+$$
+
+Rewrite it in the order \(R_1,R_2\):
+
+$$
+-2R_1+1R_2.
+$$
+
+The coefficients are therefore
+
+$$
+[-2\quad1].
+$$
+
+So instead of using
+
+$$
+[0\quad1]
+$$
+
+as the second row of the identity matrix, we use
+
+$$
+[-2\quad1].
+$$
+
+Therefore,
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}.
+$$
+
+That is our elimination matrix.
+
+
+## 8. Where did the \(-2\) come from?
+
+This is worth emphasizing.
+
+The \(-2\) was **not guessed**.
+
+It came directly from the row operation
+
+$$
+R_2\leftarrow R_2-2R_1.
+$$
+
+We can write the new second row as
+
+$$
+-2R_1+1R_2.
+$$
+
+Therefore its coefficients are
+
+$$
+[-2\quad1].
+$$
+
+Those coefficients become the second row of \(E\).
+
+The logic is simply
+
+$$
+R_2-2R_1
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+-2R_1+1R_2
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+[-2\quad1]
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}.
+$$
+
+
+## 9. Verify that it works
+
+Now let's multiply \(E\) and \(A\):
+
+$$
+EA=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}
+\begin{bmatrix}
+1&1\\
+2&3
+\end{bmatrix}.
+$$
+
+Look at the first row:
+
+$$
+[1\quad0]A=R_1.
+$$
+
+Therefore the first row remains
+
+$$
+[1\quad1].
+$$
+
+Now look at the second row:
+
+$$
+[-2\quad1]A=-2R_1+R_2.
+$$
+
+Since
+
+$$
+R_1=[1\quad1]
+$$
+
+and
+
+$$
+R_2=[2\quad3],
+$$
+
+we get
+
+$$
+-2[1\quad1]+[2\quad3].
+$$
+
+Therefore,
+
+$$
+[-2\quad-2]+[2\quad3]
+=
+[0\quad1].
+$$
+
+So
+
+$$
+EA=
+\begin{bmatrix}
+1&1\\
+0&1
+\end{bmatrix}.
+$$
+
+Exactly the matrix produced by ordinary elimination.
+
+
+## 10. The general rule
+
+Now suppose the number below the pivot is not \(2\), but some number \(m\).
+
+The elimination operation would be
+
+$$
+R_2\leftarrow R_2-mR_1.
+$$
+
+Rewrite the new second row as
+
+$$
+-mR_1+R_2.
+$$
+
+Therefore the coefficients are
+
+$$
+[-m\quad1].
+$$
+
+Starting from
+
+$$
+I=
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix},
+$$
+
+replace the second row with
+
+$$
+[-m\quad1].
+$$
+
+This gives
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-m&1
+\end{bmatrix}.
+$$
+
+Then
+
+$$
+EA
+$$
+
+performs the row operation
+
+$$
+R_2\leftarrow R_2-mR_1.
+$$
+
+
+## 11. What is the multiplier \(m\)?
+
+Suppose
+
+$$
+A=
+\begin{bmatrix}
+a&b\\
+c&d
+\end{bmatrix}.
+$$
+
+We want to eliminate \(c\).
+
+The first pivot is \(a\).
+
+We ask:
+
+> How many copies of the pivot \(a\) do we need to subtract from \(c\) to make it zero?
+
+The answer is
+
+$$
+m=\frac{c}{a}.
+$$
+
+Because
+
+$$
+c-ma
+=
+c-\frac{c}{a}a
+=
+0.
+$$
+
+So the elimination operation is
+
+$$
+R_2\leftarrow R_2-\frac{c}{a}R_1.
+$$
+
+The corresponding elimination matrix is
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-\frac{c}{a}&1
+\end{bmatrix}.
+$$
+
+This shows exactly where the multiplier comes from.
+
+
+## 12. Why do we multiply on the left?
+
+Notice that we write
+
+$$
+EA,
+$$
+
+not
+
+$$
+AE.
+$$
+
+This is important.
+
+Left multiplication combines the **rows** of \(A\).
+
+For example,
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}.
+$$
+
+The first row says
+
+$$
+1R_1+0R_2.
+$$
+
+The second row says
+
+$$
+-2R_1+1R_2.
+$$
+
+Therefore,
+
+$$
+EA
+=
+\begin{bmatrix}
+R_1\\
+R_2-2R_1
+\end{bmatrix}.
+$$
+
+So elementary row operations are performed by multiplying \(A\) from the **left**.
+
+
+## 13. What happens to the right-hand side?
+
+Remember that our original system is
+
+$$
+A\mathbf{x}=\mathbf{b}.
+$$
+
+If we perform elimination on \(A\), we must perform the same operation on \(\mathbf{b}\).
+
+Multiply both sides by \(E\):
+
+$$
+E(A\mathbf{x})=E\mathbf{b}.
+$$
+
+Matrix multiplication is associative, so
+
+$$
+(EA)\mathbf{x}=E\mathbf{b}.
+$$
+
+If we call
+
+$$
+U=EA
+$$
+
+and
+
+$$
+\mathbf{c}=E\mathbf{b},
+$$
+
+then the transformed system is
+
+$$
+U\mathbf{x}=\mathbf{c}.
+$$
+
+The solution \(\mathbf{x}\) has not changed.
+
+We have simply transformed the equations into a form that is easier to solve.
+
+
+## 14. Apply it to our example
+
+Recall
+
+$$
+A=
+\begin{bmatrix}
+1&1\\
+2&3
+\end{bmatrix},
+\qquad
+\mathbf{b}
+=
+\begin{bmatrix}
+3\\
+8
+\end{bmatrix}.
+$$
+
+Our elimination matrix is
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}.
+$$
+
+We already found
+
+$$
+EA=
+\begin{bmatrix}
+1&1\\
+0&1
+\end{bmatrix}.
+$$
+
+Now apply \(E\) to \(\mathbf{b}\):
+
+$$
+E\mathbf{b}
+=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}
+\begin{bmatrix}
+3\\
+8
+\end{bmatrix}.
+$$
+
+Therefore,
+
+$$
+E\mathbf{b}
+=
+\begin{bmatrix}
+3\\
+-2(3)+8
+\end{bmatrix}
+=
+\begin{bmatrix}
+3\\
+2
+\end{bmatrix}.
+$$
+
+So the original system
+
+$$
+A\mathbf{x}=\mathbf{b}
+$$
+
+has become
 
 $$
 \begin{bmatrix}
@@ -148,315 +811,26 @@ x_2
 \end{bmatrix}.
 $$
 
-The system is now triangular.
+The second equation immediately gives
 
-
-## 3. Where does the elimination matrix come from?
-
-Here is the key idea.
-
-We want a matrix that performs
-
-$$
-R_2\leftarrow R_2-2R_1.
-$$
-
-Consider
-
-$$
-E=
-\begin{bmatrix}
-1&0\\
--2&1
-\end{bmatrix}.
-$$
-
-Now multiply \(E\) by \(A\):
-
-$$
-EA
-=
-\begin{bmatrix}
-1&0\\
--2&1
-\end{bmatrix}
-\begin{bmatrix}
-1&1\\
-2&3
-\end{bmatrix}.
-$$
-
-Calculate the rows.
-
-The first row remains unchanged:
-
-$$
-[1\quad0]A
-=
-[1\quad1].
-$$
-
-The second row becomes
-
-$$
-[-2\quad1]A
-=
--2R_1+R_2.
-$$
-
-Therefore,
-
-$$
-EA
-=
-\begin{bmatrix}
-1&1\\
-0&1
-\end{bmatrix}.
-$$
-
-Exactly what we wanted.
-
-
-## 4. The elimination matrix
-
-We call
-
-$$
-E=
-\begin{bmatrix}
-1&0\\
--2&1
-\end{bmatrix}
-$$
-
-an **elimination matrix**.
-
-Its job is to perform the row operation
-
-$$
-R_2\leftarrow R_2-2R_1.
-$$
-
-So instead of writing
-
-$$
-R_2\leftarrow R_2-2R_1,
-$$
-
-we can write
-
-$$
-EA=U.
-$$
-
-Here,
-
-$$
-U=
-\begin{bmatrix}
-1&1\\
-0&1
-\end{bmatrix}.
-$$
-
-This is a much more powerful way of thinking about elimination.
-
-
-## 5. Why does multiplication by \(E\) change the rows?
-
-Remember how matrix multiplication works.
-
-If
-
-$$
-E=
-\begin{bmatrix}
-1&0\\
--2&1
-\end{bmatrix},
-$$
-
-then its first row is
-
-$$
-[1\quad0].
-$$
-
-When this row multiplies \(A\), it selects the first row of \(A\):
-
-$$
-[1\quad0]A=R_1.
-$$
-
-The second row is
-
-$$
-[-2\quad1].
-$$
-
-Therefore,
-
-$$
-[-2\quad1]A=-2R_1+R_2.
-$$
-
-So the matrix \(E\) is essentially telling us:
-
-> Keep Row 1. Replace Row 2 with Row 2 minus 2 times Row 1.
-
-
-## 6. The same operation happens to \(b\)
-
-Remember our original system:
-
-$$
-A\mathbf{x}=\mathbf{b}.
-$$
-
-If we multiply both sides by \(E\), we get
-
-$$
-E(A\mathbf{x})=E\mathbf{b}.
-$$
-
-Using associativity,
-
-$$
-(EA)\mathbf{x}=E\mathbf{b}.
-$$
-
-So
-
-$$
-A\mathbf{x}=\mathbf{b}
-$$
-
-becomes
-
-$$
-U\mathbf{x}=\mathbf{c},
-$$
-
-where
-
-$$
-U=EA
-$$
-
-and
-
-$$
-\mathbf{c}=E\mathbf{b}.
-$$
-
-This is exactly what elimination does.
-
-It transforms **both sides of the system at the same time**.
-
-
-## 7. A geometric interpretation
-
-There is another way to understand this.
-
-Our original system was
-
-$$
-A\mathbf{x}=\mathbf{b}.
-$$
-
-The vector
-
-$$
-\mathbf{b}
-$$
-
-is transformed by the elimination matrix:
-
-$$
-\mathbf{c}=E\mathbf{b}.
-$$
-
-At the same time, the matrix \(A\) is transformed:
-
-$$
-U=EA.
-$$
-
-So the entire equation becomes
-
-$$
-A\mathbf{x}=\mathbf{b}
-$$
-
-\[
-\Downarrow
-\]
-
-$$
-EA\mathbf{x}=E\mathbf{b}
-$$
-
-or
-
-$$
-U\mathbf{x}=\mathbf{c}.
-$$
-
-The solution \(\mathbf{x}\) has not changed.
-
-We have simply transformed the system into a form that is easier to solve.
-
-
-## 8. A general elimination matrix
-
-Suppose we want to perform
-
-$$
-R_i\leftarrow R_i-mR_j.
 $$
-
-The corresponding elimination matrix is the identity matrix with one entry changed.
-
-For example, for
-
-$$
-R_2\leftarrow R_2-mR_1,
-$$
-
-we use
-
+x_2=2.
 $$
-E=
-\begin{bmatrix}
-1&0\\
--m&1
-\end{bmatrix}.
-$$
 
-For a three-by-three matrix,
+Then the first equation gives
 
 $$
-R_3\leftarrow R_3-mR_1
+x_1+x_2=3,
 $$
 
-would use
+so
 
 $$
-E=
-\begin{bmatrix}
-1&0&0\\
-0&1&0\\
--m&0&1
-\end{bmatrix}.
+x_1=1.
 $$
-
-The pattern is important.
-
-The diagonal remains \(1\), while the elimination multiplier appears below the pivot.
 
 
-## 9. Elimination of a larger system
+## 15. Now try a \(3\times3\) matrix
 
 Consider
 
@@ -469,19 +843,85 @@ A=
 \end{bmatrix}.
 $$
 
-From the previous lesson, we performed
+We want to eliminate the entries below the first pivot.
+
+The pivot is \(1\).
+
+
+### Eliminate the \(2\)
+
+For Row 2,
 
 $$
-R_2\leftarrow R_2-2R_1
+R_2\leftarrow R_2-2R_1.
 $$
 
-and
+So the new Row 2 is
+
+$$
+-2R_1+R_2.
+$$
+
+Its coefficients are
+
+$$
+[-2\quad1\quad0].
+$$
+
+
+### Eliminate the \(-1\)
+
+For Row 3, we want
 
 $$
 R_3\leftarrow R_3+R_1.
 $$
 
-The first elimination matrix is
+This can be written as
+
+$$
+R_1+R_3.
+$$
+
+Its coefficients are
+
+$$
+[1\quad0\quad1].
+$$
+
+
+## 16. Construct the matrix from the identity
+
+Start with
+
+$$
+I=
+\begin{bmatrix}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix}.
+$$
+
+Row 1 remains unchanged:
+
+$$
+[1\quad0\quad0].
+$$
+
+Row 2 becomes
+
+$$
+[-2\quad1\quad0].
+$$
+
+Row 3 becomes
+
+$$
+[1\quad0\quad1].
+$$
+
+Therefore,
 
 $$
 E_1=
@@ -492,18 +932,11 @@ E_1=
 \end{bmatrix}.
 $$
 
-Multiplying,
+Multiplying gives
 
 $$
 E_1A
-$$
-
-performs both operations simultaneously.
-
-The result is
-
-$$
-E_1A=
+=
 \begin{bmatrix}
 1&2&1\\
 0&1&0\\
@@ -511,18 +944,53 @@ E_1A=
 \end{bmatrix}.
 $$
 
+The entries below the first pivot are now zero.
 
-## 10. A second elimination step
 
-Now we want to eliminate the \(1\) below the second pivot.
+## 17. A second elimination matrix
 
-The operation is
+We still have a \(1\) below the second pivot:
+
+$$
+\begin{bmatrix}
+1&2&1\\
+0&1&0\\
+0&1&2
+\end{bmatrix}.
+$$
+
+We want
 
 $$
 R_3\leftarrow R_3-R_2.
 $$
 
-The corresponding elimination matrix is
+Start again with the identity matrix:
+
+$$
+I=
+\begin{bmatrix}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix}.
+$$
+
+Rows 1 and 2 stay unchanged.
+
+For Row 3 we want
+
+$$
+-R_2+R_3.
+$$
+
+So the third row should be
+
+$$
+[0\quad-1\quad1].
+$$
+
+Therefore,
 
 $$
 E_2=
@@ -533,16 +1001,32 @@ E_2=
 \end{bmatrix}.
 $$
 
-Therefore,
+
+## 18. Complete the elimination
+
+The first elimination gave
+
+$$
+E_1A.
+$$
+
+Now apply \(E_2\):
+
+$$
+E_2(E_1A).
+$$
+
+By associativity,
+
+$$
+E_2E_1A.
+$$
+
+The result is
 
 $$
 E_2E_1A
-$$
-
-produces the upper-triangular matrix
-
-$$
-U=
+=
 \begin{bmatrix}
 1&2&1\\
 0&1&0\\
@@ -550,34 +1034,28 @@ U=
 \end{bmatrix}.
 $$
 
-So the complete elimination process can be written as
+Call this upper-triangular matrix \(U\).
+
+Then
 
 $$
-\boxed{
-E_2E_1A=U
-}.
+E_2E_1A=U.
 $$
 
+This equation summarizes the entire elimination process.
 
-## 11. Why are there two matrices?
 
-This is an important point.
+## 19. Order matters
 
-We performed two elimination steps.
-
-The first step was represented by
+Notice carefully:
 
 $$
-E_1.
+E_2E_1A.
 $$
 
-The second step was represented by
+Which elimination matrix acts first?
 
-$$
-E_2.
-$$
-
-Therefore,
+It is \(E_1\), because it is closest to \(A\):
 
 $$
 A
@@ -587,173 +1065,94 @@ E_1A
 E_2E_1A.
 $$
 
-Notice the order.
+So matrix operations are read from **right to left** when we think about which transformation happens first.
 
-The matrix \(E_1\) acts first.
-
-Then \(E_2\) acts on the result.
-
-This is exactly like functions:
-
-$$
-f(g(x))
-$$
-
-where \(g\) happens first and \(f\) happens second.
+This will become very important later when we multiply several matrices together.
 
 
-## 12. Elimination and the identity matrix
+## 20. Elimination matrices and inverses
 
-There is an even deeper connection.
+There is another useful observation.
 
-Suppose we continue elimination until the matrix becomes the identity matrix:
+Suppose
 
 $$
-E_kE_{k-1}\cdots E_2E_1A=I.
+E=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}.
 $$
 
-Then we have transformed \(A\) into \(I\).
-
-This means
+This matrix performs
 
 $$
-E_kE_{k-1}\cdots E_2E_1=A^{-1}.
+R_2\leftarrow R_2-2R_1.
 $$
 
-Therefore,
+How could we undo this operation?
+
+We would add \(2R_1\) back:
 
 $$
-\boxed{
-A^{-1}
+R_2\leftarrow R_2+2R_1.
+$$
+
+The matrix that performs this reverse operation is
+
+$$
+E^{-1}
 =
-E_kE_{k-1}\cdots E_2E_1
-}.
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}.
 $$
 
-So the inverse of a matrix can be understood as the **product of the elimination matrices that reduce the matrix to the identity**.
-
-This is one of the central ideas behind Gaussian elimination.
-
-
-## 13. Why the identity matrix appears
-
-Remember:
+Notice what happened:
 
 $$
-IA=A.
+-2
+\quad\longrightarrow\quad
++2.
 $$
 
-The identity matrix does nothing.
-
-Therefore, if we can find a matrix \(E\) such that
+Indeed,
 
 $$
-EA=I,
+E^{-1}E=I.
 $$
 
-then \(E\) must be the inverse of \(A\).
-
-By definition,
-
-$$
-A^{-1}A=I.
-$$
-
-So elimination gives us a practical way of constructing \(A^{-1}\).
+So elimination matrices are invertible, and their inverses simply **undo the corresponding row operation**.
 
 
-## 14. The connection to solving Ax = b
+## 21. A preview of LU factorization
 
-We started with
+We found that
 
 $$
-A\mathbf{x}=\mathbf{b}.
+E_2E_1A=U.
 $$
 
-After elimination,
+This means elimination transforms \(A\) into an upper-triangular matrix \(U\).
+
+If we multiply by the inverse elimination matrices, we can work backward:
 
 $$
-E_k\cdots E_2E_1A\mathbf{x}
-=
-E_k\cdots E_2E_1\mathbf{b}.
+A=E_1^{-1}E_2^{-1}U.
 $$
 
-If the left side becomes \(I\mathbf{x}\), then
+The product of these inverse elimination matrices will eventually lead us to a matrix called \(L\).
+
+Then we will obtain one of the most important factorizations in linear algebra:
 
 $$
-\mathbf{x}
-=
-E_k\cdots E_2E_1\mathbf{b}.
+A=LU.
 $$
 
-But we just saw that
+We will study this carefully later.
 
-$$
-E_k\cdots E_2E_1=A^{-1}.
-$$
-
-Therefore,
-
-$$
-\boxed{
-\mathbf{x}=A^{-1}\mathbf{b}
-}.
-$$
-
-This connects three ideas:
-
-$$
-\boxed{
-\text{Elimination}
-\quad\Longleftrightarrow\quad
-\text{Inverse Matrix}
-\quad\Longleftrightarrow\quad
-A^{-1}\mathbf{b}
-}
-$$
-
-However, there is an important computational lesson:
-
-> We usually **do not calculate \(A^{-1}\)** just to solve one system.
-
-Elimination is generally the more direct approach.
-
-
-## 15. The big picture
-
-We can now see the structure of the first three lessons.
-
-### Lesson 1
-
-We asked:
-
-> What does \(A\mathbf{x}=\mathbf{b}\) mean?
-
-We saw equations, geometry, and vectors.
-
-### Lesson 2
-
-We asked:
-
-> How can we solve \(A\mathbf{x}=\mathbf{b}\)?
-
-We learned elimination.
-
-### Lesson 3
-
-We ask:
-
-> What is elimination in matrix language?
-
-The answer is:
-
-$$
-\boxed{
-\text{Elimination is multiplication by elimination matrices.}
-}
-$$
-
-This is the bridge between elementary row operations and matrix algebra.
+For now, the important point is that **LU factorization grows directly out of elimination**.
 
 
 ## Key idea
@@ -764,21 +1163,37 @@ This is the bridge between elementary row operations and matrix algebra.
 The main idea
 </div>
 
-An elimination step such as
+An elimination matrix is not something we need to memorize or guess.
+
+Start with the identity matrix and perform the desired row operation on it.
+
+For example,
 
 $$
-R_2\leftarrow R_2-mR_1
+R_2\leftarrow R_2-2R_1
 $$
 
-can be represented by multiplying the matrix on the left by an elimination matrix.
-
-Thus,
+changes
 
 $$
-EA=U
+I=
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}
 $$
 
-is the matrix version of Gaussian elimination.
+into
+
+$$
+E=
+\begin{bmatrix}
+1&0\\
+-2&1
+\end{bmatrix}.
+$$
+
+Multiplying \(EA\) then performs the same row operation on \(A\).
 
 </div>
 
@@ -790,39 +1205,75 @@ Consider
 $$
 A=
 \begin{bmatrix}
-1&2\\
-3&7
+2&1\\
+6&5
 \end{bmatrix}.
 $$
 
-We want to eliminate the \(3\) below the first pivot.
+We want to eliminate the \(6\) below the first pivot.
+
 
 ### Question 1
 
-What row operation should we perform?
+What is the pivot?
+
 
 ### Question 2
 
-What elimination matrix \(E\) performs this operation?
+What multiplier \(m\) should we use?
+
 
 ### Question 3
 
-Verify that
+What row operation eliminates the \(6\)?
 
-$$
-EA
-$$
 
-is upper triangular.
+### Question 4
+
+Construct the elimination matrix \(E\) from the identity matrix.
+
+
+### Question 5
+
+Calculate \(EA\).
+
 
 <details>
 
 <summary>Show solution</summary>
 
-We want
+The pivot is
+
+$$
+2.
+$$
+
+The multiplier is
+
+$$
+m=\frac{6}{2}=3.
+$$
+
+Therefore the row operation is
 
 $$
 R_2\leftarrow R_2-3R_1.
+$$
+
+Start with
+
+$$
+I=
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}.
+$$
+
+The new second row must represent
+
+$$
+-3R_1+R_2.
 $$
 
 Therefore,
@@ -838,88 +1289,88 @@ $$
 Now multiply:
 
 $$
-EA=
+EA
+=
 \begin{bmatrix}
 1&0\\
 -3&1
 \end{bmatrix}
 \begin{bmatrix}
-1&2\\
-3&7
+2&1\\
+6&5
 \end{bmatrix}.
 $$
 
-Therefore,
+This gives
 
 $$
 EA=
 \begin{bmatrix}
-1&2\\
-0&1
+2&1\\
+0&2
 \end{bmatrix}.
 $$
 
-The matrix is upper triangular.
+The \(6\) below the pivot has been eliminated.
 
 </details>
 
 
-## One more thing to notice
+## What should you remember?
 
-There is a pattern in the elimination matrices:
+There are four ideas worth carrying forward.
 
-$$
-E=
-\begin{bmatrix}
-1&0&0\\
--m_{21}&1&0\\
--m_{31}&0&1
-\end{bmatrix}.
-$$
-
-The numbers
+**First**, elimination is a row operation:
 
 $$
-m_{21},\quad m_{31},\ldots
+R_2\leftarrow R_2-mR_1.
 $$
 
-are called **multipliers**.
-
-These multipliers will become extremely important when we study **LU factorization** later in the course.
-
-For now, remember:
+**Second**, the multiplier is determined by
 
 $$
-\boxed{
-\text{The multipliers used in elimination are stored inside the elimination matrices.}
-}
+m=
+\frac{\text{entry to eliminate}}
+{\text{pivot}}.
+$$
+
+**Third**, we construct the elimination matrix by applying the row operation to the identity matrix:
+
+$$
+I
+\longrightarrow
+E.
+$$
+
+**Fourth**, multiplying from the left performs that same operation on \(A\):
+
+$$
+EA.
+$$
+
+So we now have the connection
+
+$$
+\text{ordinary elimination}
+\longrightarrow
+\text{row operations}
+\longrightarrow
+\text{elimination matrices}
+\longrightarrow
+\text{matrix multiplication}.
 $$
 
 
 ## What's next?
 
-We have now seen elimination from three different perspectives:
+We now know how to transform a matrix using elimination.
+
+But our original goal was to solve
 
 $$
-\text{Equations}
-\longrightarrow
-\text{Row operations}
-\longrightarrow
-\text{Matrix multiplication}.
+A\mathbf{x}=\mathbf{b}.
 $$
 
-But there is still a practical question:
+In the next lesson, we will bring these ideas together and study **Solving \(A\mathbf{x}=\mathbf{b}\)**.
 
-> **How does all of this fit together for a general system \(A\mathbf{x}=\mathbf{b}\)?**
-
-In the next lesson, we will return to the original problem of solving
-
-$$
-\boxed{A\mathbf{x}=\mathbf{b}}
-$$
-
-and use everything we have learned so far to understand the different possibilities:
-
-- one solution,
-- no solution, or
-- infinitely many solutions.
+We will also begin to see why some systems have a unique solution, while others behave very differently.

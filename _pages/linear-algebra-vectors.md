@@ -1,4 +1,4 @@
----
+<img width="128" height="128" alt="icon-128" src="https://github.com/user-attachments/assets/35bc7a01-e8dd-4dc2-b39e-665cbd5025f4" />---
 title: "What Is a Vector?"
 permalink: /linear-algebra/vectors/
 layout: linear-algebra-lesson
@@ -55,7 +55,7 @@ $$
 means:
 
 - move $3$ units horizontally;
-- move \(2\) units vertically.
+- move $2$ units vertically.
 
 That simple idea is the beginning of linear algebra.
 
@@ -69,26 +69,18 @@ The arrow starts at the origin and points toward the location described by its c
 
 For
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix},
-\]
+$$
 
 the arrow goes from
 
-\[
-(0,0)
-\]
-
-to
-
-\[
-(3,2).
-\]
+$(0,0)$ to $(3,2).$
 
 <div style="display:flex;justify-content:center;margin:35px 0;">
 
@@ -216,7 +208,7 @@ The arrow is not just a picture.
 
 It is telling us something precise:
 
-\[
+$$
 \boxed{
 \mathbf{v}
 =
@@ -224,7 +216,7 @@ It is telling us something precise:
 3\\
 2
 \end{bmatrix}}
-\]
+$$
 
 The vector has a **horizontal component** of \(3\) and a **vertical component** of \(2\).
 
@@ -234,39 +226,39 @@ The vector has a **horizontal component** of \(3\) and a **vertical component** 
 
 Consider the vector
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 a\\
 b
 \end{bmatrix}.
-\]
+$$
 
-We call \(a\) and \(b\) the **components** of the vector.
+We call $a$ and $b$ the **components** of the vector.
 
 For example,
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 5\\
 -2
 \end{bmatrix}
-\]
+$$
 
 has:
 
-\[
+$$
 \text{horizontal component}=5
-\]
+$$
 
 and
 
-\[
+$$
 \text{vertical component}=-2.
-\]
+$$
 
 The negative sign tells us that the vertical movement is downward.
 
@@ -278,14 +270,14 @@ The negative sign tells us that the vertical movement is downward.
 
 A vector in two dimensions can be represented by two components:
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 v_1\\
 v_2
 \end{bmatrix}.
-\]
+$$
 
 The components tell us how much the vector moves in each coordinate direction.
 
@@ -299,22 +291,22 @@ This distinction is important.
 
 Suppose we have a point
 
-\[
+$$
 P=(3,2).
-\]
+$$
 
 This tells us **where something is**.
 
 But the vector
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}
-\]
+$$
 
 tells us **how to move**.
 
@@ -324,42 +316,42 @@ We can use a vector to move from one point to another.
 
 Suppose
 
-\[
+$$
 P=(1,1)
-\]
+$$
 
 and
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}.
-\]
+$$
 
 Adding the vector to the point gives
 
-\[
+$$
 P+\mathbf{v}
 =
 (1,1)+(3,2)
 =
 (4,3).
-\]
+$$
 
 So the vector moves us from
 
-\[
+$$
 (1,1)
-\]
+$$
 
 to
 
-\[
+$$
 (4,3).
-\]
+$$
 
 ---
 
@@ -369,35 +361,35 @@ Now suppose we make two movements.
 
 The first movement is
 
-\[
+$$
 \mathbf{u}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}.
-\]
+$$
 
 The second movement is
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 1\\
 4
 \end{bmatrix}.
-\]
+$$
 
 Our total movement is
 
-\[
+$$
 \mathbf{u}+\mathbf{v}.
-\]
+$$
 
 We add the corresponding components:
 
-\[
+$$
 \mathbf{u}+\mathbf{v}
 =
 \begin{bmatrix}
@@ -409,19 +401,19 @@ We add the corresponding components:
 1\\
 4
 \end{bmatrix}
-\]
+$$
 
-\[
+$$
 =
 \begin{bmatrix}
 3+1\\
 2+4
 \end{bmatrix}
-\]
+$$
 
 and therefore
 
-\[
+$$
 \boxed{
 \mathbf{u}+\mathbf{v}
 =
@@ -429,7 +421,7 @@ and therefore
 4\\
 6
 \end{bmatrix}}
-\]
+$$
 
 So vector addition is simply **component-by-component addition**.
 
@@ -443,40 +435,40 @@ Example 1 · Vector Addition
 
 Suppose
 
-\[
+$$
 \mathbf{a}
 =
 \begin{bmatrix}
 2\\
 5
 \end{bmatrix}
-\]
+$$
 
 and
 
-\[
+$$
 \mathbf{b}
 =
 \begin{bmatrix}
 3\\
 -1
 \end{bmatrix}.
-\]
+$$
 
 Then
 
-\[
+$$
 \mathbf{a}+\mathbf{b}
 =
 \begin{bmatrix}
 2+3\\
 5+(-1)
 \end{bmatrix}
-\]
+$$
 
 so
 
-\[
+$$
 \boxed{
 \mathbf{a}+\mathbf{b}
 =
@@ -484,7 +476,7 @@ so
 5\\
 4
 \end{bmatrix}}
-\]
+$$
 
 </div>
 
@@ -498,18 +490,18 @@ These numbers are called **scalars**.
 
 Suppose
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 2\\
 1
 \end{bmatrix}.
-\]
+$$
 
-Multiply it by \(3\):
+Multiply it by $3$:
 
-\[
+$$
 3\mathbf{v}
 =
 3
@@ -517,24 +509,24 @@ Multiply it by \(3\):
 2\\
 1
 \end{bmatrix}.
-\]
+$$
 
 Multiply each component by \(3\):
 
-\[
+$$
 3\mathbf{v}
 =
 \begin{bmatrix}
 6\\
 3
 \end{bmatrix}.
-\]
+$$
 
 Geometrically, the vector becomes three times as long.
 
 In general,
 
-\[
+$$
 c
 \begin{bmatrix}
 x\\
@@ -545,7 +537,7 @@ y
 cx\\
 cy
 \end{bmatrix}.
-\]
+$$
 
 ---
 
@@ -553,47 +545,47 @@ cy
 
 Consider
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 2\\
 1
 \end{bmatrix}.
-\]
+$$
 
-Multiplying by \(-1\) gives
+Multiplying by $-1$ gives
 
-\[
+$$
 -\mathbf{v}
 =
 \begin{bmatrix}
 -2\\
 -1
 \end{bmatrix}.
-\]
+$$
 
 The vector now points in the opposite direction.
 
 So:
 
-\[
+$$
 \boxed{
 \text{positive scalar}
 \rightarrow
 \text{same direction}
 }
-\]
+$$
 
 while
 
-\[
+$$
 \boxed{
 \text{negative scalar}
 \rightarrow
 \text{opposite direction}
 }
-\]
+$$
 
 This simple operation will become extremely important later when we study **linear combinations**.
 
@@ -607,32 +599,32 @@ But a vector also has a **magnitude**—its length.
 
 Consider
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 4
 \end{bmatrix}.
-\]
+$$
 
 If we draw this vector, we get a right triangle.
 
-The horizontal side has length \(3\).
+The horizontal side has length $3$.
 
-The vertical side has length \(4\).
+The vertical side has length $4$.
 
 Therefore, by the Pythagorean theorem,
 
-\[
+$$
 \|\mathbf{v}\|
 =
 \sqrt{3^2+4^2}.
-\]
+$$
 
 Thus,
 
-\[
+$$
 \|\mathbf{v}\|
 =
 \sqrt{9+16}
@@ -640,11 +632,11 @@ Thus,
 \sqrt{25}
 =
 5.
-\]
+$$
 
 So
 
-\[
+$$
 \boxed{
 \left\|
 \begin{bmatrix}
@@ -654,36 +646,36 @@ So
 \right\|
 =5
 }
-\]
+$$
 
 The symbol
 
-\[
+$$
 \|\mathbf{v}\|
-\]
+$$
 
 means the **magnitude** or **length** of the vector.
 
 In general, for
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 x\\
 y
 \end{bmatrix},
-\]
+$$
 
 the magnitude is
 
-\[
+$$
 \boxed{
 \|\mathbf{v}\|
 =
 \sqrt{x^2+y^2}
 }
-\]
+$$
 
 ---
 
@@ -693,37 +685,37 @@ Two vectors can have the same magnitude but point in different directions.
 
 For example,
 
-\[
+$$
 \mathbf{u}
 =
 \begin{bmatrix}
 3\\
 4
 \end{bmatrix}
-\]
+$$
 
-has magnitude \(5\).
+has magnitude $5$.
 
 But
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 -3\\
 4
 \end{bmatrix}
-\]
+$$
 
 also has magnitude \(5\):
 
-\[
+$$
 \|\mathbf{v}\|
 =
 \sqrt{(-3)^2+4^2}
 =
 5.
-\]
+$$
 
 Their lengths are the same, but their directions are different.
 
@@ -739,15 +731,15 @@ This is why a vector is more than simply a number representing distance.
 
 A vector has two fundamental features:
 
-\[
+$$
 \boxed{\text{Magnitude}}
-\]
+$$
 
 and
 
-\[
+$$
 \boxed{\text{Direction}}
-\]
+$$
 
 The components tell us how the vector is oriented along the coordinate axes.
 
@@ -761,52 +753,52 @@ Here is another subtle but important idea.
 
 Consider the vector
 
-\[
+$$
 \mathbf{v}
 =
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}.
-\]
+$$
 
 It doesn't have to start at the origin.
 
 We could draw the same vector starting at
 
-\[
+$$
 (1,1)
-\]
+$$
 
 and ending at
 
-\[
+$$
 (4,3).
-\]
+$$
 
 The movement is still:
 
-\[
+$$
 3\text{ units right}
-\]
+$$
 
 and
 
-\[
+$$
 2\text{ units up}.
-\]
+$$
 
 So these two arrows represent the same vector:
 
-\[
+$$
 (0,0)\rightarrow(3,2)
-\]
+$$
 
 and
 
-\[
+$$
 (1,1)\rightarrow(4,3).
-\]
+$$
 
 The starting location changes, but the **movement** does not.
 
@@ -818,25 +810,25 @@ This is why we often think of vectors as **free arrows**: they can be moved arou
 
 Now let's look at two particularly important vectors:
 
-\[
+$$
 \mathbf{e}_1
 =
 \begin{bmatrix}
 1\\
 0
 \end{bmatrix}
-\]
+$$
 
 and
 
-\[
+$$
 \mathbf{e}_2
 =
 \begin{bmatrix}
 0\\
 1
 \end{bmatrix}.
-\]
+$$
 
 These are called the **standard basis vectors** of \(\mathbb{R}^2\).
 
@@ -846,16 +838,16 @@ Because we can construct any two-dimensional vector using them.
 
 For example,
 
-\[
+$$
 \begin{bmatrix}
 5\\
 3
 \end{bmatrix}
-\]
+$$
 
 can be written as
 
-\[
+$$
 5
 \begin{bmatrix}
 1\\
@@ -867,11 +859,11 @@ can be written as
 0\\
 1
 \end{bmatrix}.
-\]
+$$
 
 Therefore,
 
-\[
+$$
 \boxed{
 \begin{bmatrix}
 5\\
@@ -880,7 +872,7 @@ Therefore,
 =
 5\mathbf{e}_1+3\mathbf{e}_2
 }
-\]
+$$
 
 And this is where our story becomes much more interesting.
 
@@ -894,49 +886,49 @@ That idea is called a **linear combination**.
 
 Consider
 
-\[
+$$
 \mathbf{a}
 =
 \begin{bmatrix}
 4\\
 3
 \end{bmatrix}
-\]
+$$
 
 and
 
-\[
+$$
 \mathbf{b}
 =
 \begin{bmatrix}
 2\\
 -1
 \end{bmatrix}.
-\]
+$$
 
 ### Question 1
 
 Calculate
 
-\[
+$$
 \mathbf{a}+\mathbf{b}.
-\]
+$$
 
 ### Question 2
 
 Calculate
 
-\[
+$$
 2\mathbf{a}.
-\]
+$$
 
 ### Question 3
 
 Calculate
 
-\[
+$$
 \|\mathbf{a}\|.
-\]
+$$
 
 Take a moment before looking at the answers.
 
@@ -947,7 +939,7 @@ Take a moment before looking at the answers.
 
 ### Answer 1
 
-\[
+$$
 \mathbf{a}+\mathbf{b}
 =
 \begin{bmatrix}
@@ -965,11 +957,11 @@ Take a moment before looking at the answers.
 6\\
 2
 \end{bmatrix}}
-\]
+$$
 
 ### Answer 2
 
-\[
+$$
 2\mathbf{a}
 =
 2
@@ -983,11 +975,11 @@ Take a moment before looking at the answers.
 8\\
 6
 \end{bmatrix}}
-\]
+$$
 
 ### Answer 3
 
-\[
+$$
 \|\mathbf{a}\|
 =
 \sqrt{4^2+3^2}
@@ -995,7 +987,7 @@ Take a moment before looking at the answers.
 \sqrt{25}
 =
 \boxed{5}
-\]
+$$
 
 </details>
 
@@ -1019,21 +1011,21 @@ Then we learned that vectors have:
 
 And we learned two fundamental operations:
 
-\[
+$$
 \boxed{\text{Vector addition}}
-\]
+$$
 
 and
 
-\[
+$$
 \boxed{\text{Scalar multiplication}}.
-\]
+$$
 
 Most importantly, we discovered that vectors can be **combined to create other vectors**.
 
 For example,
 
-\[
+$$
 \begin{bmatrix}
 5\\
 3
@@ -1050,7 +1042,7 @@ For example,
 0\\
 1
 \end{bmatrix}.
-\]
+$$
 
 This is a **linear combination**.
 
@@ -1070,8 +1062,8 @@ We'll go one step deeper and see how vectors combine geometrically.
 
 We'll eventually arrive at the idea of a **linear combination**:
 
-\[
+$$
 c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_n\mathbf{v}_n.
-\]
+$$
 
 And once we understand that, the ideas of **span, linear independence, basis, and dimension** will begin to fall into place.

@@ -111,7 +111,7 @@ x_1+2x_2 &= b_1,\\
 \end{aligned}
 $$
 
-So \(A\mathbf{x}=\mathbf{b}\) is simply a compact way of writing a system of linear equations.
+So $A\mathbf{x}=\mathbf{b}$ is simply a compact way of writing a system of linear equations.
 
 
 ## 2. A concrete example
@@ -162,7 +162,7 @@ $$
 
 Now use elimination.
 
-Multiply the first equation by \(3\):
+Multiply the first equation by $3$:
 
 $$
 3x_1+6x_2=15.
@@ -220,7 +220,7 @@ $$
 A\mathbf{x}=\mathbf{b},
 $$
 
-we can put \(A\) and \(\mathbf{b}\) next to each other:
+we can put $A$ and $\mathbf{b}$ next to each other:
 
 $$
 \left[
@@ -280,7 +280,7 @@ $$
 \right].
 $$
 
-We want to eliminate the \(3\) below the first pivot.
+We want to eliminate the $3$ below the first pivot.
 
 The multiplier is
 
@@ -390,7 +390,7 @@ $$
 U\mathbf{x}=\mathbf{c}.
 $$
 
-Because \(U\) is upper triangular, we can solve the equations starting from the bottom.
+Because $U$ is upper triangular, we can solve the equations starting from the bottom.
 
 This is **back substitution**.
 
@@ -448,7 +448,7 @@ $$
 
 ## 8. Continue elimination
 
-There is still a \(1\) below the second pivot.
+There is still a $1$ below the second pivot.
 
 Perform
 
@@ -501,7 +501,7 @@ $$
 y-z=-1.
 $$
 
-Substitute \(z=3\):
+Substitute $z=3$:
 
 $$
 y-3=-1.
@@ -519,7 +519,7 @@ $$
 x+y+z=6.
 $$
 
-Substitute \(y=2\) and \(z=3\):
+Substitute $y=2$ and $z=3$:
 
 $$
 x+2+3=6.
@@ -582,7 +582,7 @@ $$
 x_2=2
 $$
 
-and then \(x_1\) is determined uniquely.
+and then $x_1$ is determined uniquely.
 
 There is exactly one solution.
 
@@ -652,7 +652,7 @@ $$
 
 There are two unknowns but only one independent equation.
 
-We can choose \(x_2\) freely.
+We can choose $x_2$ freely.
 
 For example, let
 
@@ -719,22 +719,22 @@ Free variables are what lead to infinitely many solutions.
 
 ## 15. The special role of a square matrix
 
-Suppose \(A\) is an \(n\times n\) matrix.
+Suppose $A$ is an $n\times n$ matrix.
 
-Then we have \(n\) equations and \(n\) unknowns.
+Then we have $n$ equations and $n$ unknowns.
 
 There are two important possibilities.
 
-If elimination produces a pivot in every column, then the system has a unique solution for every right-hand side \(\mathbf{b}\).
+If elimination produces a pivot in every column, then the system has a unique solution for every right-hand side $\mathbf{b}$.
 
 If one or more columns do not contain pivots, the situation changes.
 
-The system may have no solution for some choices of \(\mathbf{b}\), or infinitely many solutions for others.
+The system may have no solution for some choices of $\mathbf{b}$, or infinitely many solutions for others.
 
 This distinction will become much more important when we study **linear independence, rank, and the nullspace**.
 
 
-## 16. What does the matrix \(A\) really do?
+## 16. What does the matrix $A$ really do?
 
 There is another way to think about
 
@@ -742,7 +742,7 @@ $$
 A\mathbf{x}=\mathbf{b}.
 $$
 
-The matrix \(A\) takes an input vector \(\mathbf{x}\) and produces an output vector \(\mathbf{b}\):
+The matrix $A$ takes an input vector $\mathbf{x}$ and produces an output vector $\mathbf{b}$:
 
 $$
 \mathbf{x}
@@ -758,12 +758,12 @@ $$
 
 means asking:
 
-> **Which input vector \(\mathbf{x}\) produces the desired output \(\mathbf{b}\)?**
+> **Which input vector $\mathbf{x}$ produces the desired output $\mathbf{b}$?**
 
 This viewpoint will become central later when we study matrix transformations.
 
 
-## 17. The columns of \(A\)
+## 17. The columns of $A$
 
 Suppose
 
@@ -827,12 +827,12 @@ $$
 
 This gives us a very important interpretation:
 
-> Solving \(A\mathbf{x}=\mathbf{b}\) means finding a combination of the columns of \(A\) that produces \(\mathbf{b}\).
+> Solving $A\mathbf{x}=\mathbf{b}$ means finding a combination of the columns of $A$ that produces $\mathbf{b}$.
 
 
 ## 18. The column space
 
-All possible combinations of the columns of \(A\) form a set called the **column space** of \(A\).
+All possible combinations of the columns of $A$ form a set called the **column space** of $A$.
 
 For example, if
 
@@ -883,7 +883,7 @@ b_2
 \end{bmatrix}.
 $$
 
-So every \(\mathbf{b}\) can be reached.
+So every $\mathbf{b}$ can be reached.
 
 This means
 
@@ -891,7 +891,7 @@ $$
 A\mathbf{x}=\mathbf{b}
 $$
 
-has a solution for every \(\mathbf{b}\).
+has a solution for every $\mathbf{b}$.
 
 
 ## 19. What have we learned?
@@ -934,7 +934,7 @@ Solve the triangular system starting from the bottom.
 
 ### Through columns
 
-Find coefficients \(x_1,x_2,\ldots\) such that
+Find coefficients $x_1,x_2,\ldots$ such that
 
 $$
 x_1\mathbf{a}_1+
@@ -958,11 +958,11 @@ $$
 A\mathbf{x}=\mathbf{b}
 $$
 
-means finding the vector \(\mathbf{x}\) that produces \(\mathbf{b}\) when the matrix \(A\) acts on it.
+means finding the vector $\mathbf{x}$ that produces $\mathbf{b}$ when the matrix $A$ acts on it.
 
 Elimination transforms the system into a triangular form, and back substitution then gives the solution.
 
-The same problem can also be understood through the columns of \(A\).
+The same problem can also be understood through the columns of $A$.
 
 </div>
 
@@ -1001,7 +1001,7 @@ Use elimination to obtain an upper-triangular system.
 
 ### Question 4
 
-Use back substitution to find \(x\), \(y\), and \(z\).
+Use back substitution to find $x$, $y$, and $z$.
 
 
 <details>

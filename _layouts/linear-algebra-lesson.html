@@ -1636,6 +1636,286 @@
 
   </script>
 
+<script>
+(function () {
+
+  /*
+   * =====================================================
+   * AUTOMATIC LONG MATH SCROLLING
+   * =====================================================
+   *
+   * Detects MathJax equations that are wider than the
+   * available content area.
+   *
+   * Short equations:
+   *
+   *     Ax = b
+   *
+   * remain normal.
+   *
+   * Long equations and matrices automatically become
+   * horizontally scrollable.
+   */
+
+
+  function makeLongMathScrollable() {
+
+    var equations = document.querySelectorAll(
+      '.lesson-content mjx-container[display="true"]'
+    );
+
+
+    equations.forEach(function (equation) {
+
+      /*
+       * Do not process the same equation twice.
+       */
+
+      if (
+        equation.parentElement &&
+        equation.parentElement.classList.contains(
+          'auto-math-scroll'
+        )
+      ) {
+        return;
+      }
+
+
+      /*
+       * Find the MathJax SVG.
+       */
+
+      var svg = equation.querySelector('svg');
+
+
+      if (!svg) {
+        return;
+      }
+
+
+      /*
+       * Measure the actual equation.
+       */
+
+      var equationWidth =
+        svg.getBoundingClientRect().width;
+
+
+      /*
+       * Find the width available to the equation.
+       */
+
+      var parentWidth =
+        equation.parentElement.getBoundingClientRect().width;
+
+
+      /*
+       * Only create scrolling when the equation is
+       * actually wider than the available space.
+       */
+
+      if (equationWidth > parentWidth + 2) {
+
+        var wrapper =
+          document.createElement('div');
+
+
+        wrapper.className =
+          'auto-math-scroll';
+
+
+        /*
+         * Put the wrapper where the equation was.
+         */
+
+        equation.parentNode.insertBefore(
+          wrapper,
+          equation
+        );
+
+
+        /*
+         * Move the MathJax equation inside it.
+         */
+
+        wrapper.appendChild(equation);
+
+      }
+
+    });
+
+  }
+
+
+  /*
+   * =====================================================
+   * WAIT FOR MATHJAX
+   * =====================================================
+   */
+
+  function startMathCheck() {
+
+    /*
+     * MathJax has finished its startup process.
+     */
+
+    if (
+      window.MathJax &&
+      MathJax.startup &&
+      MathJax.startup.promise
+    ) {
+
+      MathJax.startup.promise.then(function () {
+
+        /*
+         * First check.
+         */
+
+        makeLongMathScrollable();
+
+
+        /*
+         * Second check.
+
+         * Useful on slower phones and browsers where
+         * the final MathJax dimensions are calculated
+         * slightly later.
+         */
+
+        setTimeout(
+          makeLongMathScrollable,
+          300
+        );
+
+
+        /*
+         * Third check.
+         */
+
+        setTimeout(
+          makeLongMathScrollable,
+          1000
+        );
+
+      });
+
+    }
+
+    else {
+
+      /*
+       * MathJax isn't ready yet.
+       */
+
+      setTimeout(
+        startMathCheck,
+        300
+      );
+
+    }
+
+  }
+
+
+  /*
+   * =====================================================
+   * START
+   * =====================================================
+   */
+
+  if (
+    document.readyState === 'loading'
+  ) {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      startMathCheck
+    );
+
+  }
+
+  else {
+
+    startMathCheck();
+
+  }
+
+
+  /*
+   * =====================================================
+   * HANDLE SCREEN ROTATION / RESIZING
+   * =====================================================
+   *
+   * This is important for mobile.
+   *
+   * If the user rotates their phone from portrait to
+   * landscape, the available width changes.
+   */
+
+  var resizeTimer;
+
+
+  window.addEventListener(
+    'resize',
+    function () {
+
+      clearTimeout(resizeTimer);
+
+
+      resizeTimer = setTimeout(
+        function () {
+
+          /*
+           * Remove automatically-created wrappers.
+           *
+           * This allows the equations to be measured
+           * again at the new screen width.
+           */
+
+          var wrappers =
+            document.querySelectorAll(
+              '.auto-math-scroll'
+            );
+
+
+          wrappers.forEach(function (wrapper) {
+
+            var equation =
+              wrapper.querySelector(
+                'mjx-container[display="true"]'
+              );
+
+
+            if (equation) {
+
+              wrapper.parentNode.insertBefore(
+                equation,
+                wrapper
+              );
+
+            }
+
+
+            wrapper.remove();
+
+          });
+
+
+          /*
+           * Measure again.
+           */
+
+          makeLongMathScrollable();
+
+        },
+        250
+      );
+
+    }
+  );
+
+})();
+</script>  
 
 </body>
 

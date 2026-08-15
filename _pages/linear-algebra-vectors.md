@@ -7,7 +7,7 @@ layout: linear-algebra-lesson
 
 lesson_number: 1
 
-module: "Module 1 · Vectors"
+module: "Module 4 · Vectors"
 
 description: "A visual introduction to vectors, their components, magnitude, direction, and basic operations."
 

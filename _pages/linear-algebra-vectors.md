@@ -222,7 +222,7 @@ $$
 \end{bmatrix}}
 $$
 
-The vector has a **horizontal component** of \(3\) and a **vertical component** of \(2\).
+The vector has a **horizontal component** of $3$ and a **vertical component** of $2$.
 
 ---
 
@@ -345,17 +345,7 @@ P+\mathbf{v}
 (4,3).
 $$
 
-So the vector moves us from
-
-$$
-(1,1)
-$$
-
-to
-
-$$
-(4,3).
-$$
+So the vector moves us from $(1,1)$ to $(4,3)$.
 
 ---
 

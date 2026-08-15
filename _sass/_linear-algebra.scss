@@ -1,14 +1,31 @@
 /* =========================================================
    LINEAR ALGEBRA LMS
+   Responsive / Mobile Friendly
    ========================================================= */
 
 
 /* =========================================================
-   LMS TOP BAR
+   BASIC RESET
+   ========================================================= */
+
+.lms-layout,
+.lms-layout * {
+  box-sizing: border-box;
+}
+
+.lms-main {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   TOP BAR
    ========================================================= */
 
 .lms-topbar {
   height: 60px;
+
   background: #111827;
   color: #ffffff;
 
@@ -17,6 +34,7 @@
 
   position: sticky;
   top: 0;
+
   z-index: 2000;
 
   border-bottom: 1px solid #374151;
@@ -25,6 +43,7 @@
 .topbar-inner {
   width: 100%;
   max-width: 1600px;
+
   margin: 0 auto;
 
   padding: 0 22px;
@@ -37,7 +56,11 @@
 .course-name {
   font-size: 15px;
   font-weight: 700;
+
   white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .course-name span {
@@ -48,6 +71,8 @@
 .course-home {
   color: #d1d5db;
   font-size: 13px;
+
+  white-space: nowrap;
 }
 
 .course-home:hover {
@@ -68,10 +93,12 @@
   color: #ffffff;
 
   font-size: 22px;
+
   cursor: pointer;
 
-  padding: 0;
-  margin-right: 12px;
+  padding: 4px 8px;
+
+  margin-right: 10px;
 }
 
 
@@ -106,13 +133,15 @@
 
 
 /* =========================================================
-   MAIN LMS LAYOUT
+   LMS LAYOUT
    ========================================================= */
 
 .lms-layout {
   display: flex;
 
   min-height: calc(100vh - 60px);
+
+  width: 100%;
 }
 
 
@@ -123,7 +152,7 @@
 .lms-sidebar {
   width: 285px;
 
-  flex-shrink: 0;
+  flex: 0 0 285px;
 
   background: #ffffff;
 
@@ -132,13 +161,18 @@
   height: calc(100vh - 60px);
 
   position: sticky;
+
   top: 60px;
 
   overflow-y: auto;
+
+  overflow-x: hidden;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 
-/* scrollbar */
+/* Sidebar scrollbar */
 
 .lms-sidebar::-webkit-scrollbar {
   width: 7px;
@@ -150,6 +184,7 @@
 
 .lms-sidebar::-webkit-scrollbar-thumb {
   background: #cbd5e1;
+
   border-radius: 20px;
 }
 
@@ -213,6 +248,8 @@
 
   justify-content: space-between;
 
+  gap: 10px;
+
   font-size: 11px;
 
   font-weight: 600;
@@ -246,7 +283,7 @@
 
 
 /* =========================================================
-   MODULE
+   MODULES
    ========================================================= */
 
 .module {
@@ -277,17 +314,17 @@
 .lesson-link {
   display: flex;
 
-  align-items: center;
+  align-items: flex-start;
 
   gap: 9px;
 
-  padding: 8px 9px;
+  padding: 9px;
 
   border-radius: 6px;
 
   font-size: 13px;
 
-  line-height: 1.35;
+  line-height: 1.4;
 
   color: #475569;
 
@@ -296,6 +333,8 @@
   transition:
     background 0.15s ease,
     color 0.15s ease;
+
+  min-height: 37px;
 }
 
 .lesson-link:hover {
@@ -314,14 +353,14 @@
 
 
 /* =========================================================
-   LESSON NUMBER CIRCLE
+   LESSON NUMBER
    ========================================================= */
 
 .lesson-status {
   width: 19px;
   height: 19px;
 
-  flex-shrink: 0;
+  flex: 0 0 19px;
 
   display: flex;
 
@@ -339,27 +378,6 @@
   background: #ffffff;
 }
 
-.lesson-link.active .lesson-status {
-  border-color: #cbd5e1;
-
-  background: #ffffff;
-
-  color: #64748b;
-}
-
-
-/* =========================================================
-   COMPLETED LESSON
-   ========================================================= */
-
-.lesson-link.completed .lesson-status {
-  background: #111827;
-
-  border-color: #111827;
-
-  color: #ffffff;
-}
-
 
 /* =========================================================
    MAIN CONTENT
@@ -369,6 +387,8 @@
   flex: 1;
 
   min-width: 0;
+
+  width: 100%;
 }
 
 
@@ -377,6 +397,8 @@
    ========================================================= */
 
 .lesson-wrapper {
+  width: 100%;
+
   max-width: 880px;
 
   margin: 0 auto;
@@ -404,7 +426,7 @@
 }
 
 .lesson-title {
-  font-size: clamp(36px, 4vw, 46px);
+  font-size: clamp(32px, 4vw, 46px);
 
   line-height: 1.12;
 
@@ -413,6 +435,8 @@
   color: #0f172a;
 
   margin: 0 0 12px;
+
+  overflow-wrap: break-word;
 }
 
 .lesson-description {
@@ -433,18 +457,17 @@
    ========================================================= */
 
 .lesson-content {
+  width: 100%;
+
+  max-width: 100%;
+
   font-size: 17px;
 
   line-height: 1.6;
 
   color: #334155;
-}
 
-
-/* Hide duplicate Markdown H1 */
-
-.lesson-content h1 {
-  display: none;
+  overflow-wrap: break-word;
 }
 
 
@@ -452,8 +475,12 @@
    HEADINGS
    ========================================================= */
 
+.lesson-content h1 {
+  display: none;
+}
+
 .lesson-content h2 {
-  font-size: 26px;
+  font-size: clamp(23px, 3vw, 26px);
 
   line-height: 1.3;
 
@@ -462,10 +489,12 @@
   color: #0f172a;
 
   margin: 42px 0 16px;
+
+  overflow-wrap: break-word;
 }
 
 .lesson-content h3 {
-  font-size: 20px;
+  font-size: clamp(18px, 2.5vw, 20px);
 
   line-height: 1.35;
 
@@ -501,10 +530,6 @@
   margin-bottom: 6px;
 }
 
-.lesson-content strong {
-  color: #1e293b;
-}
-
 
 /* =========================================================
    LINKS
@@ -528,7 +553,122 @@
 
 
 /* =========================================================
-   BLOCKQUOTES
+   MATHJAX
+   ========================================================= */
+
+/*
+   Important for mobile:
+   Long equations are allowed to scroll horizontally
+   instead of breaking the page.
+*/
+
+.lesson-content mjx-container {
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.lesson-content mjx-container[display="true"] {
+  display: block;
+
+  max-width: 100%;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  margin: 25px 0 !important;
+
+  padding-bottom: 3px;
+}
+
+
+/* =========================================================
+   CODE
+   ========================================================= */
+
+.lesson-content pre {
+  max-width: 100%;
+
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+
+  padding: 18px 20px;
+
+  background: #0f172a;
+
+  color: #e2e8f0;
+
+  border-radius: 8px;
+
+  margin: 25px 0;
+}
+
+.lesson-content code {
+  background: #f1f5f9;
+
+  padding: 2px 5px;
+
+  border-radius: 4px;
+
+  font-size: 0.9em;
+}
+
+.lesson-content pre code {
+  background: transparent;
+
+  padding: 0;
+
+  color: inherit;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.lesson-content table {
+  display: block;
+
+  width: 100%;
+
+  max-width: 100%;
+
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+
+  border-collapse: collapse;
+
+  margin: 28px 0;
+
+  font-size: 15px;
+}
+
+.lesson-content th,
+.lesson-content td {
+  padding: 10px 12px;
+
+  border: 1px solid #e2e8f0;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.lesson-content th {
+  background: #f8fafc;
+
+  color: #0f172a;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   BLOCKQUOTE
    ========================================================= */
 
 .lesson-content blockquote {
@@ -545,60 +685,12 @@
 
 
 /* =========================================================
-   CODE
-   ========================================================= */
-
-.lesson-content code {
-  background: #f1f5f9;
-
-  padding: 2px 5px;
-
-  border-radius: 4px;
-
-  font-size: 0.9em;
-}
-
-.lesson-content pre {
-  overflow-x: auto;
-
-  padding: 18px 20px;
-
-  background: #0f172a;
-
-  color: #e2e8f0;
-
-  border-radius: 8px;
-
-  margin: 25px 0;
-}
-
-.lesson-content pre code {
-  background: transparent;
-
-  padding: 0;
-
-  color: inherit;
-}
-
-
-/* =========================================================
-   MATHJAX
-   ========================================================= */
-
-.lesson-content mjx-container[display="true"] {
-  margin: 25px 0 !important;
-}
-
-.lesson-content mjx-container {
-  color: #0f172a;
-}
-
-
-/* =========================================================
-   KEY IDEA BOX
+   KEY IDEA
    ========================================================= */
 
 .key-idea {
+  width: 100%;
+
   background: #ffffff;
 
   border-left: 4px solid #111827;
@@ -629,10 +721,12 @@
 
 
 /* =========================================================
-   EXAMPLE BOX
+   EXAMPLE
    ========================================================= */
 
 .example {
+  width: 100%;
+
   background: #ffffff;
 
   border: 1px solid #e2e8f0;
@@ -660,10 +754,12 @@
 
 
 /* =========================================================
-   EXERCISE BOX
+   EXERCISE
    ========================================================= */
 
 .exercise {
+  width: 100%;
+
   background: #f1f5f9;
 
   border-radius: 9px;
@@ -683,7 +779,7 @@
 
 
 /* =========================================================
-   COLLAPSIBLE ANSWERS
+   DETAILS
    ========================================================= */
 
 .lesson-content details {
@@ -696,6 +792,8 @@
   padding: 13px 17px;
 
   margin: 22px 0;
+
+  overflow-x: auto;
 }
 
 .lesson-content summary {
@@ -708,39 +806,28 @@
 
 
 /* =========================================================
-   TABLES
+   SVG / IMAGES / VIDEOS
    ========================================================= */
 
-.lesson-content table {
-  width: 100%;
+.lesson-content img,
+.lesson-content svg,
+.lesson-content video,
+.lesson-content iframe {
+  max-width: 100%;
 
-  border-collapse: collapse;
-
-  margin: 28px 0;
-
-  font-size: 15px;
+  height: auto;
 }
 
-.lesson-content th,
-.lesson-content td {
-  padding: 10px 12px;
+.lesson-content svg {
+  display: block;
 
-  border: 1px solid #e2e8f0;
-
-  text-align: left;
-}
-
-.lesson-content th {
-  background: #f8fafc;
-
-  color: #0f172a;
-
-  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 /* =========================================================
-   COMPLETION BOX
+   COMPLETION
    ========================================================= */
 
 .completion {
@@ -783,6 +870,8 @@
   font-weight: 700;
 
   cursor: pointer;
+
+  min-height: 42px;
 }
 
 .complete-button:hover {
@@ -795,7 +884,7 @@
 
 
 /* =========================================================
-   PREVIOUS / NEXT NAVIGATION
+   PREVIOUS / NEXT
    ========================================================= */
 
 .lesson-navigation {
@@ -813,6 +902,8 @@
 }
 
 .nav-lesson {
+  max-width: 48%;
+
   background: #ffffff;
 
   border: 1px solid #e2e8f0;
@@ -826,6 +917,8 @@
   font-weight: 600;
 
   color: #475569;
+
+  overflow-wrap: break-word;
 }
 
 .nav-lesson:hover {
@@ -840,6 +933,8 @@
    ========================================================= */
 
 .linear-algebra-page {
+  width: 100%;
+
   max-width: 1100px;
 
   margin: 0 auto;
@@ -862,7 +957,7 @@
 }
 
 .course-title {
-  font-size: clamp(40px, 5vw, 58px);
+  font-size: clamp(38px, 5vw, 58px);
 
   line-height: 1.08;
 
@@ -871,6 +966,8 @@
   color: #0f172a;
 
   margin: 0 0 18px;
+
+  overflow-wrap: break-word;
 }
 
 .course-description {
@@ -915,7 +1012,7 @@
    ========================================================= */
 
 .contents-title {
-  font-size: 30px;
+  font-size: clamp(25px, 3vw, 30px);
 
   line-height: 1.25;
 
@@ -934,7 +1031,7 @@
 
 
 /* =========================================================
-   COURSE MODULE CARDS
+   COURSE MODULE
    ========================================================= */
 
 .course-module {
@@ -970,16 +1067,6 @@
   color: #64748b;
 }
 
-.module-description {
-  font-size: 14px;
-
-  line-height: 1.55;
-
-  color: #64748b;
-
-  margin: 0;
-}
-
 
 /* =========================================================
    COURSE LESSON ROW
@@ -1013,11 +1100,11 @@
   padding-left: 34px;
 }
 
-.lesson-number {
+.course-lesson .lesson-number {
   width: 43px;
   height: 43px;
 
-  flex-shrink: 0;
+  flex: 0 0 43px;
 
   border-radius: 50%;
 
@@ -1041,7 +1128,7 @@
   min-width: 0;
 }
 
-.lesson-title {
+.course-lesson .lesson-title {
   display: block;
 
   font-size: 16px;
@@ -1053,7 +1140,7 @@
   margin-bottom: 3px;
 }
 
-.lesson-description {
+.course-lesson .lesson-description {
   display: block;
 
   font-size: 14px;
@@ -1126,15 +1213,18 @@
   text-decoration: none;
 
   white-space: nowrap;
-}
 
-.start-button:hover {
-  background: #f1f5f9;
+  min-height: 40px;
+
+  display: inline-flex;
+
+  align-items: center;
 }
 
 
 /* =========================================================
-   MOBILE
+   TABLET
+   850px AND BELOW
    ========================================================= */
 
 @media (max-width: 850px) {
@@ -1147,14 +1237,21 @@
     display: none;
   }
 
+
+  /* Sidebar becomes drawer */
+
   .lms-sidebar {
     position: fixed;
 
-    left: -285px;
+    left: -300px;
 
     top: 60px;
 
     bottom: 0;
+
+    width: 300px;
+
+    height: calc(100vh - 60px);
 
     z-index: 1500;
 
@@ -1168,91 +1265,387 @@
     left: 0;
   }
 
+
+  /* Main content uses full width */
+
+  .lms-main {
+    width: 100%;
+  }
+
   .lesson-wrapper {
-    padding: 35px 25px 60px;
+    max-width: 880px;
+
+    padding: 35px 30px 60px;
+  }
+
+
+  /* Course landing */
+
+  .linear-algebra-page {
+    padding: 45px 25px 65px;
   }
 
 }
 
 
-@media (max-width: 700px) {
+/* =========================================================
+   MOBILE
+   600px AND BELOW
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  /* -----------------------------------------
+     TOP BAR
+     ----------------------------------------- */
+
+  .lms-topbar {
+    height: 56px;
+  }
+
+  .topbar-inner {
+    padding: 0 14px;
+  }
+
+  .course-name {
+    font-size: 14px;
+  }
+
+  .menu-button {
+    font-size: 21px;
+
+    padding: 4px 6px;
+
+    margin-right: 7px;
+  }
+
+
+  /* -----------------------------------------
+     READING RIBBON
+     ----------------------------------------- */
+
+  .reading-ribbon {
+    top: 56px;
+
+    height: 3px;
+  }
+
+
+  /* -----------------------------------------
+     SIDEBAR
+     ----------------------------------------- */
+
+  .lms-sidebar {
+    top: 56px;
+
+    height: calc(100vh - 56px);
+
+    width: min(300px, 88vw);
+
+    left: min(-300px, -88vw);
+  }
+
+  .lms-sidebar.open {
+    left: 0;
+  }
+
+
+  /* -----------------------------------------
+     LESSON
+     ----------------------------------------- */
+
+  .lesson-wrapper {
+    padding: 30px 18px 55px;
+  }
+
+
+  .lesson-meta {
+    font-size: 10px;
+
+    letter-spacing: 0.8px;
+  }
+
+  .lesson-title {
+    font-size: clamp(30px, 9vw, 38px);
+
+    letter-spacing: -0.8px;
+
+    line-height: 1.12;
+
+    margin-bottom: 12px;
+  }
+
+  .lesson-description {
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    margin-bottom: 27px;
+  }
+
+
+  /* -----------------------------------------
+     CONTENT
+     ----------------------------------------- */
+
+  .lesson-content {
+    font-size: 16px;
+
+    line-height: 1.6;
+  }
+
+  .lesson-content h2 {
+    font-size: 23px;
+
+    margin-top: 36px;
+
+    margin-bottom: 13px;
+  }
+
+  .lesson-content h3 {
+    font-size: 19px;
+
+    margin-top: 28px;
+  }
+
+  .lesson-content p {
+    margin-bottom: 16px;
+  }
+
+
+  /* -----------------------------------------
+     LISTS
+     ----------------------------------------- */
+
+  .lesson-content ul,
+  .lesson-content ol {
+    padding-left: 22px;
+  }
+
+
+  /* -----------------------------------------
+     MATH
+     ----------------------------------------- */
+
+  .lesson-content mjx-container[display="true"] {
+    margin: 20px 0 !important;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+  }
+
+
+  /* -----------------------------------------
+     BOXES
+     ----------------------------------------- */
+
+  .key-idea,
+  .example,
+  .exercise {
+    padding: 17px 18px;
+
+    margin: 23px 0;
+  }
+
+
+  /* -----------------------------------------
+     BLOCKQUOTE
+     ----------------------------------------- */
+
+  .lesson-content blockquote {
+    padding: 12px 15px;
+
+    margin: 22px 0;
+  }
+
+
+  /* -----------------------------------------
+     COMPLETION
+     ----------------------------------------- */
+
+  .completion {
+    margin-top: 40px;
+
+    padding: 21px 17px;
+  }
+
+  .complete-button {
+    width: 100%;
+
+    min-height: 44px;
+  }
+
+
+  /* -----------------------------------------
+     NAVIGATION
+     ----------------------------------------- */
+
+  .lesson-navigation {
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .nav-lesson {
+    max-width: 100%;
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    text-align: center;
+  }
+
+
+  /* -----------------------------------------
+     COURSE LANDING
+     ----------------------------------------- */
 
   .linear-algebra-page {
-    padding: 35px 18px 60px;
+    padding: 35px 17px 55px;
   }
 
   .course-title {
-    font-size: 40px;
+    font-size: clamp(36px, 11vw, 44px);
+
+    letter-spacing: -1.2px;
   }
 
   .course-description {
     font-size: 17px;
+
+    line-height: 1.55;
   }
 
+  .course-stats {
+    margin-bottom: 35px;
+  }
+
+  .course-stat {
+    font-size: 11px;
+
+    padding: 7px 10px;
+  }
+
+
+  /* -----------------------------------------
+     MODULE
+     ----------------------------------------- */
+
   .module-header {
-    padding: 20px;
+    padding: 19px 18px;
   }
 
   .module-title {
-    font-size: 21px;
+    font-size: 20px;
   }
 
-  .course-lesson {
-    padding: 17px 20px;
+  .module-description {
+    font-size: 13px;
+  }
 
-    gap: 13px;
+
+  /* -----------------------------------------
+     COURSE LESSON
+     ----------------------------------------- */
+
+  .course-lesson {
+    padding: 16px 18px;
+
+    gap: 12px;
   }
 
   .course-lesson:hover {
-    padding-left: 20px;
+    padding-left: 18px;
   }
 
-  .lesson-number {
-    width: 38px;
-    height: 38px;
+  .course-lesson .lesson-number {
+    width: 37px;
+    height: 37px;
+
+    flex: 0 0 37px;
   }
 
-  .lesson-title {
-    font-size: 15px;
+  .course-lesson .lesson-title {
+    font-size: 14px;
   }
 
-  .lesson-description {
-    font-size: 13px;
+  .course-lesson .lesson-description {
+    font-size: 12px;
+
+    line-height: 1.4;
   }
 
   .lesson-arrow {
     display: none;
   }
 
+
+  /* -----------------------------------------
+     START COURSE
+     ----------------------------------------- */
+
   .start-course {
     flex-direction: column;
 
-    align-items: flex-start;
+    align-items: stretch;
+
+    padding: 21px 19px;
+
+    gap: 15px;
+  }
+
+  .start-button {
+    width: 100%;
+
+    justify-content: center;
   }
 
 }
 
 
-@media (max-width: 600px) {
+/* =========================================================
+   VERY SMALL PHONES
+   400px AND BELOW
+   ========================================================= */
+
+@media (max-width: 400px) {
 
   .lesson-wrapper {
-    padding: 30px 18px 55px;
+    padding-left: 14px;
+
+    padding-right: 14px;
   }
 
   .lesson-content {
-    font-size: 16px;
+    font-size: 15.5px;
   }
 
   .lesson-title {
-    font-size: 36px;
+    font-size: 30px;
   }
 
   .lesson-content h2 {
-    font-size: 24px;
+    font-size: 21px;
   }
 
-  .lesson-navigation {
-    flex-direction: column;
+  .key-idea,
+  .example,
+  .exercise {
+    padding: 15px;
+  }
+
+  .course-lesson {
+    padding-left: 14px;
+
+    padding-right: 14px;
+  }
+
+  .course-lesson:hover {
+    padding-left: 14px;
   }
 
 }

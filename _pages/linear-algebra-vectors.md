@@ -585,58 +585,16 @@ This simple operation will become extremely important later when we study **line
 
 So far we've talked about the direction of a vector.
 
-But a vector also has a **magnitude**—its length.
+But a vector also has a **magnitude** - its length.
 
-Consider
+<div style="text-align:center; margin:35px 0;">
 
-$$
-\mathbf{v}
-=
-\begin{bmatrix}
-3\\
-4
-\end{bmatrix}.
-$$
+<img
+  src="{{ '/assets/images/vector-magnitude.png' | relative_url }}"
+  alt="Vector from the origin to (3,4), showing its horizontal and vertical components and its length using the Pythagorean theorem)"
+  style="width:100%; max-width:1100px; height:auto; border-radius:12px;">
 
-If we draw this vector, we get a right triangle.
-
-The horizontal side has length $3$.
-
-The vertical side has length $4$.
-
-Therefore, by the Pythagorean theorem,
-
-$$
-\|\mathbf{v}\|
-=
-\sqrt{3^2+4^2}.
-$$
-
-Thus,
-
-$$
-\|\mathbf{v}\|
-=
-\sqrt{9+16}
-=
-\sqrt{25}
-=
-5.
-$$
-
-So
-
-$$
-\boxed{
-\left\|
-\begin{bmatrix}
-3\\
-4
-\end{bmatrix}
-\right\|
-=5
-}
-$$
+</div>
 
 The symbol
 

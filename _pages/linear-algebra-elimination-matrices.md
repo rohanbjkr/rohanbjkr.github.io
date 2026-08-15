@@ -1349,7 +1349,7 @@ EA.
 $$
 
 So we now have the connection
-
+<div style="width:100%; overflow-x:auto;">
 $$
 \text{ordinary elimination}
 \longrightarrow
@@ -1359,7 +1359,7 @@ $$
 \longrightarrow
 \text{matrix multiplication}.
 $$
-
+</div>
 
 ## What's next?
 

@@ -1,7 +1,7 @@
 ---
 title: "Solving Ax = b"
 
-permalink: /linear-algebra/solving-ax-b/
+permalink: /linear-algebra/solving-axb/
 
 layout: linear-algebra-lesson
 

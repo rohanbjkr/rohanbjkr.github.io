@@ -527,9 +527,8 @@ It tells us about the **structure of the solution set**.
 ## 11. The big picture
 
 We can summarize the process as:
-
+<div class="math-scroll">
 $$
-\boxed{
 \text{Original system}
 \longrightarrow
 \text{Elimination}
@@ -537,8 +536,8 @@ $$
 \text{Triangular system}
 \longrightarrow
 \text{Back substitution}
-}
 $$
+</div>
 
 And in matrix notation:
 

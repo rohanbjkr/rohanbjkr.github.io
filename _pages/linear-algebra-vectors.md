@@ -18,7 +18,7 @@ next_title: "Adding Vectors"
 
 ## How do we describe movement mathematically?
 
-Imagine that you are standing at the point \((0,0)\).
+Imagine that you are standing at the point $(0,0)$.
 
 Someone tells you:
 

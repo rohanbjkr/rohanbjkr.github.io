@@ -94,7 +94,7 @@ $$
 
 ## 2. Perform ordinary elimination first
 
-We want to eliminate \(x_1\) from the second equation.
+We want to eliminate $x_1$ from the second equation.
 
 The equations are
 
@@ -105,9 +105,9 @@ x_1+x_2 &= 3,\\
 \end{aligned}
 $$
 
-The first coefficient in Row 1 is \(1\).
+The first coefficient in Row 1 is $1$.
 
-The first coefficient in Row 2 is \(2\).
+The first coefficient in Row 2 is $2$.
 
 Therefore, subtract twice Row 1 from Row 2:
 
@@ -141,7 +141,7 @@ $$
 \end{bmatrix}.
 $$
 
-The \(2\) below the first pivot has disappeared.
+The $2$ below the first pivot has disappeared.
 
 This is exactly what we wanted.
 
@@ -154,7 +154,7 @@ $$
 R_2\leftarrow R_2-2R_1.
 $$
 
-But suppose we want a matrix \(E\) that performs this operation automatically.
+But suppose we want a matrix $E$ that performs this operation automatically.
 
 We want
 
@@ -167,7 +167,7 @@ EA
 \end{bmatrix}.
 $$
 
-What should \(E\) be?
+What should $E$ be?
 
 It might seem that we need to guess.
 
@@ -219,13 +219,13 @@ Understanding that will tell us how to construct an elimination matrix.
 
 ## 5. What does the first row of the identity matrix do?
 
-The first row of \(I\) is
+The first row of $I$ is
 
 $$
 [1\quad0].
 $$
 
-When it multiplies \(A\),
+When it multiplies $A$,
 
 $$
 [1\quad0]
@@ -241,7 +241,7 @@ $$
 [1\quad1].
 $$
 
-That is exactly Row 1 of \(A\).
+That is exactly Row 1 of $A$.
 
 In other words,
 
@@ -249,7 +249,7 @@ $$
 [1\quad0]A=R_1.
 $$
 
-The numbers \(1\) and \(0\) are telling us
+The numbers $1$ and $0$ are telling us
 
 $$
 1R_1+0R_2.
@@ -262,7 +262,7 @@ So the first row of the identity matrix says:
 
 ## 6. What does the second row do?
 
-The second row of \(I\) is
+The second row of $I$ is
 
 $$
 [0\quad1].
@@ -274,7 +274,7 @@ $$
 [0\quad1]A=R_2.
 $$
 
-The coefficients \(0\) and \(1\) mean
+The coefficients $0$ and $1$ mean
 
 $$
 0R_1+1R_2.
@@ -291,7 +291,7 @@ R_2
 \end{bmatrix}.
 $$
 
-This is why \(IA=A\).
+This is why $IA=A$.
 
 The identity matrix simply asks for the original rows back.
 
@@ -306,8 +306,8 @@ $$
 
 We want:
 
-- Row 1 to remain \(R_1\)
-- Row 2 to become \(R_2-2R_1\)
+- Row 1 to remain $R_1$
+- Row 2 to become $R_2-2R_1$
 
 The first row is easy.
 
@@ -331,7 +331,7 @@ $$
 R_2-2R_1.
 $$
 
-Rewrite it in the order \(R_1,R_2\):
+Rewrite it in the order $R_1,R_2$:
 
 $$
 -2R_1+1R_2.
@@ -368,11 +368,11 @@ $$
 That is our elimination matrix.
 
 
-## 8. Where did the \(-2\) come from?
+## 8. Where did the $-2$ come from?
 
 This is worth emphasizing.
 
-The \(-2\) was **not guessed**.
+The $-2$ was **not guessed**.
 
 It came directly from the row operation
 
@@ -392,7 +392,7 @@ $$
 [-2\quad1].
 $$
 
-Those coefficients become the second row of \(E\).
+Those coefficients become the second row of $E$.
 
 The logic is simply
 
@@ -431,7 +431,7 @@ $$
 
 ## 9. Verify that it works
 
-Now let's multiply \(E\) and \(A\):
+Now let's multiply $E$ and $A$:
 
 $$
 EA=
@@ -504,7 +504,7 @@ Exactly the matrix produced by ordinary elimination.
 
 ## 10. The general rule
 
-Now suppose the number below the pivot is not \(2\), but some number \(m\).
+Now suppose the number below the pivot is not $2$, but some number $m$.
 
 The elimination operation would be
 
@@ -563,7 +563,7 @@ R_2\leftarrow R_2-mR_1.
 $$
 
 
-## 11. What is the multiplier \(m\)?
+## 11. What is the multiplier $m$?
 
 Suppose
 
@@ -575,13 +575,13 @@ c&d
 \end{bmatrix}.
 $$
 
-We want to eliminate \(c\).
+We want to eliminate $c$.
 
-The first pivot is \(a\).
+The first pivot is $a$.
 
 We ask:
 
-> How many copies of the pivot \(a\) do we need to subtract from \(c\) to make it zero?
+> How many copies of the pivot $a$ do we need to subtract from $c$ to make it zero?
 
 The answer is
 
@@ -634,7 +634,7 @@ $$
 
 This is important.
 
-Left multiplication combines the **rows** of \(A\).
+Left multiplication combines the **rows** of $A$.
 
 For example,
 
@@ -669,7 +669,7 @@ R_2-2R_1
 \end{bmatrix}.
 $$
 
-So elementary row operations are performed by multiplying \(A\) from the **left**.
+So elementary row operations are performed by multiplying $A$ from the **left**.
 
 
 ## 13. What happens to the right-hand side?
@@ -680,9 +680,9 @@ $$
 A\mathbf{x}=\mathbf{b}.
 $$
 
-If we perform elimination on \(A\), we must perform the same operation on \(\mathbf{b}\).
+If we perform elimination on $A$, we must perform the same operation on $\mathbf{b}$.
 
-Multiply both sides by \(E\):
+Multiply both sides by $E$:
 
 $$
 E(A\mathbf{x})=E\mathbf{b}.
@@ -712,7 +712,7 @@ $$
 U\mathbf{x}=\mathbf{c}.
 $$
 
-The solution \(\mathbf{x}\) has not changed.
+The solution $\mathbf{x}$ has not changed.
 
 We have simply transformed the equations into a form that is easier to solve.
 
@@ -756,7 +756,7 @@ EA=
 \end{bmatrix}.
 $$
 
-Now apply \(E\) to \(\mathbf{b}\):
+Now apply $E$ to $\mathbf{b}$:
 
 $$
 E\mathbf{b}
@@ -830,7 +830,7 @@ x_1=1.
 $$
 
 
-## 15. Now try a \(3\times3\) matrix
+## 15. Now try a $3\times3$ matrix
 
 Consider
 
@@ -845,10 +845,10 @@ $$
 
 We want to eliminate the entries below the first pivot.
 
-The pivot is \(1\).
+The pivot is $1$.
 
 
-### Eliminate the \(2\)
+### Eliminate the $2$
 
 For Row 2,
 
@@ -869,7 +869,7 @@ $$
 $$
 
 
-### Eliminate the \(-1\)
+### Eliminate the $-1$
 
 For Row 3, we want
 
@@ -949,7 +949,7 @@ The entries below the first pivot are now zero.
 
 ## 17. A second elimination matrix
 
-We still have a \(1\) below the second pivot:
+We still have a $1$ below the second pivot:
 
 $$
 \begin{bmatrix}
@@ -1010,7 +1010,7 @@ $$
 E_1A.
 $$
 
-Now apply \(E_2\):
+Now apply $E_2$:
 
 $$
 E_2(E_1A).
@@ -1034,7 +1034,7 @@ E_2E_1A
 \end{bmatrix}.
 $$
 
-Call this upper-triangular matrix \(U\).
+Call this upper-triangular matrix $U$.
 
 Then
 
@@ -1055,7 +1055,7 @@ $$
 
 Which elimination matrix acts first?
 
-It is \(E_1\), because it is closest to \(A\):
+It is $E_1$, because it is closest to $A$:
 
 $$
 A
@@ -1092,7 +1092,7 @@ $$
 
 How could we undo this operation?
 
-We would add \(2R_1\) back:
+We would add $2R_1$ back:
 
 $$
 R_2\leftarrow R_2+2R_1.
@@ -1134,7 +1134,7 @@ $$
 E_2E_1A=U.
 $$
 
-This means elimination transforms \(A\) into an upper-triangular matrix \(U\).
+This means elimination transforms $A$ into an upper-triangular matrix $U$.
 
 If we multiply by the inverse elimination matrices, we can work backward:
 
@@ -1142,7 +1142,7 @@ $$
 A=E_1^{-1}E_2^{-1}U.
 $$
 
-The product of these inverse elimination matrices will eventually lead us to a matrix called \(L\).
+The product of these inverse elimination matrices will eventually lead us to a matrix called $L$.
 
 Then we will obtain one of the most important factorizations in linear algebra:
 
@@ -1193,7 +1193,7 @@ E=
 \end{bmatrix}.
 $$
 
-Multiplying \(EA\) then performs the same row operation on \(A\).
+Multiplying $EA$ then performs the same row operation on $A$.
 
 </div>
 
@@ -1210,7 +1210,7 @@ A=
 \end{bmatrix}.
 $$
 
-We want to eliminate the \(6\) below the first pivot.
+We want to eliminate the $6$ below the first pivot.
 
 
 ### Question 1
@@ -1220,22 +1220,22 @@ What is the pivot?
 
 ### Question 2
 
-What multiplier \(m\) should we use?
+What multiplier $m$ should we use?
 
 
 ### Question 3
 
-What row operation eliminates the \(6\)?
+What row operation eliminates the $6$?
 
 
 ### Question 4
 
-Construct the elimination matrix \(E\) from the identity matrix.
+Construct the elimination matrix $E$ from the identity matrix.
 
 
 ### Question 5
 
-Calculate \(EA\).
+Calculate $EA$.
 
 
 <details>
@@ -1311,7 +1311,7 @@ EA=
 \end{bmatrix}.
 $$
 
-The \(6\) below the pivot has been eliminated.
+The $6$ below the pivot has been eliminated.
 
 </details>
 
@@ -1342,7 +1342,7 @@ I
 E.
 $$
 
-**Fourth**, multiplying from the left performs that same operation on \(A\):
+**Fourth**, multiplying from the left performs that same operation on $A$:
 
 $$
 EA.
@@ -1371,6 +1371,6 @@ $$
 A\mathbf{x}=\mathbf{b}.
 $$
 
-In the next lesson, we will bring these ideas together and study **Solving \(A\mathbf{x}=\mathbf{b}\)**.
+In the next lesson, we will bring these ideas together and study **Solving $A\mathbf{x}=\mathbf{b}$**.
 
 We will also begin to see why some systems have a unique solution, while others behave very differently.

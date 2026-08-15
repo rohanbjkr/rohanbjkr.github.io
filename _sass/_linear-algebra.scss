@@ -1,6 +1,7 @@
 /* =========================================================
    LINEAR ALGEBRA LMS
    Responsive / Mobile Friendly
+   MathJax / Long Equation Scrolling
    ========================================================= */
 
 
@@ -25,6 +26,7 @@
 
 .lms-topbar {
   height: 60px;
+
   background: #111827;
   color: #ffffff;
 
@@ -42,7 +44,9 @@
 .topbar-inner {
   width: 100%;
   max-width: 1600px;
+
   margin: 0 auto;
+
   padding: 0 22px;
 
   display: flex;
@@ -55,6 +59,7 @@
   font-weight: 700;
 
   white-space: nowrap;
+
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -67,6 +72,7 @@
 .course-home {
   color: #d1d5db;
   font-size: 13px;
+
   white-space: nowrap;
 }
 
@@ -76,7 +82,7 @@
 
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE MENU BUTTON
    ========================================================= */
 
 .menu-button {
@@ -98,7 +104,7 @@
 
 
 /* =========================================================
-   READING PROGRESS
+   READING PROGRESS RIBBON
    ========================================================= */
 
 .reading-ribbon {
@@ -146,6 +152,7 @@
 
 .lms-sidebar {
   width: 285px;
+
   flex: 0 0 285px;
 
   background: #ffffff;
@@ -155,6 +162,7 @@
   height: calc(100vh - 60px);
 
   position: sticky;
+
   top: 60px;
 
   overflow-y: auto;
@@ -162,6 +170,9 @@
 
   -webkit-overflow-scrolling: touch;
 }
+
+
+/* Sidebar scrollbar */
 
 .lms-sidebar::-webkit-scrollbar {
   width: 7px;
@@ -173,6 +184,7 @@
 
 .lms-sidebar::-webkit-scrollbar-thumb {
   background: #cbd5e1;
+
   border-radius: 20px;
 }
 
@@ -224,7 +236,7 @@
 
 
 /* =========================================================
-   PROGRESS
+   COURSE PROGRESS
    ========================================================= */
 
 .progress-section {
@@ -249,6 +261,7 @@
 
 .progress-bar {
   width: 100%;
+
   height: 5px;
 
   background: #e5e7eb;
@@ -543,25 +556,90 @@
    MATHJAX
    ========================================================= */
 
-.lesson-content mjx-container {
-  max-width: 100%;
+/*
+   IMPORTANT
 
-  overflow-x: auto;
-  overflow-y: hidden;
-}
+   Long display equations are horizontally scrollable.
+
+   Normal inline mathematics remains normal.
+
+   This is especially useful for:
+
+   - large matrices
+   - augmented matrices
+   - long matrix products
+   - elimination calculations
+   - LU factorization
+   - long equations
+*/
+
+
+/* Display mathematics */
 
 .lesson-content mjx-container[display="true"] {
   display: block;
 
+  width: 100%;
+
   max-width: 100%;
 
   overflow-x: auto;
-
   overflow-y: hidden;
 
   margin: 25px 0 !important;
 
-  padding-bottom: 3px;
+  padding: 4px 2px 8px;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #cbd5e1 #f8fafc;
+}
+
+
+/*
+   Do not force the MathJax SVG to shrink.
+
+   This is important.
+
+   If the equation is wider than the screen,
+   the user can scroll instead of getting
+   a tiny unreadable equation.
+*/
+
+.lesson-content mjx-container[display="true"] > svg {
+  max-width: none;
+
+  height: auto;
+}
+
+
+/* MathJax scrollbar */
+
+.lesson-content mjx-container[display="true"]::-webkit-scrollbar {
+  height: 5px;
+}
+
+.lesson-content mjx-container[display="true"]::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.lesson-content mjx-container[display="true"]::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 10px;
+}
+
+
+/*
+   Inline mathematics.
+
+   Do NOT make inline math horizontally scrollable.
+*/
+
+.lesson-content mjx-container:not([display="true"]) {
+  max-width: 100%;
 }
 
 
@@ -760,7 +838,7 @@
 
 
 /* =========================================================
-   DETAILS
+   DETAILS / SOLUTIONS
    ========================================================= */
 
 .lesson-content details {
@@ -1363,15 +1441,39 @@
     padding-left: 22px;
   }
 
+
+  /* -----------------------------------------
+     MOBILE MATH
+     ----------------------------------------- */
+
   .lesson-content mjx-container[display="true"] {
-    margin: 20px 0 !important;
+    width: 100%;
 
     max-width: 100%;
 
     overflow-x: auto;
 
     overflow-y: hidden;
+
+    margin: 20px 0 !important;
+
+    padding-bottom: 8px;
+
+    -webkit-overflow-scrolling: touch;
   }
+
+  .lesson-content mjx-container[display="true"] > svg {
+    max-width: none;
+  }
+
+  .lesson-content mjx-container[display="true"]::-webkit-scrollbar {
+    height: 4px;
+  }
+
+
+  /* -----------------------------------------
+     BOXES
+     ----------------------------------------- */
 
   .key-idea,
   .example,
@@ -1387,6 +1489,11 @@
     margin: 22px 0;
   }
 
+
+  /* -----------------------------------------
+     COMPLETION
+     ----------------------------------------- */
+
   .completion {
     margin-top: 40px;
 
@@ -1398,6 +1505,11 @@
 
     min-height: 44px;
   }
+
+
+  /* -----------------------------------------
+     NAVIGATION
+     ----------------------------------------- */
 
   .lesson-navigation {
     flex-direction: column;
@@ -1414,6 +1526,11 @@
 
     text-align: center;
   }
+
+
+  /* -----------------------------------------
+     COURSE LANDING
+     ----------------------------------------- */
 
   .linear-algebra-page {
     padding: 35px 17px 55px;
@@ -1441,6 +1558,11 @@
     padding: 7px 10px;
   }
 
+
+  /* -----------------------------------------
+     MODULE
+     ----------------------------------------- */
+
   .module-header {
     padding: 19px 18px;
   }
@@ -1452,6 +1574,11 @@
   .module-description {
     font-size: 13px;
   }
+
+
+  /* -----------------------------------------
+     COURSE LESSON
+     ----------------------------------------- */
 
   .course-lesson {
     padding: 16px 18px;
@@ -1483,6 +1610,11 @@
   .lesson-arrow {
     display: none;
   }
+
+
+  /* -----------------------------------------
+     START COURSE
+     ----------------------------------------- */
 
   .start-course {
     flex-direction: column;

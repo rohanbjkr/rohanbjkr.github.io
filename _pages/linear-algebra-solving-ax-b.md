@@ -1145,6 +1145,7 @@ $$
 
 The central computational idea is therefore
 
+<div style="width:100%; overflow-x:auto;">
 $$
 \text{Elimination}
 \longrightarrow
@@ -1152,6 +1153,7 @@ $$
 \longrightarrow
 \text{Back substitution}.
 $$
+</div>
 
 
 ## What's next?

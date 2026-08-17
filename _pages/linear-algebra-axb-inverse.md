@@ -30,11 +30,9 @@ The key result of this lesson is
 <div class="math-scroll">
 
 $$
-\boxed{
 A\mathbf{x}=\mathbf{b}
 \quad\Longrightarrow\quad
 \mathbf{x}=A^{-1}\mathbf{b}.
-}
 $$
 
 </div>
@@ -43,7 +41,7 @@ But rather than treating this as just a formula, we want to understand **why it 
 
 ---
 
-## 1. Start with a familiar equation
+# 1. Start with a familiar equation
 
 Consider the ordinary equation
 
@@ -87,7 +85,7 @@ $$
 
 ---
 
-## 2. The matrix version
+# 2. The matrix version
 
 Now consider
 
@@ -172,9 +170,7 @@ we finally get
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{x}=A^{-1}\mathbf{b}.
-}
 $$
 
 </div>
@@ -224,13 +220,11 @@ So we have
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{x}
 \;\xrightarrow{\;A\;}\;
 \mathbf{b}
 \;\xrightarrow{\;A^{-1}\;}\;
 \mathbf{x}.
-}
 $$
 
 </div>
@@ -377,9 +371,7 @@ $$
 Therefore,
 
 $$
-\boxed{
 x=2,\qquad y=1.
-}
 $$
 
 ---
@@ -422,16 +414,18 @@ Both equations are satisfied.
 
 So
 
+<div class="math-scroll">
+
 $$
-\boxed{
 \mathbf{x}
 =
 \begin{bmatrix}
 2\\
 1
 \end{bmatrix}
-}
 $$
+
+</div>
 
 is indeed the solution.
 
@@ -452,9 +446,7 @@ has the unique solution
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{x}=A^{-1}\mathbf{b}.
-}
 $$
 
 </div>
@@ -560,9 +552,7 @@ $$
 Therefore,
 
 $$
-\boxed{
 \mathbf{x}=A^{-1}\mathbf b.
-}
 $$
 
 This interpretation will become increasingly important as we study linear transformations.
@@ -720,9 +710,7 @@ contains exactly those coefficients.
 This gives us another interpretation:
 
 $$
-\boxed{
 A\mathbf{x}=\mathbf b
-}
 $$
 
 asks:
@@ -833,7 +821,7 @@ $$
 \end{bmatrix}.
 $$
 
-This gives us a beautiful interpretation of the inverse.
+This gives us a useful interpretation of the inverse.
 
 ---
 
@@ -880,7 +868,6 @@ Therefore,
 <div class="math-scroll">
 
 $$
-\boxed{
 A^{-1}
 =
 \left[
@@ -893,12 +880,11 @@ A^{-1}\mathbf e_n\\
 |&|&&|
 \end{array}
 \right].
-}
 $$
 
 </div>
 
-This is a very useful way to understand where the inverse comes from.
+This is a useful way to understand where the inverse comes from.
 
 ---
 
@@ -1016,14 +1002,16 @@ There is only one possible value for $\mathbf{x}$.
 
 Therefore:
 
+<div class="math-scroll">
+
 $$
-\boxed{
 A\text{ invertible}
 \Longrightarrow
 A\mathbf{x}=\mathbf b
 \text{ has exactly one solution for every }\mathbf b.
-}
 $$
+
+</div>
 
 This is a major result.
 
@@ -1241,17 +1229,19 @@ $$
 A\mathbf{x}=\mathbf b,
 $$
 
-there are three possibilities:
+there are three possibilities.
 
 ### One solution
 
 The matrix $A$ is invertible.
 
+<div class="math-scroll">
+
 $$
-\boxed{
 \mathbf{x}=A^{-1}\mathbf b
-}
 $$
+
+</div>
 
 for every $\mathbf b$.
 
@@ -1268,14 +1258,12 @@ This gives us the basic picture:
 <div class="math-scroll">
 
 $$
-\boxed{
 \begin{array}{c|c}
 \text{Matrix }A & \text{Solutions of }A\mathbf{x}=\mathbf b\\
 \hline
 \text{Invertible} & \text{Exactly one for every }\mathbf b\\
 \text{Singular} & \text{None or infinitely many}
 \end{array}
-}
 $$
 
 </div>
@@ -1329,9 +1317,7 @@ $$
 So
 
 $$
-\boxed{
 \mathbf{x}_1=\mathbf{x}_2.
-}
 $$
 
 Thus two different solutions are impossible.
@@ -1384,13 +1370,15 @@ $$
 
 So an invertible matrix satisfies
 
+<div class="math-scroll">
+
 $$
-\boxed{
 A\mathbf{x}=\mathbf0
 \quad\Longrightarrow\quad
 \mathbf{x}=\mathbf0.
-}
 $$
+
+</div>
 
 This fact will become extremely important when we study **linear independence**.
 
@@ -1518,11 +1506,13 @@ $$
 
 Therefore,
 
+<div class="math-scroll">
+
 $$
-\boxed{
 X=A^{-1}B.
-}
 $$
+
+</div>
 
 This is one of the reasons matrix notation is so powerful.
 
@@ -1676,15 +1666,17 @@ there is usually no reason to calculate every column of $A^{-1}$.
 
 We can simply use elimination.
 
-So there are two different ideas:
+So there are two different ideas.
 
 ### Mathematical viewpoint
 
+<div class="math-scroll">
+
 $$
-\boxed{
 \mathbf{x}=A^{-1}\mathbf b
-}
 $$
+
+</div>
 
 is extremely useful for understanding the structure of the problem.
 
@@ -1692,11 +1684,13 @@ is extremely useful for understanding the structure of the problem.
 
 We usually solve
 
+<div class="math-scroll">
+
 $$
-\boxed{
 A\mathbf{x}=\mathbf b
-}
 $$
+
+</div>
 
 directly.
 
@@ -1796,13 +1790,11 @@ Therefore,
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{x}
 \xrightarrow{\;A\;}
 A\mathbf{x}
 \xrightarrow{\;A^{-1}\;}
 \mathbf{x}.
-}
 $$
 
 </div>
@@ -1850,11 +1842,9 @@ And therefore:
 <div class="math-scroll">
 
 $$
-\boxed{
 A\mathbf{x}=\mathbf b
 \quad\Longrightarrow\quad
 \mathbf{x}=A^{-1}\mathbf b.
-}
 $$
 
 </div>
@@ -1902,9 +1892,7 @@ has the unique solution
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{x}=A^{-1}\mathbf b.
-}
 $$
 
 </div>
@@ -2095,9 +2083,7 @@ This leads to the factorization
 <div class="math-scroll">
 
 $$
-\boxed{
 A=LU.
-}
 $$
 
 </div>

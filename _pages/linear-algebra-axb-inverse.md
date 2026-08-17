@@ -2,7 +2,7 @@
 layout: linear-algebra-lesson
 title: "$A^{-1}$ and $A\mathbf{x}=\mathbf{b}$"
 lesson_number: 7
-module: "Matrix Algebra"
+module: "Module 2 · Matrix Algebra"
 description: "Using the inverse matrix to understand and solve systems of linear equations."
 permalink: /linear-algebra/axb-and-inverse/
 ---

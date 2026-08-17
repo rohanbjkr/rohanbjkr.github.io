@@ -7,7 +7,7 @@ module: "Module 3 · Vector Spaces"
 description: "Vectors, components, magnitude, direction, and the geometry of Rⁿ."
 ---
 
-# How do we describe movement mathematically?
+## How do we describe movement mathematically?
 
 Imagine that you are standing at the point $(0,0)$.
 
@@ -56,7 +56,7 @@ That simple idea is the beginning of linear algebra.
 
 ---
 
-# 1. Seeing a vector
+## 1. Seeing a vector
 
 A vector can be represented geometrically as an **arrow**.
 
@@ -225,7 +225,7 @@ The vector has a **horizontal component** of $3$ and a **vertical component** of
 
 ---
 
-# 2. The components of a vector
+## 2. The components of a vector
 
 Consider the vector
 
@@ -348,7 +348,7 @@ So the vector moves us from $(1,1)$ to $(4,3)$.
 
 ---
 
-# 4. A vector can start anywhere
+## 4. A vector can start anywhere
 
 Here is another important idea.
 
@@ -407,7 +407,7 @@ This is why we often think of vectors as **free arrows**.
 
 ---
 
-# 5. Vectors can be added
+## 5. Vectors can be added
 
 Now suppose we make two movements.
 
@@ -455,24 +455,15 @@ $$
 \end{bmatrix}
 $$
 
-$$
-=
-\begin{bmatrix}
-3+1\\
-2+4
-\end{bmatrix}
-$$
-
 and therefore
 
 $$
-\boxed{
 \mathbf{u}+\mathbf{v}
 =
 \begin{bmatrix}
 4\\
 6
-\end{bmatrix}}
+\end{bmatrix}
 $$
 
 So vector addition is simply **component-by-component addition**.
@@ -521,20 +512,19 @@ $$
 so
 
 $$
-\boxed{
 \mathbf{a}+\mathbf{b}
 =
 \begin{bmatrix}
 5\\
 4
-\end{bmatrix}}
+\end{bmatrix}
 $$
 
 </div>
 
 ---
 
-# 6. Scalar multiplication
+## 6. Scalar multiplication
 
 Vectors can also be multiplied by ordinary numbers.
 
@@ -593,7 +583,7 @@ $$
 
 ---
 
-# 7. What if the scalar is negative?
+## 7. What if the scalar is negative?
 
 Consider
 
@@ -622,28 +612,24 @@ The vector now points in the opposite direction.
 So:
 
 $$
-\boxed{
 \text{positive scalar}
 \rightarrow
 \text{same direction}
-}
 $$
 
 while
 
 $$
-\boxed{
 \text{negative scalar}
 \rightarrow
 \text{opposite direction}
-}
 $$
 
 This simple operation will become extremely important when we study **linear combinations**.
 
 ---
 
-# 8. How long is a vector?
+## 8. How long is a vector?
 
 So far we have talked about the direction of a vector.
 
@@ -698,16 +684,14 @@ means the **magnitude** or **length** of the vector.
 For a vector in $\mathbb R^2$,
 
 $$
-\boxed{
 \|\mathbf{v}\|
 =
 \sqrt{x^2+y^2}
-}
 $$
 
 ---
 
-# 9. Direction matters too
+## 9. Direction matters too
 
 Two vectors can have the same magnitude but point in different directions.
 
@@ -758,13 +742,13 @@ This is why a vector is more than simply a number representing distance.
 A vector has two fundamental features:
 
 $$
-\boxed{\text{Magnitude}}
+\text{Magnitude}
 $$
 
 and
 
 $$
-\boxed{\text{Direction}}
+\text{Direction}
 $$
 
 The components tell us how the vector is oriented along the coordinate axes.
@@ -773,7 +757,7 @@ The components tell us how the vector is oriented along the coordinate axes.
 
 ---
 
-# 10. From $\mathbb R^2$ to $\mathbb R^3$
+## 10. From $\mathbb R^2$ to $\mathbb R^3$
 
 So far, every vector we've seen has had two components.
 
@@ -821,16 +805,14 @@ $$
 We say
 
 $$
-\boxed{
-\mathbf{v}\in\mathbb R^3
-}.
+\mathbf{v}\in\mathbb R^3.
 $$
 
 Now the components describe movement in three coordinate directions.
 
 ---
 
-# 11. What does $\mathbb R^n$ mean?
+## 11. What does $\mathbb R^n$ mean?
 
 We can continue this pattern.
 
@@ -846,7 +828,6 @@ A general vector in $\mathbb R^n$ looks like
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{v}
 =
 \begin{bmatrix}
@@ -855,7 +836,6 @@ v_2\\
 \vdots\\
 v_n
 \end{bmatrix}
-}
 $$
 
 </div>
@@ -870,7 +850,7 @@ These are the **components** of the vector.
 
 ---
 
-# 12. Why do we need $\mathbb R^n$?
+## 12. Why do we need $\mathbb R^n$?
 
 We can easily draw a vector in $\mathbb R^2$.
 
@@ -926,7 +906,7 @@ That is the idea that allows linear algebra to work in very high dimensions.
 
 ---
 
-# 13. Adding vectors in $\mathbb R^n$
+## 13. Adding vectors in $\mathbb R^n$
 
 The rule we learned in $\mathbb R^2$ does not change.
 
@@ -965,7 +945,6 @@ Then
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf{u}+\mathbf{v}
 =
 \begin{bmatrix}
@@ -973,8 +952,7 @@ u_1+v_1\\
 u_2+v_2\\
 \vdots\\
 u_n+v_n
-\end{bmatrix}
-}.
+\end{bmatrix}.
 $$
 
 </div>
@@ -1007,7 +985,7 @@ The same rule works whether the vector has $2$, $3$, or $100$ components.
 
 ---
 
-# 14. Scalar multiplication in $\mathbb R^n$
+## 14. Scalar multiplication in $\mathbb R^n$
 
 Likewise, scalar multiplication works exactly as before.
 
@@ -1033,7 +1011,6 @@ and scalar $c$,
 <div class="math-scroll">
 
 $$
-\boxed{
 c\mathbf{v}
 =
 \begin{bmatrix}
@@ -1041,8 +1018,7 @@ cv_1\\
 cv_2\\
 \vdots\\
 cv_n
-\end{bmatrix}
-}.
+\end{bmatrix}.
 $$
 
 </div>
@@ -1053,7 +1029,7 @@ We simply have more components.
 
 ---
 
-# 15. Length in $\mathbb R^n$
+## 15. Length in $\mathbb R^n$
 
 The Pythagorean idea also extends naturally.
 
@@ -1079,12 +1055,10 @@ the length of the vector is
 <div class="math-scroll">
 
 $$
-\boxed{
 \|\mathbf{v}\|
 =
 \sqrt{
 v_1^2+v_2^2+\cdots+v_n^2
-}
 }.
 $$
 
@@ -1124,7 +1098,7 @@ $$
 
 ---
 
-# 16. The zero vector
+## 16. The zero vector
 
 There is one particularly important vector:
 
@@ -1177,7 +1151,7 @@ $$
 
 ---
 
-# 17. The standard basis vectors
+## 17. The standard basis vectors
 
 Now we can introduce another important idea.
 
@@ -1231,14 +1205,12 @@ $$
 Therefore,
 
 $$
-\boxed{
 \begin{bmatrix}
 5\\
 3
 \end{bmatrix}
 =
-5\mathbf e_1+3\mathbf e_2
-}.
+5\mathbf e_1+3\mathbf e_2.
 $$
 
 We have just combined two vectors using scalar multiplication and addition.
@@ -1249,7 +1221,7 @@ We will study this idea carefully in the next chapter.
 
 ---
 
-# 18. Standard basis in $\mathbb R^n$
+## 18. Standard basis in $\mathbb R^n$
 
 The same idea works in $\mathbb R^n$.
 
@@ -1292,14 +1264,12 @@ Every vector in $\mathbb R^n$ can be written as
 <div class="math-scroll">
 
 $$
-\boxed{
 \mathbf v
 =
 v_1\mathbf e_1+
 v_2\mathbf e_2+
 \cdots+
-v_n\mathbf e_n
-}.
+v_n\mathbf e_n.
 $$
 
 </div>
@@ -1312,7 +1282,7 @@ It can be built by taking the standard directions and scaling them appropriately
 
 ---
 
-# 19. Connection with matrices
+## 19. Connection with matrices
 
 Now we can connect vectors back to the matrix equations we studied earlier.
 
@@ -1392,7 +1362,7 @@ This observation will become central in the next few chapters.
 
 ---
 
-# 20. What have we learned?
+## 20. What have we learned?
 
 Let's pause before moving on.
 
@@ -1440,7 +1410,7 @@ Now we are ready for the next question.
 
 ---
 
-# Try It Yourself
+## Try It Yourself
 
 Consider
 
@@ -1509,11 +1479,10 @@ $$
 -1
 \end{bmatrix}
 =
-\boxed{
 \begin{bmatrix}
 6\\
 2
-\end{bmatrix}}
+\end{bmatrix}
 $$
 
 ### Answer 2
@@ -1527,11 +1496,10 @@ $$
 3
 \end{bmatrix}
 =
-\boxed{
 \begin{bmatrix}
 8\\
 6
-\end{bmatrix}}
+\end{bmatrix}
 $$
 
 ### Answer 3
@@ -1542,8 +1510,7 @@ $$
 \sqrt{4^2+3^2}
 =
 \sqrt{25}
-=
-\boxed{5}.
+={5}.
 $$
 
 ### Answer 4
@@ -1567,14 +1534,12 @@ $$
 we have
 
 $$
-\boxed{
-\mathbf a=4\mathbf e_1+3\mathbf e_2
-}.
+\mathbf a=4\mathbf e_1+3\mathbf e_2.
 $$
 
 ---
 
-# What comes next?
+## What comes next?
 
 We have now learned how to add vectors and multiply them by numbers.
 

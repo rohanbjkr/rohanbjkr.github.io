@@ -61,7 +61,7 @@ modules:
     description: "Moving from individual vectors to the spaces they generate."
     lessons:
 
-            - number: 9
+      - number: 9
         title: "Vectors in Rⁿ"
         url: "/linear-algebra/vectors/"
         description: "Vectors, components, magnitude, and direction."
@@ -90,7 +90,6 @@ modules:
         title: "Nullspace"
         url: "/linear-algebra/nullspace/"
         description: "Understanding all solutions to Ax = 0."
-
 
   - number: 4
     title: "Basis & Dimension"

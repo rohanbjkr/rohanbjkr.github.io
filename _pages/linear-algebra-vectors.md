@@ -1,18 +1,13 @@
 ---
 title: "Vectors in Rⁿ"
-
 permalink: /linear-algebra/vectors/
-
 layout: linear-algebra-lesson
-
 lesson_number: 9
-
 module: "Module 3 · Vector Spaces"
-
 description: "Vectors, components, magnitude, direction, and the geometry of Rⁿ."
 ---
 
-## How do we describe movement mathematically?
+# How do we describe movement mathematically?
 
 Imagine that you are standing at the point $(0,0)$.
 
@@ -61,7 +56,7 @@ That simple idea is the beginning of linear algebra.
 
 ---
 
-## 1. Seeing a vector
+# 1. Seeing a vector
 
 A vector can be represented geometrically as an **arrow**.
 
@@ -80,7 +75,15 @@ $$
 
 the arrow goes from
 
-$(0,0)$ to $(3,2).$
+$$
+(0,0)
+$$
+
+to
+
+$$
+(3,2).
+$$
 
 <div style="display:flex;justify-content:center;margin:35px 0;">
 
@@ -222,7 +225,7 @@ The vector has a **horizontal component** of $3$ and a **vertical component** of
 
 ---
 
-## 2. The components of a vector
+# 2. The components of a vector
 
 Consider the vector
 
@@ -248,7 +251,7 @@ $$
 \end{bmatrix}
 $$
 
-has:
+has
 
 $$
 \text{horizontal component}=5
@@ -285,7 +288,7 @@ The components tell us how much the vector moves in each coordinate direction.
 
 ---
 
-## 3. Vectors are not points
+# 3. Vectors are not points
 
 This distinction is important.
 
@@ -345,7 +348,66 @@ So the vector moves us from $(1,1)$ to $(4,3)$.
 
 ---
 
-## 4. Vectors can be added
+# 4. A vector can start anywhere
+
+Here is another important idea.
+
+Consider
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+3\\
+2
+\end{bmatrix}.
+$$
+
+It does not have to start at the origin.
+
+We could draw the same vector starting at
+
+$$
+(1,1)
+$$
+
+and ending at
+
+$$
+(4,3).
+$$
+
+The movement is still:
+
+$$
+3\text{ units right}
+$$
+
+and
+
+$$
+2\text{ units up}.
+$$
+
+So these two arrows represent the same vector:
+
+$$
+(0,0)\rightarrow(3,2)
+$$
+
+and
+
+$$
+(1,1)\rightarrow(4,3).
+$$
+
+The starting location changes, but the **movement** does not.
+
+This is why we often think of vectors as **free arrows**.
+
+---
+
+# 5. Vectors can be added
 
 Now suppose we make two movements.
 
@@ -420,7 +482,7 @@ So vector addition is simply **component-by-component addition**.
 <div class="example">
 
 <div class="example-title">
-Example 1 · Vector Addition
+Example · Vector Addition
 </div>
 
 Suppose
@@ -472,7 +534,7 @@ $$
 
 ---
 
-## 5. Scalar multiplication
+# 6. Scalar multiplication
 
 Vectors can also be multiplied by ordinary numbers.
 
@@ -501,7 +563,7 @@ $$
 \end{bmatrix}.
 $$
 
-Multiply each component by \(3\):
+Multiply each component by $3$:
 
 $$
 3\mathbf{v}
@@ -531,7 +593,7 @@ $$
 
 ---
 
-## 6. What if the scalar is negative?
+# 7. What if the scalar is negative?
 
 Consider
 
@@ -577,15 +639,28 @@ $$
 }
 $$
 
-This simple operation will become extremely important later when we study **linear combinations**.
+This simple operation will become extremely important when we study **linear combinations**.
 
 ---
 
-## 7. How long is a vector?
+# 8. How long is a vector?
 
-So far we've talked about the direction of a vector.
+So far we have talked about the direction of a vector.
 
-But a vector also has a **magnitude** - its length.
+But a vector also has a **magnitude** — its length.
+
+For
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+3\\
+4
+\end{bmatrix},
+$$
+
+the horizontal and vertical components form a right triangle.
 
 <div style="text-align:center; margin:35px 0;">
 
@@ -596,6 +671,22 @@ But a vector also has a **magnitude** - its length.
 
 </div>
 
+By the Pythagorean theorem,
+
+$$
+\|\mathbf{v}\|^2=3^2+4^2.
+$$
+
+Therefore,
+
+$$
+\|\mathbf{v}\|
+=
+\sqrt{3^2+4^2}
+=
+5.
+$$
+
 The symbol
 
 $$
@@ -604,18 +695,7 @@ $$
 
 means the **magnitude** or **length** of the vector.
 
-In general, for
-
-$$
-\mathbf{v}
-=
-\begin{bmatrix}
-x\\
-y
-\end{bmatrix},
-$$
-
-the magnitude is
+For a vector in $\mathbb R^2$,
 
 $$
 \boxed{
@@ -627,7 +707,7 @@ $$
 
 ---
 
-## 8. Direction matters too
+# 9. Direction matters too
 
 Two vectors can have the same magnitude but point in different directions.
 
@@ -655,7 +735,7 @@ $$
 \end{bmatrix}
 $$
 
-also has magnitude \(5\):
+also has magnitude $5$:
 
 $$
 \|\mathbf{v}\|
@@ -668,8 +748,6 @@ $$
 Their lengths are the same, but their directions are different.
 
 This is why a vector is more than simply a number representing distance.
-
----
 
 <div class="key-idea">
 
@@ -695,72 +773,418 @@ The components tell us how the vector is oriented along the coordinate axes.
 
 ---
 
-## 9. A vector can start anywhere
+# 10. From $\mathbb R^2$ to $\mathbb R^3$
 
-Here is another subtle but important idea.
+So far, every vector we've seen has had two components.
 
-Consider the vector
+For example,
 
 $$
-\mathbf{v}
-=
 \begin{bmatrix}
 3\\
 2
 \end{bmatrix}.
 $$
 
-It doesn't have to start at the origin.
+We call these vectors **two-dimensional vectors**.
 
-We could draw the same vector starting at
-
-$$
-(1,1)
-$$
-
-and ending at
+They live in
 
 $$
-(4,3).
+\mathbb R^2.
 $$
 
-The movement is still:
+The symbol $\mathbb R$ means the set of real numbers.
+
+The $2$ tells us that there are two components.
+
+Now imagine that we need one more direction.
+
+For example, in three-dimensional space we might have
 
 $$
-3\text{ units right}
+\mathbf{v}
+=
+\begin{bmatrix}
+3\\
+2\\
+4
+\end{bmatrix}.
 $$
 
-and
+This vector has three components:
 
 $$
-2\text{ units up}.
+3,\qquad 2,\qquad 4.
 $$
 
-So these two arrows represent the same vector:
+We say
 
 $$
-(0,0)\rightarrow(3,2)
+\boxed{
+\mathbf{v}\in\mathbb R^3
+}.
 $$
 
-and
-
-$$
-(1,1)\rightarrow(4,3).
-$$
-
-The starting location changes, but the **movement** does not.
-
-This is why we often think of vectors as **free arrows**: they can be moved around without changing the vector itself.
+Now the components describe movement in three coordinate directions.
 
 ---
 
-## 10. The standard basis vectors
+# 11. What does $\mathbb R^n$ mean?
 
-Now let's look at two particularly important vectors:
+We can continue this pattern.
+
+A vector with:
+
+- 2 components belongs to $\mathbb R^2$;
+- 3 components belongs to $\mathbb R^3$;
+- 4 components belongs to $\mathbb R^4$;
+- $n$ components belongs to $\mathbb R^n$.
+
+A general vector in $\mathbb R^n$ looks like
+
+<div class="math-scroll">
 
 $$
-\mathbf{e}_1
+\boxed{
+\mathbf{v}
 =
+\begin{bmatrix}
+v_1\\
+v_2\\
+\vdots\\
+v_n
+\end{bmatrix}
+}
+$$
+
+</div>
+
+There are $n$ real numbers:
+
+$$
+v_1,v_2,\ldots,v_n.
+$$
+
+These are the **components** of the vector.
+
+---
+
+# 12. Why do we need $\mathbb R^n$?
+
+We can easily draw a vector in $\mathbb R^2$.
+
+We can also draw one in $\mathbb R^3$.
+
+But what about
+
+$$
+\mathbb R^{10}
+$$
+
+or
+
+$$
+\mathbb R^{100}?
+$$
+
+We cannot visualize these spaces in the same way.
+
+But mathematically, there is no problem.
+
+For example,
+
+<div class="math-scroll">
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+v_1\\
+v_2\\
+v_3\\
+v_4\\
+v_5\\
+v_6\\
+v_7\\
+v_8\\
+v_9\\
+v_{10}
+\end{bmatrix}
+\in\mathbb R^{10}.
+$$
+
+</div>
+
+It is simply a vector with ten real components.
+
+The important transition is this:
+
+> We began by thinking of vectors as arrows in two dimensions. Now we can think of a vector more generally as an ordered list of numbers.
+
+That is the idea that allows linear algebra to work in very high dimensions.
+
+---
+
+# 13. Adding vectors in $\mathbb R^n$
+
+The rule we learned in $\mathbb R^2$ does not change.
+
+Suppose
+
+<div class="math-scroll">
+
+$$
+\mathbf{u}
+=
+\begin{bmatrix}
+u_1\\
+u_2\\
+\vdots\\
+u_n
+\end{bmatrix}
+$$
+
+and
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+v_1\\
+v_2\\
+\vdots\\
+v_n
+\end{bmatrix}.
+$$
+
+</div>
+
+Then
+
+<div class="math-scroll">
+
+$$
+\boxed{
+\mathbf{u}+\mathbf{v}
+=
+\begin{bmatrix}
+u_1+v_1\\
+u_2+v_2\\
+\vdots\\
+u_n+v_n
+\end{bmatrix}
+}.
+$$
+
+</div>
+
+We simply add corresponding components.
+
+For example,
+
+$$
+\begin{bmatrix}
+2\\
+1\\
+4
+\end{bmatrix}
++
+\begin{bmatrix}
+3\\
+-2\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+5\\
+-1\\
+5
+\end{bmatrix}.
+$$
+
+The same rule works whether the vector has $2$, $3$, or $100$ components.
+
+---
+
+# 14. Scalar multiplication in $\mathbb R^n$
+
+Likewise, scalar multiplication works exactly as before.
+
+For
+
+<div class="math-scroll">
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+v_1\\
+v_2\\
+\vdots\\
+v_n
+\end{bmatrix},
+$$
+
+</div>
+
+and scalar $c$,
+
+<div class="math-scroll">
+
+$$
+\boxed{
+c\mathbf{v}
+=
+\begin{bmatrix}
+cv_1\\
+cv_2\\
+\vdots\\
+cv_n
+\end{bmatrix}
+}.
+$$
+
+</div>
+
+Again, nothing fundamentally changes.
+
+We simply have more components.
+
+---
+
+# 15. Length in $\mathbb R^n$
+
+The Pythagorean idea also extends naturally.
+
+For
+
+<div class="math-scroll">
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+v_1\\
+v_2\\
+\vdots\\
+v_n
+\end{bmatrix},
+$$
+
+</div>
+
+the length of the vector is
+
+<div class="math-scroll">
+
+$$
+\boxed{
+\|\mathbf{v}\|
+=
+\sqrt{
+v_1^2+v_2^2+\cdots+v_n^2
+}
+}.
+$$
+
+</div>
+
+This is called the **Euclidean norm**.
+
+For example,
+
+$$
+\mathbf{v}
+=
+\begin{bmatrix}
+1\\
+2\\
+2
+\end{bmatrix}
+$$
+
+has length
+
+$$
+\|\mathbf{v}\|
+=
+\sqrt{1^2+2^2+2^2}
+=
+\sqrt{9}
+=
+3.
+$$
+
+So
+
+$$
+\boxed{\|\mathbf v\|=3}.
+$$
+
+---
+
+# 16. The zero vector
+
+There is one particularly important vector:
+
+the vector whose every component is zero.
+
+In $\mathbb R^2$,
+
+$$
+\mathbf 0=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}.
+$$
+
+In $\mathbb R^3$,
+
+$$
+\mathbf 0=
+\begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}.
+$$
+
+And in $\mathbb R^n$,
+
+<div class="math-scroll">
+
+$$
+\mathbf 0=
+\begin{bmatrix}
+0\\
+0\\
+\vdots\\
+0
+\end{bmatrix}.
+$$
+
+</div>
+
+This is called the **zero vector**.
+
+It behaves like the number zero:
+
+$$
+\mathbf v+\mathbf 0=\mathbf v.
+$$
+
+---
+
+# 17. The standard basis vectors
+
+Now we can introduce another important idea.
+
+In $\mathbb R^2$, consider
+
+$$
+\mathbf e_1=
 \begin{bmatrix}
 1\\
 0
@@ -770,19 +1194,18 @@ $$
 and
 
 $$
-\mathbf{e}_2
-=
+\mathbf e_2=
 \begin{bmatrix}
 0\\
 1
 \end{bmatrix}.
 $$
 
-These are called the **standard basis vectors** of \(\mathbb{R}^2\).
+These are called the **standard basis vectors**.
 
-Why are they important?
+Why are they useful?
 
-Because we can construct any two-dimensional vector using them.
+Because we can build every vector in $\mathbb R^2$ from them.
 
 For example,
 
@@ -791,11 +1214,7 @@ $$
 5\\
 3
 \end{bmatrix}
-$$
-
-can be written as
-
-$$
+=
 5
 \begin{bmatrix}
 1\\
@@ -818,25 +1237,215 @@ $$
 3
 \end{bmatrix}
 =
-5\mathbf{e}_1+3\mathbf{e}_2
-}
+5\mathbf e_1+3\mathbf e_2
+}.
 $$
 
-And this is where our story becomes much more interesting.
+We have just combined two vectors using scalar multiplication and addition.
 
-We have just discovered that vectors can be **built from other vectors**.
+That gives us our first glimpse of a **linear combination**.
 
-That idea is called a **linear combination**.
+We will study this idea carefully in the next chapter.
 
 ---
 
-# 🧠 Try It Yourself
+# 18. Standard basis in $\mathbb R^n$
+
+The same idea works in $\mathbb R^n$.
+
+There are $n$ standard basis vectors:
+
+<div class="math-scroll">
+
+$$
+\mathbf e_1=
+\begin{bmatrix}
+1\\
+0\\
+\vdots\\
+0
+\end{bmatrix},
+\quad
+\mathbf e_2=
+\begin{bmatrix}
+0\\
+1\\
+\vdots\\
+0
+\end{bmatrix},
+\quad
+\ldots,
+\quad
+\mathbf e_n=
+\begin{bmatrix}
+0\\
+0\\
+\vdots\\
+1
+\end{bmatrix}.
+$$
+
+</div>
+
+Every vector in $\mathbb R^n$ can be written as
+
+<div class="math-scroll">
+
+$$
+\boxed{
+\mathbf v
+=
+v_1\mathbf e_1+
+v_2\mathbf e_2+
+\cdots+
+v_n\mathbf e_n
+}.
+$$
+
+</div>
+
+This is an important idea.
+
+A vector is not something mysterious.
+
+It can be built by taking the standard directions and scaling them appropriately.
+
+---
+
+# 19. Connection with matrices
+
+Now we can connect vectors back to the matrix equations we studied earlier.
+
+Suppose
+
+$$
+A=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}
+$$
+
+and
+
+$$
+\mathbf{x}
+=
+\begin{bmatrix}
+x_1\\
+x_2
+\end{bmatrix}.
+$$
+
+Then
+
+<div class="math-scroll">
+
+$$
+A\mathbf{x}
+=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2
+\end{bmatrix}.
+$$
+
+</div>
+
+The columns of $A$ are
+
+$$
+\mathbf a_1=
+\begin{bmatrix}
+2\\
+4
+\end{bmatrix},
+\qquad
+\mathbf a_2=
+\begin{bmatrix}
+1\\
+3
+\end{bmatrix}.
+$$
+
+Therefore,
+
+<div class="math-scroll">
+
+$$
+\boxed{
+A\mathbf{x}
+=
+x_1\mathbf a_1+x_2\mathbf a_2
+}.
+$$
+
+</div>
+
+So matrix-vector multiplication is actually a **linear combination of the columns of the matrix**.
+
+This observation will become central in the next few chapters.
+
+---
+
+# 20. What have we learned?
+
+Let's pause before moving on.
+
+We started with a simple movement:
+
+$$
+3\text{ units right},\qquad
+2\text{ units up}.
+$$
+
+We represented it as
+
+$$
+\mathbf v=
+\begin{bmatrix}
+3\\
+2
+\end{bmatrix}.
+$$
+
+Then we learned that vectors have:
+
+- components;
+- magnitude;
+- direction.
+
+We learned how to:
+
+- add vectors;
+- multiply vectors by scalars;
+- calculate their length;
+- work with vectors in $\mathbb R^2$, $\mathbb R^3$, and $\mathbb R^n$.
+
+And we discovered that every vector can be built from standard basis vectors.
+
+Most importantly, we saw that
+
+$$
+A\mathbf x
+$$
+
+is a combination of the columns of $A$.
+
+Now we are ready for the next question.
+
+---
+
+# Try It Yourself
 
 Consider
 
 $$
-\mathbf{a}
-=
+\mathbf a=
 \begin{bmatrix}
 4\\
 3
@@ -846,8 +1455,7 @@ $$
 and
 
 $$
-\mathbf{b}
-=
+\mathbf b=
 \begin{bmatrix}
 2\\
 -1
@@ -859,7 +1467,7 @@ $$
 Calculate
 
 $$
-\mathbf{a}+\mathbf{b}.
+\mathbf a+\mathbf b.
 $$
 
 ### Question 2
@@ -867,7 +1475,7 @@ $$
 Calculate
 
 $$
-2\mathbf{a}.
+2\mathbf a.
 $$
 
 ### Question 3
@@ -875,20 +1483,21 @@ $$
 Calculate
 
 $$
-\|\mathbf{a}\|.
+\|\mathbf a\|.
 $$
 
-Take a moment before looking at the answers.
+### Question 4
+
+Write $\mathbf a$ using the standard basis vectors $\mathbf e_1$ and $\mathbf e_2$.
 
 ---
 
-<details>
-<summary><strong>Show the answers</strong></summary>
+## Answers
 
 ### Answer 1
 
 $$
-\mathbf{a}+\mathbf{b}
+\mathbf a+\mathbf b
 =
 \begin{bmatrix}
 4\\
@@ -910,7 +1519,7 @@ $$
 ### Answer 2
 
 $$
-2\mathbf{a}
+2\mathbf a
 =
 2
 \begin{bmatrix}
@@ -928,90 +1537,78 @@ $$
 ### Answer 3
 
 $$
-\|\mathbf{a}\|
+\|\mathbf a\|
 =
 \sqrt{4^2+3^2}
 =
 \sqrt{25}
 =
-\boxed{5}
+\boxed{5}.
 $$
 
-</details>
+### Answer 4
 
----
-
-# The Big Picture
-
-Let's step back.
-
-We started with a very simple question:
-
-> **How can we describe movement mathematically?**
-
-We introduced vectors.
-
-Then we learned that vectors have:
-
-- components;
-- magnitude;
-- direction.
-
-And we learned two fundamental operations:
+Since
 
 $$
-\boxed{\text{Vector addition}}
-$$
-
-and
-
-$$
-\boxed{\text{Scalar multiplication}}.
-$$
-
-Most importantly, we discovered that vectors can be **combined to create other vectors**.
-
-For example,
-
-$$
-\begin{bmatrix}
-5\\
-3
-\end{bmatrix}
-=
-5
+\mathbf e_1=
 \begin{bmatrix}
 1\\
 0
-\end{bmatrix}
-+
-3
+\end{bmatrix},
+\qquad
+\mathbf e_2=
 \begin{bmatrix}
 0\\
 1
-\end{bmatrix}.
+\end{bmatrix},
 $$
 
-This is a **linear combination**.
+we have
 
-And that leads us to our next question:
-
-> ### What can we create by combining vectors?
-
-That is the subject of the next lesson.
+$$
+\boxed{
+\mathbf a=4\mathbf e_1+3\mathbf e_2
+}.
+$$
 
 ---
 
-## Next Lesson
+# What comes next?
 
-### **Part 2 · Adding Vectors**
+We have now learned how to add vectors and multiply them by numbers.
 
-We'll go one step deeper and see how vectors combine geometrically.
+That gives us a new possibility.
 
-We'll eventually arrive at the idea of a **linear combination**:
+If we have vectors $\mathbf v_1,\mathbf v_2,\ldots,\mathbf v_k$, we can form
 
 $$
-c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_n\mathbf{v}_n.
+c_1\mathbf v_1+
+c_2\mathbf v_2+
+\cdots+
+c_k\mathbf v_k.
 $$
 
-And once we understand that, the ideas of **span, linear independence, basis, and dimension** will begin to fall into place.
+This is called a **linear combination**.
+
+But an even more interesting question is:
+
+> **What collection of vectors can we create using all possible linear combinations?**
+
+That leads us to **span**.
+
+And once we understand span, we can ask whether some of our vectors are redundant.
+
+That leads us to **linear independence**.
+
+So the next sequence is:
+
+$$
+\boxed{
+\text{Linear Combinations}
+\rightarrow
+\text{Span}
+\rightarrow
+\text{Linear Independence}
+}
+$$

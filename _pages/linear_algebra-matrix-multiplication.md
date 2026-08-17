@@ -347,23 +347,82 @@ The inner dimensions are $3$ and $2$, so they do not match.
 
 ## 7. Why do the dimensions work this way?
 
-There is a deeper reason.
-
-Suppose
+There is a deeper reason behind the rule
 
 $$
-A
+(m\times n)(n\times p)=m\times p.
 $$
 
-is a $2\times3$ matrix.
+To see it, we first need one new idea:
 
-Then $A$ takes a vector with 3 components and produces a vector with 2 components:
+**a matrix can be viewed as a machine that takes vectors as inputs and produces vectors as outputs.**
+
+---
+
+### A matrix as a transformation
+
+Consider a $2\times3$ matrix:
+
+$$
+A=
+\begin{bmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}
+\end{bmatrix}.
+$$
+
+It has **3 columns** and **2 rows**.
+
+When we multiply $A$ by a vector, that vector must have 3 components:
+
+$$
+\mathbf{x}
+=
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3
+\end{bmatrix}.
+$$
+
+Why?
+
+Because each row of $A$ must be able to take a dot product with $\mathbf{x}$:
+
+$$
+A\mathbf{x}
+=
+\begin{bmatrix}
+a_{11}x_1+a_{12}x_2+a_{13}x_3\\
+a_{21}x_1+a_{22}x_2+a_{23}x_3
+\end{bmatrix}.
+$$
+
+The result has **2 components**, one for each row of $A$.
+
+So a $2\times3$ matrix takes
 
 $$
 \mathbb{R}^3
 \longrightarrow
 \mathbb{R}^2.
 $$
+
+In words:
+
+> A $2\times3$ matrix takes a 3-dimensional vector and produces a 2-dimensional vector.
+
+This is what the notation
+
+$$
+A:\mathbb{R}^3\rightarrow\mathbb{R}^2
+$$
+
+means.
+
+---
+
+### Now consider another matrix
 
 Suppose
 
@@ -373,15 +432,59 @@ $$
 
 is a $3\times4$ matrix.
 
-Then $B$ takes a vector with 4 components and produces a vector with 3 components:
+It has 4 columns and 3 rows.
+
+Therefore, $B$ takes a vector with 4 components and produces a vector with 3 components:
 
 $$
-\mathbb{R}^4
-\longrightarrow
+B:\mathbb{R}^4\rightarrow\mathbb{R}^3.
+$$
+
+So we can think of $B$ as another machine:
+
+$$
+\mathbf{x}\in\mathbb{R}^4
+\quad\longrightarrow\quad
+B\mathbf{x}\in\mathbb{R}^3.
+$$
+
+---
+
+### Now the important part
+
+We have two machines:
+
+$$
+B:\mathbb{R}^4\rightarrow\mathbb{R}^3
+$$
+
+and
+
+$$
+A:\mathbb{R}^3\rightarrow\mathbb{R}^2.
+$$
+
+Look carefully at the output of $B$.
+
+It is a vector in
+
+$$
 \mathbb{R}^3.
 $$
 
-Therefore we can apply $B$ first and $A$ second:
+Now look at the input required by $A$.
+
+It must also be a vector in
+
+$$
+\mathbb{R}^3.
+$$
+
+**They match!**
+
+Therefore, we can feed the output of $B$ directly into $A$.
+
+The process is
 
 $$
 \mathbb{R}^4
@@ -391,24 +494,223 @@ $$
 \mathbb{R}^2.
 $$
 
-The combined transformation goes from
+Start with a vector
+
+$$
+\mathbf{x}\in\mathbb{R}^4.
+$$
+
+First apply $B$:
+
+$$
+\mathbf{x}
+\longrightarrow
+B\mathbf{x}.
+$$
+
+Now $B\mathbf{x}$ has 3 components, so it can be used as an input to $A$:
+
+$$
+B\mathbf{x}
+\longrightarrow
+A(B\mathbf{x}).
+$$
+
+Therefore the entire process is
+
+$$
+\mathbf{x}
+\longrightarrow
+B\mathbf{x}
+\longrightarrow
+A(B\mathbf{x}).
+$$
+
+And we write the final result as
+
+$$
+A(B\mathbf{x})=(AB)\mathbf{x}.
+$$
+
+So the matrix $AB$ represents the **combined transformation**.
+
+---
+
+### This explains the dimensions
+
+We started with
+
+$$
+A\quad\text{is }2\times3
+$$
+
+and
+
+$$
+B\quad\text{is }3\times4.
+$$
+
+The transformations were
 
 $$
 \mathbb{R}^4
-\longrightarrow
+\xrightarrow{\;B\;}
+\mathbb{R}^3
+\xrightarrow{\;A\;}
 \mathbb{R}^2.
 $$
 
-Therefore,
+Therefore the combined transformation
 
 $$
 AB
 $$
 
-must be a $2\times4$ matrix.
+takes
 
-This is why the dimensions of matrix multiplication are not arbitrary.
+$$
+\mathbb{R}^4\rightarrow\mathbb{R}^2.
+$$
 
+So $AB$ must be a
+
+$$
+2\times4
+$$
+
+matrix.
+
+That is exactly the dimension rule:
+
+$$
+\boxed{
+(2\times3)(3\times4)=2\times4
+}
+$$
+
+The two middle numbers match because the output dimension of $B$ must match the input dimension of $A$.
+
+---
+
+### Why can't we multiply the other way?
+
+Now suppose we try to calculate
+
+$$
+BA.
+$$
+
+Remember:
+
+$$
+A:\mathbb{R}^3\rightarrow\mathbb{R}^2
+$$
+
+and
+
+$$
+B:\mathbb{R}^4\rightarrow\mathbb{R}^3.
+$$
+
+For $BA$, $A$ would have to act first:
+
+$$
+\mathbb{R}^3
+\xrightarrow{\;A\;}
+\mathbb{R}^2.
+$$
+
+But $B$ requires a vector with **4 components** as its input.
+
+We only have a vector with **2 components**.
+
+So we cannot feed the output of $A$ into $B$.
+
+The dimensions do not match:
+
+$$
+\mathbb{R}^3
+\xrightarrow{\;A\;}
+\mathbb{R}^2
+\qquad
+\not\longrightarrow
+\qquad
+\mathbb{R}^4.
+$$
+
+Therefore $BA$ is not defined.
+
+This is why
+
+$$
+AB
+$$
+
+may exist even when
+
+$$
+BA
+$$
+
+does not.
+
+---
+
+### The big idea
+
+The dimension rule is not just a trick for multiplying matrices.
+
+It tells us whether two transformations can be connected.
+
+Think of a matrix as a machine:
+
+$$
+\boxed{
+\text{input}
+\longrightarrow
+\text{matrix}
+\longrightarrow
+\text{output}
+}
+$$
+
+The output of the first machine must have the right number of components to become the input of the second machine.
+
+For
+
+$$
+A_{2\times3}
+\quad\text{and}\quad
+B_{3\times4},
+$$
+
+we have
+
+$$
+\boxed{
+\mathbb{R}^4
+\xrightarrow{\;B\;}
+\mathbb{R}^3
+\xrightarrow{\;A\;}
+\mathbb{R}^2
+}
+$$
+
+and therefore
+
+$$
+\boxed{
+AB:\mathbb{R}^4\rightarrow\mathbb{R}^2.
+}
+$$
+
+This is the deeper meaning behind
+
+$$
+\boxed{
+(m\times n)(n\times p)=m\times p.
+}
+$$
 ---
 
 ## 8. Matrix multiplication and columns

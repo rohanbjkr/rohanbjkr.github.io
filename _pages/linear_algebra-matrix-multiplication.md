@@ -9,7 +9,7 @@ lesson_number: 5
 
 module: "Module 2 · Matrix Algrbra"
 
-description: "How elimination transforms a system of linear equations into a form that is easy to solve."
+description: "Understanding matrix multiplication through rows, columns, and linear transformations."
 ---
 
 

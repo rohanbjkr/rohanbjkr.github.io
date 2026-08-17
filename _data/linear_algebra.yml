@@ -1,4 +1,4 @@
-title: "Linear Algebra from Zero"
+title: "Linear Algebra for Beginners"
 
 description: "An intuitive and visual journey through linear algebra."
 
@@ -67,21 +67,26 @@ modules:
         description: "Vectors, components, magnitude, and direction."
 
       - number: 10
+        title: "Span of Vector"
+        url: "/linear-algebra/vector-span/"
+        description: "Vectors, components, magnitude, and direction."
+
+      - number: 11
         title: "Linear Combinations"
         url: "/linear-algebra/linear-combinations/"
         description: "Building new vectors from existing vectors."
 
-      - number: 11
+      - number: 12
         title: "Vector Spaces"
         url: "/linear-algebra/vector-spaces/"
         description: "The structure that unifies many different examples."
 
-      - number: 12
+      - number: 13
         title: "Column Space"
         url: "/linear-algebra/column-space/"
         description: "The set of vectors a matrix can produce."
 
-      - number: 13
+      - number: 14
         title: "Nullspace"
         url: "/linear-algebra/nullspace/"
         description: "Understanding all solutions to Ax = 0."
@@ -92,27 +97,27 @@ modules:
     description: "The fundamental ideas that describe the structure of vector spaces."
     lessons:
 
-      - number: 14
+      - number: 15
         title: "Special Solutions"
         url: "/linear-algebra/special-solutions/"
         description: "Finding the building blocks of the solution space."
 
-      - number: 15
+      - number: 16
         title: "Linear Independence"
         url: "/linear-algebra/linear-independence/"
         description: "When vectors contain genuinely new information."
 
-      - number: 16
+      - number: 17
         title: "Basis"
         url: "/linear-algebra/basis/"
         description: "A minimal set of vectors that builds a space."
 
-      - number: 17
+      - number: 18
         title: "Dimension"
         url: "/linear-algebra/dimension/"
         description: "Counting the independent directions in a vector space."
 
-      - number: 18
+      - number: 19
         title: "The Four Fundamental Subspaces"
         url: "/linear-algebra/four-fundamental-subspaces/"
         description: "Column space, nullspace, row space, and left nullspace."
@@ -123,27 +128,27 @@ modules:
     description: "Geometry, projections, approximation, and orthogonal bases."
     lessons:
 
-      - number: 19
+      - number: 20
         title: "Orthogonal Vectors"
         url: "/linear-algebra/orthogonal-vectors/"
         description: "Perpendicularity through the dot product."
 
-      - number: 20
+      - number: 21
         title: "Projections"
         url: "/linear-algebra/projections/"
         description: "Finding the closest point on a line or subspace."
 
-      - number: 21
+      - number: 22
         title: "Least Squares"
         url: "/linear-algebra/least-squares/"
         description: "Solving systems that have no exact solution."
 
-      - number: 22
+      - number: 23
         title: "Gram–Schmidt"
         url: "/linear-algebra/gram-schmidt/"
         description: "Turning independent vectors into an orthogonal basis."
 
-      - number: 23
+      - number: 24
         title: "QR Factorization"
         url: "/linear-algebra/qr-factorization/"
         description: "Matrix factorization built from orthogonal vectors."
@@ -154,22 +159,22 @@ modules:
     description: "A number that captures scaling, orientation, and invertibility."
     lessons:
 
-      - number: 24
+      - number: 25
         title: "What Is a Determinant?"
         url: "/linear-algebra/determinants/"
         description: "Area, volume, and the geometry of a matrix."
 
-      - number: 25
+      - number: 26
         title: "Properties of Determinants"
         url: "/linear-algebra/determinant-properties/"
         description: "How row operations change determinants."
 
-      - number: 26
+      - number: 27
         title: "Cofactors"
         url: "/linear-algebra/cofactors/"
         description: "Expanding determinants and understanding their structure."
 
-      - number: 27
+      - number: 28
         title: "Determinants and Volume"
         url: "/linear-algebra/determinants-volume/"
         description: "Determinants as geometric scaling factors."
@@ -180,27 +185,27 @@ modules:
     description: "The special directions that reveal the internal structure of a matrix."
     lessons:
 
-      - number: 28
+      - number: 29
         title: "Eigenvalues and Eigenvectors"
         url: "/linear-algebra/eigenvalues/"
         description: "Directions that a matrix does not rotate."
 
-      - number: 29
+      - number: 30
         title: "Diagonalization"
         url: "/linear-algebra/diagonalization/"
         description: "Simplifying matrices using eigenvectors."
 
-      - number: 30
+      - number: 31
         title: "Powers of a Matrix"
         url: "/linear-algebra/powers-of-matrices/"
         description: "Using eigenvalues to understand repeated matrix operations."
 
-      - number: 31
+      - number: 32
         title: "Symmetric Matrices"
         url: "/linear-algebra/symmetric-matrices/"
         description: "Orthogonal eigenvectors and symmetric structure."
 
-      - number: 32
+      - number: 33
         title: "Positive Definite Matrices"
         url: "/linear-algebra/positive-definite-matrices/"
         description: "Quadratic forms, energy, and stability."
@@ -211,27 +216,27 @@ modules:
     description: "Matrices as transformations and changes of coordinates."
     lessons:
 
-      - number: 33
+      - number: 34
         title: "Linear Transformations"
         url: "/linear-algebra/linear-transformations/"
         description: "Thinking of matrices as functions between vector spaces."
 
-      - number: 34
+      - number: 35
         title: "Matrices of Linear Transformations"
         url: "/linear-algebra/matrices-of-transformations/"
         description: "Representing transformations using matrices."
 
-      - number: 35
+      - number: 36
         title: "Change of Basis"
         url: "/linear-algebra/change-of-basis/"
         description: "Describing the same vector in different coordinate systems."
 
-      - number: 36
+      - number: 37
         title: "Similar Matrices"
         url: "/linear-algebra/similar-matrices/"
         description: "Different matrix representations of the same transformation."
 
-      - number: 37
+      - number: 38
         title: "Singular Value Decomposition"
         url: "/linear-algebra/svd/"
         description: "A powerful decomposition of any matrix."

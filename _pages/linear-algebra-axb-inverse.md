@@ -1,6 +1,6 @@
 ---
 layout: linear-algebra-lesson
-title: "$A^{-1}$ and $A\mathbf{x}=\mathbf{b}$"
+title: 'A⁻¹ and Ax = b'
 lesson_number: 7
 module: "Module 2 · Matrix Algebra"
 description: "Using the inverse matrix to understand and solve systems of linear equations."

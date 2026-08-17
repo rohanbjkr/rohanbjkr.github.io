@@ -1,8 +1,8 @@
 ---
-title: "Span"
+title: "Span and Linear Combination"
 permalink: /linear-algebra/vector-span/
 layout: linear-algebra-lesson
-lesson_number: 11
+lesson_number: 10
 module: "Module 3 · Vector Spaces"
 description: "Understanding span through linear combinations and the geometry of vectors."
 ---

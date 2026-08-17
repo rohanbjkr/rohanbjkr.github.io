@@ -61,30 +61,30 @@ modules:
     description: "Moving from individual vectors to the spaces they generate."
     lessons:
 
-      - number: 9
+            - number: 9
         title: "Vectors in Rⁿ"
         url: "/linear-algebra/vectors/"
         description: "Vectors, components, magnitude, and direction."
 
       - number: 10
-        title: "Span and Linear Combination"
+        title: "Linear Combinations and Span"
         url: "/linear-algebra/vector-span/"
-        description: "Vectors, components, magnitude, and direction."
+        description: "How vectors combine and the space they can generate."
 
       - number: 11
         title: "Linear Independence"
-        url: "/linear-algebra/linear-combinations/"
-        description: "Building new vectors from existing vectors."
+        url: "/linear-algebra/linear-independence/"
+        description: "When vectors provide genuinely new directions."
 
       - number: 12
         title: "Vector Spaces"
         url: "/linear-algebra/vector-spaces/"
-        description: "The structure that unifies many different examples."
+        description: "The structure that unifies vectors and their subspaces."
 
       - number: 13
         title: "Column Space"
         url: "/linear-algebra/column-space/"
-        description: "The set of vectors a matrix can produce."
+        description: "The set of vectors that can be produced by a matrix."
 
       - number: 14
         title: "Nullspace"
@@ -93,35 +93,35 @@ modules:
 
 
   - number: 4
-    title: "Independence, Basis & Dimension"
-    description: "The fundamental ideas that describe the structure of vector spaces."
+    title: "Basis & Dimension"
+    description: "Using independence and span to describe the structure of vector spaces."
     lessons:
 
       - number: 15
         title: "Special Solutions"
         url: "/linear-algebra/special-solutions/"
-        description: "Finding the building blocks of the solution space."
+        description: "Finding the fundamental solutions that build the nullspace."
 
       - number: 16
-        title: "Linear Independence"
-        url: "/linear-algebra/linear-independence/"
-        description: "When vectors contain genuinely new information."
-
-      - number: 17
         title: "Basis"
         url: "/linear-algebra/basis/"
-        description: "A minimal set of vectors that builds a space."
+        description: "A linearly independent set that spans a space."
 
-      - number: 18
+      - number: 17
         title: "Dimension"
         url: "/linear-algebra/dimension/"
-        description: "Counting the independent directions in a vector space."
+        description: "Counting the independent directions in a space."
 
-      - number: 19
+      - number: 18
         title: "The Four Fundamental Subspaces"
         url: "/linear-algebra/four-fundamental-subspaces/"
         description: "Column space, nullspace, row space, and left nullspace."
 
+      - number: 19
+        title: "Rank"
+        url: "/linear-algebra/rank/"
+        description: "Understanding the number of independent directions in a matrix."
+        
 
   - number: 5
     title: "Orthogonality & Least Squares"

@@ -1,90 +1,53 @@
 ---
 layout: linear-algebra-lesson
-title: 'LU Factorization'
+title: 'LU Decomposition'
 lesson_number: 8
 module: "Module 2 · Matrix Algebra"
-description: "Understanding LU decomposition as elimination written in matrix form."
+description: "Understanding LU decomposition by connecting it step by step to Gaussian elimination."
 permalink: /linear-algebra/lu-factorization/
 ---
 
 # LU Decomposition
 
-In the previous lessons, we learned how to solve
+In the previous lessons, we learned how to solve systems of linear equations using elimination.
+
+We also learned that, when $A$ is invertible,
 
 $$
-A\mathbf{x}=\mathbf{b}.
+A\mathbf{x}=\mathbf{b}
 $$
 
-We learned elimination as a practical method for solving a system.
-
-We then introduced the inverse matrix and saw that, when $A$ is invertible,
-
-<div class="math-scroll">
+has the solution
 
 $$
 \mathbf{x}=A^{-1}\mathbf{b}.
 $$
 
-</div>
+But there is another important way to organize elimination.
 
-But there is another way to organize elimination.
-
-Instead of performing the elimination steps separately every time, we can **record the elimination process inside a matrix**.
-
-This leads to one of the most useful factorizations in linear algebra:
-
-<div class="math-scroll">
+Instead of thinking of elimination as a sequence of row operations, we can turn the entire process into a **matrix factorization**:
 
 $$
 A=LU.
 $$
 
-</div>
+At first, this formula may look mysterious.
 
-Here:
+What are $L$ and $U$?
 
-- $L$ is a **lower-triangular matrix** containing the elimination information.
-- $U$ is the **upper-triangular matrix** produced by elimination.
+Why do we need two matrices?
 
-This is called **LU decomposition** or **LU factorization**.
+Why is one called $L$ and the other $U$?
 
----
+And most importantly:
 
-# 1. Why do we need LU decomposition?
+> **How do we get $L$ and $U$ from the original matrix $A$?**
 
-Suppose we want to solve
-
-$$
-A\mathbf{x}=\mathbf{b}.
-$$
-
-For one right-hand side $\mathbf b$, ordinary elimination works very well.
-
-But suppose we need to solve many systems with the same matrix $A$:
-
-<div class="math-scroll">
-
-$$
-A\mathbf{x}_1=\mathbf{b}_1,
-\qquad
-A\mathbf{x}_2=\mathbf{b}_2,
-\qquad
-A\mathbf{x}_3=\mathbf{b}_3.
-$$
-
-</div>
-
-The matrix $A$ has not changed.
-
-Only the right-hand side has changed.
-
-It would be inefficient to start the entire elimination process from the beginning every time.
-
-LU decomposition allows us to perform the expensive elimination once and then reuse it.
+We will build the answer slowly.
 
 ---
 
-# 2. Start with elimination
+# 1. Start where we already know how to work
 
 Consider the system
 
@@ -121,7 +84,7 @@ $$
 
 </div>
 
-So
+Let
 
 $$
 A=
@@ -131,31 +94,172 @@ A=
 \end{bmatrix}.
 $$
 
-We begin elimination.
-
-The first pivot is $2$.
-
-To eliminate the $4$ below it, we subtract
+Then our system is simply
 
 $$
-2\times\text{row 1}
+A\mathbf{x}=\mathbf{b}.
 $$
 
-from row 2.
+We already know how to solve this.
 
-The elimination multiplier is therefore
+We use elimination.
+
+---
+
+# 2. Why do we use elimination?
+
+The original matrix is
 
 $$
-m_{21}=\frac{4}{2}=2.
+A=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}.
 $$
 
-So
+The problem is the $4$ below the first pivot.
+
+We would like to turn it into zero.
+
+Why?
+
+Because a triangular system is much easier to solve.
+
+If we can transform the matrix into
+
+$$
+\begin{bmatrix}
+2&1\\
+0&1
+\end{bmatrix},
+$$
+
+then the corresponding equations are
+
+$$
+2x+y=5
+$$
+
+and
+
+$$
+y=1.
+$$
+
+We immediately find
+
+$$
+y=1
+$$
+
+and then
+
+$$
+x=2.
+$$
+
+So elimination has a clear purpose:
+
+> **We turn a complicated system into a triangular system that is easy to solve.**
+
+---
+
+# 3. Perform the first elimination
+
+Start with
+
+$$
+A=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}.
+$$
+
+The first pivot is
+
+$$
+2.
+$$
+
+We want to eliminate the $4$ below it.
+
+We ask:
+
+> How many times does the pivot $2$ fit into the number $4$?
+
+The answer is
+
+$$
+\frac{4}{2}=2.
+$$
+
+So our elimination multiplier is
+
+$$
+m_{21}=2.
+$$
+
+We use it to perform
 
 $$
 R_2\leftarrow R_2-2R_1.
 $$
 
-The matrix becomes
+Let's calculate it explicitly.
+
+The first row is
+
+$$
+R_1=
+\begin{bmatrix}
+2&1
+\end{bmatrix}.
+$$
+
+Therefore,
+
+$$
+2R_1=
+\begin{bmatrix}
+4&2
+\end{bmatrix}.
+$$
+
+The second row is
+
+$$
+R_2=
+\begin{bmatrix}
+4&3
+\end{bmatrix}.
+$$
+
+Subtract:
+
+$$
+R_2-2R_1
+=
+\begin{bmatrix}
+4&3
+\end{bmatrix}
+-
+\begin{bmatrix}
+4&2
+\end{bmatrix}.
+$$
+
+Therefore,
+
+$$
+R_2=
+\begin{bmatrix}
+0&1
+\end{bmatrix}.
+$$
+
+So
 
 <div class="math-scroll">
 
@@ -173,9 +277,30 @@ $$
 
 </div>
 
-We have reached an upper-triangular matrix.
+Excellent.
 
-Call it $U$:
+We have eliminated the entry below the pivot.
+
+---
+
+# 4. Why do we want this new matrix?
+
+The new matrix is
+
+$$
+\begin{bmatrix}
+2&1\\
+0&1
+\end{bmatrix}.
+$$
+
+Notice its shape.
+
+Everything **below the main diagonal is zero**.
+
+Such a matrix is called an **upper-triangular matrix**.
+
+We give this matrix a name:
 
 $$
 U=
@@ -185,499 +310,47 @@ U=
 \end{bmatrix}.
 $$
 
----
+Why the letter $U$?
 
-# 3. Where did the elimination information go?
+Simply because it is **U**pper triangular.
 
-During elimination, we used the multiplier
-
-$$
-m_{21}=2.
-$$
-
-Ordinary elimination uses this number and then moves on.
-
-But what if we **save** it?
-
-Put the multiplier below the diagonal:
-
-$$
-L=
-\begin{bmatrix}
-1&0\\
-2&1
-\end{bmatrix}.
-$$
-
-Now something remarkable happens:
-
-<div class="math-scroll">
-
-$$
-LU
-=
-\begin{bmatrix}
-1&0\\
-2&1
-\end{bmatrix}
-\begin{bmatrix}
-2&1\\
-0&1
-\end{bmatrix}
-=
-\begin{bmatrix}
-2&1\\
-4&3
-\end{bmatrix}
-=A.
-$$
-
-</div>
-
-Therefore,
-
-$$
-\boxed{
-A=LU.
-}
-$$
-
-We have turned the elimination process into a matrix factorization.
-
----
-
-# 4. What does $A=LU$ mean?
-
-The equation
-
-$$
-A=LU
-$$
-
-says that instead of thinking of $A$ as one matrix, we can think of it as the product of two simpler matrices.
-
-The original matrix is
-
-$$
-A=
-\begin{bmatrix}
-2&1\\
-4&3
-\end{bmatrix}.
-$$
-
-The lower-triangular matrix is
-
-$$
-L=
-\begin{bmatrix}
-1&0\\
-2&1
-\end{bmatrix},
-$$
-
-and the upper-triangular matrix is
+So:
 
 $$
 U=
-\begin{bmatrix}
-2&1\\
-0&1
-\end{bmatrix}.
+\text{the upper-triangular matrix produced by elimination}.
 $$
 
-And
+This is the first important answer.
 
-$$
-A=LU.
-$$
-
-The matrix $U$ contains the result of elimination.
-
-The matrix $L$ contains the multipliers that were used during elimination.
+> **Why $U$? Because elimination turns $A$ into an upper-triangular matrix, and we call that matrix $U$.**
 
 ---
 
-# 5. Why is $L$ lower triangular?
+# 5. Why is an upper-triangular matrix useful?
 
-A lower-triangular matrix has zeros above the main diagonal.
+Let's see why we care about the triangular form.
 
-For our example,
-
-$$
-L=
-\begin{bmatrix}
-1&0\\
-2&1
-\end{bmatrix}.
-$$
-
-The multiplier $2$ appears below the diagonal.
-
-For a larger matrix, the elimination multipliers are stored below the diagonal.
-
-For example,
+Suppose we have
 
 <div class="math-scroll">
 
 $$
-L=
-\begin{bmatrix}
-1&0&0\\
-m_{21}&1&0\\
-m_{31}&m_{32}&1
-\end{bmatrix}.
-$$
-
-</div>
-
-The entries
-
-$$
-m_{21},\quad m_{31},\quad m_{32}
-$$
-
-are the elimination multipliers.
-
-The diagonal entries are $1$.
-
----
-
-# 6. Why is $U$ upper triangular?
-
-Elimination removes the entries below each pivot.
-
-For a $3\times3$ matrix, we aim for something like
-
-<div class="math-scroll">
-
-$$
-U=
-\begin{bmatrix}
-u_{11}&u_{12}&u_{13}\\
-0&u_{22}&u_{23}\\
-0&0&u_{33}
-\end{bmatrix}.
-$$
-
-</div>
-
-Everything below the main diagonal is zero.
-
-That is why $U$ is called **upper triangular**.
-
-The great advantage is that triangular systems are easy to solve.
-
----
-
-# 7. The key insight: elimination is factorization
-
-This is the central idea of LU decomposition.
-
-When we perform elimination,
-
-$$
-A\longrightarrow U,
-$$
-
-we are transforming $A$ into an upper-triangular matrix.
-
-But the elimination steps themselves contain information.
-
-The multipliers used during elimination can be stored in $L$.
-
-Then the original matrix can be reconstructed:
-
-$$
-A=LU.
-$$
-
-So LU decomposition is essentially:
-
-> **Elimination, with the elimination information saved.**
-
-This is the idea to remember.
-
----
-
-# 8. From $A\mathbf{x}=\mathbf b$ to $LU\mathbf{x}=\mathbf b$
-
-Suppose
-
-$$
-A=LU.
-$$
-
-Our original system is
-
-$$
-A\mathbf{x}=\mathbf b.
-$$
-
-Substitute $A=LU$:
-
-$$
-LU\mathbf{x}=\mathbf b.
-$$
-
-Because matrix multiplication is associative,
-
-$$
-L(U\mathbf{x})=\mathbf b.
-$$
-
-This suggests introducing an intermediate vector.
-
-Let
-
-$$
-\mathbf y=U\mathbf{x}.
-$$
-
-Then the system becomes
-
-$$
-L\mathbf y=\mathbf b.
-$$
-
-We can solve this in two steps.
-
-### Step 1
-
-Solve
-
-$$
-L\mathbf y=\mathbf b.
-$$
-
-### Step 2
-
-Use the resulting $\mathbf y$ to solve
-
-$$
-U\mathbf{x}=\mathbf y.
-$$
-
-This is the fundamental computational use of LU decomposition.
-
----
-
-# 9. The two triangular systems
-
-Starting from
-
-$$
-A\mathbf{x}=\mathbf b
-$$
-
-and using
-
-$$
-A=LU,
-$$
-
-we obtain
-
-$$
-LU\mathbf{x}=\mathbf b.
-$$
-
-Let
-
-$$
-\mathbf y=U\mathbf{x}.
-$$
-
-Then
-
-$$
-L\mathbf y=\mathbf b.
-$$
-
-After finding $\mathbf y$, solve
-
-$$
-U\mathbf{x}=\mathbf y.
-$$
-
-Therefore:
-
-<div class="math-scroll">
-
-$$
-\boxed{
-A\mathbf{x}=\mathbf b
-\quad\Longrightarrow\quad
-\begin{cases}
-L\mathbf y=\mathbf b,\\
-U\mathbf{x}=\mathbf y.
-\end{cases}
-}
-$$
-
-</div>
-
-The first system is solved by **forward substitution**.
-
-The second is solved by **back substitution**.
-
----
-
-# 10. Solve our example using LU
-
-Recall
-
-$$
-A=
-\begin{bmatrix}
-2&1\\
-4&3
-\end{bmatrix},
-$$
-
-with
-
-$$
-L=
-\begin{bmatrix}
-1&0\\
-2&1
-\end{bmatrix}
-$$
-
-and
-
-$$
-U=
-\begin{bmatrix}
-2&1\\
-0&1
-\end{bmatrix}.
-$$
-
-Our system is
-
-<div class="math-scroll">
-
-$$
-A
+U
 \begin{bmatrix}
 x\\
 y
 \end{bmatrix}
 =
-\begin{bmatrix}
-5\\
-11
-\end{bmatrix}.
-$$
-
-</div>
-
-Since
-
-$$
-A=LU,
-$$
-
-we have
-
-<div class="math-scroll">
-
-$$
-LU
-\begin{bmatrix}
-x\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-5\\
-11
-\end{bmatrix}.
-$$
-
-</div>
-
-Let
-
-$$
-\mathbf y=
-\begin{bmatrix}
-y_1\\
-y_2
-\end{bmatrix}.
-$$
-
-We first solve
-
-$$
-L\mathbf y=\mathbf b.
-$$
-
-Therefore,
-
-<div class="math-scroll">
-
-$$
-\begin{bmatrix}
-1&0\\
-2&1
-\end{bmatrix}
-\begin{bmatrix}
-y_1\\
-y_2
-\end{bmatrix}
-=
-\begin{bmatrix}
-5\\
-11
-\end{bmatrix}.
-$$
-
-</div>
-
-This gives
-
-$$
-y_1=5
-$$
-
-and
-
-$$
-2y_1+y_2=11.
-$$
-
-Therefore,
-
-$$
-2(5)+y_2=11,
-$$
-
-so
-
-$$
-y_2=1.
-$$
-
-Thus,
-
-$$
-\mathbf y=
 \begin{bmatrix}
 5\\
 1
 \end{bmatrix}.
 $$
 
----
+</div>
 
-# 11. Now solve $U\mathbf{x}=\mathbf y$
-
-We now solve
-
-<div class="math-scroll">
+That means
 
 $$
 \begin{bmatrix}
@@ -695,15 +368,25 @@ y
 \end{bmatrix}.
 $$
 
-</div>
+The equations are
 
-The second equation gives
+$$
+2x+y=5
+$$
+
+and
 
 $$
 y=1.
 $$
 
-Substitute into the first:
+We start with the second equation:
+
+$$
+y=1.
+$$
+
+Then substitute into the first:
 
 $$
 2x+1=5.
@@ -715,246 +398,298 @@ $$
 x=2.
 $$
 
-So
+So triangular form allows us to solve the system from the bottom upward.
 
-$$
-\mathbf{x}
-=
-\begin{bmatrix}
-2\\
-1
-\end{bmatrix}.
-$$
+This is called **back substitution**.
 
-We have solved the original system.
+Thus, $U$ is useful because it gives us a system that is easy to solve.
 
 ---
 
-# 12. What did LU save us from doing?
+# 6. So what is the problem?
 
-Suppose we had another right-hand side:
-
-<div class="math-scroll">
+At this point, we have
 
 $$
-A\mathbf{x}
-=
+A
+\longrightarrow
+U.
+$$
+
+For our example,
+
+$$
 \begin{bmatrix}
-7\\
-15
-\end{bmatrix}.
-$$
-
-</div>
-
-The matrix $A$ has not changed.
-
-Therefore, we do **not** need to perform elimination again.
-
-We already have
-
-$$
-A=LU.
-$$
-
-We simply solve
-
-$$
-L\mathbf y=
-\begin{bmatrix}
-7\\
-15
+2&1\\
+4&3
 \end{bmatrix}
-$$
-
-and then
-
-$$
-U\mathbf x=\mathbf y.
-$$
-
-The expensive elimination step has already been done.
-
-This is one of the main reasons LU decomposition is useful.
-
----
-
-# 13. LU for many right-hand sides
-
-Suppose we need to solve
-
-<div class="math-scroll">
-
-$$
-A\mathbf{x}_1=\mathbf b_1,
-\qquad
-A\mathbf{x}_2=\mathbf b_2,
-\qquad
-\ldots,
-\qquad
-A\mathbf{x}_k=\mathbf b_k.
-$$
-
-</div>
-
-Once we have
-
-$$
-A=LU,
-$$
-
-we solve each system using
-
-$$
-L\mathbf y_i=\mathbf b_i
-$$
-
-followed by
-
-$$
-U\mathbf{x}_i=\mathbf y_i.
-$$
-
-The factorization is computed only once.
-
-Therefore the same $L$ and $U$ can be reused.
-
----
-
-# 14. How do we actually construct $L$ and $U$?
-
-Now let's go through the process more carefully.
-
-Consider a general $3\times3$ matrix:
-
-<div class="math-scroll">
-
-$$
-A=
+\longrightarrow
 \begin{bmatrix}
-a_{11}&a_{12}&a_{13}\\
-a_{21}&a_{22}&a_{23}\\
-a_{31}&a_{32}&a_{33}
+2&1\\
+0&1
 \end{bmatrix}.
 $$
 
+We know how we got there.
+
+We used the multiplier
+
+$$
+m_{21}=2.
+$$
+
+But after elimination, what happens to that number?
+
+Usually, we simply move on.
+
+But suppose we want to solve many systems involving the **same matrix $A$**.
+
+For example,
+
+<div class="math-scroll">
+
+$$
+A\mathbf{x}_1=\mathbf{b}_1,
+\qquad
+A\mathbf{x}_2=\mathbf{b}_2,
+\qquad
+A\mathbf{x}_3=\mathbf{b}_3.
+$$
+
 </div>
 
-We begin elimination.
+We would like to avoid repeating the same elimination work.
 
-The first pivot is
+That means we need to remember the elimination process.
 
-$$
-a_{11}.
-$$
-
-To eliminate $a_{21}$, use the multiplier
-
-$$
-m_{21}=\frac{a_{21}}{a_{11}}.
-$$
-
-To eliminate $a_{31}$, use
-
-$$
-m_{31}=\frac{a_{31}}{a_{11}}.
-$$
-
-These multipliers are stored in $L$.
+And that is where $L$ enters.
 
 ---
 
-# 15. The first elimination step
+# 7. The number we used during elimination
 
-The row operations are
-
-$$
-R_2\leftarrow R_2-m_{21}R_1
-$$
-
-and
+Let's return to our multiplier:
 
 $$
-R_3\leftarrow R_3-m_{31}R_1.
+m_{21}=2.
 $$
 
-After these operations, the first column below the pivot becomes zero.
+What did this number tell us?
 
-The matrix has the form
+It told us that we used
 
-<div class="math-scroll">
+$$
+2R_1
+$$
+
+to eliminate the entry in row 2.
+
+In other words,
+
+$$
+R_2\leftarrow R_2-2R_1.
+$$
+
+So the number $2$ contains information about **how the elimination was performed**.
+
+If we want to remember the elimination process, we should save this number.
+
+But where?
+
+---
+
+# 8. Where should we put the multiplier?
+
+The multiplier $m_{21}$ was associated with:
+
+- row 2,
+- pivot column 1.
+
+So we put it in position $(2,1)$.
+
+That gives
 
 $$
 \begin{bmatrix}
-a_{11}&a_{12}&a_{13}\\
-0&*&*\\
-0&*&*
+?&?\\
+2&?
 \end{bmatrix}.
 $$
 
-</div>
+We also put zeros above the diagonal and ones on the diagonal.
 
-Now we move to the second pivot.
+So we obtain
+
+$$
+L=
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}.
+$$
+
+Notice where our multiplier went:
+
+$$
+\boxed{m_{21}=2}
+$$
+
+is now stored below the diagonal.
+
+This is not an arbitrary placement.
+
+It reflects the location where the elimination multiplier was used.
 
 ---
 
-# 16. The second elimination step
+# 9. Why is it called $L$?
 
-Suppose the second pivot is $a_{22}^{(new)}$.
-
-The multiplier for eliminating the entry below it is
+Look at
 
 $$
-m_{32}
-=
-\frac{a_{32}^{(new)}}{a_{22}^{(new)}}.
+L=
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}.
 $$
 
-Then
+Everything above the diagonal is zero.
+
+Therefore, it is a **lower-triangular matrix**.
+
+Why the letter $L$?
+
+Because it is **L**ower triangular.
+
+So now we have:
 
 $$
-R_3
-\leftarrow
-R_3-m_{32}R_2.
+L=
+\text{lower-triangular matrix containing the elimination multipliers}.
 $$
 
-The result is upper triangular:
-
-<div class="math-scroll">
+And
 
 $$
 U=
-\begin{bmatrix}
-u_{11}&u_{12}&u_{13}\\
-0&u_{22}&u_{23}\\
-0&0&u_{33}
-\end{bmatrix}.
+\text{upper-triangular matrix produced by elimination}.
 $$
 
-</div>
-
-The multipliers are
-
-$$
-m_{21},\quad m_{31},\quad m_{32}.
-$$
-
-So we store them in
+This gives us the two pieces:
 
 <div class="math-scroll">
 
 $$
 L=
 \begin{bmatrix}
-1&0&0\\
-m_{21}&1&0\\
-m_{31}&m_{32}&1
+1&0\\
+2&1
+\end{bmatrix},
+\qquad
+U=
+\begin{bmatrix}
+2&1\\
+0&1
 \end{bmatrix}.
 $$
 
 </div>
 
-Then
+But we still have not explained why these two matrices give us back $A$.
+
+That is the crucial step.
+
+---
+
+# 10. Let's multiply $L$ and $U$
+
+We have
+
+$$
+L=
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}
+$$
+
+and
+
+$$
+U=
+\begin{bmatrix}
+2&1\\
+0&1
+\end{bmatrix}.
+$$
+
+Multiply them:
+
+<div class="math-scroll">
+
+$$
+LU
+=
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}
+\begin{bmatrix}
+2&1\\
+0&1
+\end{bmatrix}.
+$$
+
+</div>
+
+Let's calculate each entry.
+
+Top-left:
+
+$$
+1(2)+0(0)=2.
+$$
+
+Top-right:
+
+$$
+1(1)+0(1)=1.
+$$
+
+Bottom-left:
+
+$$
+2(2)+1(0)=4.
+$$
+
+Bottom-right:
+
+$$
+2(1)+1(1)=3.
+$$
+
+Therefore,
+
+$$
+LU=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}.
+$$
+
+But this is our original matrix:
+
+$$
+A=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}.
+$$
+
+Therefore,
 
 $$
 A=LU.
@@ -962,7 +697,188 @@ $$
 
 ---
 
-# 17. A complete $3\times3$ example
+# 11. Don't memorize $A=LU$ yet
+
+At this point, don't think of
+
+$$
+A=LU
+$$
+
+as a formula to memorize.
+
+Instead, understand what happened.
+
+We started with $A$.
+
+We used elimination to produce $U$.
+
+During elimination, we used a multiplier.
+
+We saved that multiplier in $L$.
+
+Then $L$ and $U$ together reconstruct the original matrix:
+
+$$
+A=LU.
+$$
+
+So LU decomposition is essentially:
+
+> **Elimination, with the elimination information saved.**
+
+That is the main idea.
+
+---
+
+# 12. Why does multiplication reconstruct $A$?
+
+Let's look more carefully at the example.
+
+We had
+
+$$
+U=
+\begin{bmatrix}
+2&1\\
+0&1
+\end{bmatrix}.
+$$
+
+The second row became
+
+$$
+\begin{bmatrix}
+0&1
+\end{bmatrix}
+$$
+
+because we performed
+
+$$
+R_2-2R_1.
+$$
+
+Now look at $L$:
+
+$$
+L=
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}.
+$$
+
+Its second row is
+
+$$
+\begin{bmatrix}
+2&1
+\end{bmatrix}.
+$$
+
+When this row multiplies $U$, we get
+
+$$
+2R_1(U)+1R_2(U).
+$$
+
+That is,
+
+$$
+2
+\begin{bmatrix}
+2&1
+\end{bmatrix}
++
+\begin{bmatrix}
+0&1
+\end{bmatrix}.
+$$
+
+Therefore,
+
+$$
+\begin{bmatrix}
+4&3
+\end{bmatrix}.
+$$
+
+That is exactly the original second row of $A$.
+
+So $L$ is reconstructing the information that elimination removed.
+
+This is why the factorization works.
+
+---
+
+# 13. One small example contains the whole idea
+
+Let's summarize our $2\times2$ example.
+
+### Original matrix
+
+$$
+A=
+\begin{bmatrix}
+2&1\\
+4&3
+\end{bmatrix}.
+$$
+
+### Elimination multiplier
+
+$$
+m_{21}=2.
+$$
+
+### Elimination
+
+$$
+R_2\leftarrow R_2-2R_1.
+$$
+
+### Result
+
+$$
+U=
+\begin{bmatrix}
+2&1\\
+0&1
+\end{bmatrix}.
+$$
+
+### Save the multiplier
+
+$$
+L=
+\begin{bmatrix}
+1&0\\
+2&1
+\end{bmatrix}.
+$$
+
+### Multiply
+
+$$
+LU=A.
+$$
+
+Therefore,
+
+$$
+A=LU.
+$$
+
+We have now discovered LU decomposition.
+
+---
+
+# 14. Now let's move to a $3\times3$ matrix
+
+The $2\times2$ example was simple enough to see the basic idea.
+
+Now let's see what happens when there are more elimination steps.
 
 Consider
 
@@ -979,41 +895,89 @@ $$
 
 </div>
 
-We begin with the first pivot:
+Our goal is exactly the same as before:
+
+> Use elimination to turn $A$ into an upper-triangular matrix.
+
+---
+
+# 15. First pivot
+
+The first pivot is
 
 $$
 2.
 $$
 
-To eliminate the $4$:
+We have two entries below it:
 
 $$
-m_{21}=\frac{4}{2}=2.
-$$
-
-To eliminate the $6$:
-
-$$
-m_{31}=\frac{6}{2}=3.
-$$
-
-Therefore,
-
-$$
-R_2\leftarrow R_2-2R_1
+4
 $$
 
 and
 
 $$
+6.
+$$
+
+We need to eliminate both.
+
+For the $4$:
+
+$$
+m_{21}
+=
+\frac{4}{2}
+=
+2.
+$$
+
+For the $6$:
+
+$$
+m_{31}
+=
+\frac{6}{2}
+=
+3.
+$$
+
+So we have two elimination multipliers:
+
+$$
+m_{21}=2,
+\qquad
+m_{31}=3.
+$$
+
+---
+
+# 16. First elimination
+
+First eliminate the $4$:
+
+$$
+R_2\leftarrow R_2-2R_1.
+$$
+
+Then eliminate the $6$:
+
+$$
 R_3\leftarrow R_3-3R_1.
 $$
 
-The matrix becomes
+After these two operations:
 
 <div class="math-scroll">
 
 $$
+\begin{bmatrix}
+2&1&1\\
+4&3&3\\
+6&4&5
+\end{bmatrix}
+\longrightarrow
 \begin{bmatrix}
 2&1&1\\
 0&1&1\\
@@ -1023,31 +987,128 @@ $$
 
 </div>
 
+The first column below the pivot is now zero.
+
 ---
 
-# 18. Continue elimination
+# 17. Second pivot
 
-The second pivot is
+Now we look at the second pivot.
+
+It is
 
 $$
 1.
 $$
 
-The entry below it is also $1$.
-
-Therefore,
+There is one entry below it:
 
 $$
-m_{32}=\frac{1}{1}=1.
+1.
 $$
 
-Perform
+The multiplier is
+
+$$
+m_{32}
+=
+\frac{1}{1}
+=
+1.
+$$
+
+So we perform
 
 $$
 R_3\leftarrow R_3-R_2.
 $$
 
-We obtain
+The result is
+
+$$
+U=
+\begin{bmatrix}
+2&1&1\\
+0&1&1\\
+0&0&1
+\end{bmatrix}.
+$$
+
+We have now completed elimination.
+
+---
+
+# 18. Where did all the multipliers go?
+
+During elimination we used:
+
+$$
+m_{21}=2,
+$$
+
+$$
+m_{31}=3,
+$$
+
+and
+
+$$
+m_{32}=1.
+$$
+
+We now save them.
+
+Put them in the corresponding positions below the diagonal:
+
+<div class="math-scroll">
+
+$$
+L=
+\begin{bmatrix}
+1&0&0\\
+2&1&0\\
+3&1&1
+\end{bmatrix}.
+$$
+
+</div>
+
+Notice the pattern.
+
+The first column contains the multipliers used to eliminate entries below the first pivot:
+
+$$
+m_{21},\quad m_{31}.
+$$
+
+The second column contains the multiplier used to eliminate the entry below the second pivot:
+
+$$
+m_{32}.
+$$
+
+The diagonal contains $1$'s.
+
+---
+
+# 19. Our proposed decomposition
+
+We now have
+
+<div class="math-scroll">
+
+$$
+L=
+\begin{bmatrix}
+1&0&0\\
+2&1&0\\
+3&1&1
+\end{bmatrix}
+$$
+
+</div>
+
+and
 
 <div class="math-scroll">
 
@@ -1062,93 +1123,114 @@ $$
 
 </div>
 
-Now collect the elimination multipliers:
+We claim that
 
 $$
-m_{21}=2,
-\qquad
-m_{31}=3,
-\qquad
-m_{32}=1.
+A=LU.
 $$
+
+Let's verify it.
+
+---
+
+# 20. Multiply $L$ and $U$
+
+We have
+
+<div class="math-scroll">
+
+$$
+LU=
+\begin{bmatrix}
+1&0&0\\
+2&1&0\\
+3&1&1
+\end{bmatrix}
+\begin{bmatrix}
+2&1&1\\
+0&1&1\\
+0&0&1
+\end{bmatrix}.
+$$
+
+</div>
+
+The first row is easy:
+
+$$
+1
+\begin{bmatrix}
+2&1&1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2&1&1
+\end{bmatrix}.
+$$
+
+For the second row:
+
+<div class="math-scroll">
+
+$$
+2
+\begin{bmatrix}
+2&1&1
+\end{bmatrix}
++
+\begin{bmatrix}
+0&1&1
+\end{bmatrix}
+=
+\begin{bmatrix}
+4&3&3
+\end{bmatrix}.
+$$
+
+</div>
+
+For the third row:
+
+<div class="math-scroll">
+
+$$
+3
+\begin{bmatrix}
+2&1&1
+\end{bmatrix}
++
+\begin{bmatrix}
+0&1&1
+\end{bmatrix}
++
+\begin{bmatrix}
+0&0&1
+\end{bmatrix}
+=
+\begin{bmatrix}
+6&4&5
+\end{bmatrix}.
+$$
+
+</div>
 
 Therefore,
 
 <div class="math-scroll">
 
 $$
-L=
-\begin{bmatrix}
-1&0&0\\
-2&1&0\\
-3&1&1
-\end{bmatrix}.
-$$
-
-</div>
-
-So the LU decomposition is
-
-<div class="math-scroll">
-
-$$
-A=
-\begin{bmatrix}
-1&0&0\\
-2&1&0\\
-3&1&1
-\end{bmatrix}
-\begin{bmatrix}
-2&1&1\\
-0&1&1\\
-0&0&1
-\end{bmatrix}.
-$$
-
-</div>
-
----
-
-# 19. Verify the decomposition
-
-We should verify that
-
-$$
-LU=A.
-$$
-
-Multiply:
-
-<div class="math-scroll">
-
-$$
-\begin{aligned}
-LU
-&=
-\begin{bmatrix}
-1&0&0\\
-2&1&0\\
-3&1&1
-\end{bmatrix}
-\begin{bmatrix}
-2&1&1\\
-0&1&1\\
-0&0&1
-\end{bmatrix}\\[6pt]
-&=
+LU=
 \begin{bmatrix}
 2&1&1\\
 4&3&3\\
 6&4&5
-\end{bmatrix}.
-\end{aligned}
+\end{bmatrix}
+=A.
 $$
 
 </div>
 
-This is exactly our original matrix $A$.
-
-Therefore,
+So indeed,
 
 $$
 A=LU.
@@ -1156,214 +1238,183 @@ $$
 
 ---
 
-# 20. LU is elimination written backwards
+# 21. What exactly are $L$ and $U$?
 
-This is perhaps the most important conceptual point in the lesson.
+We can now give precise definitions.
 
-During elimination, we start with
+## $U$: the result of elimination
 
-$$
-A
-$$
-
-and transform it into
-
-$$
-U.
-$$
-
-Schematically,
-
-$$
-A\longrightarrow U.
-$$
-
-But LU decomposition says
-
-$$
-A=LU.
-$$
-
-So the matrix $L$ contains exactly the information needed to reconstruct $A$ from the upper-triangular matrix $U$.
-
-In that sense:
-
-> **$L$ records the elimination multipliers, while $U$ records the matrix after elimination.**
-
-This is why LU decomposition is so closely connected to elimination.
-
----
-
-# 21. Why is the diagonal of $L$ equal to 1?
-
-In the standard LU decomposition without row exchanges, we choose
-
-<div class="math-scroll">
-
-$$
-L=
-\begin{bmatrix}
-1&0&\cdots&0\\
-m_{21}&1&\cdots&0\\
-\vdots&\vdots&\ddots&\vdots\\
-m_{n1}&m_{n2}&\cdots&1
-\end{bmatrix}.
-$$
-
-</div>
-
-The diagonal entries are set equal to $1$.
-
-This convention is called **unit lower triangular**.
-
-It makes the decomposition convenient and, under appropriate conditions, uniquely determines $L$ and $U$.
-
-For now, the main thing to remember is:
-
-$$
-L=\text{lower triangular with 1s on the diagonal}.
-$$
-
----
-
-# 22. Forward substitution
-
-Once we have
-
-$$
-L\mathbf y=\mathbf b,
-$$
-
-we solve from the top downward.
+$U$ is the upper-triangular matrix obtained after carrying out Gaussian elimination on $A$.
 
 For example,
 
 <div class="math-scroll">
 
 $$
-\begin{bmatrix}
-1&0&0\\
-m_{21}&1&0\\
-m_{31}&m_{32}&1
-\end{bmatrix}
-\begin{bmatrix}
-y_1\\
-y_2\\
-y_3
-\end{bmatrix}
-=
-\begin{bmatrix}
-b_1\\
-b_2\\
-b_3
-\end{bmatrix}.
-$$
-
-</div>
-
-The equations are
-
-$$
-y_1=b_1,
-$$
-
-$$
-m_{21}y_1+y_2=b_2,
-$$
-
-and
-
-$$
-m_{31}y_1+m_{32}y_2+y_3=b_3.
-$$
-
-So we solve in order:
-
-$$
-y_1,
-$$
-
-then
-
-$$
-y_2,
-$$
-
-then
-
-$$
-y_3.
-$$
-
-This is called **forward substitution**.
-
----
-
-# 23. Back substitution
-
-After finding $\mathbf y$, we solve
-
-$$
-U\mathbf{x}=\mathbf y.
-$$
-
-For an upper-triangular matrix,
-
-<div class="math-scroll">
-
-$$
+U=
 \begin{bmatrix}
 u_{11}&u_{12}&u_{13}\\
 0&u_{22}&u_{23}\\
 0&0&u_{33}
-\end{bmatrix}
-\begin{bmatrix}
-x_1\\
-x_2\\
-x_3
-\end{bmatrix}
-=
-\begin{bmatrix}
-y_1\\
-y_2\\
-y_3
 \end{bmatrix}.
 $$
 
 </div>
 
-Start at the bottom:
-
-$$
-u_{33}x_3=y_3.
-$$
-
-So find $x_3$ first.
-
-Then use $x_3$ to find $x_2$.
-
-Finally use $x_2$ and $x_3$ to find $x_1$.
-
-This is called **back substitution**.
-
-Therefore LU decomposition uses:
-
-$$
-\boxed{
-\text{forward substitution}
-\quad\longrightarrow\quad
-\text{back substitution}.
-}
-$$
+The zeros below the diagonal are created by elimination.
 
 ---
 
-# 24. LU and the inverse
+## $L$: the record of elimination
 
-We previously learned that
+$L$ is a lower-triangular matrix containing the elimination multipliers.
+
+For a $3\times3$ system,
+
+<div class="math-scroll">
 
 $$
-\mathbf{x}=A^{-1}\mathbf b.
+L=
+\begin{bmatrix}
+1&0&0\\
+m_{21}&1&0\\
+m_{31}&m_{32}&1
+\end{bmatrix}.
+$$
+
+</div>
+
+The numbers below the diagonal tell us which multipliers were used during elimination.
+
+---
+
+# 22. Why are the multipliers below the diagonal?
+
+There is a very simple pattern.
+
+The multiplier $m_{21}$ was used to eliminate the entry in row 2, column 1.
+
+So it goes in position $(2,1)$.
+
+The multiplier $m_{31}$ was used to eliminate the entry in row 3, column 1.
+
+So it goes in position $(3,1)$.
+
+The multiplier $m_{32}$ was used to eliminate the entry in row 3, column 2.
+
+So it goes in position $(3,2)$.
+
+Thus:
+
+<div class="math-scroll">
+
+$$
+\begin{array}{c|c}
+\text{Elimination multiplier} & \text{Position in }L\\
+\hline
+m_{21}&(2,1)\\
+m_{31}&(3,1)\\
+m_{32}&(3,2)
+\end{array}
+$$
+
+</div>
+
+This is why the multipliers naturally form a lower-triangular pattern.
+
+---
+
+# 23. Why are the diagonal entries of $L$ equal to 1?
+
+The diagonal entries are set to $1$ by convention.
+
+For a $3\times3$ matrix,
+
+$$
+L=
+\begin{bmatrix}
+1&0&0\\
+m_{21}&1&0\\
+m_{31}&m_{32}&1
+\end{bmatrix}.
+$$
+
+This particular choice is called a **unit lower-triangular matrix**.
+
+The $1$'s are important because they allow the rows of $L$ to combine the rows of $U$ in exactly the way needed to reconstruct the original matrix.
+
+For example, the second row of $L$ is
+
+$$
+\begin{bmatrix}
+m_{21}&1&0
+\end{bmatrix}.
+$$
+
+When it multiplies $U$, it creates
+
+$$
+m_{21}(\text{row 1 of }U)
++
+1(\text{row 2 of }U).
+$$
+
+That is exactly what is needed to reconstruct the original second row.
+
+---
+
+# 24. So why does $A=LU$?
+
+We can now understand the equation instead of memorizing it.
+
+Elimination takes
+
+$$
+A
+$$
+
+and produces
+
+$$
+U.
+$$
+
+But elimination uses multipliers.
+
+Those multipliers are stored in $L$.
+
+When $L$ multiplies $U$, it combines the rows of $U$ using those multipliers.
+
+That reconstructs the original rows of $A$.
+
+Therefore,
+
+$$
+A=LU.
+$$
+
+So the equation
+
+$$
+A=LU
+$$
+
+means:
+
+> **The original matrix $A$ can be reconstructed from the upper-triangular matrix $U$ using the elimination information stored in $L$.**
+
+---
+
+# 25. Now use LU to solve $A\mathbf{x}=\mathbf b$
+
+We have learned how to obtain $L$ and $U$.
+
+Now we need to understand why this decomposition is useful.
+
+Suppose
+
+$$
+A\mathbf{x}=\mathbf b.
 $$
 
 Since
@@ -1372,21 +1423,494 @@ $$
 A=LU,
 $$
 
-we can write
+we can substitute:
 
 $$
-A^{-1}=(LU)^{-1}.
+LU\mathbf{x}=\mathbf b.
 $$
 
-Using the inverse-of-a-product rule,
+Because matrix multiplication is associative,
+
+$$
+L(U\mathbf{x})=\mathbf b.
+$$
+
+This suggests that we should solve the problem in two stages.
+
+Define
+
+$$
+\mathbf y=U\mathbf{x}.
+$$
+
+Then
+
+$$
+L\mathbf y=\mathbf b.
+$$
+
+Once we know $\mathbf y$, we solve
+
+$$
+U\mathbf{x}=\mathbf y.
+$$
+
+So:
 
 <div class="math-scroll">
 
 $$
-A^{-1}=U^{-1}L^{-1}.
+\begin{aligned}
+L\mathbf y&=\mathbf b,\\
+U\mathbf x&=\mathbf y.
+\end{aligned}
 $$
 
 </div>
+
+---
+
+# 26. Why is this useful?
+
+Because both $L$ and $U$ are triangular.
+
+We already know how to solve triangular systems.
+
+For
+
+$$
+L\mathbf y=\mathbf b,
+$$
+
+we solve from the top downward.
+
+This is **forward substitution**.
+
+For
+
+$$
+U\mathbf x=\mathbf y,
+$$
+
+we solve from the bottom upward.
+
+This is **back substitution**.
+
+Therefore:
+
+$$
+A\mathbf{x}=\mathbf b
+$$
+
+has been converted into two simple triangular systems.
+
+---
+
+# 27. Complete numerical example
+
+Let's use the same matrix:
+
+<div class="math-scroll">
+
+$$
+A=
+\begin{bmatrix}
+2&1&1\\
+4&3&3\\
+6&4&5
+\end{bmatrix}.
+$$
+
+</div>
+
+We already found
+
+<div class="math-scroll">
+
+$$
+L=
+\begin{bmatrix}
+1&0&0\\
+2&1&0\\
+3&1&1
+\end{bmatrix}
+$$
+
+</div>
+
+and
+
+<div class="math-scroll">
+
+$$
+U=
+\begin{bmatrix}
+2&1&1\\
+0&1&1\\
+0&0&1
+\end{bmatrix}.
+$$
+
+</div>
+
+Suppose we want to solve
+
+<div class="math-scroll">
+
+$$
+A
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+5\\
+11\\
+17
+\end{bmatrix}.
+$$
+
+</div>
+
+Since
+
+$$
+A=LU,
+$$
+
+we solve
+
+$$
+L\mathbf y=\mathbf b.
+$$
+
+---
+
+# 28. Step 1: solve $L\mathbf y=\mathbf b$
+
+We have
+
+<div class="math-scroll">
+
+$$
+\begin{bmatrix}
+1&0&0\\
+2&1&0\\
+3&1&1
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\
+y_2\\
+y_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+5\\
+11\\
+17
+\end{bmatrix}.
+$$
+
+</div>
+
+This gives:
+
+$$
+y_1=5,
+$$
+
+$$
+2y_1+y_2=11,
+$$
+
+and
+
+$$
+3y_1+y_2+y_3=17.
+$$
+
+Start with the first equation:
+
+$$
+y_1=5.
+$$
+
+Then:
+
+$$
+2(5)+y_2=11.
+$$
+
+Therefore,
+
+$$
+y_2=1.
+$$
+
+Finally:
+
+$$
+3(5)+1+y_3=17.
+$$
+
+Therefore,
+
+$$
+y_3=1.
+$$
+
+So
+
+$$
+\mathbf y=
+\begin{bmatrix}
+5\\
+1\\
+1
+\end{bmatrix}.
+$$
+
+---
+
+# 29. Step 2: solve $U\mathbf x=\mathbf y$
+
+Now solve
+
+<div class="math-scroll">
+
+$$
+\begin{bmatrix}
+2&1&1\\
+0&1&1\\
+0&0&1
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+5\\
+1\\
+1
+\end{bmatrix}.
+$$
+
+</div>
+
+Start at the bottom:
+
+$$
+x_3=1.
+$$
+
+Then:
+
+$$
+x_2+x_3=1.
+$$
+
+Therefore,
+
+$$
+x_2=0.
+$$
+
+Finally:
+
+$$
+2x_1+x_2+x_3=5.
+$$
+
+Therefore,
+
+$$
+2x_1+0+1=5.
+$$
+
+So
+
+$$
+x_1=2.
+$$
+
+Therefore,
+
+$$
+\mathbf{x}
+=
+\begin{bmatrix}
+2\\
+0\\
+1
+\end{bmatrix}.
+$$
+
+---
+
+# 30. Check the solution
+
+Let's verify using the original system.
+
+We have
+
+$$
+\mathbf{x}
+=
+\begin{bmatrix}
+2\\
+0\\
+1
+\end{bmatrix}.
+$$
+
+Calculate:
+
+<div class="math-scroll">
+
+$$
+A\mathbf{x}
+=
+\begin{bmatrix}
+2&1&1\\
+4&3&3\\
+6&4&5
+\end{bmatrix}
+\begin{bmatrix}
+2\\
+0\\
+1
+\end{bmatrix}.
+$$
+
+</div>
+
+The result is
+
+$$
+\begin{bmatrix}
+5\\
+11\\
+17
+\end{bmatrix}.
+$$
+
+So our solution is correct.
+
+---
+
+# 31. Why not just use elimination every time?
+
+This is where the real computational advantage of LU appears.
+
+Suppose $A$ stays fixed.
+
+We have already performed elimination and obtained
+
+$$
+A=LU.
+$$
+
+Now suppose tomorrow we receive a different vector $\mathbf b$.
+
+We do **not** need to repeat the elimination of $A$.
+
+We already know $L$ and $U$.
+
+We simply solve:
+
+$$
+L\mathbf y=\mathbf b
+$$
+
+and then
+
+$$
+U\mathbf x=\mathbf y.
+$$
+
+If we receive another $\mathbf b$, we do the same thing again.
+
+The factorization is reusable.
+
+---
+
+# 32. Many systems with the same $A$
+
+Suppose we have
+
+<div class="math-scroll">
+
+$$
+A\mathbf{x}_1=\mathbf b_1,
+$$
+
+$$
+A\mathbf{x}_2=\mathbf b_2,
+$$
+
+$$
+A\mathbf{x}_3=\mathbf b_3,
+$$
+
+$$
+\vdots
+$$
+
+$$
+A\mathbf{x}_k=\mathbf b_k.
+$$
+
+</div>
+
+The matrix $A$ is the same in every system.
+
+We factorize it once:
+
+$$
+A=LU.
+$$
+
+Then for every $i$:
+
+$$
+L\mathbf y_i=\mathbf b_i
+$$
+
+followed by
+
+$$
+U\mathbf x_i=\mathbf y_i.
+$$
+
+This is much more efficient than repeating the entire elimination process.
+
+---
+
+# 33. LU and the inverse
+
+We previously learned that if $A$ is invertible,
+
+$$
+\mathbf{x}=A^{-1}\mathbf b.
+$$
+
+LU gives us another route.
+
+Since
+
+$$
+A=LU,
+$$
+
+we have
+
+$$
+A^{-1}=U^{-1}L^{-1}.
+$$
 
 Therefore,
 
@@ -1396,84 +1920,198 @@ $$
 U^{-1}L^{-1}\mathbf b.
 $$
 
-Instead of explicitly calculating the two inverses, we perform the operations in the correct order:
+But we do not actually need to calculate the inverses.
 
-First solve
+Instead, we calculate $\mathbf y$ from
 
 $$
-L\mathbf y=\mathbf b,
+L\mathbf y=\mathbf b.
 $$
 
-then solve
+This gives
+
+$$
+\mathbf y=L^{-1}\mathbf b.
+$$
+
+Then calculate $\mathbf x$ from
 
 $$
 U\mathbf x=\mathbf y.
 $$
 
-So LU decomposition gives us a practical way to compute the same mathematical solution without explicitly constructing $A^{-1}$.
+This gives
+
+$$
+\mathbf x=U^{-1}\mathbf y.
+$$
+
+Therefore,
+
+$$
+\mathbf x=U^{-1}L^{-1}\mathbf b.
+$$
+
+which is exactly
+
+$$
+\mathbf x=A^{-1}\mathbf b.
+$$
+
+So LU decomposition gives us a practical way to obtain the same solution without explicitly calculating $A^{-1}$.
 
 ---
 
-# 25. LU versus the inverse
+# 34. LU is not a completely different method
 
-This gives us an important distinction.
+It is important not to think of LU as a completely new algorithm.
 
-The inverse tells us
+We have simply organized something we already know.
 
-$$
-\mathbf{x}=A^{-1}\mathbf b.
-$$
+We already know:
 
-LU tells us how to obtain $\mathbf{x}$ efficiently:
-
-<div class="math-scroll">
+**Gaussian elimination**
 
 $$
-A=LU
-\quad\Longrightarrow\quad
-\begin{cases}
-L\mathbf y=\mathbf b,\\
-U\mathbf x=\mathbf y.
-\end{cases}
+A\longrightarrow U.
 $$
 
-</div>
+We now save the multipliers:
+
+$$
+m_{21},m_{31},m_{32},\ldots
+$$
+
+inside $L$.
+
+Then:
+
+$$
+A=LU.
+$$
 
 So:
 
-> **The inverse is a mathematical description of the solution; LU is a computational strategy for obtaining it.**
+> **LU decomposition is Gaussian elimination with the elimination information recorded.**
 
-This distinction becomes increasingly important for large matrices.
+This is the central connection.
 
 ---
 
-# 26. What if we have many $\mathbf b$'s?
+# 35. A general $3\times3$ picture
 
-This is where LU becomes particularly useful.
-
-Suppose $A$ is fixed and we need to solve
+Suppose elimination produces
 
 <div class="math-scroll">
 
 $$
-A\mathbf{x}_1=\mathbf b_1,
-\qquad
-A\mathbf{x}_2=\mathbf b_2,
-\qquad
-\ldots
+U=
+\begin{bmatrix}
+u_{11}&u_{12}&u_{13}\\
+0&u_{22}&u_{23}\\
+0&0&u_{33}
+\end{bmatrix}.
 $$
 
 </div>
 
-We calculate
+Suppose the elimination multipliers were
 
 $$
-A=LU
+m_{21},
+\qquad
+m_{31},
+\qquad
+m_{32}.
 $$
 
-only once.
+Then we construct
 
-For every new $\mathbf b$, we solve:
+<div class="math-scroll">
+
+$$
+L=
+\begin{bmatrix}
+1&0&0\\
+m_{21}&1&0\\
+m_{31}&m_{32}&1
+\end{bmatrix}.
+$$
+
+</div>
+
+The original matrix is then reconstructed through
+
+$$
+A=LU.
+$$
+
+So when you perform elimination on a matrix, you should now pay attention to **two things**:
+
+1. What matrix do I obtain after elimination?
+2. What multipliers did I use along the way?
+
+The first gives you $U$.
+
+The second gives you $L$.
+
+---
+
+# 36. How to find $L$ and $U$
+
+Here is the complete procedure.
+
+### Step 1
+
+Start with
+
+$$
+A.
+$$
+
+### Step 2
+
+Perform Gaussian elimination.
+
+At every step, calculate the multiplier used to eliminate an entry.
+
+### Step 3
+
+When elimination is complete, the resulting upper-triangular matrix is
+
+$$
+U.
+$$
+
+### Step 4
+
+Place the elimination multipliers below the diagonal.
+
+Put $1$'s on the diagonal.
+
+This gives
+
+$$
+L.
+$$
+
+### Step 5
+
+You now have
+
+$$
+A=LU.
+$$
+
+### Step 6
+
+If you want to solve
+
+$$
+A\mathbf{x}=\mathbf b,
+$$
+
+solve:
 
 $$
 L\mathbf y=\mathbf b
@@ -1485,123 +2123,13 @@ $$
 U\mathbf x=\mathbf y.
 $$
 
-The triangular matrices $L$ and $U$ do not change.
-
-Only the right-hand side changes.
-
-This makes LU decomposition especially useful when the same coefficient matrix appears repeatedly.
-
 ---
 
-# 27. The connection to the previous lessons
+# 37. What if we have to exchange rows?
 
-We can now see a chain of ideas developing.
+There is one important complication.
 
-### Elimination
-
-We transform
-
-$$
-A\longrightarrow U.
-$$
-
-### LU decomposition
-
-We save the elimination information:
-
-$$
-A=LU.
-$$
-
-### Solving
-
-We transform
-
-$$
-A\mathbf{x}=\mathbf b
-$$
-
-into
-
-<div class="math-scroll">
-
-$$
-L\mathbf y=\mathbf b,
-\qquad
-U\mathbf x=\mathbf y.
-$$
-
-</div>
-
-### Inverse
-
-If $A$ is invertible,
-
-$$
-\mathbf{x}=A^{-1}\mathbf b.
-$$
-
-These are not separate topics.
-
-They are different ways of understanding the same linear system.
-
----
-
-# 28. A geometric interpretation
-
-There is also a useful geometric way to think about LU.
-
-The original matrix $A$ represents a transformation.
-
-The factorization
-
-$$
-A=LU
-$$
-
-says that this transformation can be viewed as two transformations applied in sequence.
-
-First $U$ acts:
-
-$$
-\mathbf{x}
-\longrightarrow
-U\mathbf{x}.
-$$
-
-Then $L$ acts:
-
-$$
-U\mathbf{x}
-\longrightarrow
-L(U\mathbf{x}).
-$$
-
-Therefore,
-
-$$
-A\mathbf{x}=L(U\mathbf{x}).
-$$
-
-So
-
-$$
-A=LU
-$$
-
-means:
-
-> **The transformation represented by $A$ can be decomposed into an upper-triangular transformation followed by a lower-triangular transformation.**
-
-This is another reason matrix multiplication is so important.
-
----
-
-# 29. A warning: row exchanges
-
-There is one complication we should mention.
-
-Sometimes ordinary elimination cannot proceed because a pivot is zero.
+Sometimes the pivot is zero.
 
 For example,
 
@@ -1613,110 +2141,217 @@ A=
 \end{bmatrix}.
 $$
 
-The first pivot is zero.
+We cannot use $0$ as the first pivot.
 
-We need to exchange the rows before continuing.
+So we first exchange the rows.
 
-In such cases, the simple form
+Row exchanges are represented by a **permutation matrix** $P$.
 
-$$
-A=LU
-$$
-
-needs to be modified.
-
-We usually write
-
-$$
-PA=LU,
-$$
-
-where $P$ is a **permutation matrix** representing the row exchanges.
-
-For now, we will focus first on matrices where no row exchanges are necessary.
-
-Later, we can return to pivoting and the more general form
-
-<div class="math-scroll">
+In the more general case, the factorization becomes
 
 $$
 PA=LU.
 $$
 
-</div>
+For now, we will focus on the simpler case where no row exchanges are needed.
+
+Later, when we study pivoting more carefully, we will return to the more general form.
 
 ---
 
-# 30. The main idea
+# 38. A useful mental picture
 
-LU decomposition is not a completely new algorithm.
+Think of $A$ as the original matrix.
 
-It is elimination recorded in matrix form.
-
-During elimination:
+Then elimination does this:
 
 $$
-A\longrightarrow U.
+A
+\quad\xrightarrow{\text{elimination}}\quad
+U.
 $$
 
-The numbers used to eliminate entries below the pivots are stored in $L$.
+During the process, we generate multipliers.
+
+We save those multipliers in $L$:
+
+$$
+\text{multipliers}
+\quad\longrightarrow\quad
+L.
+$$
 
 Therefore:
-
-$$
-A=LU.
-$$
-
-Once $A=LU$ is known, solving
-
-$$
-A\mathbf{x}=\mathbf b
-$$
-
-becomes two triangular systems:
-
-<div class="math-scroll">
-
-$$
-L\mathbf y=\mathbf b
-$$
-
-</div>
-
-followed by
-
-<div class="math-scroll">
-
-$$
-U\mathbf x=\mathbf y.
-$$
-
-</div>
-
-So the central chain is:
 
 <div class="math-scroll">
 
 $$
 \boxed{
-A\mathbf{x}=\mathbf b
-\quad\Longrightarrow\quad
-LU\mathbf{x}=\mathbf b
-\quad\Longrightarrow\quad
-\begin{cases}
-L\mathbf y=\mathbf b,\\
-U\mathbf x=\mathbf y.
-\end{cases}
+\text{Original matrix}
+=
+\text{Elimination information}
+\times
+\text{Eliminated matrix}
 }
 $$
 
 </div>
 
+or, more formally,
+
+$$
+A=LU.
+$$
+
+This is the idea you should keep in your head.
+
+---
+
+# 39. Connection with what we already know
+
+We have now built a chain of ideas.
+
+### Solving equations
+
+We began with
+
+$$
+A\mathbf{x}=\mathbf b.
+$$
+
+### Elimination
+
+We learned to transform $A$ into $U$.
+
+$$
+A\longrightarrow U.
+$$
+
+### Inverse
+
+We learned that, if $A$ is invertible,
+
+$$
+\mathbf{x}=A^{-1}\mathbf b.
+$$
+
+### LU decomposition
+
+We now save the elimination information:
+
+$$
+A=LU.
+$$
+
+Then solving the system becomes
+
+$$
+L\mathbf y=\mathbf b
+$$
+
+followed by
+
+$$
+U\mathbf x=\mathbf y.
+$$
+
+Each idea is connected to the previous one.
+
+---
+
+# Key idea
+
+Do not memorize LU as simply
+
+$$
+A=LU.
+$$
+
+Instead remember the story.
+
+We start with $A$.
+
+We perform elimination because an upper-triangular matrix is easy to solve.
+
+The matrix produced by elimination is called $U$.
+
+During elimination, we use multipliers.
+
+We save those multipliers below the diagonal in a lower-triangular matrix $L$.
+
+The two matrices satisfy
+
+$$
+A=LU.
+$$
+
+Then
+
+$$
+A\mathbf{x}=\mathbf b
+$$
+
+becomes
+
+<div class="math-scroll">
+
+$$
+L\mathbf y=\mathbf b,
+\qquad
+U\mathbf x=\mathbf y.
+$$
+
+</div>
+
+So:
+
+> **$U$ remembers where elimination ended.**
+
+> **$L$ remembers how elimination got there.**
+
+That is the heart of LU decomposition.
+
 ---
 
 # Try it yourself
 
-## Exercise 1 — Find $L$ and $U$
+## Exercise 1 — Find the first multiplier
+
+Consider
+
+$$
+A=
+\begin{bmatrix}
+3&1\\
+6&4
+\end{bmatrix}.
+$$
+
+What is the first pivot?
+
+What multiplier do you need to eliminate the $6$?
+
+---
+
+## Exercise 2 — Find $U$
+
+Perform the elimination from Exercise 1 and find $U$.
+
+---
+
+## Exercise 3 — Find $L$
+
+Use the multiplier from Exercise 1 to construct $L$.
+
+Then verify that
+
+$$
+A=LU.
+$$
+
+---
+
+## Exercise 4 — A $3\times3$ example
 
 Find the LU decomposition of
 
@@ -1725,119 +2360,95 @@ Find the LU decomposition of
 $$
 A=
 \begin{bmatrix}
-2&1\\
-6&4
+1&1&1\\
+2&3&4\\
+3&4&6
 \end{bmatrix}.
 $$
 
 </div>
 
-Identify the elimination multiplier.
+First perform the elimination slowly.
 
----
+Write down every multiplier.
 
-## Exercise 2 — Verify
+Then construct $L$.
 
-For your answer from Exercise 1, verify that
-
-$$
-LU=A.
-$$
-
----
-
-## Exercise 3 — Solve using LU
-
-Using the LU decomposition from Exercise 1, solve
-
-<div class="math-scroll">
-
-$$
-A
-\begin{bmatrix}
-x\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-5\\
-14
-\end{bmatrix}.
-$$
-
-</div>
-
-Do not perform elimination again.
-
-Instead:
-
-1. Solve $L\mathbf y=\mathbf b$.
-2. Solve $U\mathbf x=\mathbf y$.
-
----
-
-## Exercise 4 — Conceptual
-
-Why does LU decomposition save work when we need to solve
-
-<div class="math-scroll">
-
-$$
-A\mathbf{x}_1=\mathbf b_1,
-\qquad
-A\mathbf{x}_2=\mathbf b_2,
-\qquad
-A\mathbf{x}_3=\mathbf b_3?
-$$
-
-</div>
-
----
-
-## Exercise 5 — Think about the multipliers
-
-Suppose elimination uses
-
-$$
-m_{21}=3,
-\qquad
-m_{31}=2,
-\qquad
-m_{32}=4.
-$$
-
-What does the corresponding lower-triangular matrix $L$ look like?
-
----
-
-# What is next?
-
-We have now seen three ways of thinking about the same problem:
-
-$$
-A\mathbf{x}=\mathbf b.
-$$
-
-**Elimination** transforms $A$ into an upper-triangular matrix.
-
-**The inverse** tells us that
-
-$$
-\mathbf{x}=A^{-1}\mathbf b.
-$$
-
-**LU decomposition** records the elimination process:
+Finally verify that
 
 $$
 A=LU.
 $$
 
-But there is a deeper question behind all of these methods:
+---
 
-> **What exactly determines whether a system has a solution, whether that solution is unique, and what the columns of $A$ are capable of producing?**
+## Exercise 5 — Solve using the decomposition
 
-To answer that, we need to study the relationships among the columns of a matrix.
+Suppose you have found
 
-This leads us to the next major ideas:
+$$
+A=LU.
+$$
+
+Explain why solving
+
+$$
+A\mathbf{x}=\mathbf b
+$$
+
+can be replaced by solving
+
+$$
+L\mathbf y=\mathbf b
+$$
+
+and then
+
+$$
+U\mathbf x=\mathbf y.
+$$
+
+---
+
+# What is next?
+
+We now know how elimination can be written as
+
+$$
+A=LU.
+$$
+
+We also know that
+
+$$
+A\mathbf{x}=\mathbf b
+$$
+
+can be understood in terms of the columns of $A$:
+
+$$
+A\mathbf{x}
+=
+x_1\mathbf a_1
++x_2\mathbf a_2
++\cdots
++x_n\mathbf a_n.
+$$
+
+This means that solving a system is fundamentally about asking:
+
+> **What can we create using the columns of $A$?**
+
+Can one vector be created from them?
+
+Can every vector be created?
+
+Is the representation unique?
+
+What happens when one column can be constructed from the others?
+
+To answer these questions, we now move away from elimination and begin studying the structure of vectors themselves.
+
+The next chapter introduces:
 
 **Linear Combinations, Span, and Linear Independence.**

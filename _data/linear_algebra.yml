@@ -67,12 +67,12 @@ modules:
         description: "Vectors, components, magnitude, and direction."
 
       - number: 10
-        title: "Span of Vector"
+        title: "Span and Linear Combination"
         url: "/linear-algebra/vector-span/"
         description: "Vectors, components, magnitude, and direction."
 
       - number: 11
-        title: "Linear Combinations"
+        title: "Linear Independence"
         url: "/linear-algebra/linear-combinations/"
         description: "Building new vectors from existing vectors."
 

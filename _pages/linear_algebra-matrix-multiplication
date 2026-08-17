@@ -1,11 +1,17 @@
 ---
-layout: linear-algebra-lesson
 title: "Matrix Multiplication"
-lesson_number: 5
-module: "The Four Fundamental Ideas"
-description: "Understanding matrix multiplication through rows, columns, and linear transformations."
+
 permalink: /linear-algebra/matrix-multiplication/
+
+layout: linear-algebra-lesson
+
+lesson_number: 5
+
+module: "Module 2 · Matrix Algrbra"
+
+description: "How elimination transforms a system of linear equations into a form that is easy to solve."
 ---
+
 
 # Matrix Multiplication
 

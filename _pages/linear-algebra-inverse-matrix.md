@@ -23,9 +23,9 @@ This leads to a natural question:
 
 > **Can we undo the transformation?**
 
-If \(A\) takes a vector \(\mathbf{x}\) and produces \(A\mathbf{x}\), can we find another matrix that takes us back to \(\mathbf{x}\)?
+If $A$ takes a vector $\mathbf{x}$ and produces $A\mathbf{x}$, can we find another matrix that takes us back to $\mathbf{x}$?
 
-That matrix, when it exists, is called the **inverse of \(A\)**.
+That matrix, when it exists, is called the **inverse of $A$**.
 
 ---
 
@@ -33,7 +33,7 @@ That matrix, when it exists, is called the **inverse of \(A\)**.
 
 Before working with matrices, think about ordinary numbers.
 
-Suppose we multiply a number by \(5\):
+Suppose we multiply a number by $5$:
 
 $$
 x
@@ -43,7 +43,7 @@ $$
 
 How do we undo this operation?
 
-We divide by \(5\):
+We divide by $5$:
 
 $$
 5x
@@ -53,7 +53,7 @@ $$
 x.
 $$
 
-Multiplication by \(5\) is undone by multiplication by
+Multiplication by $5$ is undone by multiplication by
 
 $$
 \frac{1}{5}.
@@ -65,7 +65,7 @@ $$
 5\left(\frac15\right)=1.
 $$
 
-The number \(1\) is important because multiplying by \(1\) changes nothing.
+The number $1$ is important because multiplying by $1$ changes nothing.
 
 We want the same idea for matrices.
 
@@ -122,9 +122,9 @@ $$
 
 The identity matrix does nothing to a vector.
 
-It is therefore the matrix version of the number \(1\).
+It is therefore the matrix version of the number $1$.
 
-For an \(n\times n\) matrix, the identity matrix is
+For an $n\times n$ matrix, the identity matrix is
 
 <div class="math-scroll">
 
@@ -145,9 +145,9 @@ $$
 
 ## 3. What should an inverse do?
 
-Suppose \(A\) is a square matrix.
+Suppose $A$ is a square matrix.
 
-We want a matrix \(A^{-1}\) that undoes the action of \(A\).
+We want a matrix $A^{-1}$ that undoes the action of $A$.
 
 Start with a vector:
 
@@ -155,7 +155,7 @@ $$
 \mathbf{x}.
 $$
 
-Apply \(A\):
+Apply $A$:
 
 $$
 \mathbf{x}
@@ -163,7 +163,7 @@ $$
 A\mathbf{x}.
 $$
 
-Now apply \(A^{-1}\):
+Now apply $A^{-1}$:
 
 $$
 A\mathbf{x}
@@ -183,7 +183,7 @@ $$
 A^{-1}A\mathbf{x}=\mathbf{x}.
 $$
 
-Since the identity matrix also leaves \(\mathbf{x}\) unchanged,
+Since the identity matrix also leaves $\mathbf{x}$ unchanged,
 
 $$
 I\mathbf{x}=\mathbf{x},
@@ -195,7 +195,7 @@ $$
 A^{-1}A=I.
 $$
 
-Similarly, applying \(A^{-1}\) first and then \(A\) should also return us to the original vector:
+Similarly, applying $A^{-1}$ first and then $A$ should also return us to the original vector:
 
 $$
 AA^{-1}=I.
@@ -263,7 +263,7 @@ A=
 \end{bmatrix}.
 $$
 
-What does \(A\) do to a vector?
+What does $A$ do to a vector?
 
 For
 
@@ -287,11 +287,11 @@ A\mathbf{x}
 \end{bmatrix}.
 $$
 
-So \(A\) stretches the first coordinate by \(2\) and the second coordinate by \(3\).
+So $A$ stretches the first coordinate by $2$ and the second coordinate by $3$.
 
 How can we undo this?
 
-We divide the first coordinate by \(2\) and the second by \(3\).
+We divide the first coordinate by $2$ and the second by $3$.
 
 That suggests
 
@@ -345,7 +345,7 @@ The inverse simply reverses the stretching.
 
 ---
 
-## 6. Inverse matrices and solving \(A\mathbf{x}=\mathbf b\)
+## 6. Inverse matrices and solving $A\mathbf{x}=\mathbf b$
 
 Now we reach a very important connection.
 
@@ -355,7 +355,7 @@ $$
 A\mathbf{x}=\mathbf{b}.
 $$
 
-If \(A^{-1}\) exists, multiply both sides by \(A^{-1}\):
+If $A^{-1}$ exists, multiply both sides by $A^{-1}$:
 
 $$
 A^{-1}A\mathbf{x}
@@ -387,11 +387,11 @@ This gives us another way to solve a system.
 
 Instead of thinking:
 
-> Use elimination to find \(\mathbf{x}\),
+> Use elimination to find $\mathbf{x}$,
 
 we can think:
 
-> Find the inverse of \(A\), then multiply it by \(\mathbf b\).
+> Find the inverse of $A$, then multiply it by $\mathbf b$.
 
 So
 
@@ -494,7 +494,7 @@ Now let's solve the same problem using the inverse.
 
 ---
 
-## 8. Finding the inverse of a \(2\times2\) matrix
+## 8. Finding the inverse of a $2\times2$ matrix
 
 Consider
 
@@ -528,7 +528,7 @@ $$
 ad-bc
 $$
 
-is called the **determinant** of \(A\).
+is called the **determinant** of $A$.
 
 We will study determinants more carefully later, but for now we need one fact:
 
@@ -603,7 +603,7 @@ $$
 
 </div>
 
-Factor out \(ad-bc\):
+Factor out $ad-bc$:
 
 $$
 =
@@ -754,7 +754,7 @@ $$
 
 That is impossible.
 
-So \(A^{-1}\) does not exist.
+So $A^{-1}$ does not exist.
 
 A matrix whose inverse does not exist is called **singular**.
 
@@ -831,7 +831,7 @@ z\\
 \end{bmatrix}.
 $$
 
-The transformation cannot produce an arbitrary vector in \(\mathbb R^2\).
+The transformation cannot produce an arbitrary vector in $\mathbb R^2$.
 
 For example,
 
@@ -858,7 +858,7 @@ Once information has been lost, we cannot uniquely reconstruct the original inpu
 
 Think about a transformation geometrically.
 
-Suppose \(A\) stretches space:
+Suppose $A$ stretches space:
 
 $$
 \mathbf{x}
@@ -910,13 +910,13 @@ $$
 A\mathbf{x}=\mathbf b.
 $$
 
-If \(A\) is invertible, then
+If $A$ is invertible, then
 
 $$
 \mathbf{x}=A^{-1}\mathbf b.
 $$
 
-There is exactly one solution for every \(\mathbf b\).
+There is exactly one solution for every $\mathbf b$.
 
 Therefore:
 
@@ -953,7 +953,7 @@ A=
 \end{bmatrix}.
 $$
 
-Write \(A\) beside the identity matrix:
+Write $A$ beside the identity matrix:
 
 <div class="math-scroll">
 
@@ -968,7 +968,7 @@ $$
 
 </div>
 
-Now perform elimination until the left side becomes \(I\).
+Now perform elimination until the left side becomes $I$.
 
 Start with
 
@@ -1000,7 +1000,7 @@ $$
 
 </div>
 
-Now eliminate the \(2\) below the pivot:
+Now eliminate the $2$ below the pivot:
 
 $$
 R_2\leftarrow R_2-2R_1.
@@ -1021,7 +1021,7 @@ $$
 
 </div>
 
-Multiply the second row by \(-1\):
+Multiply the second row by $-1$:
 
 $$
 R_2\leftarrow -R_2.
@@ -1042,7 +1042,7 @@ $$
 
 </div>
 
-Finally eliminate the \(1\) above the second pivot:
+Finally eliminate the $1$ above the second pivot:
 
 $$
 R_1\leftarrow R_1-R_2.
@@ -1063,9 +1063,9 @@ $$
 
 </div>
 
-The left side is now \(I\).
+The left side is now $I$.
 
-Therefore the right side is \(A^{-1}\):
+Therefore the right side is $A^{-1}$:
 
 $$
 \boxed{
@@ -1084,7 +1084,7 @@ $$
 
 This is worth understanding.
 
-Suppose we perform a sequence of row operations that transforms \(A\) into \(I\).
+Suppose we perform a sequence of row operations that transforms $A$ into $I$.
 
 Each row operation can be represented by multiplying by an elementary matrix.
 
@@ -1108,7 +1108,7 @@ $$
 
 </div>
 
-So when elimination turns \(A\) into \(I\), the same operations applied to \(I\) produce \(A^{-1}\).
+So when elimination turns $A$ into $I$, the same operations applied to $I$ produce $A^{-1}$.
 
 This is why the augmented matrix
 
@@ -1144,7 +1144,7 @@ It follows directly from the relationship between elimination and matrix multipl
 
 Matrix multiplication represents composition of transformations.
 
-Suppose we first apply \(B\), then \(A\):
+Suppose we first apply $B$, then $A$:
 
 $$
 \mathbf{x}
@@ -1162,9 +1162,9 @@ $$
 
 To undo the entire process, we must reverse the order.
 
-First undo \(A\).
+First undo $A$.
 
-Then undo \(B\).
+Then undo $B$.
 
 Therefore,
 
@@ -1224,7 +1224,7 @@ $$
 B^{-1}IB.
 $$
 
-Because \(IB=B\),
+Because $IB=B$,
 
 $$
 B^{-1}B=I.
@@ -1242,13 +1242,13 @@ $$
 B^{-1}A^{-1}
 $$
 
-really is the inverse of \(AB\).
+really is the inverse of $AB$.
 
 ---
 
 ## 19. Important properties of inverses
 
-If \(A\) is invertible, then:
+If $A$ is invertible, then:
 
 ### Identity
 
@@ -1276,7 +1276,7 @@ $$
 
 ### Inverse and a scalar
 
-For a nonzero number \(c\),
+For a nonzero number $c$,
 
 $$
 (cA)^{-1}
@@ -1346,7 +1346,7 @@ $$
 
 </div>
 
-So the inverse is the matrix that **undoes \(A\)**.
+So the inverse is the matrix that **undoes $A$**.
 
 ---
 
@@ -1459,7 +1459,7 @@ Explain why.
 
 ### Exercise 4
 
-Suppose \(A\) and \(B\) are invertible.
+Suppose $A$ and $B$ are invertible.
 
 Which of the following is correct?
 
@@ -1487,7 +1487,7 @@ $$
 AA^{-1}=A^{-1}A=I,
 $$
 
-then \(A^{-1}\) reverses the transformation performed by \(A\).
+then $A^{-1}$ reverses the transformation performed by $A$.
 
 We also saw an important connection with a system of equations:
 
@@ -1495,7 +1495,7 @@ $$
 A\mathbf{x}=\mathbf{b}.
 $$
 
-If \(A^{-1}\) exists, we can write
+If $A^{-1}$ exists, we can write
 
 <div class="math-scroll">
 
@@ -1507,11 +1507,11 @@ $$
 
 But this raises a natural question:
 
-> **How exactly does \(A^{-1}\) help us solve \(A\mathbf{x}=\mathbf{b}\)?**
+> **How exactly does $A^{-1}$ help us solve $A\mathbf{x}=\mathbf{b}$?**
 
 And there is another important question.
 
-If we know \(A^{-1}\), can we use it to solve **many different systems with the same matrix \(A\)**?
+If we know $A^{-1}$, can we use it to solve **many different systems with the same matrix $A$**?
 
 For example, suppose we have
 
@@ -1545,7 +1545,7 @@ This is the idea we will explore next.
 
 ### Next lesson
 
-**\(A^{-1}\) and \(A\mathbf{x}=\mathbf{b}\)**
+**$A^{-1}$ and $A\mathbf{x}=\mathbf{b}$**
 
 We will connect the inverse matrix directly to solving systems and understand what the equation
 

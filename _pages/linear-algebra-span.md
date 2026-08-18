@@ -691,12 +691,7 @@ b
 \begin{bmatrix}
 -1\\
 2
-\end{bmatrix}.
-$$
-
-Multiplying,
-
-$$
+\end{bmatrix}
 =
 \begin{bmatrix}
 2a\\
@@ -706,7 +701,7 @@ a
 \begin{bmatrix}
 -b\\
 2b
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
 Therefore,

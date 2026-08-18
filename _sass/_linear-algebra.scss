@@ -1710,3 +1710,86 @@
     padding-left: 14px;
   }
 }
+
+/* =========================================
+   Interactive Linear Combination
+   ========================================= */
+
+.linear-combination-demo {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.lc-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lc-control {
+  padding: 0.9rem 1rem;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  background: #fafbfc;
+}
+
+.lc-control label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.lc-control input[type="range"] {
+  width: 100%;
+}
+
+.lc-equation {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.lc-graph-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lc-graph-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 500px;
+  background: #fff;
+}
+
+.lc-result {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.lc-hint {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+
+  .lc-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-graph-container svg {
+    min-width: 460px;
+  }
+
+  .lc-result {
+    font-size: 0.95rem;
+  }
+
+}

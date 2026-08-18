@@ -332,7 +332,177 @@ We are:
 4. adding the two resulting vectors.
 
 
-::contentReference[oaicite:0]{index=0}
+<div style="width:100%; overflow-x:auto; margin:35px 0;">
+
+<svg
+  width="600"
+  height="420"
+  viewBox="0 0 600 420"
+  style="display:block; margin:auto; max-width:none; background:white; border:1px solid #e5e7eb; border-radius:12px;">
+
+  <!-- Grid -->
+
+  <g stroke="#e5e7eb" stroke-width="1">
+
+    <line x1="80" y1="40" x2="80" y2="380"/>
+    <line x1="120" y1="40" x2="120" y2="380"/>
+    <line x1="160" y1="40" x2="160" y2="380"/>
+    <line x1="200" y1="40" x2="200" y2="380"/>
+    <line x1="240" y1="40" x2="240" y2="380"/>
+    <line x1="280" y1="40" x2="280" y2="380"/>
+    <line x1="320" y1="40" x2="320" y2="380"/>
+    <line x1="360" y1="40" x2="360" y2="380"/>
+    <line x1="400" y1="40" x2="400" y2="380"/>
+    <line x1="440" y1="40" x2="440" y2="380"/>
+    <line x1="480" y1="40" x2="480" y2="380"/>
+
+    <line x1="60" y1="60" x2="520" y2="60"/>
+    <line x1="60" y1="100" x2="520" y2="100"/>
+    <line x1="60" y1="140" x2="520" y2="140"/>
+    <line x1="60" y1="180" x2="520" y2="180"/>
+    <line x1="60" y1="220" x2="520" y2="220"/>
+    <line x1="60" y1="260" x2="520" y2="260"/>
+    <line x1="60" y1="300" x2="520" y2="300"/>
+    <line x1="60" y1="340" x2="520" y2="340"/>
+    <line x1="60" y1="380" x2="520" y2="380"/>
+
+  </g>
+
+  <!-- Axes -->
+
+  <line
+    x1="60"
+    y1="220"
+    x2="530"
+    y2="220"
+    stroke="#64748b"
+    stroke-width="2"/>
+
+  <line
+    x1="280"
+    y1="390"
+    x2="280"
+    y2="30"
+    stroke="#64748b"
+    stroke-width="2"/>
+
+  <!-- u = (2,1) -->
+
+  <line
+    x1="280"
+    y1="220"
+    x2="360"
+    y2="180"
+    stroke="#111827"
+    stroke-width="3"/>
+
+  <!-- 2u = (4,2) -->
+
+  <line
+    x1="280"
+    y1="220"
+    x2="440"
+    y2="140"
+    stroke="#111827"
+    stroke-width="3"
+    stroke-dasharray="7 5"/>
+
+  <!-- v = (-1,2) -->
+
+  <line
+    x1="280"
+    y1="220"
+    x2="240"
+    y2="140"
+    stroke="#111827"
+    stroke-width="3"/>
+
+  <!-- resultant 2u + v = (3,4) -->
+
+  <line
+    x1="280"
+    y1="220"
+    x2="400"
+    y2="60"
+    stroke="#111827"
+    stroke-width="4"/>
+
+  <!-- horizontal/vertical construction -->
+
+  <line
+    x1="400"
+    y1="60"
+    x2="400"
+    y2="220"
+    stroke="#94a3b8"
+    stroke-width="1.5"
+    stroke-dasharray="5 5"/>
+
+  <line
+    x1="280"
+    y1="60"
+    x2="400"
+    y2="60"
+    stroke="#94a3b8"
+    stroke-width="1.5"
+    stroke-dasharray="5 5"/>
+
+  <!-- labels -->
+
+  <text
+    x="365"
+    y="178"
+    font-size="17"
+    fill="#111827">
+
+    u
+
+  </text>
+
+  <text
+    x="425"
+    y="135"
+    font-size="17"
+    fill="#111827">
+
+    2u
+
+  </text>
+
+  <text
+    x="218"
+    y="135"
+    font-size="17"
+    fill="#111827">
+
+    v
+
+  </text>
+
+  <text
+    x="405"
+    y="55"
+    font-size="17"
+    font-weight="600"
+    fill="#111827">
+
+    2u + v
+
+  </text>
+
+  <text
+    x="285"
+    y="242"
+    font-size="14"
+    fill="#64748b">
+
+    (0,0)
+
+  </text>
+
+</svg>
+
+</div>
 
 
 The picture helps us see what the algebra is doing.
@@ -475,7 +645,14 @@ y=\frac12x.
 $$
 
 
-::contentReference[oaicite:1]{index=1}
+<div style="width:100%; overflow-x:auto; margin:35px 0;">
+
+<img
+  src="{{ '/assets/images/span_one_vector.png' | relative_url }}"
+  alt="Span of one vector showing scalar multiples of v lying on a line through the origin"
+  style="display:block; width:100%; max-width:1000px; height:auto; margin:auto;">
+
+</div>
 
 
 So:
@@ -730,12 +907,730 @@ Their span fills the entire plane $\mathbb R^2$.
 So:
 
 $$
-\boxed{
 \operatorname{span}\{\mathbf u,\mathbf v\}
 =
 \mathbb R^2
-}
 $$
+
+<div class="linear-combination-demo">
+
+  <div class="lc-controls">
+
+    <div class="lc-control">
+      <label>
+        <span>a</span>
+        <strong id="lc-a-value">1</strong>
+      </label>
+
+      <input
+        id="lc-a"
+        type="range"
+        min="-3"
+        max="3"
+        step="0.5"
+        value="1">
+    </div>
+
+    <div class="lc-control">
+      <label>
+        <span>b</span>
+        <strong id="lc-b-value">1</strong>
+      </label>
+
+      <input
+        id="lc-b"
+        type="range"
+        min="-3"
+        max="3"
+        step="0.5"
+        value="1">
+    </div>
+
+  </div>
+
+  <div class="lc-equation">
+    \[
+    \mathbf u=(2,1),
+    \qquad
+    \mathbf v=(1,2)
+    \]
+  </div>
+
+  <div class="lc-graph-container">
+
+    <svg
+      id="linearCombinationGraph"
+      viewBox="0 0 760 520"
+      role="img"
+      aria-label="Interactive graph showing a u plus b v">
+
+      <g id="lc-grid"></g>
+
+      <line
+        id="lc-x-axis"
+        stroke="#64748b"
+        stroke-width="2"/>
+
+      <line
+        id="lc-y-axis"
+        stroke="#64748b"
+        stroke-width="2"/>
+
+      <g id="lc-vectors"></g>
+
+      <g id="lc-labels"></g>
+
+    </svg>
+
+  </div>
+
+  <div
+    id="lc-result"
+    class="lc-result">
+  </div>
+
+  <p class="lc-hint">
+    Move the sliders to see how changing \(a\) and \(b\)
+    changes the linear combination.
+  </p>
+
+</div>
+
+<script>
+(function () {
+
+  const svg = document.getElementById("linearCombinationGraph");
+
+  const grid =
+    document.getElementById("lc-grid");
+
+  const vectors =
+    document.getElementById("lc-vectors");
+
+  const labels =
+    document.getElementById("lc-labels");
+
+  const aSlider =
+    document.getElementById("lc-a");
+
+  const bSlider =
+    document.getElementById("lc-b");
+
+  const aValue =
+    document.getElementById("lc-a-value");
+
+  const bValue =
+    document.getElementById("lc-b-value");
+
+  const result =
+    document.getElementById("lc-result");
+
+
+  /*
+     Coordinate system
+  */
+
+  const cx = 380;
+  const cy = 270;
+  const scale = 62;
+
+
+  /*
+     Our two vectors
+  */
+
+  const u = [2, 1];
+  const v = [1, 2];
+
+
+  /*
+     Convert mathematical coordinates
+     into SVG coordinates
+  */
+
+  function point(x, y) {
+
+    return [
+      cx + x * scale,
+      cy - y * scale
+    ];
+
+  }
+
+
+  /*
+     Draw a line
+  */
+
+  function makeLine(
+    x1,
+    y1,
+    x2,
+    y2,
+    stroke,
+    width,
+    dash
+  ) {
+
+    const line =
+      document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "line"
+      );
+
+    line.setAttribute("x1", x1);
+    line.setAttribute("y1", y1);
+
+    line.setAttribute("x2", x2);
+    line.setAttribute("y2", y2);
+
+    line.setAttribute(
+      "stroke",
+      stroke
+    );
+
+    line.setAttribute(
+      "stroke-width",
+      width
+    );
+
+    if (dash) {
+
+      line.setAttribute(
+        "stroke-dasharray",
+        dash
+      );
+
+    }
+
+    return line;
+
+  }
+
+
+  /*
+     Draw an arrow
+  */
+
+  function makeArrow(
+    x,
+    y,
+    stroke,
+    width
+  ) {
+
+    const group =
+      document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "g"
+      );
+
+    const start =
+      point(0, 0);
+
+    const end =
+      point(x, y);
+
+    group.appendChild(
+      makeLine(
+        start[0],
+        start[1],
+        end[0],
+        end[1],
+        stroke,
+        width
+      )
+    );
+
+
+    const angle =
+      Math.atan2(
+        end[1] - start[1],
+        end[0] - start[0]
+      );
+
+    const arrowLength = 16;
+
+    const p1 = [
+
+      end[0] +
+      arrowLength *
+      Math.cos(
+        angle + Math.PI * 0.82
+      ),
+
+      end[1] +
+      arrowLength *
+      Math.sin(
+        angle + Math.PI * 0.82
+      )
+
+    ];
+
+
+    const p2 = [
+
+      end[0] +
+      arrowLength *
+      Math.cos(
+        angle - Math.PI * 0.82
+      ),
+
+      end[1] +
+      arrowLength *
+      Math.sin(
+        angle - Math.PI * 0.82
+      )
+
+    ];
+
+
+    const head =
+      document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path"
+      );
+
+    head.setAttribute(
+      "d",
+      `M ${end[0]} ${end[1]}
+       L ${p1[0]} ${p1[1]}
+       M ${end[0]} ${end[1]}
+       L ${p2[0]} ${p2[1]}`
+    );
+
+    head.setAttribute(
+      "stroke",
+      stroke
+    );
+
+    head.setAttribute(
+      "stroke-width",
+      width
+    );
+
+    head.setAttribute(
+      "fill",
+      "none"
+    );
+
+    group.appendChild(head);
+
+    return group;
+
+  }
+
+
+  /*
+     Create text labels
+  */
+
+  function makeText(
+    x,
+    y,
+    value,
+    size,
+    weight
+  ) {
+
+    const text =
+      document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+      );
+
+    text.setAttribute(
+      "x",
+      x
+    );
+
+    text.setAttribute(
+      "y",
+      y
+    );
+
+    text.setAttribute(
+      "font-family",
+      "Arial, sans-serif"
+    );
+
+    text.setAttribute(
+      "font-size",
+      size
+    );
+
+    text.setAttribute(
+      "font-weight",
+      weight
+    );
+
+    text.setAttribute(
+      "fill",
+      "#172033"
+    );
+
+    text.textContent =
+      value;
+
+    return text;
+
+  }
+
+
+  /*
+     Grid
+  */
+
+  for (
+    let i = -5;
+    i <= 5;
+    i++
+  ) {
+
+    const x =
+      cx + i * scale;
+
+    grid.appendChild(
+      makeLine(
+        x,
+        35,
+        x,
+        505,
+        "#e5e7eb",
+        1
+      )
+    );
+
+  }
+
+
+  for (
+    let i = -3;
+    i <= 3;
+    i++
+  ) {
+
+    const y =
+      cy - i * scale;
+
+    grid.appendChild(
+      makeLine(
+        45,
+        y,
+        715,
+        y,
+        "#e5e7eb",
+        1
+      )
+    );
+
+  }
+
+
+  /*
+     Axes
+  */
+
+  const origin =
+    point(0, 0);
+
+
+  document
+    .getElementById("lc-x-axis")
+    .setAttribute("x1", 45);
+
+  document
+    .getElementById("lc-x-axis")
+    .setAttribute("y1", origin[1]);
+
+  document
+    .getElementById("lc-x-axis")
+    .setAttribute("x2", 715);
+
+  document
+    .getElementById("lc-x-axis")
+    .setAttribute("y2", origin[1]);
+
+
+  document
+    .getElementById("lc-y-axis")
+    .setAttribute("x1", origin[0]);
+
+  document
+    .getElementById("lc-y-axis")
+    .setAttribute("y1", 505);
+
+  document
+    .getElementById("lc-y-axis")
+    .setAttribute("x2", origin[0]);
+
+  document
+    .getElementById("lc-y-axis")
+    .setAttribute("y2", 35);
+
+
+  /*
+     Update graph
+  */
+
+  function updateGraph() {
+
+    const a =
+      parseFloat(
+        aSlider.value
+      );
+
+    const b =
+      parseFloat(
+        bSlider.value
+      );
+
+
+    aValue.textContent =
+      a;
+
+    bValue.textContent =
+      b;
+
+
+    vectors.innerHTML = "";
+    labels.innerHTML = "";
+
+
+    /*
+       Draw original vectors
+    */
+
+    vectors.appendChild(
+      makeArrow(
+        u[0],
+        u[1],
+        "#64748b",
+        4
+      )
+    );
+
+    vectors.appendChild(
+      makeArrow(
+        v[0],
+        v[1],
+        "#64748b",
+        4
+      )
+    );
+
+
+    /*
+       Calculate au
+    */
+
+    const au = [
+
+      a * u[0],
+      a * u[1]
+
+    ];
+
+
+    /*
+       Calculate bv
+    */
+
+    const bv = [
+
+      b * v[0],
+      b * v[1]
+
+    ];
+
+
+    /*
+       Calculate au + bv
+    */
+
+    const resultVector = [
+
+      au[0] + bv[0],
+      au[1] + bv[1]
+
+    ];
+
+
+    /*
+       Draw au
+    */
+
+    vectors.appendChild(
+      makeArrow(
+        au[0],
+        au[1],
+        "#2563eb",
+        5
+      )
+    );
+
+
+    /*
+       Draw bv
+    */
+
+    vectors.appendChild(
+      makeArrow(
+        bv[0],
+        bv[1],
+        "#64748b",
+        5
+      )
+    );
+
+
+    /*
+       Parallelogram construction
+    */
+
+    const pAU =
+      point(
+        au[0],
+        au[1]
+      );
+
+    const pBV =
+      point(
+        bv[0],
+        bv[1]
+      );
+
+    const pResult =
+      point(
+        resultVector[0],
+        resultVector[1]
+      );
+
+
+    vectors.appendChild(
+      makeLine(
+        pAU[0],
+        pAU[1],
+        pResult[0],
+        pResult[1],
+        "#94a3b8",
+        2,
+        "6 5"
+      )
+    );
+
+
+    vectors.appendChild(
+      makeLine(
+        pBV[0],
+        pBV[1],
+        pResult[0],
+        pResult[1],
+        "#94a3b8",
+        2,
+        "6 5"
+      )
+    );
+
+
+    /*
+       Draw resultant
+    */
+
+    vectors.appendChild(
+      makeArrow(
+        resultVector[0],
+        resultVector[1],
+        "#111827",
+        7
+      )
+    );
+
+
+    /*
+       Labels
+    */
+
+    const pu =
+      point(
+        u[0],
+        u[1]
+      );
+
+    const pv =
+      point(
+        v[0],
+        v[1]
+      );
+
+
+    labels.appendChild(
+      makeText(
+        pu[0] + 12,
+        pu[1] - 12,
+        "u",
+        18,
+        "600"
+      )
+    );
+
+
+    labels.appendChild(
+      makeText(
+        pv[0] + 12,
+        pv[1] - 12,
+        "v",
+        18,
+        "600"
+      )
+    );
+
+
+    labels.appendChild(
+      makeText(
+        pResult[0] + 12,
+        pResult[1] - 12,
+        "au + bv",
+        18,
+        "700"
+      )
+    );
+
+
+    /*
+       Text result underneath
+    */
+
+    result.innerHTML =
+      "a = <strong>" +
+      a +
+      "</strong>, b = <strong>" +
+      b +
+      "</strong>" +
+      " &nbsp; → &nbsp; " +
+      "<strong>au + bv = (" +
+      resultVector[0].toFixed(1) +
+      ", " +
+      resultVector[1].toFixed(1) +
+      ")</strong>";
+
+  }
+
+
+  aSlider.addEventListener(
+    "input",
+    updateGraph
+  );
+
+  bSlider.addEventListener(
+    "input",
+    updateGraph
+  );
+
+  updateGraph();
+
+})();
+</script>
 
 ---
 

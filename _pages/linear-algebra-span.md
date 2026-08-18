@@ -588,9 +588,6 @@ $$
 -1\\
 2
 \end{bmatrix}
-$$
-
-$$
 =
 \begin{bmatrix}
 4\\
@@ -605,7 +602,7 @@ $$
 \begin{bmatrix}
 5\\
 0
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
 We can keep changing $a$ and $b$.

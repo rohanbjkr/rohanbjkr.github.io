@@ -1568,17 +1568,49 @@ $$
 
 ## What comes next?
 
-We now have the language needed to answer a deeper question:
+We have now expanded our idea of a vector.
 
-> How can we describe an entire vector space using the smallest possible collection of vectors?
+A vector does not have to be an arrow or a column of numbers. It can be a polynomial, a function, a matrix, or another mathematical object—as long as the appropriate vector operations are defined.
 
-We already have the ingredients.
+Now let us return to matrices.
 
-We want vectors that:
+For a matrix $A$, we have already seen that
 
-- generate the whole space,
-- but contain no redundancy.
+$$
+A\mathbf{x}
+=
+x_1\mathbf{a}_1+
+x_2\mathbf{a}_2+
+\cdots+
+x_n\mathbf{a}_n,
+$$
 
-That is exactly the idea of a **basis**.
+where $\mathbf a_1,\ldots,\mathbf a_n$ are the columns of $A$.
 
-In the next chapter, we will bring together **span and linear independence** to understand basis and dimension.
+This gives us our next question:
+
+> **What is the collection of all vectors that a matrix $A$ can produce?**
+
+That collection is the **column space** of $A$.
+
+But there is another natural question:
+
+> **Which vectors $\mathbf{x}$ are sent to the zero vector by $A$?**
+
+That is,
+
+$$
+A\mathbf{x}=\mathbf{0}.
+$$
+
+The collection of all such vectors is the **nullspace** of $A$.
+
+So our next two ideas are:
+
+$$
+{\text{Column Space}}
+\qquad\text{and}\qquad
+{\text{Nullspace}}.
+$$
+
+These will connect the ideas we have already developed—**linear combinations, span, and linear independence**—to the structure of a matrix.

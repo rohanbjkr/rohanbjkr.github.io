@@ -232,7 +232,7 @@ $$
 implies
 
 $$
-\boxed{
+{
 c_1=\cdots=c_k=0
 }.
 $$
@@ -242,7 +242,7 @@ $$
 There exists some choice of coefficients, not all zero, such that
 
 $$
-\boxed{
+{
 c_1\mathbf v_1+\cdots+c_k\mathbf v_k=\mathbf0
 }.
 $$
@@ -383,7 +383,7 @@ The coefficients are not both zero.
 Therefore,
 
 $$
-\boxed{
+{
 \mathbf u,\mathbf v
 \text{ are linearly dependent}.
 }
@@ -539,7 +539,7 @@ $$
 Therefore,
 
 $$
-\boxed{
+{
 \mathbf u,\mathbf v
 \text{ are linearly independent}.
 }
@@ -622,7 +622,7 @@ Therefore the collection is dependent.
 So:
 
 $$
-\boxed{
+{
 \text{Linear dependence}
 =
 \text{redundancy}
@@ -632,7 +632,7 @@ $$
 while
 
 $$
-\boxed{
+{
 \text{Linear independence}
 =
 \text{no redundancy}
@@ -695,7 +695,7 @@ are not all zero.
 Therefore,
 
 $$
-\boxed{
+{
 \mathbf v_1,\mathbf v_2,\mathbf v_3
 \text{ are linearly dependent}.
 }
@@ -913,7 +913,7 @@ Therefore the vectors are dependent.
 So:
 
 $$
-\boxed{
+{
 \text{Any set containing }\mathbf0
 \text{ is linearly dependent.}
 }
@@ -948,7 +948,7 @@ $$
 Therefore,
 
 $$
-\boxed{
+{
 \{\mathbf v\}
 \text{ is linearly independent if }
 \mathbf v\neq\mathbf0.
@@ -988,7 +988,7 @@ This generalizes:
 For example:
 
 $$
-\boxed{
+{
 \mathbb R^2
 \rightarrow
 \text{at most 2 independent vectors}
@@ -996,7 +996,7 @@ $$
 $$
 
 $$
-\boxed{
+{
 \mathbb R^3
 \rightarrow
 \text{at most 3 independent vectors}
@@ -1004,7 +1004,7 @@ $$
 $$
 
 $$
-\boxed{
+{
 \mathbb R^n
 \rightarrow
 \text{at most }n\text{ independent vectors}
@@ -1040,7 +1040,7 @@ They are linearly independent.
 This gives us a useful geometric summary:
 
 $$
-\boxed{
+{
 \begin{array}{c}
 \text{one direction}\\
 \downarrow\\
@@ -1052,7 +1052,7 @@ $$
 and
 
 $$
-\boxed{
+{
 \begin{array}{c}
 \text{two independent directions}\\
 \downarrow\\
@@ -1471,7 +1471,7 @@ So the vectors are linearly independent.
 Thus these two vectors have both properties:
 
 $$
-\boxed{
+{
 \text{They span }\mathbb R^2
 }
 $$
@@ -1479,7 +1479,7 @@ $$
 and
 
 $$
-\boxed{
+{
 \text{They are linearly independent}.
 }
 $$
@@ -1596,7 +1596,7 @@ Therefore the vectors point in the same direction.
 They are linearly dependent.
 
 $$
-\boxed{\text{Dependent}}
+{\text{Dependent}}
 $$
 
 ---
@@ -1618,7 +1618,7 @@ $$
 Therefore one valid choice is
 
 $$
-\boxed{a=-2,\qquad b=1}.
+{a=-2,\qquad b=1}.
 $$
 
 Because these coefficients are not both zero, the vectors are dependent.
@@ -1701,7 +1701,7 @@ Only the trivial solution exists.
 Thus,
 
 $$
-\boxed{\mathbf p,\mathbf q
+{\mathbf p,\mathbf q
 \text{ are linearly independent}.}
 $$
 
@@ -1730,7 +1730,7 @@ The coefficients are not all zero.
 Therefore,
 
 $$
-\boxed{
+{
 \mathbf v_1,\mathbf v_2,\mathbf v_3
 \text{ are linearly dependent}.
 }
@@ -1771,7 +1771,7 @@ The collection is **independent**.
 So remember:
 
 $$
-\boxed{
+{
 \text{Independent}
 \quad\Longleftrightarrow\quad
 \text{no redundancy}
@@ -1781,7 +1781,7 @@ $$
 and
 
 $$
-\boxed{
+{
 \text{Dependent}
 \quad\Longleftrightarrow\quad
 \text{some redundancy}
@@ -1795,29 +1795,45 @@ $$
 We now have three important ideas:
 
 $$
+{
 \text{Linear combinations}
-\rightarrow
+\qquad
 \text{Span}
-\rightarrow
-\text{Linear independence}.
-$$
-
-We can now ask a much bigger question:
-
-> **Can we find a collection of vectors that spans a space without containing any redundant vectors?**
-
-Such a collection is called a **basis**.
-
-A basis combines the two ideas we have just learned:
-
-$$
-\boxed{
-\text{Basis}
-=
-\text{spanning}
-+
-\text{linear independence}
+\qquad
+\text{Linear independence}
 }
 $$
 
-This will lead naturally to the ideas of **basis, coordinates, and dimension**.
+We have also seen that these ideas do not apply only to vectors in $\mathbb R^n$.
+
+They can be used to study many different collections of objects.
+
+This leads to a broader question:
+
+> **What makes a collection of objects a vector space?**
+
+We will now step back from individual vectors and look at the bigger structure in which linear algebra takes place.
+
+After that, we will return to matrices and ask two fundamental questions:
+
+> **What vectors can a matrix produce?**
+
+and
+
+> **Which vectors are sent to zero by a matrix?**
+
+These questions lead to two important spaces associated with every matrix:
+
+$$
+{\text{Column Space}}
+\qquad\text{and}\qquad
+{\text{Nullspace}}.
+$$
+
+The column space will connect directly to what we already know about **linear combinations and span**, while the nullspace will connect directly to **linear independence and the equation**
+
+$$
+A\mathbf{x}=\mathbf{0}.
+$$
+
+These ideas will eventually bring together much of what we have learned about vectors, matrices, and systems of equations.

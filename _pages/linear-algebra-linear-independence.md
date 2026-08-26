@@ -419,6 +419,16 @@ Their span is only a line.
 
 So they do not provide two genuinely different directions.
 
+
+<div style="width:100%; overflow-x:auto; margin:35px 0;">
+
+<img
+  src="{{ '/assets/images/linear-dependence.png' | relative_url }}"
+  alt="Two vectors on same line are linearly dependent."
+  style="display:block; width:100%; max-width:1000px; height:auto; margin:auto;">
+
+</div>
+
 The picture is the important part:
 
 > **Two vectors on the same line are dependent.**
@@ -447,9 +457,14 @@ These vectors do not lie on the same line.
 
 They point in different directions.
 
+<div style="width:100%; overflow-x:auto; margin:35px 0;">
 
-::contentReference[oaicite:0]{index=0}
+<img
+  src="{{ '/assets/images/linear-independence.png' | relative_url }}"
+  alt="two vectors having different direction are linearly independent."
+  style="display:block; width:100%; max-width:1000px; height:auto; margin:auto;">
 
+</div>
 
 This means neither vector can be produced by simply scaling the other.
 

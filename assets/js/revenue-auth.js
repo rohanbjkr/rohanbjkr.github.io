@@ -7,8 +7,21 @@
    Replace these two values after creating your Supabase project.
 */
 
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+/* =========================================================
+   Revenue Tracking Authentication
+   ========================================================= */
+
+const SUPABASE_URL =
+  "https://vlssdfakknuwxfhinkbt.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_es1HnaMbMzusxMxk1vof7g_r2m5CYls";
+
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 
 /* ---------------------------------------------------------

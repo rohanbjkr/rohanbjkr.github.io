@@ -1,4 +1,41 @@
 /* =====================================================
+   REVENUE DASHBOARD ACCESS CHECK
+   ===================================================== */
+
+if (
+    sessionStorage.getItem(
+        "revenue_logged_in"
+    ) !== "true"
+) {
+
+    window.location.href =
+        "/revenue/";
+
+    throw new Error(
+        "Revenue dashboard access denied."
+    );
+
+}
+
+
+/* =====================================================
+   REVENUE DASHBOARD ENGINE
+   ===================================================== */
+
+
+/* -----------------------------------------------------
+   GLOBAL VARIABLES
+   ----------------------------------------------------- */
+
+let revenueData = [];
+
+let mappingData = {};
+
+let trendChart = null;
+let headingChart = null;
+let headChart = null;
+
+/* =====================================================
    REVENUE DASHBOARD ENGINE
    ===================================================== */
 

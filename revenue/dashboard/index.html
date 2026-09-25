@@ -1,0 +1,62 @@
+---
+layout: default
+permalink: /revenue/dashboard/
+title: "Revenue Dashboard"
+---
+
+<div style="max-width: 1100px; margin: 50px auto; padding: 20px;">
+
+  <h1>Revenue Dashboard</h1>
+
+  <p id="user-info">Checking authentication...</p>
+
+  <button id="logout-button">
+    Sign Out
+  </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL =
+  "https://vlssdfakknuwxfhinkbt.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_es1HnaMbMzusxMxk1vof7g_r2m5CYls";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function checkAuthentication() {
+
+  const {
+    data: { session }
+  } = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    window.location.href =
+      "{{ '/revenue/' | relative_url }}";
+    return;
+  }
+
+  document.getElementById("user-info").textContent =
+    "Logged in as: " + session.user.email;
+}
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  window.location.href =
+    "{{ '/revenue/' | relative_url }}";
+}
+
+document
+  .getElementById("logout-button")
+  .addEventListener("click", logout);
+
+checkAuthentication();
+</script>

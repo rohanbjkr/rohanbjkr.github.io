@@ -1,180 +1,166 @@
 /* =========================================================
-   Revenue Tracking Authentication
+   Revenue Tracking - Login
    ========================================================= */
+
 
 /*
+   =========================================================
+   LOGIN DETAILS
+
    IMPORTANT:
-   Replace these two values after creating your Supabase project.
+   This is a CLIENT-SIDE login.
+
+   It is NOT intended for confidential information.
+
+   Anyone with access to the website source could technically
+   inspect the JavaScript.
+
+   Therefore use this only as an access gate.
+   =========================================================
 */
 
+
+const REVENUE_USERNAME = "admin";
+
+const REVENUE_PASSWORD = "revenue2026";
+
+
 /* =========================================================
-   Revenue Tracking Authentication
+   LOGIN PAGE
    ========================================================= */
 
-const SUPABASE_URL =
-  "https://vlssdfakknuwxfhinkbt.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_es1HnaMbMzusxMxk1vof7g_r2m5CYls";
-
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-
-/* ---------------------------------------------------------
-   Create Supabase client
-   --------------------------------------------------------- */
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-
-/* ---------------------------------------------------------
-   Elements
-   --------------------------------------------------------- */
-
 const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-button");
-const loginMessage = document.getElementById("login-message");
 
-const passwordInput = document.getElementById("password");
-const togglePassword = document.getElementById("toggle-password");
+const loginButton =
+  document.getElementById("login-button");
+
+const loginMessage =
+  document.getElementById("login-message");
 
 
-/* ---------------------------------------------------------
-   Show / hide password
-   --------------------------------------------------------- */
+/* =========================================================
+   PASSWORD VISIBILITY
+   ========================================================= */
+
+const passwordInput =
+  document.getElementById("password");
+
+const togglePassword =
+  document.getElementById("toggle-password");
+
 
 if (togglePassword) {
 
-  togglePassword.addEventListener("click", function () {
+  togglePassword.addEventListener(
+    "click",
+    function () {
 
-    if (passwordInput.type === "password") {
+      if (passwordInput.type === "password") {
 
-      passwordInput.type = "text";
-      togglePassword.textContent = "Hide";
+        passwordInput.type = "text";
 
-    } else {
+        togglePassword.textContent = "Hide";
 
-      passwordInput.type = "password";
-      togglePassword.textContent = "Show";
+      } else {
+
+        passwordInput.type = "password";
+
+        togglePassword.textContent = "Show";
+
+      }
 
     }
-
-  });
-
-}
-
-
-/* ---------------------------------------------------------
-   Check whether user is already logged in
-   --------------------------------------------------------- */
-
-async function checkExistingSession() {
-
-  const {
-    data: { session }
-  } = await supabaseClient.auth.getSession();
-
-  if (session) {
-
-    /*
-       Later this will check the user's role.
-
-       For now, send authenticated users
-       to the dashboard.
-    */
-
-    window.location.href =
-      "{{ '/revenue/dashboard/' | relative_url }}";
-
-  }
+  );
 
 }
 
 
-/* ---------------------------------------------------------
-   Login
-   --------------------------------------------------------- */
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
 if (loginForm) {
 
-  loginForm.addEventListener("submit", async function (event) {
+  loginForm.addEventListener(
+    "submit",
+    function (event) {
 
-    event.preventDefault();
-
-    const email =
-      document.getElementById("email").value.trim();
-
-    const password =
-      document.getElementById("password").value;
-
-    loginMessage.textContent = "";
-    loginMessage.className = "login-message";
-
-    loginButton.disabled = true;
-    loginButton.textContent = "Signing in...";
+      event.preventDefault();
 
 
-    try {
+      const username =
+        document
+          .getElementById("username")
+          .value
+          .trim();
 
-      const {
-        data,
-        error
-      } = await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-
-
-      if (error) {
-        throw error;
-      }
+      const password =
+        document
+          .getElementById("password")
+          .value;
 
 
-      if (!data.session) {
-        throw new Error("Login was not completed.");
-      }
-
-
-      loginMessage.textContent =
-        "Login successful. Redirecting...";
+      loginMessage.textContent = "";
 
       loginMessage.className =
-        "login-message success";
+        "login-message";
 
 
-      window.location.href =
-        "{{ '/revenue/dashboard/' | relative_url }}";
+      loginButton.disabled = true;
+
+      loginButton.textContent =
+        "Signing in...";
 
 
-    } catch (error) {
+      /* Check credentials */
 
-      console.error(error);
+      if (
+        username === REVENUE_USERNAME &&
+        password === REVENUE_PASSWORD
+      ) {
 
-      loginMessage.textContent =
-        error.message || "Unable to sign in.";
+        /*
+           Store login state in this browser.
+        */
 
-      loginMessage.className =
-        "login-message error";
+        sessionStorage.setItem(
+          "revenue_logged_in",
+          "true"
+        );
 
-      loginButton.disabled = false;
-      loginButton.textContent = "Sign In";
+
+        loginMessage.textContent =
+          "Login successful. Redirecting...";
+
+        loginMessage.className =
+          "login-message success";
+
+
+        setTimeout(function () {
+
+          window.location.href =
+            "{{ '/revenue/dashboard/' | relative_url }}";
+
+        }, 300);
+
+
+      } else {
+
+        loginMessage.textContent =
+          "Invalid username or password.";
+
+        loginMessage.className =
+          "login-message error";
+
+
+        loginButton.disabled = false;
+
+        loginButton.textContent =
+          "Sign In";
+
+      }
 
     }
-
-  });
+  );
 
 }
-
-
-/* ---------------------------------------------------------
-   Start
-   --------------------------------------------------------- */
-
-checkExistingSession();

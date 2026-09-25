@@ -1,0 +1,332 @@
+---
+title: "Revenue Dashboard"
+permalink: /revenue/
+author_profile: false
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/revenue.css' | relative_url }}">
+
+<div class="revenue-dashboard">
+
+    <!-- HEADER -->
+    <div class="revenue-header">
+
+        <div>
+            <div class="revenue-kicker">REVENUE INTELLIGENCE</div>
+            <h1>Revenue Dashboard</h1>
+            <p>
+                Daily government revenue collection analysis
+            </p>
+        </div>
+
+        <div class="data-status">
+            <span class="status-dot"></span>
+            <span id="dataStatus">Loading data...</span>
+        </div>
+
+    </div>
+
+
+    <!-- FILTERS -->
+    <div class="filter-panel">
+
+        <div class="filter-group">
+
+            <label for="headingSelect">
+                Revenue Heading
+            </label>
+
+            <select id="headingSelect">
+                <option value="all">
+                    All Revenue
+                </option>
+            </select>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label for="headSelect">
+                Revenue Head
+            </label>
+
+            <select id="headSelect">
+
+                <option value="all">
+                    All Revenue Heads
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label for="periodSelect">
+                Period
+            </label>
+
+            <select id="periodSelect">
+
+                <option value="monthly">
+                    Monthly
+                </option>
+
+                <option value="daily">
+                    Daily
+                </option>
+
+                <option value="yearly">
+                    Annual
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            id="resetFilters"
+            class="reset-button"
+            type="button">
+
+            Reset
+
+        </button>
+
+    </div>
+
+
+    <!-- SUMMARY CARDS -->
+
+    <div class="revenue-cards">
+
+        <div class="revenue-card">
+
+            <div class="card-label">
+                Total Revenue
+            </div>
+
+            <div
+                class="card-value"
+                id="totalRevenue">
+
+                —
+
+            </div>
+
+        </div>
+
+
+        <div class="revenue-card">
+
+            <div class="card-label">
+                Latest Collection
+            </div>
+
+            <div
+                class="card-value"
+                id="latestRevenue">
+
+                —
+
+            </div>
+
+        </div>
+
+
+        <div class="revenue-card">
+
+            <div class="card-label">
+                Latest Date
+            </div>
+
+            <div
+                class="card-value"
+                id="latestDate">
+
+                —
+
+            </div>
+
+        </div>
+
+
+        <div class="revenue-card">
+
+            <div class="card-label">
+                Revenue Heads
+            </div>
+
+            <div
+                class="card-value"
+                id="headCount">
+
+                —
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN TREND -->
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>Revenue Trend</h2>
+
+                <p id="trendDescription">
+                    Monthly revenue collection
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            <canvas id="revenueTrend"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- TWO COLUMN -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- HEADING -->
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Revenue by Heading</h2>
+
+                    <p>
+                        Revenue classification
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container small-chart">
+
+                <canvas id="headingChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOP HEADS -->
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Top Revenue Heads</h2>
+
+                    <p>
+                        Largest revenue sources
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container small-chart">
+
+                <canvas id="headChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- REVENUE TABLE -->
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>Revenue Head Summary</h2>
+
+                <p>
+                    Collection by revenue head
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table id="revenueTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Rank</th>
+
+                        <th>Revenue Head</th>
+
+                        <th>Heading</th>
+
+                        <th>Collection</th>
+
+                        <th>Share</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="revenueTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LIBRARIES -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/papaparse@5.4.3/papaparse.min.js">
+</script>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js">
+</script>
+
+
+<!-- OUR CODE -->
+
+<script src="{{ '/assets/js/revenue.js' | relative_url }}"></script>

@@ -1,166 +1,212 @@
-/* =========================================================
-   Revenue Tracking - Login
-   ========================================================= */
+/* =====================================================
+   REVENUE TRACKING
+   LOGIN SYSTEM
+   ===================================================== */
 
 
-/*
-   =========================================================
-   LOGIN DETAILS
+/* -----------------------------------------------------
+   LOGIN CREDENTIALS
 
    IMPORTANT:
-   This is a CLIENT-SIDE login.
 
-   It is NOT intended for confidential information.
+   This is a client-side login system.
 
-   Anyone with access to the website source could technically
-   inspect the JavaScript.
+   It is NOT suitable for confidential information.
 
-   Therefore use this only as an access gate.
-   =========================================================
-*/
+   Anyone technically capable of inspecting the
+   JavaScript source can discover/bypass it.
 
+   It is being used here as an access gate for
+   non-confidential revenue information.
+   ----------------------------------------------------- */
 
 const REVENUE_USERNAME = "admin";
 
 const REVENUE_PASSWORD = "revenue2026";
 
 
-/* =========================================================
+/* =====================================================
    LOGIN PAGE
-   ========================================================= */
+   ===================================================== */
 
-const loginForm = document.getElementById("login-form");
+const loginForm =
+    document.getElementById("login-form");
+
 
 const loginButton =
-  document.getElementById("login-button");
+    document.getElementById("login-button");
+
 
 const loginMessage =
-  document.getElementById("login-message");
+    document.getElementById("login-message");
 
-
-/* =========================================================
-   PASSWORD VISIBILITY
-   ========================================================= */
 
 const passwordInput =
-  document.getElementById("password");
+    document.getElementById("password");
+
 
 const togglePassword =
-  document.getElementById("toggle-password");
+    document.getElementById("toggle-password");
 
+
+/* =====================================================
+   PASSWORD SHOW / HIDE
+   ===================================================== */
 
 if (togglePassword) {
 
-  togglePassword.addEventListener(
-    "click",
-    function () {
+    togglePassword.addEventListener(
+        "click",
+        function () {
 
-      if (passwordInput.type === "password") {
+            if (
+                passwordInput.type ===
+                "password"
+            ) {
 
-        passwordInput.type = "text";
+                passwordInput.type =
+                    "text";
 
-        togglePassword.textContent = "Hide";
+                togglePassword.textContent =
+                    "Hide";
 
-      } else {
+            }
 
-        passwordInput.type = "password";
+            else {
 
-        togglePassword.textContent = "Show";
+                passwordInput.type =
+                    "password";
 
-      }
+                togglePassword.textContent =
+                    "Show";
 
-    }
-  );
+            }
+
+        }
+    );
 
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGIN
-   ========================================================= */
+   ===================================================== */
 
 if (loginForm) {
 
-  loginForm.addEventListener(
-    "submit",
-    function (event) {
+    loginForm.addEventListener(
+        "submit",
+        function (event) {
 
-      event.preventDefault();
-
-
-      const username =
-        document
-          .getElementById("username")
-          .value
-          .trim();
-
-      const password =
-        document
-          .getElementById("password")
-          .value;
+            event.preventDefault();
 
 
-      loginMessage.textContent = "";
-
-      loginMessage.className =
-        "login-message";
-
-
-      loginButton.disabled = true;
-
-      loginButton.textContent =
-        "Signing in...";
+            const username =
+                document
+                    .getElementById("username")
+                    .value
+                    .trim();
 
 
-      /* Check credentials */
-
-      if (
-        username === REVENUE_USERNAME &&
-        password === REVENUE_PASSWORD
-      ) {
-
-        /*
-           Store login state in this browser.
-        */
-
-        sessionStorage.setItem(
-          "revenue_logged_in",
-          "true"
-        );
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
 
 
-        loginMessage.textContent =
-          "Login successful. Redirecting...";
+            /* Clear previous message */
 
-        loginMessage.className =
-          "login-message success";
+            loginMessage.textContent = "";
 
-
-        setTimeout(function () {
-
-          window.location.href =
-            "{{ '/revenue/dashboard/' | relative_url }}";
-
-        }, 300);
+            loginMessage.className =
+                "login-message";
 
 
-      } else {
+            /* Disable button */
 
-        loginMessage.textContent =
-          "Invalid username or password.";
+            loginButton.disabled =
+                true;
 
-        loginMessage.className =
-          "login-message error";
+            loginButton.textContent =
+                "Signing in...";
 
 
-        loginButton.disabled = false;
+            /* -----------------------------------------
+               CHECK LOGIN
+               ----------------------------------------- */
 
-        loginButton.textContent =
-          "Sign In";
+            if (
+                username ===
+                    REVENUE_USERNAME
+                &&
+                password ===
+                    REVENUE_PASSWORD
+            ) {
 
-      }
+                /*
+                   Store login state only for
+                   the current browser session.
+                */
 
-    }
-  );
+                sessionStorage.setItem(
+                    "revenue_logged_in",
+                    "true"
+                );
+
+
+                sessionStorage.setItem(
+                    "revenue_username",
+                    username
+                );
+
+
+                loginMessage.textContent =
+                    "Login successful. Redirecting...";
+
+
+                loginMessage.className =
+                    "login-message success";
+
+
+                /* Redirect */
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "/revenue/dashboard/";
+
+                    },
+                    300
+                );
+
+            }
+
+
+            /* -----------------------------------------
+               INVALID LOGIN
+               ----------------------------------------- */
+
+            else {
+
+                loginMessage.textContent =
+                    "Invalid username or password.";
+
+
+                loginMessage.className =
+                    "login-message error";
+
+
+                loginButton.disabled =
+                    false;
+
+
+                loginButton.textContent =
+                    "Sign In";
+
+            }
+
+        }
+    );
 
 }

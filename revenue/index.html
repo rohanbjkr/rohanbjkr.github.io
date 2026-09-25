@@ -1,0 +1,74 @@
+---
+layout: default
+permalink: /revenue/
+title: "Revenue Tracking"
+---
+
+<div class="revenue-login-page">
+
+  <div class="revenue-login-card">
+
+    <div class="revenue-login-header">
+      <h1>Revenue Tracking System</h1>
+      <p>Government Revenue Dashboard</p>
+    </div>
+
+    <form id="login-form">
+
+      <div class="revenue-form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="revenue-form-group">
+        <label for="password">Password</label>
+
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            autocomplete="current-password"
+          >
+
+          <button
+            type="button"
+            id="toggle-password"
+            class="password-toggle"
+          >
+            Show
+          </button>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        id="login-button"
+        class="revenue-login-button"
+      >
+        Sign In
+      </button>
+
+      <div id="login-message" class="login-message"></div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Revenue authentication -->
+<script src="{{ '/assets/js/revenue-auth.js' | relative_url }}"></script>

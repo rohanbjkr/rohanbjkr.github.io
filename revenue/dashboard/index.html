@@ -4,6 +4,116 @@ permalink: /revenue/dashboard/
 title: "Revenue Dashboard"
 ---
 
+<script>
+
+    /*
+       =====================================================
+       REVENUE DASHBOARD ACCESS CONTROL
+       =====================================================
+    */
+
+    if (
+        sessionStorage.getItem(
+            "revenue_logged_in"
+        ) !== "true"
+    ) {
+
+        window.location.href =
+            "{{ '/revenue/' | relative_url }}";
+
+    }
+
+</script>
+
+
+<!-- =====================================================
+     YOUR EXISTING REVENUE DASHBOARD HTML
+     ===================================================== -->
+
+
+<!--
+     Keep all your existing dashboard HTML here.
+-->
+
+
+<!-- =====================================================
+     LOGOUT
+     ===================================================== -->
+
+<div class="revenue-dashboard-actions">
+
+    <button
+        id="revenue-logout"
+        class="revenue-logout-button">
+
+        Sign Out
+
+    </button>
+
+</div>
+
+
+<script>
+
+    /*
+       =====================================================
+       LOGOUT
+       =====================================================
+    */
+
+    const logoutButton =
+        document.getElementById(
+            "revenue-logout"
+        );
+
+
+    if (logoutButton) {
+
+        logoutButton.addEventListener(
+            "click",
+            function () {
+
+                sessionStorage.removeItem(
+                    "revenue_logged_in"
+                );
+
+
+                sessionStorage.removeItem(
+                    "revenue_username"
+                );
+
+
+                window.location.href =
+                    "{{ '/revenue/' | relative_url }}";
+
+            }
+        );
+
+    }
+
+</script>
+
+
+<!-- =====================================================
+     CHART.JS
+     ===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- =====================================================
+     PAPAPARSE
+     ===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.3/papaparse.min.js"></script>
+
+
+<!-- =====================================================
+     REVENUE DASHBOARD ENGINE
+     ===================================================== -->
+
+<script src="{{ '/assets/js/revenue.js' | relative_url }}"></script>
+
 <div style="max-width: 1100px; margin: 50px auto; padding: 20px;">
 
   <h1>Revenue Dashboard</h1>
